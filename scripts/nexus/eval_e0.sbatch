@@ -7,19 +7,73 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=04:00:00
-#SBATCH --output=/fs/classhomes/adelaveg/multilingual-project/runs/E0/slurm-%j.out
+#SBATCH --output=eval_e0-%j.out
 
 set -euo pipefail
 
-PROJECT_ROOT=/fs/classhomes/adelaveg/multilingual-project
+usage() {
+  cat <<'EOF'
+Usage:
+  sbatch scripts/nexus/eval_e0.sbatch [--user USERNAME]
+  sbatch scripts/nexus/eval_e0.sbatch [--USERNAME]
+
+Examples:
+  sbatch scripts/nexus/eval_e0.sbatch --user adelaveg
+  sbatch scripts/nexus/eval_e0.sbatch --adelaveg
+
+Environment overrides:
+  NEXUS_USER=adelaveg sbatch scripts/nexus/eval_e0.sbatch
+  PROJECT_ROOT=/fs/classhomes/adelaveg/multilingual-project sbatch scripts/nexus/eval_e0.sbatch
+EOF
+}
+
+NEXUS_USER="${NEXUS_USER:-${USER:-}}"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --user|--username)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for $1" >&2
+        usage >&2
+        exit 2
+      fi
+      NEXUS_USER="$2"
+      shift 2
+      ;;
+    --user=*|--username=*)
+      NEXUS_USER="${1#*=}"
+      shift
+      ;;
+    --*)
+      NEXUS_USER="${1#--}"
+      shift
+      ;;
+    *)
+      echo "Unknown argument: $1" >&2
+      usage >&2
+      exit 2
+      ;;
+  esac
+done
+
+if [[ -z "${NEXUS_USER}" || ! "${NEXUS_USER}" =~ ^[A-Za-z0-9._-]+$ ]]; then
+  echo "Invalid or empty NEXUS username: ${NEXUS_USER}" >&2
+  exit 2
+fi
+
+PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}"
 PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
 RUN_ROOT="${PROJECT_ROOT}/runs/E0"
 CONDA_ENV="${CONDA_ENV:-proofwala-pilot}"
 LEAN_VERSION="${LEAN_VERSION:-4.15.0}"
-JOB_TMPDIR="/tmp/${USER}/proofwala-e0-${SLURM_JOB_ID:-manual}"
+JOB_TMPDIR="/tmp/${USER}/pw-e0-${SLURM_JOB_ID:-manual}"
 RAY_MEMORY_BYTES=8589934592
 
 mkdir -p "${RUN_ROOT}" "${PROJECT_ROOT}/.hf_cache" "${JOB_TMPDIR}"
+exec > "${RUN_ROOT}/slurm-${SLURM_JOB_ID:-manual}.out" 2>&1
 
 module load miniforge3/24.3.0
 module load cuda/12.4.1 || true
@@ -69,6 +123,7 @@ export LEAN_VERSION
 
 echo "Host: $(hostname)"
 echo "Job: ${SLURM_JOB_ID:-unknown}"
+echo "NEXUS user: ${NEXUS_USER}"
 echo "Project root: ${PROJECT_ROOT}"
 echo "ProofWala root: ${PROOF_WALA_ROOT}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
