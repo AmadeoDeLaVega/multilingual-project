@@ -1,128 +1,123 @@
 # Action Checklist
 
-This is the short execution sheet for the pilot. Use it alongside [[Project/runbook]].
+This is the short execution sheet for the current parallel-training pilot. Use it alongside [[Project/runbook]] and [[PLAN]].
 
-## Day 1: environment and E0
+## Day 1: Environment and E0
 
-- [ ] SSH into NEXUS submission node
-- [ ] Confirm partition, qos, and account with `show_partitions`
-- [ ] Activate `proofwala-pilot` conda env
-- [ ] Verify `torch.cuda.is_available()`
-- [ ] Verify Lean tooling (`lean --version`)
-- [ ] Verify `proof-wala` and `itp-interface` import
-- [ ] Build the Lean project needed for the first eval
-- [ ] Submit or run E0 sanity check
-- [ ] Confirm proof search completes successfully
-- [ ] Save `runs/E0/environment_note.md`
+- [ ] SSH into Nexus with VPN enabled.
+- [ ] Confirm class access with `show_partitions`, `show_qos`, and `show_partition_qos`.
+- [ ] Confirm RTX A5000 availability with `show_available_nodes --partition class --account class --qos medium --gpus rtxa5000:1`.
+- [ ] Confirm one tiny A5000 allocation with `nvidia-smi`.
+- [ ] Verify each student has a Nexus checkout at `/fs/classhomes/<username>/multilingual-project`.
+- [ ] Pull the latest code from GitHub on local and Nexus copies.
+- [ ] Activate `proofwala-pilot`.
+- [ ] Verify `torch.cuda.is_available()` inside an allocated GPU job.
+- [ ] Verify Lean tooling with `lean --version`.
+- [ ] Verify `proof_wala` and `itp_interface` imports.
+- [ ] Run E0 using released `amitayusht/ProofWala-Multilingual`.
+- [ ] Confirm proof search completes and writes JSON results.
+- [ ] Save `runs/E0/environment_note.md`.
 
-## Day 2: data and split freeze
+## Day 2: Dataset and Experiment Freeze
 
-- [ ] Decide whether to reuse or regenerate Lean data
-- [ ] Decide whether to reuse or regenerate Coq data for E3
-- [ ] Freeze Lean train/val/test split
-- [ ] Freeze Coq subset for E3
-- [ ] Define E3 as Lean base plus Coq augmentation
-- [ ] Define E4 as Lean base plus synthetic Lean augmentation
-- [ ] Freeze shared prompt grammar and prompt field order for E1/E3/E4
-- [ ] Freeze reduced base evaluation subset
-- [ ] Write dataset manifest
-- [ ] Write split manifest
-- [ ] Write token budget note
-- [ ] Estimate token counts for Lean base, Coq augmentation, and synthetic Lean augmentation
-- [ ] Choose the token-matching and step-matching rule for all runs
-- [ ] Define pseudo-multilingual transformation for E4
+- [ ] Use the GitHub repo for source code, configs, scripts, docs, and small manifests only.
+- [ ] Confirm `.gitignore` excludes `.log/`, `runs/`, `data/`, caches, venvs, and checkpoints.
+- [ ] Keep large artifacts out of GitHub.
+- [ ] Stage or download [amitayusht/ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset).
+- [ ] Set explicit `HF_HOME`, `HF_DATASETS_CACHE`, and `TRANSFORMERS_CACHE` paths.
+- [ ] Check `/fs/classhomes/<username>` space usage for each student.
+- [ ] If storage is tight, reduce dataset shards or request class project storage.
+- [ ] Freeze the E1 Lean training subset.
+- [ ] Freeze E3 smoke source as ProofWalaDataset `multilingual/train`.
+- [ ] Define the final E3 token-matched Lean+Coq mixture rule.
+- [ ] Freeze the E4 Lean base subset.
+- [ ] Freeze the shared Lean eval/test subset for E1, E3, and E4.
+- [ ] Define the E4 pseudo-multilingual transformation.
+- [ ] Write `data/manifests/dataset_manifest.yaml`.
+- [ ] Write `data/frozen_splits/split_manifest.yaml`.
+- [ ] Write `data/manifests/token_budget_note.md`.
+- [ ] Write the student assignment table.
 
-## Day 3: configs and smoke tests
+## Day 3: Calibration and Smoke Tests
 
-- [ ] Fill in real paths in `pilot_e1.yaml`
-- [ ] Fill in real paths in `pilot_e3.yaml`
-- [ ] Fill in real paths in `pilot_e4.yaml`
-- [ ] Fill in NEXUS placeholders in sbatch scripts
-- [ ] Generate a small E4 sample
-- [ ] Audit the E4 sample for semantics, parseability, and naturalness
-- [ ] Recompute token counts after E4 generation
-- [ ] Run smoke test for E1
-- [ ] Run smoke test for E3
-- [ ] Run smoke test for E4
-- [ ] Confirm checkpoints and logs are created
-- [ ] Confirm optimization-step matching actually holds across runs
+- [ ] Generate a small E4 pseudo-Lean sample.
+- [ ] Inspect at least 50 transformed examples.
+- [ ] Save `data/pseudo_multilingual/e4_audit.md`.
+- [ ] Run E3 smoke test with `multilingual/train`.
+- [ ] Build and validate the final E3 token-matched Lean+Coq mixture manifest.
+- [ ] Run one 100-step calibration on RTX A5000.
+- [ ] Estimate full-run time from calibration.
+- [ ] Run short smoke tests for E1, E3, and E4.
+- [ ] Confirm fp16/bf16, gradient checkpointing, batch size 1, and checkpoint saving.
+- [ ] Save smoke logs under `runs/smoke/`.
 
-## Days 4-5: E1
+## Days 4-5: Parallel Training
 
-- [ ] Submit `train_e1.sbatch`
-- [ ] Monitor job with `squeue` / `sacct`
-- [ ] Record checkpoint path
-- [ ] Record wall-clock time
-- [ ] Record actual step count and effective token budget
-- [ ] Save `runs/E1/training_summary.md`
+- [ ] Student 1 submits E1 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
+- [ ] Student 2 submits E3 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
+- [ ] Student 3 submits E4 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
+- [ ] Monitor with `squeue -u $USER` and `sacct -j <JOBID>`.
+- [ ] Resume from checkpoint if a job hits wall time.
+- [ ] Keep only the latest few checkpoints.
+- [ ] Record wall-clock time, steps, examples, estimated token budget, GPU type, and final checkpoint.
+- [ ] Save `runs/E1/training_summary.md`.
+- [ ] Save `runs/E3/training_summary.md`.
+- [ ] Save `runs/E4/training_summary.md`.
 
-## Days 6-7: E3 and E4
+## Days 6-7: Base Evaluation
 
-- [ ] Finalize E4 augmentation size to match the chosen E3 budget
-- [ ] Submit `train_e3.sbatch`
-- [ ] Submit `train_e4.sbatch`
-- [ ] Audit pseudo-multilingual data sample before full E4 training
-- [ ] Verify E3 and E4 still match E1 on the planned control dimensions
-- [ ] Log any unavoidable budget mismatch explicitly
-- [ ] Record checkpoint paths
-- [ ] Save `runs/E3/training_summary.md`
-- [ ] Save `runs/E4/training_summary.md`
+- [ ] Prepare eval config for trained E1.
+- [ ] Prepare eval config for trained E3.
+- [ ] Prepare eval config for trained E4.
+- [ ] Optionally prepare reference eval configs for released ProofWala-Lean and ProofWala-Multilingual.
+- [ ] Use the same fixed Lean eval subset and proof-search budget for all models.
+- [ ] Run E1 evaluation.
+- [ ] Run E3 evaluation.
+- [ ] Run E4 evaluation.
+- [ ] Compute pass@1, pass@5, and compilable-tactic rate.
+- [ ] Save `reports/tables/base_results.csv`.
+- [ ] Write the first interpretation note.
 
-## Day 8: base evaluation
+## Days 8-10: Diagnostics
 
-- [ ] Prepare pilot eval configs if needed
-- [ ] Run base evaluation for E1
-- [ ] Run base evaluation for E3
-- [ ] Run base evaluation for E4
-- [ ] Compute pass@1
-- [ ] Compute pass@5
-- [ ] Compute compilable tactic rate
-- [ ] Save `reports/tables/base_results.csv`
-- [ ] Write first interpretation note
+- [ ] Compute valid tactics per state.
+- [ ] Compute early dead-end rate.
+- [ ] Compute proof tree nodes and edges.
+- [ ] Compute branching factor.
+- [ ] Compute average proof search time.
+- [ ] Compare results against the token-budget note.
+- [ ] Save `reports/tables/search_diagnostics.csv`.
+- [ ] Make core figures under `reports/figures/`.
 
-## Days 9-10: diagnostics
+## Optional Days 11-12: Adaptation
 
-- [ ] Compute valid tactics per state
-- [ ] Compute early dead-end rate
-- [ ] Compute proof tree nodes and edges
-- [ ] Compute branching factor
-- [ ] Compute average proof search time
-- [ ] Compare results against the matched-budget note before interpreting them
-- [ ] Save `reports/tables/search_diagnostics.csv`
-- [ ] Make core figures
+- [ ] Decide if core experiments are stable enough to proceed.
+- [ ] Fine-tune E1 on CategoryTheory as E5a.
+- [ ] Fine-tune E3 on CategoryTheory as E5b.
+- [ ] Evaluate E5a vs E5b on the same held-out split.
+- [ ] Save adaptation results table.
 
-## Optional Days 11-12: adaptation
+## Day 13: Memo
 
-- [ ] Decide if core experiments are stable enough to proceed
-- [ ] Create `pilot_e5a.yaml`
-- [ ] Create `pilot_e5b.yaml`
-- [ ] Submit E5a fine-tuning
-- [ ] Submit E5b fine-tuning
-- [ ] Evaluate E5a vs E5b
-- [ ] Save adaptation results table
+- [ ] Draft 3 to 5 page memo.
+- [ ] Include dataset and released model reference links.
+- [ ] State E3 vs E1 result.
+- [ ] State E3 vs E4 result.
+- [ ] State search-calibration interpretation.
+- [ ] Add limitations.
 
-## Day 13: memo
+## Day 14: Packaging
 
-- [ ] Draft 3 to 5 page memo
-- [ ] Insert figures
-- [ ] State results for E3 vs E1
-- [ ] State results for E3 vs E4
-- [ ] State search-calibration interpretation
-- [ ] Add limitations
+- [ ] Archive source code, configs, scripts, and docs in GitHub.
+- [ ] Archive split files and small manifests.
+- [ ] Archive command log.
+- [ ] Archive checkpoint inventory, not full checkpoints in GitHub.
+- [ ] Archive figures and tables.
+- [ ] Save reproducibility note.
+- [ ] Make one-slide or one-page summary.
 
-## Day 14: packaging
-
-- [ ] Archive configs
-- [ ] Archive split files
-- [ ] Archive budget-matching note
-- [ ] Archive commands used
-- [ ] Archive checkpoint inventory
-- [ ] Archive figures and tables
-- [ ] Save reproducibility note
-- [ ] Make one-slide or one-page summary
-
-## Decision rule at the end
+## Decision Rule
 
 - If **E3 > E1** and **E3 > E4**, that supports real cross-system transfer.
-- If **E3 > E1** but **E3 ≈ E4**, regularization may explain much of the gain.
+- If **E3 > E1** but **E3 ~= E4**, regularization may explain much of the gain.
 - If gains mostly show up in search metrics, search calibration is probably a big part of the story.

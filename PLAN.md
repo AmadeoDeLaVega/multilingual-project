@@ -2,131 +2,201 @@
 
 ## Purpose
 
-This document is a lean 2-week execution plan for a pilot research project on the question:
+This document is a lean execution plan for a pilot research project on the question:
 
 **Why does multilingual training improve theorem proving in ProofWala?**
 
-The goal is not to fully reproduce the ProofWala paper. The goal is to run a **small causal pilot** that distinguishes between two main explanations:
+The current plan uses the released [ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset) so we do **not** regenerate proof-step data with `itp-interface`. Because the team has three students with separate Nexus access, we train the three core models in parallel:
 
-1. **real cross-system transfer** from training on Lean and Coq together
-2. **regularization from extra variation** without a real second proof assistant
+- E1: Lean-only baseline
+- E3: real multilingual model
+- E4: pseudo-multilingual control
 
-This version of the plan is intentionally narrower so it can realistically finish in two weeks.
+Released ProofWala checkpoints remain useful as references, sanity checks, and fallback baselines, but the primary scientific comparison should use our three freshly trained checkpoints.
+
+## Released Assets
+
+Use these Hugging Face artifacts as first-class inputs and references:
+
+- Dataset: [amitayusht/ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset)
+- Released Lean-only model reference: [amitayusht/ProofWala-Lean](https://huggingface.co/amitayusht/ProofWala-Lean)
+- Released real multilingual model reference: [amitayusht/ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual)
+
+The released models are CodeT5-base finetunes. Therefore E1, E3, and E4 should all start from `Salesforce/codet5-base`.
 
 ## Main Research Question
 
-In a controlled pilot, is ProofWala's multilingual gain better explained by:
+In a controlled pilot using the same dataset source and parallel Nexus training, is ProofWala's multilingual gain better explained by:
 
-- genuine cross-system transfer, or
-- regularization from added variation?
+- genuine cross-system transfer from Lean + Coq training, or
+- regularization from added non-Coq variation?
 
 ## Core Hypotheses
 
-### H1. Structural transfer hypothesis
+### H1. Structural Transfer Hypothesis
 
 Lean and Coq share enough proof-state and tactic structure that joint training improves state-to-tactic modeling.
 
 **Prediction:**
-- real multilingual training beats monolingual training
-- real multilingual training also beats pseudo-multilingual training
 
-### H2. Regularization hypothesis
+- E3 beats E1
+- E3 beats E4
+
+### H2. Regularization Hypothesis
 
 The gain comes mostly from seeing more variation, which reduces overfitting to one syntax or repository style.
 
 **Prediction:**
-- pseudo-multilingual training performs similarly to real multilingual training
 
-### H3. Search-calibration hypothesis
+- E4 performs similarly to E3
+
+### H3. Search-Calibration Hypothesis
 
 The multilingual model helps mostly by producing better-ranked valid tactics during search, not necessarily by much better next-step exact prediction.
 
 **Prediction:**
+
 - gains are clearer in pass@k and compilable-tactic rate than in next-tactic accuracy
-- multilingual models produce more compilable tactics per state and fewer early dead ends
+- E3 produces more compilable tactics per state and fewer early dead ends
 
 ## Minimal Final Experiment Set
 
-These are the only required experiments.
+These are the required experiments.
 
-| ID | Name | Train? | Data | Purpose |
-|---|---|---:|---|---|
-| E0 | Released multilingual sanity-check | No | Existing released model | Verify environment and evaluation pipeline |
-| E1 | Lean-only baseline | Yes | Lean train split only | Monolingual baseline |
-| E3 | Real multilingual | Yes | Lean + Coq mixed data | Main treatment |
-| E4 | Pseudo-multilingual | Yes | Lean + synthetic Lean variant | Control for regularization and surface variation |
+| ID | Name | Train? | Starting Model | Data | Assigned Work |
+|---|---|---:|---|---|---|
+| E0 | Released multilingual sanity-check | No | [ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual) | Small fixed eval | Verify environment and evaluation pipeline |
+| E1 | Lean-only baseline | Yes | `Salesforce/codet5-base` | ProofWalaDataset `lean/train` | Student 1 |
+| E3 | Real multilingual | Yes | `Salesforce/codet5-base` | Smoke: ProofWalaDataset `multilingual/train`; final: token-matched Lean+Coq mixture | Student 2 |
+| E4 | Pseudo-multilingual | Yes | `Salesforce/codet5-base` | Lean train + synthetic Lean variant | Student 3 |
 
 ## Optional Stretch Goal
 
 Only run this if E0, E1, E3, and E4 are complete early enough.
 
-| ID | Name | Train? | Data | Purpose |
+| ID | Name | Train? | Starting Model | Purpose |
 |---|---|---:|---|---|
-| E5a | Lean-to-CategoryTheory adaptation | Fine-tune | CategoryTheory subset starting from E1 | Adaptation baseline |
-| E5b | Multilingual-to-CategoryTheory adaptation | Fine-tune | CategoryTheory subset starting from E3 | Adaptation treatment |
+| E5a | Lean-to-CategoryTheory adaptation | Fine-tune | E1 checkpoint | Adaptation baseline |
+| E5b | Multilingual-to-CategoryTheory adaptation | Fine-tune | E3 checkpoint | Adaptation treatment |
 
 CategoryTheory adaptation is useful, but **not required** for the pilot to succeed.
 
-## Why This Reduced Plan Is Better
+## Why This Plan Is Feasible
 
-This plan keeps the most decision-critical comparison:
+The earlier risk was data generation. Full `itp-interface` extraction can take days. The Hugging Face dataset already provides proof-step records with standard splits, so we can train directly from it.
 
-- **E1 vs E3 vs E4**
+The other bottleneck was compute. The team has three Nexus accounts, so each student can train one model on one RTX A5000 job:
 
-That is enough to answer:
+- Student 1 trains E1
+- Student 2 trains E3
+- Student 3 trains E4
 
-1. does multilingual training help in a controlled pilot?
-2. is the gain more than simple added variation?
-3. does the gain mostly appear in search behavior?
+If enough A5000 GPUs are available, the three trainings can run concurrently.
 
-This reduced plan is better suited to a 2-week schedule than training many baselines and adaptation runs by default.
+## Important Limitation
+
+This is still a pilot. It may use reduced subsets or fixed max-step budgets to fit class-account storage and wall-time limits.
+
+To keep the comparison clean:
+
+- train E1, E3, and E4 from the same base model: `Salesforce/codet5-base`
+- use the same tokenizer
+- use the same prompt grammar and field order
+- use the same training settings where possible
+- use the same fixed Lean evaluation subset
+- use identical proof-search budgets and decoding settings
+- document any unavoidable budget or dataset-size mismatch explicitly
+
+Released E1/E3 checkpoints can be evaluated as secondary references, but they should not replace the primary freshly trained E1/E3 checkpoints unless our training plan fails.
 
 ## Dataset Strategy
 
-## Recommended setup
+Use [amitayusht/ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset) rather than regenerating full data with `itp-interface`.
 
-Use existing extracted ProofWala-style proof-step data if available. Do not spend the project rebuilding extraction unless absolutely necessary.
+The dataset page describes these families:
 
-### Required datasets
+- `lean/`
+- `coq/`
+- `GeoCoq/`
+- `math-comp/`
+- `multilingual/`
 
-- **Lean training/eval data** for E1, E3, E4
-- **Coq training data** for E3 only
-- **CategoryTheory subset** only if optional E5 is attempted
+Each family includes `train/`, `test/`, and `eval/` splits. Each JSON file contains a top-level `training_data` list with proof-step records.
 
-## Hard control rule
+## Required Datasets
+
+- **E1:** Lean training split
+- **E3 smoke tests:** ProofWalaDataset `multilingual/train`
+- **E3 final training:** explicitly constructed token-matched Lean+Coq mixture
+- **E4:** Lean training split plus synthetic Lean augmentation
+- **Evaluation:** one fixed Lean eval/test subset shared by E1, E3, and E4
+
+## E3 Data Recommendation
+
+Use a two-stage plan:
+
+1. **Smoke tests:** use ProofWalaDataset `multilingual/train`.
+2. **Final run:** construct an explicit token-matched Lean+Coq mixture.
+
+The smoke-test goal is operational: make sure the config, loader, model, GPU memory, checkpointing, and logging work quickly.
+
+The final-run goal is causal control. Build the final E3 mixture and record:
+
+- Lean example count
+- Coq example count
+- estimated token count by source
+- sampling rule
+- target token budget
+- how closely the mixture is token-matched to E1 and E4
+
+If time is short or the token-matched mixture has a blocking implementation issue, fall back to `multilingual/train` for E3 final training and document that limitation explicitly.
+
+## Hard Control Rule
 
 For E1, E3, and E4, keep the following matched as closely as possible:
 
-- total training tokens
-- number of optimization steps
-- model architecture
+- base architecture: `Salesforce/codet5-base`
 - tokenizer
+- max sequence length
 - prompt grammar and prompt field order
+- number of optimization steps
 - batch size policy
+- gradient accumulation
+- precision setting
+- checkpoint cadence
 - evaluation subset
 - proof-search budget
+- decoding settings
+- metric scripts
 
-This is essential. Without it, the study may only show that more data helps.
+Record for each run:
 
-## Prompt-format rule
+- total training examples used
+- estimated total tokens
+- number of optimization steps
+- GPU type
+- wall-clock time
+- final checkpoint path
+
+## Prompt-Format Rule
 
 Do not treat prompt-format variation as the control.
 
-ProofWala's multilingual setup is built around a shared prompt format across Lean and Coq, so E1, E3, and E4 should use the same prompt grammar unless prompt variation itself becomes a separate experiment.
+ProofWala's multilingual setup uses a shared prompt format across Lean and Coq, so E1, E3, and E4 should keep the same prompt grammar and field order. The pseudo-multilingual transformation should change surface content, not the template.
 
-## Important implementation note
+## Important Implementation Note
 
-The ProofWala paper-style configs use `no_steps: True`, so the model is trained mostly from the current proof state rather than previous proof-step history.
+The ProofWala-style configs often use `no_steps: True`, so the model is trained mostly from the current proof state rather than previous proof-step history.
 
-This means the pilot should focus its controls on variation in serialized proof states and tactics, not on changing proof-history context.
+This means E4 should focus on variation in serialized proof states and tactics, not on changing proof-history context.
 
-## Split discipline
+## Split Discipline
 
-Freeze all train, validation, and test splits before training starts.
+Freeze all train, validation, and test subsets before full training starts.
 
-Do not change splits after Day 2 unless a blocking bug is found.
+Do not change the evaluation subset after training starts unless a blocking bug is found.
 
-## Pseudo-multilingual data design
+## Pseudo-Multilingual Data Design
 
 E4 should be **simple, conservative, and meaning-preserving**.
 
@@ -135,13 +205,13 @@ E4 should be constructed as:
 - original Lean training data
 - plus synthetic Lean-variant augmentation
 
-Do not replace the original Lean data with transformed-only data. The closest control to real multilingual training is "same Lean base data, plus extra non-Coq variation."
+Do not replace the original Lean data with transformed-only data.
 
 Recommended transformations on Lean data:
 
 1. consistent variable renaming
-2. harmless formatting changes that preserve the serialized state and target tactic structure
-3. consistent renaming of selected identifiers when safe
+2. harmless formatting changes that preserve serialized state and target tactic structure
+3. consistent renaming of selected non-semantic local identifiers when safe
 4. optional theorem-name anonymization or aliasing if theorem names are actually exposed in the chosen training records
 
 Avoid transformations that:
@@ -150,40 +220,119 @@ Avoid transformations that:
 - break parsing
 - produce unnatural prompts
 - require a second proof assistant
-- change the prompt grammar or reorder prompt sections
-
-The purpose of E4 is to add surface variation without adding true cross-system structure.
-
-### Recommended E4 principle
-
-If a transformation mostly changes metadata that the model does not actually consume, it is not a useful control.
-
-Prioritize transformations that affect the proof state or tactic text seen by the model while remaining fully valid and natural.
+- change prompt grammar or reorder prompt sections
 
 ## Model Choice
 
-Use one ProofWala-compatible sequence-to-sequence model for all required experiments.
+Use `Salesforce/codet5-base` for E1, E3, and E4.
 
-Recommended:
+### Non-Negotiable Rules
 
-- `CodeT5-small`, or
-- `CodeT5-base` with a reduced training budget
+- Do not train one experiment as CodeT5-small while the others use CodeT5-base.
+- Do not initialize E4 from ProofWala-Multilingual.
+- Do not include real Coq data in E4.
+- Keep tokenizer and prompt grammar identical across E1, E3, and E4.
 
-### Non-negotiable rule
+## Nexus Compute Plan
 
-Use the **same architecture and tokenizer** for E1, E3, and E4.
+The verified Nexus class-account resources should be the first-choice compute target before renting external GPU instances.
+
+Live checks on `nexusclass01.umiacs.umd.edu` showed:
+
+- partition: `class`
+- account: `class`
+- accessible nodes: `tron[06-44,46-61]`
+- `tron06-44`: RTX A4000, 16GB VRAM, 4 GPUs per node
+- `tron46-61`: RTX A5000, 24GB VRAM, 8 GPUs per node
+- confirmed GPU allocation: `NVIDIA RTX A5000`, `24564 MiB` VRAM, driver `590.48.01`
+
+### Nexus QoS Limits
+
+| QoS | Max wall time | Max per job |
+|---|---:|---|
+| `default` | 3 days | 4 CPU, 1 GPU, 32GB RAM |
+| `medium` | 2 days | 8 CPU, 2 GPU, 64GB RAM |
+| `high` | 1 day | 16 CPU, 4 GPU, 128GB RAM |
+
+The class partition also has a concurrent per-user cap:
+
+- 32 CPU cores
+- 4 GPUs
+- 256GB RAM
+
+### Recommended Training Request
+
+Each student should use one RTX A5000 job:
+
+```bash
+#SBATCH --partition=class
+#SBATCH --account=class
+#SBATCH --qos=medium
+#SBATCH --gres=gpu:rtxa5000:1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64G
+#SBATCH --time=2-00:00:00
+```
+
+Training should use:
+
+- per-device batch size 1
+- fp16 or bf16 where supported
+- gradient checkpointing
+- frequent checkpoint saves
+- resume-from-checkpoint support
+- reduced subset first, then scale after a successful calibration run
+
+Use RTX A4000 only as a fallback for evaluation or very small training dry runs. Its 16GB VRAM is likely too tight for comfortable CodeT5-base training.
+
+### Expected Training Time
+
+Assuming `max_steps` around 5000, 2048-token context, batch size 1, fp16/bf16, and gradient checkpointing on one RTX A5000:
+
+| Run | Expected Time |
+|---|---:|
+| E1 | 6-14 hours |
+| E3 | 8-18 hours |
+| E4 | 8-20 hours |
+
+If all three students train concurrently and the queue has enough A5000s, training wall-clock is roughly 1 day. Budget 1-2 days including queue time, setup, calibration, and restarts.
+
+Before full training, run a shared 100-step calibration. If 100 steps takes `T` minutes, estimate:
+
+```text
+5000-step time ~= T * 50
+```
+
+## Storage Constraint
+
+Class accounts use `/fs/classhomes/<username>`, documented with a 30GB personal quota. Class accounts do not receive the normal Nexus network scratch allocation.
+
+For this project:
+
+- keep Hugging Face caches under explicit paths
+- assume there is no shared class storage
+- each student downloads/caches the needed ProofWalaDataset subset separately under their own `/fs/classhomes/<username>/multilingual-project`
+- each student should download only the subset needed for their assigned run when possible
+- use reduced dataset shards first
+- keep only the latest few checkpoints
+- clear failed-run checkpoints and stale caches
+- request extra class project storage through the TA/instructor if needed
+
+GitHub is for source code, configs, small manifests, notes, and small result summaries. It is not for datasets, checkpoints, model caches, or proof dumps.
+
+If RTX A5000 training OOMs after memory-saving settings, or if storage becomes the blocker, rent an external 48GB GPU instance such as Lambda Cloud A6000.
 
 ## Metrics
 
 The project should emphasize both model behavior and search behavior, but prioritize search diagnostics because that is where ProofWala gives the strongest clues.
 
-## Primary metrics
+## Primary Metrics
 
 - `pass@1`
 - `pass@5`
 - compilable-tactic rate
 
-## Secondary metrics
+## Secondary Metrics
 
 - next-tactic top-k accuracy
 - average valid tactics per state
@@ -193,244 +342,290 @@ The project should emphasize both model behavior and search behavior, but priori
 - average branching factor
 - average proof search time
 
-## Why these metrics
-
-If E3 improves mainly on search metrics but not much on next-step accuracy, that supports the idea that multilingual training improves **search calibration** more than raw step prediction.
-
 ## Success Criteria
 
 The pilot succeeds if it clearly answers at least one of these:
 
-1. Does E3 outperform E1 in the controlled pilot?
-2. Does E3 outperform E4 under matched budget?
+1. Does E3 outperform E1 on the fixed Lean evaluation subset?
+2. Does E3 outperform E4?
 3. Do gains appear mainly in proof-search behavior rather than next-step accuracy?
 
-## Interpretable outcomes
+## Interpretable Outcomes
 
 ### Outcome A
+
 - E3 > E1
 - E3 > E4
 
-**Interpretation:** evidence for genuine cross-system transfer
+**Interpretation:** evidence consistent with genuine cross-system transfer.
 
 ### Outcome B
+
 - E3 > E1
 - E3 ~= E4
 
-**Interpretation:** much of the gain may come from regularization and added variation
+**Interpretation:** much of the gain may come from regularization and added variation.
 
 ### Outcome C
+
 - E3 and E4 improve mainly on pass@k / compilable-tactic rate
 - next-step gains are small
 
-**Interpretation:** gains may be driven largely by better search calibration
+**Interpretation:** gains may be driven largely by better search calibration.
 
 ### Optional Outcome D
+
 - E5b > E5a
 
-**Interpretation:** multilingual pretraining helps low-resource adaptation to a new domain
+**Interpretation:** multilingual pretraining helps low-resource adaptation to a new domain.
 
 ## Compute Philosophy
 
-If compute is limited, reduce:
+Use Nexus first. With three student accounts, E1, E3, and E4 can train in parallel on separate RTX A5000 jobs.
+
+If Nexus compute is limited, reduce:
 
 - dataset size
+- training steps
 - number of checkpoints
 - beam width
 - number of evaluation theorems
 
-Do **not** weaken the causal structure before reducing scale.
-
-The key comparison is more important than large absolute numbers.
+Do **not** weaken the causal structure before reducing scale. In particular, do not switch only one run to a smaller model.
 
 ## Risks and Mitigations
 
-### Risk 1: Environment setup takes too long
+### Risk 1: Environment Setup Takes Too Long
 
 **Mitigation:**
 - run E0 on Day 1
-- do not start training until one proof search run works end-to-end
+- share one working environment recipe
+- do not start full training until proof search works end to end
 
-### Risk 2: Data extraction takes too long
-
-**Mitigation:**
-- reuse existing extracted data
-- if needed, reduce benchmark scope rather than expanding engineering work
-
-### Risk 3: Training does not finish in time
+### Risk 2: Dataset Handling Takes Too Long
 
 **Mitigation:**
-- reduce data size
+- use ProofWalaDataset instead of regenerating with `itp-interface`
+- start with reduced shards
+- freeze a small but documented eval subset
+
+### Risk 3: Training Does Not Finish
+
+**Mitigation:**
+- run a 100-step calibration first
+- reduce training examples
 - reduce total step count
-- use a smaller compatible model
+- keep CodeT5-base for all runs
+- use RTX A5000 with `medium` QoS
+- checkpoint frequently and resume across jobs if needed
 
-### Risk 4: Search evaluation is too slow
+### Risk 3a: Training Exceeds RTX A5000 VRAM
+
+**Mitigation:**
+- use per-device batch size 1
+- enable fp16/bf16 and gradient checkpointing
+- reduce max sequence length only if necessary and document it
+- fall back to external 48GB GPU if the main run cannot fit
+
+### Risk 4: Search Evaluation Is Too Slow
 
 **Mitigation:**
 - first evaluate on a reduced fixed theorem subset
 - only scale up after the main trend is visible
 
-### Risk 5: E4 transformation is too aggressive
+### Risk 5: E4 Transformation Is Too Aggressive
 
 **Mitigation:**
 - keep pseudo-multilingual changes minimal and reversible
 - inspect a sample before training
 
+### Risk 6: Class Storage Is Too Small
+
+**Mitigation:**
+- use reduced dataset shards
+- limit checkpoint retention
+- clear unused model/dataset caches
+- ask the TA/instructor for class project storage if needed
+
 ## Day-by-Day Schedule
 
-## Day 1: Environment validation
+## Day 1: Environment Validation
 
 ### Tasks
+
 - verify environment and dependencies
-- run E0 with a released multilingual checkpoint
+- run E0 with [ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual)
 - confirm proof search, logs, and outputs work
+- verify RTX A5000 allocation on each student account
 
 ### Deliverables
+
 - one successful sanity-check run
 - short environment note
+- hardware note for each student account
 
-### Exit condition
+### Exit Condition
+
 Do not proceed until at least one proof search run completes successfully.
 
-## Day 2: Data freeze and experiment freeze
+## Day 2: Dataset and Experiment Freeze
 
 ### Tasks
-- freeze Lean split for E1
-- freeze Coq subset for E3
-- define E3 mixed data as Lean base plus Coq augmentation
-- define E4 pseudo-multilingual augmentation as Lean base plus synthetic Lean augmentation
-- freeze the prompt grammar and confirm that E1, E3, and E4 use the same prompt field order
-- freeze evaluation subset
-- estimate token counts for the Lean base, Coq augmentation, and synthetic Lean augmentation
-- choose the token-matching and step-matching rule that will be used for all runs
+
+- each student downloads/caches their needed [ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset) subset separately
+- verify available class storage in each student's `/fs/classhomes/<username>` directory
+- set explicit per-account cache/checkpoint directories
+- freeze the E1 Lean training subset
+- freeze the E3 smoke-test source as ProofWalaDataset `multilingual/train`
+- define the final E3 token-matched Lean+Coq mixture construction rule
+- freeze the E4 Lean base subset
+- freeze the Lean eval/test subset for E1, E3, and E4
+- define the E4 pseudo-multilingual transformation
+- confirm shared prompt grammar and field order
+- estimate token counts for E1, E3, and E4
+- define training budgets and checkpoint selection rules
 
 ### Deliverables
+
 - dataset manifest
 - split manifest
 - E4 generation note
 - token-budget note
-- experiment table
+- experiment table with student assignments
 
-### Exit condition
-No further data-composition or budget-rule changes after Day 2 unless a blocking bug is found.
+### Exit Condition
 
-## Day 3: Smoke tests
+No further data-composition or evaluation-subset changes after Day 2 unless a blocking bug is found.
+
+## Day 3: Calibration and Smoke Tests
 
 ### Tasks
-- generate a small E4 sample and manually inspect it
+
+- generate a small E4 sample
+- manually inspect at least 50 transformed examples
 - verify that E4 preserves semantics, prompt grammar, and parseability
-- run token counts again after E4 generation
-- short dry runs for E1, E3, E4 under the matched-budget rule
-- confirm checkpoint saving
-- confirm validation and metric scripts work
-- confirm that the configured number of optimization steps is actually matched across runs
+- run E3 smoke test with `multilingual/train`
+- build and validate the final E3 token-matched Lean+Coq mixture manifest
+- run one 100-step calibration on RTX A5000
+- estimate full-run time from calibration
+- run short smoke tests for E1, E3, and E4
+- confirm checkpoint saving and validation scripts
 
 ### Deliverables
+
 - smoke-test logs
 - E4 sample inspection note
-- final command templates
-- final hyperparameter sheet
+- E3 token-matched mixture manifest
+- calibration timing note
+- final training commands
+- final evaluation command templates
 
-## Days 4-5: Train E1
+## Days 4-5: Parallel Training
 
 ### Tasks
-- launch Lean-only baseline
+
+- Student 1 trains E1 from `Salesforce/codet5-base`
+- Student 2 trains E3 from `Salesforce/codet5-base`
+- Student 3 trains E4 from `Salesforce/codet5-base`
+- all use Nexus `class` / `medium` / `gpu:rtxa5000:1`
 - monitor training and validation
 - record throughput and wall-clock time
-- record the actual token and step budget consumed so E3 and E4 can be matched to it
+- record final training steps, examples, estimated token budget, and checkpoint path
 
 ### Deliverables
-- E1 checkpoint
-- training summary
-- E1 budget summary
 
-## Days 6-7: Train E3 and E4
+- E1 checkpoint and training summary
+- E3 checkpoint and training summary
+- E4 checkpoint and training summary
+
+## Days 6-7: Base Evaluation
 
 ### Tasks
-- finalize the E4 augmentation size to match the chosen E3 budget
-- launch real multilingual training
-- launch pseudo-multilingual training
-- compare training behavior to E1
-- inspect E4 data quality if anything looks suspicious
-- verify that E3 and E4 remain matched to E1 on the planned control dimensions
-- log any unavoidable budget mismatch explicitly
+
+- evaluate trained E1
+- evaluate trained E3
+- evaluate trained E4
+- optionally evaluate released ProofWala-Lean and ProofWala-Multilingual as references
+- use the same fixed Lean subset and proof-search budget for all models
+- compute pass@1, pass@5, and compilable-tactic rate
 
 ### Deliverables
-- E3 checkpoint
-- E4 checkpoint
-- training summaries
-- E3/E4 budget summary
 
-## Day 8: Base evaluation
-
-### Tasks
-- evaluate E1, E3, E4 on next-tactic metrics
-- evaluate compilable-tactic rate
-- run proof search on a fixed reduced subset
-- compute pass@1 and pass@5
-
-### Deliverables
 - main comparison table
+- optional released-checkpoint reference table
 - first interpretation note
+- checkpoint/model inventory
 
-### Exit condition
+### Exit Condition
+
 You should know whether E3 beats E1, and whether E4 is close to or far from E3.
 
-## Days 9-10: Search diagnostics and analysis
+## Days 8-10: Search Diagnostics and Analysis
 
 ### Tasks
+
 - collect proof tree statistics
 - compute valid tactics per state
 - compute early dead-end rate
 - compare search-time behavior
-- compare results against the matched-budget notes before drawing conclusions
+- compare results against the token-budget note before drawing conclusions
 - prepare plots and clean tables
 
 ### Deliverables
+
 - search diagnostics table
 - 2 to 4 core figures
 
-## Optional Days 11-12: CategoryTheory adaptation
+## Optional Days 11-12: CategoryTheory Adaptation
 
 Run this only if the core experiments are already complete and stable.
 
 ### Tasks
+
 - fine-tune E1 on CategoryTheory to create E5a
 - fine-tune E3 on CategoryTheory to create E5b
 - evaluate both on the same held-out split
 
 ### Deliverables
+
 - E5a checkpoint
 - E5b checkpoint
 - adaptation results table
 
-## Day 13: Report drafting
+## Day 13: Report Drafting
 
-### Recommended report structure
+### Recommended Report Structure
+
 1. research question
-2. why ProofWala alone does not identify mechanism
-3. reduced experiment matrix
-4. matched-budget controls, including prompt-format control
-5. results
-6. interpretation
-7. limitations
-8. optional adaptation results, if run
+2. released dataset used
+3. Nexus parallel training setup
+4. experiment matrix and limitations
+5. E4 construction and token-budget note
+6. results
+7. search diagnostics
+8. interpretation
+9. limitations
+10. optional adaptation results, if run
 
 ### Deliverables
+
 - 3 to 5 page memo
 - figures inserted
 - short conclusion per hypothesis
 
-## Day 14: Packaging and reproducibility
+## Day 14: Packaging and Reproducibility
 
 ### Tasks
+
 - archive configs
 - archive split definitions
 - archive commands
 - archive checkpoint inventory
+- archive released asset links and revisions
 - archive final figures and tables
 
 ### Deliverables
+
 - reproducibility appendix or folder
 - final project summary
 - one-slide or one-page summary
@@ -438,21 +633,24 @@ Run this only if the core experiments are already complete and stable.
 ## Deliverables Checklist
 
 ### Required
+
 - E0 sanity-check output
-- E1 checkpoint
-- E3 checkpoint
-- E4 checkpoint
+- E1 checkpoint and training summary
+- E3 checkpoint and training summary
+- E4 checkpoint and training summary
 - frozen dataset manifest
 - frozen split manifest
-- frozen budget-matching note
+- token-budget note
+- E4 generation and audit note
 - base results table
-- training summary table
 - search diagnostics table
 - 3 to 5 figures
 - short internal memo
 - reproducibility notes
 
 ### Optional
+
+- released checkpoint reference evaluation
 - E5a checkpoint
 - E5b checkpoint
 - adaptation results table
@@ -460,43 +658,53 @@ Run this only if the core experiments are already complete and stable.
 
 ## Recommended Figures
 
-### Required figures
-1. training loss curves for E1, E3, E4
-2. pass@1 and pass@5 comparison chart
-3. compilable-tactic rate comparison
+### Required Figures
+
+1. training and validation loss curves for E1, E3, and E4
+2. pass@1 and pass@5 comparison chart for E1, E3, E4
+3. compilable-tactic rate comparison for E1, E3, E4
 4. search-diagnostics chart such as branching factor or early dead-end rate
 
-### Optional figure
+### Optional Figure
+
 5. adaptation comparison for E5a vs E5b
 
 ## Interpretation Template
 
-### Claim 1: Does multilingual training help in the pilot setup?
+### Claim 1: Does multilingual training help in our retrained setup?
+
 Answer with:
+
 - E3 vs E1
 
 ### Claim 2: Is the multilingual effect more than regularization?
+
 Answer with:
+
 - E3 vs E4
 
 ### Claim 3: Does multilingual training mainly improve search calibration?
+
 Answer with:
+
 - pass@k differences
 - compilable-tactic rate differences
 - next-step metric differences
 - dead-end / branching differences
 
 ### Optional Claim 4: Does multilingual pretraining help domain adaptation?
+
 Answer with:
+
 - E5b vs E5a
 
 ## What Not to Overclaim
 
 This pilot can support statements such as:
 
-- "In our controlled pilot, real multilingual training outperformed pseudo-multilingual training."
+- "In our controlled pilot, E3 outperformed E1 on our fixed evaluation subset."
+- "Our pseudo-multilingual E4 did or did not close the gap to real multilingual training."
 - "The multilingual gain appears partly attributable to improved compilable-tactic generation or search behavior."
-- "Multilingual pretraining improved CategoryTheory adaptation in our pilot setting." 
 
 This pilot should not support statements such as:
 

@@ -1,0 +1,34 @@
+# Runtime logs and outputs
+.log/
+runs/
+logs/
+wandb/
+
+# Datasets, generated artifacts, and checkpoints
+data/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Hugging Face and local caches
+.cache/
+.hf_cache/
+hf_cache/
+
+# Python environments and build artifacts
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Local editor and OS noise
+.DS_Store
+.idea/
+

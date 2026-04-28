@@ -4,138 +4,201 @@ This project asks a simple question:
 
 **Why does training on both Lean and Coq help a theorem-proving model more than training on only one of them?**
 
-The file [[PLAN]] gives the technical execution plan. This note explains it in plain language.
+The file [[PLAN]] gives the technical execution plan. This note explains the current version in plain language.
 
-## Big idea
+## Big Idea
 
 A [[Concepts/Model|model]] learns from examples in a [[Concepts/Dataset|dataset]]. Here, the examples are proof states and the next proof step.
 
-The plan compares three training setups:
+The project now uses the released [ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset), which already contains proof-step records for Lean, Coq, and multilingual mixtures. That means we do not need to spend days regenerating data with `itp-interface`.
 
-1. [[Concepts/Monolingual Training|Monolingual training]]: train only on Lean
-2. [[Concepts/Multilingual Training|Multilingual training]]: train on Lean and Coq together
-3. [[Concepts/Pseudo-multilingual Training|Pseudo-multilingual training]]: train on Lean plus a modified copy of Lean that looks different on the surface but means the same thing
+Because three students each have Nexus access, the plan is to train the three core models in parallel:
 
-The main goal is to see **why** multilingual training helps.
+1. [[Concepts/Monolingual Training|E1 Lean-only training]]
+2. [[Concepts/Multilingual Training|E3 real multilingual training]]
+3. [[Concepts/Pseudo-multilingual Training|E4 pseudo-multilingual training]]
 
-One important detail from the updated plan is that pseudo-multilingual training should not replace the original Lean data. It should use:
+Released ProofWala checkpoints are still useful as sanity checks and references, but the main comparison should use our own three trained models.
 
-- the original Lean training data
-- plus synthetic Lean augmentation
-
-That makes it a better control for real multilingual training, which also keeps the original Lean data and adds something extra on top.
-
-## What are we testing?
+## What Are We Testing?
 
 The plan tests two main explanations.
 
-### Explanation 1: real cross-system transfer
+### Explanation 1: Real Cross-System Transfer
+
 Maybe Lean and Coq share useful proof patterns. If so, learning from both should teach the model something genuinely new.
 
-### Explanation 2: extra variation helps
+### Explanation 2: Extra Variation Helps
+
 Maybe the model improves just because it sees more variety, which acts like [[Concepts/Regularization|regularization]].
 
 That is why the plan includes pseudo-multilingual training. It adds variation without adding a real second proof assistant.
 
-## Required experiments
+## Required Experiments
 
-The plan keeps only the most important experiments.
+### E0: Sanity Check
 
-### E0: sanity check
-Use an already released multilingual model to make sure the code and evaluation setup work.
+Use [ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual) to make sure the code and evaluation setup work.
 
-### E1: Lean-only baseline
-Train a [[Concepts/Baseline|baseline]] model only on Lean data.
+### E1: Lean-Only Baseline
 
-### E3: real multilingual
-Train the same kind of model on Lean + Coq.
+Train `Salesforce/codet5-base` on the Lean training split from [ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset).
 
-### E4: pseudo-multilingual
-Train the same kind of model on the original Lean data plus a synthetic Lean variant.
+### E3: Real Multilingual
 
-These three comparisons are the core of the project:
-- E3 vs E1 asks: does multilingual training help?
-- E3 vs E4 asks: is the gain more than just added variation?
+Train `Salesforce/codet5-base` on the multilingual split, or on an explicitly constructed Lean+Coq mixture from ProofWalaDataset.
 
-## Optional experiment if time remains
+Using the dataset's `multilingual/train` is simpler. Constructing a custom Lean+Coq mixture gives tighter control if the team has time.
 
-### E5: CategoryTheory adaptation
-Take the trained models and [[Concepts/Fine-tuning|fine-tune]] them on a small [[Concepts/CategoryTheory Dataset|CategoryTheory dataset]].
+### E4: Pseudo-Multilingual
 
-This checks [[Concepts/Domain Adaptation|domain adaptation]]: does multilingual pretraining give a better starting point for learning a new area?
+Train `Salesforce/codet5-base` on the original Lean data plus a synthetic Lean variant.
 
-This part is useful, but not required for the 2-week project to succeed.
+This is the control that asks whether the multilingual gain is really about Coq transfer or mostly about extra variation.
 
-## Why the plan is small
+## Team Parallelization
 
-Two weeks is short.
+The work can split cleanly across the three students:
 
-So the plan avoids too many experiments and focuses on one clear causal question:
+- Student 1 trains E1.
+- Student 2 trains E3.
+- Student 3 trains E4.
 
-**Is multilingual gain coming from true cross-system transfer or mostly from regularization?**
+Each student should use one Nexus RTX A5000 job:
 
-## How success is measured
+```text
+partition: class
+account: class
+qos: medium
+gpu: rtxa5000:1
+cpus: 8
+memory: 64GB
+time: 2 days
+```
+
+If the queue has enough A5000 GPUs, all three trainings can run at the same time.
+
+## Why All Three Models Must Use CodeT5-Base
+
+The released ProofWala models are based on `Salesforce/codet5-base`.
+
+For a fair comparison, E1, E3, and E4 should all start from:
+
+```text
+Salesforce/codet5-base
+```
+
+Do not train only one experiment as CodeT5-small. That would mix up the data effect with a model-size effect.
+
+Also do not initialize E4 from ProofWala-Multilingual, because that model has already learned from real Lean + Coq data.
+
+## Expected Runtime
+
+On one Nexus RTX A5000, using batch size 1, 2048-token context, fp16 or bf16, and gradient checkpointing:
+
+| Run | Expected Time |
+|---|---:|
+| E1 | 6-14 hours |
+| E3 | 8-18 hours |
+| E4 | 8-20 hours |
+
+If all three students train in parallel, the training phase should take roughly one day of wall-clock time, with a conservative budget of one to two days including queueing, setup, and restarts.
+
+Before full training, run a 100-step calibration. If 100 steps takes `T` minutes, then 5000 steps should take about `T * 50`.
+
+## Important Fairness Rules
+
+The plan says E1, E3, and E4 should be matched as closely as possible on:
+
+- base model
+- tokenizer
+- prompt format
+- sequence length
+- training steps
+- batch size policy
+- evaluation subset
+- proof-search budget
+
+Only the training data should differ.
+
+This is important. Otherwise, multilingual training might look better just because it saw more data, trained longer, or used a different setup.
+
+## Pseudo-Multilingual Data
+
+Pseudo-multilingual training should not replace the original Lean data. It should use:
+
+- the original Lean training data
+- plus synthetic Lean augmentation
+
+Good transformations are conservative:
+
+- consistent variable renaming
+- harmless formatting changes
+- selected local identifier renaming where safe
+- theorem-name anonymization only if theorem names are actually visible to the model
+
+Bad transformations are ones that:
+
+- change proof meaning
+- break parsing
+- change prompt headers or field order
+- make examples look unnatural
+- add a real second proof assistant
+
+The point is to add surface variation without adding real cross-system structure.
+
+## Storage and GitHub
+
+GitHub is for:
+
+- source code
+- configs
+- scripts
+- small manifests
+- notes
+- small result summaries
+
+Do not put datasets, Hugging Face caches, checkpoints, virtual environments, `.log/`, or full proof dumps in GitHub.
+
+Nexus class home storage is limited, so the team should:
+
+- use explicit Hugging Face cache paths
+- start with reduced dataset shards
+- keep only the latest few checkpoints
+- request class project storage if needed
+
+## How Success Is Measured
 
 The project uses several [[Concepts/Metric|metrics]].
 
 Most important:
+
 - [[Concepts/pass@k]]
 - [[Concepts/Compilable Tactic Rate]]
 - behavior during [[Concepts/Proof Search|proof search]]
 
-The plan also checks whether multilingual models:
+The plan also checks whether models:
+
 - find more valid next steps
 - get stuck less often
 - search more effectively
 
 This matters because the gain may come from better [[Concepts/Search Calibration|search calibration]], not only from better one-step prediction.
 
-## One important fairness rule
+## What The Project Can Conclude
 
-The plan says E1, E3, and E4 should be matched as closely as possible on:
-- model size
-- training steps
-- amount of training data, especially in [[Concepts/Token|tokens]]
-- prompt format
-- evaluation budget
+If E3 beats E1 and E4, that is evidence consistent with real cross-system transfer.
 
-This is important. Otherwise, multilingual might look better just because it saw more data.
+If E3 beats E1 but is about the same as E4, that suggests a lot of the gain may come from regularization and extra variation.
 
-The updated plan is especially strict about prompt format because ProofWala multilingual training uses one shared prompt structure across Lean and Coq. So pseudo-multilingual training should not add a different prompt template as its main source of variation.
+If E3 mainly helps on search metrics, that suggests the gain may come more from better search behavior than from deeper one-step prediction.
 
-Another implementation detail is that the current ProofWala-style setup often uses `no_steps: True`. In plain language, that means the model mainly sees the current proof state, not a long history of previous proof steps. So the pseudo-multilingual control should focus on changing the surface form of Lean proof states and tactics, not on inventing different proof-history context.
+## Final Takeaway
 
-## What Day 2 and Day 3 now emphasize
-
-The updated schedule gives special attention to the control setup before full training begins.
-
-### Day 2
-- freeze the Lean base split
-- freeze the Coq augmentation for E3
-- define the synthetic Lean augmentation for E4
-- decide exactly how token matching and step matching will be enforced
-
-### Day 3
-- generate a small E4 sample
-- inspect it manually
-- verify that it still parses and still uses the same prompt grammar
-- run short dry runs for E1, E3, and E4 under the matched-budget rule
-
-This matters because a bad E4 control could make the whole comparison hard to interpret.
-
-## What the project can conclude
-
-If E3 beats E1 and E4, that is evidence for real cross-system transfer.
-
-If E3 beats E1 but is about the same as E4, that suggests a lot of the gain may just come from regularization and extra variation.
-
-If E3 mainly helps on search metrics, that suggests the gain may come more from better search behavior than from deeper reasoning.
-
-## Final takeaway
-
-This is a focused pilot study.
+This is a focused parallel-training pilot.
 
 It does **not** try to solve multilingual theorem proving completely.
-It tries to answer one realistic question in two weeks:
+
+It tries to answer one realistic question:
 
 **When multilingual training helps, is it because the second proof system teaches new structure, or because extra variation makes the model generalize better?**
