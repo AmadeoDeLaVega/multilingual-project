@@ -1,0 +1,53 @@
+# Pilot E1: Lean-only baseline
+# Starting point for the reduced multilingual-transfer pilot.
+#
+# Before running:
+# 1. Replace the training/eval paths below with your frozen Lean-only data paths.
+# 2. Confirm token budget matches E3 and E4.
+# 3. Check output_dir/logging_dir so this run stays separated from the others.
+
+defaults:
+  - model_settings: codet5_small_2048.yaml
+  - training_settings: basic_100_010
+  - override hydra/job_logging: 'disabled'
+
+name: pilot-e1-lean-only
+experiment_type: 'Training'
+
+training_data_settings:
+  training_data_dir: /home/vboxuser/Desktop/multilingual-project/data/generated/lean/TRAIN_LEAN_ONLY
+  training_meta_filename: local.meta.json
+  training_data_log_dir: /home/vboxuser/Desktop/multilingual-project/runs/E1/data_logs
+  training_dataset_type: CodeT5TrainingDataset
+  training_data_formatter_type: CodeT5PromptTrainingDataFormatter
+  training_dataset_args:
+    characters_per_token: 3.6
+    max_tokens: 2048
+    no_steps: True
+  evals:
+    - eval_name: lean_fixed_subset
+      eval_data_dir: /home/vboxuser/Desktop/multilingual-project/data/generated/lean/EVAL_LEAN_FIXED
+      eval_meta_filename: local.meta.json
+      eval_data_log_dir: /home/vboxuser/Desktop/multilingual-project/runs/E1/eval_logs
+  eval_data_dir:
+  eval_meta_filename:
+  eval_data_log_dir:
+  test_data_dir:
+  test_meta_filename:
+  test_data_log_dir:
+
+training_settings:
+  training_args:
+    output_dir: /home/vboxuser/Desktop/multilingual-project/runs/E1/model
+    logging_dir: /home/vboxuser/Desktop/multilingual-project/runs/E1/logs
+    overwrite_output_dir: False
+    resume_from_checkpoint: False
+    per_device_train_batch_size: 1
+    per_device_eval_batch_size: 1
+    gradient_accumulation_steps: 1
+    max_steps: 5000
+    save_steps: 500
+    eval_steps: 500
+    save_total_limit: 3
+    seed: 42
+    data_seed: 42

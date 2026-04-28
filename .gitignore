@@ -1,12 +1,12 @@
 # Runtime logs and outputs
-.log/
-runs/
-logs/
+/.log/
+/runs/
+/logs/
 wandb/
 
 # Datasets, generated artifacts, and checkpoints
-data/
-checkpoints/
+/data/
+/checkpoints/
 *.ckpt
 *.pt
 *.pth
@@ -14,14 +14,14 @@ checkpoints/
 *.safetensors
 
 # Hugging Face and local caches
-.cache/
-.hf_cache/
-hf_cache/
+/.cache/
+/.hf_cache/
+/hf_cache/
 
 # Python environments and build artifacts
-.venv/
-venv/
-env/
+/.venv/
+/venv/
+/env/
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -31,4 +31,3 @@ dist/
 # Local editor and OS noise
 .DS_Store
 .idea/
-
