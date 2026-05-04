@@ -98,7 +98,9 @@ def train_experiment(experiment: Experiment, time_now: str = None):
         if os.path.exists(".secrets/huggingface_token.json"):
             with open(".secrets/huggingface_token.json", "r") as f:
                 model_args["token"] = json.load(f)["token"]
-    if "comet_experiment" not in model_args or model_args["comet_experiment"] is None:
+    if os.environ.get("COMET_MODE", "").upper() == "DISABLED":
+        model_args["comet_experiment"] = None
+    elif "comet_experiment" not in model_args or model_args["comet_experiment"] is None:
         model_args["comet_experiment"] = f"{time_now}-{experiment.name}"
     # Train the model
     if experiment.training_settings.training_args.output_dir is None or experiment.training_settings.training_args.output_dir == "":

@@ -214,6 +214,37 @@ Recommended transformations on Lean data:
 3. consistent renaming of selected non-semantic local identifiers when safe
 4. optional theorem-name anonymization or aliasing if theorem names are actually exposed in the chosen training records
 
+### Final E4 Renaming Requirement
+
+The Day 3 E4 smoke data may use a simple local-renaming transformation to test the training pipeline. That smoke transformation is **not sufficient** for final E4 training by itself.
+
+For final E4, refine the renaming logic and audit it carefully. Lean identifiers can include primes, Unicode letters, generated names, inaccessible names, subscripts, and tactic-generated suffixes. A naive text replacement can accidentally:
+
+- rename part of a theorem or namespace name
+- miss related forms such as `x`, `x_1`, `x₁`, or `x'`
+- create invalid Lean syntax
+- rename a hypothesis in the state but fail to rename the same identifier in the target tactic
+- rename identifiers inside string literals or notation-like fragments where replacement is unsafe
+
+Use this safer final procedure:
+
+1. Extract candidate local identifiers only from the serialized local context/hypothesis lines, not from global theorem names or namespace-qualified constants.
+2. Exclude built-in names, keywords, namespaces, theorem names, constructors, tactics, and any identifier that appears only as part of a qualified name such as `Nat.add` or `CategoryTheory.Functor`.
+3. Build one deterministic per-example rename map, for example `x -> pseudo_0`, `h -> pseudo_1`, using a fixed seed and preserving valid Lean identifier syntax.
+4. Apply the same rename map to the serialized hypotheses, goals, and proof-step target.
+5. Use token-boundary-aware replacement rather than plain substring replacement.
+6. Record the rename map in `addition_state_info` for every transformed example.
+7. Run an audit before full training:
+   - inspect at least 50 examples manually
+   - count examples with empty rename maps
+   - count examples where the proof step changed
+   - count examples where start goals changed
+   - check that no transformed record is byte-identical to its source
+   - sample long examples, Unicode-heavy examples, and examples with primes/subscripts
+8. Prefer dropping a risky transformed example over keeping an aggressive or ambiguous rewrite.
+
+The final E4 audit should be saved as `data/pseudo_multilingual/e4_audit.md` and should include examples of the original state, pseudo state, original tactic, pseudo tactic, and rename map.
+
 Avoid transformations that:
 
 - change semantics

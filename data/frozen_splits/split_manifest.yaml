@@ -1,0 +1,93 @@
+version: 1
+created_on: 2026-05-04
+dataset:
+  name: ProofWalaDataset
+  repo: amitayusht/ProofWalaDataset
+  url: https://huggingface.co/datasets/amitayusht/ProofWalaDataset
+  revision: 754fe36f8875178afbd9651f5c26a75d51171b3d
+  root: "data/proofwala_dataset/ProofWalaDataset"
+randomization:
+  seed: 20260504
+  sampler: python_random_sample_without_replacement
+shared_evaluation:
+  validation:
+    source: lean/eval
+    refs: "data/frozen_splits/lean_eval_1000_proofs.jsonl"
+    count: 1000
+    unit: unique_proof_id
+    purpose: validation_and_calibration_only
+  final_test:
+    source: lean/test
+    refs: "data/frozen_splits/lean_test_991_proofs.jsonl"
+    count: 991
+    unit: unique_proof_id
+    purpose: final_reported_metrics
+experiments:
+  E1:
+    name: Lean-only baseline
+    train:
+      source: lean/train
+      proof_steps: 237003
+      selection: all
+    eval_refs: "data/frozen_splits/lean_eval_1000_proofs.jsonl"
+    test_refs: "data/frozen_splits/lean_test_991_proofs.jsonl"
+  E3_smoke:
+    name: Real multilingual smoke test
+    train:
+      source: multilingual/train
+      proof_steps: 442607
+      selection: all
+    eval_refs: "data/frozen_splits/lean_eval_1000_proofs.jsonl"
+    test_refs: "data/frozen_splits/lean_test_991_proofs.jsonl"
+  E3_final:
+    name: Real multilingual final
+    train:
+      sources:
+        - source: lean/train
+          proof_steps: 237003
+        - source: coq/train
+          proof_steps: 205604
+      selection: token_matched_lean_plus_coq_mixture
+      target_budget: match_E1_effective_training_tokens
+      materialization_status: pending_token_budget_script
+    eval_refs: "data/frozen_splits/lean_eval_1000_proofs.jsonl"
+    test_refs: "data/frozen_splits/lean_test_991_proofs.jsonl"
+  E4:
+    name: Pseudo-multilingual control
+    train:
+      sources:
+        - source: lean/train
+          proof_steps: 237003
+        - source: pseudo_lean/train
+          proof_steps: pending_generation
+      selection: token_matched_lean_plus_pseudo_lean_mixture
+      target_budget: match_E1_and_E3_final_effective_training_tokens
+      materialization_status: pending_pseudo_generation_script
+    eval_refs: "data/frozen_splits/lean_eval_1000_proofs.jsonl"
+    test_refs: "data/frozen_splits/lean_test_991_proofs.jsonl"
+source_split_counts:
+  coq_train:
+    source: coq/train
+    proof_steps: 205604
+    local_data_files: 21
+  lean_eval:
+    source: lean/eval
+    proof_steps: 4220
+    local_data_files: 5
+  lean_test:
+    source: lean/test
+    proof_steps: 4323
+    local_data_files: 5
+  lean_train:
+    source: lean/train
+    proof_steps: 237003
+    local_data_files: 238
+  multilingual_train:
+    source: multilingual/train
+    proof_steps: 442607
+    local_data_files: 45
+discipline:
+  - E1, E3, and E4 must use the same validation and test refs.
+  - Do not report final results on lean/eval; use lean/test only.
+  - E3_final and E4 must be token-budget matched before full training.
+  - If a reduced training subset is used, record it in this manifest before training.

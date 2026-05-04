@@ -1,0 +1,72 @@
+# Day 3 smoke: E4 pseudo-multilingual control
+
+defaults:
+  - model_settings: codet5_base_2048.yaml
+  - training_settings: basic_100_010
+  - override hydra/job_logging: 'disabled'
+
+name: smoke-e4-pseudo-multilingual
+experiment_type: 'Training'
+
+model_settings:
+  logging_dir: <root>/runs/smoke/E4/logs/model
+
+training_data_settings:
+  training_data_dir: <root>/data/smoke/e4_train
+  training_meta_filename: local.meta.json
+  training_data_log_dir: <root>/runs/smoke/E4/data_logs
+  training_dataset_type: CodeT5TrainingDataset
+  training_data_formatter_type: CodeT5PromptTrainingDataFormatter
+  training_dataset_args:
+    characters_per_token: 3.6
+    max_tokens: 2048
+    no_steps: True
+  evals:
+    - eval_name: lean_fixed_smoke
+      eval_data_dir: <root>/data/smoke/lean_eval_fixed
+      eval_meta_filename: local.meta.json
+      eval_data_log_dir: <root>/runs/smoke/E4/eval_logs
+  eval_data_dir:
+  eval_meta_filename:
+  eval_data_log_dir:
+  test_data_dir:
+  test_meta_filename:
+  test_data_log_dir:
+
+training_settings:
+  train_eval_split: False
+  train_percentage: 1.0
+  eval_percentage: 1.0
+  test_percentage: 1.0
+  training_args:
+    output_dir: <root>/runs/smoke/E4/model
+    logging_dir: <root>/runs/smoke/E4/logs/trainer
+    overwrite_output_dir: True
+    resume_from_checkpoint: False
+    do_train: True
+    do_eval: True
+    per_device_train_batch_size: 1
+    per_device_eval_batch_size: 1
+    gradient_accumulation_steps: 1
+    learning_rate: 2e-4
+    weight_decay: 0.001
+    max_grad_norm: 0.3
+    max_steps: 100
+    lr_scheduler_type: cosine
+    warmup_ratio: 0.03
+    logging_strategy: steps
+    logging_steps: 1
+    logging_first_step: True
+    save_strategy: "no"
+    save_steps: 50
+    save_total_limit: 2
+    evaluation_strategy: steps
+    eval_steps: 50
+    load_best_model_at_end: False
+    optim: adamw_torch
+    group_by_length: True
+    gradient_checkpointing: True
+    report_to: "none"
+    fp16: True
+    seed: 42
+    data_seed: 42

@@ -1,0 +1,20 @@
+version: 1
+created_on: 2026-05-04
+purpose: Day 3 training smoke tests for E1, E3, and E4
+datasets:
+  e1_train:
+    path: data/smoke/e1_train
+    local_meta: data/smoke/e1_train/local.meta.json
+    count: 512
+  e3_train:
+    path: data/smoke/e3_train
+    local_meta: data/smoke/e3_train/local.meta.json
+    count: 512
+  e4_train:
+    path: data/smoke/e4_train
+    local_meta: data/smoke/e4_train/local.meta.json
+    count: 512
+  lean_eval_fixed:
+    path: data/smoke/lean_eval_fixed
+    local_meta: data/smoke/lean_eval_fixed/local.meta.json
+    count: 128

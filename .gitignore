@@ -5,7 +5,16 @@
 wandb/
 
 # Datasets, generated artifacts, and checkpoints
-/data/
+/data/*
+!/data/manifests/
+!/data/manifests/**
+!/data/frozen_splits/
+!/data/frozen_splits/**
+!/data/eval_subsets/
+!/data/eval_subsets/**
+!/data/pseudo_multilingual/
+/data/pseudo_multilingual/*
+!/data/pseudo_multilingual/e4_audit.md
 /checkpoints/
 *.ckpt
 *.pt

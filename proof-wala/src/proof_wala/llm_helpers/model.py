@@ -689,13 +689,15 @@ class Model(object):
         except Exception as e:
             self.code_logger.error(f"Error in copying the best model: {e}")
             best_model_path = None
-        if self.training_args.do_train:
+        if self.training_args.do_train and os.environ.get("PROOFWALA_SKIP_MODEL_SAVE") != "1":
             trainer.args.output_dir = new_model_name
             self.code_logger.info(f"Saving the model to {new_model_name}")
             final = os.path.join(self.training_args.output_dir, "final")
             os.makedirs(final, exist_ok=True)
             self.code_logger.info(f"Saving the final model to {final}")
             trainer.save_model(output_dir=final)
+        elif self.training_args.do_train:
+            self.code_logger.info("Skipping final model save because PROOFWALA_SKIP_MODEL_SAVE=1")
         if self._should_use_comet:
             self._comet_experiment.end()
 

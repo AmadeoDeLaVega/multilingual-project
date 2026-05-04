@@ -1,0 +1,51 @@
+dataset:
+  name: ProofWalaDataset
+  repo: amitayusht/ProofWalaDataset
+  url: https://huggingface.co/datasets/amitayusht/ProofWalaDataset
+  revision: 754fe36f8875178afbd9651f5c26a75d51171b3d
+  license: mit
+  downloaded_on: 2026-05-04
+
+local_paths:
+  dataset_root: data/proofwala_dataset/ProofWalaDataset
+  hf_cache: .hf_cache
+  tree_manifest: .hf_cache/proofwala_dataset_tree.json
+  dataset_info: .hf_cache/proofwala_dataset_info.json
+
+verification:
+  manifest_files: 397
+  expected_bytes: 3479378251
+  actual_bytes: 3479378251
+  missing_files: 0
+  bad_size_files: 0
+
+splits:
+  GeoCoq:
+    eval: 4928
+    test: 12495
+    train: 91120
+  category-theory:
+    eval: 208
+    test: 610
+    train: 4114
+  coq:
+    eval: 7213
+    test: 20072
+    train: 205604
+  lean:
+    eval: 4220
+    test: 4323
+    train: 237003
+  math-comp:
+    eval: 2285
+    test: 1378
+    train: 34196
+  multilingual:
+    eval: 11433
+    test: 24395
+    train: 442607
+
+notes:
+  - "data/ and .hf_cache/ are intentionally ignored by Git."
+  - "For Nexus, use PROJECT_ROOT=/fs/classhomes/<username>/multilingual-project and download the same dataset under $PROJECT_ROOT/data/proofwala_dataset/ProofWalaDataset."
+  - "Set HF_HOME=$PROJECT_ROOT/.hf_cache, HF_DATASETS_CACHE=$PROJECT_ROOT/.hf_cache/datasets, and TRANSFORMERS_CACHE=$PROJECT_ROOT/.hf_cache/transformers before training."

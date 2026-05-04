@@ -39,16 +39,21 @@ def run():
     runtime_env = RuntimeEnv(
         env_vars=environ
     )
-    ray.init(
-        num_cpus=10, 
-        object_store_memory=50*2**30, 
-        _memory=50*2**30, 
+    ray_init_kwargs = dict(
+        num_cpus=int(os.environ.get("RAY_NUM_CPUS", "10")),
+        object_store_memory=int(os.environ.get("RAY_OBJECT_STORE_MEMORY", str(50*2**30))),
+        _memory=int(os.environ.get("RAY_MEMORY", str(50*2**30))),
         logging_level=logging.ERROR, 
         ignore_reinit_error=False, 
         log_to_driver=False, 
         configure_logging=False,
         _system_config={"metrics_report_interval_ms": 10**8},
         runtime_env=runtime_env)
+    ray_tmpdir = os.environ.get("RAY_TMPDIR")
+    if ray_tmpdir:
+        os.makedirs(ray_tmpdir, exist_ok=True)
+        ray_init_kwargs["_temp_dir"] = ray_tmpdir
+    ray.init(**ray_init_kwargs)
     main()
 
 if __name__ == "__main__":
