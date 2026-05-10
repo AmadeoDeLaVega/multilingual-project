@@ -54,6 +54,8 @@ This is the short execution sheet for the current parallel-training pilot. Use i
 
 ## Days 4-5: Parallel Training
 
+- [ ] Before launching full training, patch `Lean4Proj/Smoke.lean` so all smoke theorems use real completed proofs instead of `sorry`.
+- [ ] Re-run `scripts/nexus/proof_search_smoke.sbatch` and confirm proof search initializes environments cleanly, writes JSON results, writes `summary.md`, and exits cleanly.
 - [ ] Student 1 submits E1 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
 - [ ] Student 2 submits E3 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
 - [ ] Student 3 submits E4 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.

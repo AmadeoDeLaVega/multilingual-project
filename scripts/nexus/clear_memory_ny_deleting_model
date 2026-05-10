@@ -1,0 +1,195 @@
+#!/bin/bash
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  scripts/nexus/clear_memory_ny_deleting_model --experiment E1 --user USERNAME
+  scripts/nexus/clear_memory_ny_deleting_model --experiment E3 --user USERNAME --yes
+  scripts/nexus/clear_memory_ny_deleting_model --model-dir runs/smoke/E1/model/smoke-e1-lean-only --user USERNAME --yes
+
+Purpose:
+  Delete a saved trained model directory from the Nexus project copy, including
+  its final/ model and checkpoint-* directories. The script is a dry run unless
+  --yes is provided.
+
+Options:
+  --experiment E1|E3|E4    Delete the standard smoke model directory for that experiment.
+  --model-dir PATH         Delete a specific model directory. Relative paths are under PROJECT_ROOT.
+  --user USERNAME          Nexus username. Also accepts --USERNAME.
+  --project-root PATH      Override /fs/classhomes/<username>/multilingual-project.
+  --yes                    Actually delete. Without this, only prints what would be removed.
+  -h, --help               Show this help.
+
+Examples:
+  # Preview E1 deletion.
+  scripts/nexus/clear_memory_ny_deleting_model --experiment E1 --user adelaveg
+
+  # Delete E1 smoke model, including final/ and checkpoints.
+  scripts/nexus/clear_memory_ny_deleting_model --experiment E1 --user adelaveg --yes
+EOF
+}
+
+NEXUS_USER="${NEXUS_USER:-${USER:-}}"
+PROJECT_ROOT="${PROJECT_ROOT:-}"
+EXPERIMENT=""
+MODEL_DIR=""
+CONFIRM_DELETE=0
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --experiment)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for --experiment" >&2
+        exit 2
+      fi
+      EXPERIMENT="$2"
+      shift 2
+      ;;
+    --experiment=*)
+      EXPERIMENT="${1#*=}"
+      shift
+      ;;
+    --model-dir)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for --model-dir" >&2
+        exit 2
+      fi
+      MODEL_DIR="$2"
+      shift 2
+      ;;
+    --model-dir=*)
+      MODEL_DIR="${1#*=}"
+      shift
+      ;;
+    --project-root)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for --project-root" >&2
+        exit 2
+      fi
+      PROJECT_ROOT="$2"
+      shift 2
+      ;;
+    --project-root=*)
+      PROJECT_ROOT="${1#*=}"
+      shift
+      ;;
+    --user|--username)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for $1" >&2
+        exit 2
+      fi
+      NEXUS_USER="$2"
+      shift 2
+      ;;
+    --user=*|--username=*)
+      NEXUS_USER="${1#*=}"
+      shift
+      ;;
+    --yes)
+      CONFIRM_DELETE=1
+      shift
+      ;;
+    --*)
+      NEXUS_USER="${1#--}"
+      shift
+      ;;
+    *)
+      echo "Unknown argument: $1" >&2
+      usage >&2
+      exit 2
+      ;;
+  esac
+done
+
+if [[ -z "${NEXUS_USER}" || ! "${NEXUS_USER}" =~ ^[A-Za-z0-9._-]+$ ]]; then
+  echo "Invalid or empty Nexus username: ${NEXUS_USER}" >&2
+  exit 2
+fi
+
+PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}"
+
+if [[ -n "${EXPERIMENT}" && -n "${MODEL_DIR}" ]]; then
+  echo "Use either --experiment or --model-dir, not both." >&2
+  exit 2
+fi
+
+if [[ -z "${EXPERIMENT}" && -z "${MODEL_DIR}" ]]; then
+  echo "Missing target. Provide --experiment E1|E3|E4 or --model-dir PATH." >&2
+  usage >&2
+  exit 2
+fi
+
+if [[ -n "${EXPERIMENT}" ]]; then
+  case "${EXPERIMENT}" in
+    E1|e1)
+      MODEL_DIR="runs/smoke/E1/model/smoke-e1-lean-only"
+      ;;
+    E3|e3)
+      MODEL_DIR="runs/smoke/E3/model/smoke-e3-real-multilingual"
+      ;;
+    E4|e4)
+      MODEL_DIR="runs/smoke/E4/model/smoke-e4-pseudo-multilingual"
+      ;;
+    *)
+      echo "Invalid --experiment '${EXPERIMENT}'. Expected E1, E3, or E4." >&2
+      exit 2
+      ;;
+  esac
+fi
+
+if [[ "${MODEL_DIR}" != /* ]]; then
+  MODEL_DIR="${PROJECT_ROOT}/${MODEL_DIR}"
+fi
+
+PROJECT_ROOT_REAL="$(realpath -m "${PROJECT_ROOT}")"
+MODEL_DIR_REAL="$(realpath -m "${MODEL_DIR}")"
+RUNS_ROOT_REAL="${PROJECT_ROOT_REAL}/runs"
+
+case "${MODEL_DIR_REAL}" in
+  "${RUNS_ROOT_REAL}"/*/model/*)
+    ;;
+  *)
+    echo "Refusing to delete path outside an experiment model directory:" >&2
+    echo "  ${MODEL_DIR_REAL}" >&2
+    echo "Expected a path like:" >&2
+    echo "  ${PROJECT_ROOT_REAL}/runs/smoke/E1/model/smoke-e1-lean-only" >&2
+    exit 3
+    ;;
+esac
+
+if [[ ! -e "${MODEL_DIR_REAL}" ]]; then
+  echo "Nothing to delete. Path does not exist:"
+  echo "  ${MODEL_DIR_REAL}"
+  exit 0
+fi
+
+echo "Project root:"
+echo "  ${PROJECT_ROOT_REAL}"
+echo "Model directory selected for deletion:"
+echo "  ${MODEL_DIR_REAL}"
+echo
+echo "Current size:"
+du -sh "${MODEL_DIR_REAL}" || true
+echo
+echo "Top-level contents:"
+find "${MODEL_DIR_REAL}" -maxdepth 2 -mindepth 1 -type d -o -type f | sort | sed "s#^#  #"
+echo
+
+if [[ "${CONFIRM_DELETE}" -ne 1 ]]; then
+  echo "Dry run only. Re-run with --yes to delete this model directory."
+  exit 0
+fi
+
+rm -rf -- "${MODEL_DIR_REAL}"
+
+echo "Deleted:"
+echo "  ${MODEL_DIR_REAL}"
+echo
+echo "Remaining runs/smoke usage:"
+du -sh "${PROJECT_ROOT_REAL}/runs/smoke" 2>/dev/null || true

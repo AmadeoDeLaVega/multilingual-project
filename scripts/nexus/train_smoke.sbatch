@@ -81,14 +81,17 @@ case "${SMOKE_EXPERIMENT}" in
   E1|e1)
     SMOKE_EXPERIMENT="E1"
     CONFIG_NAME="smoke_e1.yaml"
+    MODEL_RUN_NAME="smoke-e1-lean-only"
     ;;
   E3|e3)
     SMOKE_EXPERIMENT="E3"
     CONFIG_NAME="smoke_e3.yaml"
+    MODEL_RUN_NAME="smoke-e3-real-multilingual"
     ;;
   E4|e4)
     SMOKE_EXPERIMENT="E4"
     CONFIG_NAME="smoke_e4.yaml"
+    MODEL_RUN_NAME="smoke-e4-pseudo-multilingual"
     ;;
   *)
     echo "Invalid --experiment '${SMOKE_EXPERIMENT}'. Expected E1, E3, or E4." >&2
@@ -100,6 +103,8 @@ esac
 PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}"
 PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
 RUN_ROOT="${PROJECT_ROOT}/runs/smoke/${SMOKE_EXPERIMENT}"
+MODEL_OUTPUT_DIR="${RUN_ROOT}/model/${MODEL_RUN_NAME}"
+MODEL_FINAL_DIR="${MODEL_OUTPUT_DIR}/final"
 CONDA_ENV="${CONDA_ENV:-proofwala-pilot}"
 JOB_TMPDIR="/tmp/${USER}/pw-smoke-${SMOKE_EXPERIMENT}-${SLURM_JOB_ID:-manual}"
 
@@ -116,11 +121,38 @@ write_summary() {
 - host: $(hostname)
 - config: ${CONFIG_NAME}
 - project_root: ${PROJECT_ROOT}
+- model_output_dir: ${MODEL_OUTPUT_DIR}
+- final_model_dir: ${MODEL_FINAL_DIR}
 - completed_at: $(date -Is)
 - expected_steps: 100
 - status: ${smoke_status}
 EOF
   mv "${summary_tmp}" "${RUN_ROOT}/smoke_summary.md"
+}
+
+validate_final_model() {
+  python - "${MODEL_FINAL_DIR}" <<'PY'
+import sys
+from pathlib import Path
+from safetensors import safe_open
+
+model_path = Path(sys.argv[1])
+safetensors_path = model_path / "model.safetensors"
+if not model_path.is_dir():
+    raise SystemExit(f"Missing final model directory: {model_path}")
+if not safetensors_path.is_file():
+    raise SystemExit(f"Missing model.safetensors: {safetensors_path}")
+if safetensors_path.stat().st_size == 0:
+    raise SystemExit(f"Empty model.safetensors: {safetensors_path}")
+
+try:
+    with safe_open(str(safetensors_path), framework="pt") as handle:
+        tensor_count = len(handle.keys())
+except Exception as exc:
+    raise SystemExit(f"Invalid model.safetensors at {safetensors_path}: {type(exc).__name__}: {exc}") from exc
+
+print(f"Validated final model.safetensors: {safetensors_path} ({tensor_count} tensors)")
+PY
 }
 
 module load miniforge3/24.3.0
@@ -150,6 +182,8 @@ echo "Project root: ${PROJECT_ROOT}"
 echo "ProofWala root: ${PROOF_WALA_ROOT}"
 echo "Smoke experiment: ${SMOKE_EXPERIMENT}"
 echo "Config: ${CONFIG_NAME}"
+echo "Model output dir: ${MODEL_OUTPUT_DIR}"
+echo "Final model dir: ${MODEL_FINAL_DIR}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 echo "PROOFWALA_TRAINING_DATA_USE_RAY=${PROOFWALA_TRAINING_DATA_USE_RAY}"
@@ -173,6 +207,11 @@ if [[ "${TRAIN_STATUS}" -ne 0 ]]; then
   else
     exit "${TRAIN_STATUS}"
   fi
+fi
+
+if ! validate_final_model; then
+  write_summary "failed_model_validation"
+  exit 1
 fi
 
 write_summary "${SMOKE_STATUS}"

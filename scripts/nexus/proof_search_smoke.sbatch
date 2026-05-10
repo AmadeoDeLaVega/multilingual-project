@@ -39,6 +39,7 @@ CONFIG_NAME="${CONFIG_NAME:-eval_smoke_lean5.yaml}"
 CONDA_ENV="${CONDA_ENV:-proofwala-pilot}"
 LEAN_VERSION="${LEAN_VERSION:-4.15.0}"
 THEOREM_TIMEOUT="${THEOREM_TIMEOUT:-180}"
+PROOF_RETRIES="${PROOF_RETRIES:-1}"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -117,6 +118,9 @@ fi
 
 PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}"
 PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
+ITP_INTERFACE_ROOT="${PROJECT_ROOT}/itp-interface"
+TACTIC_PARSER_ROOT="${ITP_INTERFACE_ROOT}/src/itp_interface/lean/tactic_parser"
+DEPENDENCY_PARSER_BIN="${TACTIC_PARSER_ROOT}/.lake/build/bin/dependency-parser"
 MODEL_PATH="${MODEL_PATH:-runs/smoke/E1/model/smoke-e1-lean-only/final}"
 if [[ "${MODEL_PATH}" != /* ]]; then
   MODEL_PATH="${PROJECT_ROOT}/${MODEL_PATH}"
@@ -162,9 +166,12 @@ echo "Job: ${SLURM_JOB_ID:-unknown}"
 echo "NEXUS user: ${NEXUS_USER}"
 echo "Project root: ${PROJECT_ROOT}"
 echo "ProofWala root: ${PROOF_WALA_ROOT}"
+echo "ITP interface root: ${ITP_INTERFACE_ROOT}"
+echo "Tactic parser root: ${TACTIC_PARSER_ROOT}"
 echo "Model path: ${MODEL_PATH}"
 echo "Tokenizer source: ${TOKENIZER_SOURCE}"
 echo "Config: ${CONFIG_NAME}"
+echo "Proof retries: ${PROOF_RETRIES}"
 echo "Run root: ${RUN_ROOT}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
@@ -177,6 +184,27 @@ if [[ ! -d "${MODEL_PATH}" ]]; then
   echo "Model path does not exist: ${MODEL_PATH}" >&2
   exit 2
 fi
+
+python - "${MODEL_PATH}" <<'PY'
+import sys
+from pathlib import Path
+from safetensors import safe_open
+
+model_path = Path(sys.argv[1])
+safetensors_path = model_path / "model.safetensors"
+if not safetensors_path.is_file():
+    raise SystemExit(f"Missing model.safetensors: {safetensors_path}")
+if safetensors_path.stat().st_size == 0:
+    raise SystemExit(f"Empty model.safetensors: {safetensors_path}")
+
+try:
+    with safe_open(str(safetensors_path), framework="pt") as handle:
+        tensor_count = len(handle.keys())
+except Exception as exc:
+    raise SystemExit(f"Invalid model.safetensors at {safetensors_path}: {type(exc).__name__}: {exc}") from exc
+
+print(f"Validated model.safetensors before Ray launch: {safetensors_path} ({tensor_count} tensors)")
+PY
 
 python - "${MODEL_PATH}" "${TOKENIZER_SOURCE}" <<'PY'
 import sys
@@ -193,6 +221,23 @@ if not all((model_path / name).exists() for name in required):
 else:
     print(f"Tokenizer files already present in {model_path}")
 PY
+
+if [[ ! -d "${TACTIC_PARSER_ROOT}" ]]; then
+  echo "Tactic parser project does not exist: ${TACTIC_PARSER_ROOT}" >&2
+  exit 2
+fi
+
+cd "${TACTIC_PARSER_ROOT}"
+echo "Building itp-interface Lean tactic parser..."
+lake build dependency-parser
+
+if [[ ! -x "${DEPENDENCY_PARSER_BIN}" ]]; then
+  echo "dependency-parser was not built or is not executable: ${DEPENDENCY_PARSER_BIN}" >&2
+  exit 2
+fi
+
+echo "Validated dependency-parser:"
+ls -lh "${DEPENDENCY_PARSER_BIN}"
 
 cd "${PROOF_WALA_ROOT}/src/proof_wala/data/proofs/lean/lean4_proj"
 lake build
@@ -215,6 +260,7 @@ proof-wala-search \
   "eval_settings.proof_dump_dir=${RUN_ROOT}/proof_dumps" \
   "eval_settings.checkpoint_dir=${RUN_ROOT}/checkpoints" \
   "eval_settings.model_name=${MODEL_PATH}" \
+  "eval_settings.proof_retries=${PROOF_RETRIES}" \
   "benchmark.timeout_per_theorem_in_secs=${THEOREM_TIMEOUT}"
 
 RESULTS_JSON="$(find "${RUN_ROOT}/proof_dumps" -name proof_results.json -type f | sort | tail -n 1 || true)"
@@ -224,8 +270,8 @@ RESULTS_JSON="$(find "${RUN_ROOT}/proof_dumps" -name proof_results.json -type f 
   echo "- job_id: ${SLURM_JOB_ID:-manual}"
   echo "- model_path: ${MODEL_PATH}"
   echo "- config: ${CONFIG_NAME}"
-  echo "- theorem_file: Lean4Proj/Basic.lean"
-  echo "- theorems: n_plus_zero, n_plus_succ, n_zero_plus, n_succ_plus, n_mod_2_implies_square_mod"
+  echo "- theorem_file: Lean4Proj/Smoke.lean"
+  echo "- theorems: smoke_true, smoke_id_prop, smoke_and_intro, smoke_and_left, smoke_and_right"
   echo "- run_root: ${RUN_ROOT}"
   echo "- results_json: ${RESULTS_JSON:-not_found}"
   echo "- completed_at: $(date -Is)"
