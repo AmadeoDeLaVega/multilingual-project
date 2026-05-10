@@ -4,6 +4,10 @@
 /logs/
 wandb/
 
+# Local research notes/background documents not needed at runtime
+/Background/
+/mult-vault/Concepts/
+
 # Datasets, generated artifacts, and checkpoints
 /data/*
 !/data/manifests/

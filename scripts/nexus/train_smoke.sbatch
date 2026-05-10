@@ -2,7 +2,7 @@
 #SBATCH --job-name=proofwala-smoke
 #SBATCH --account=class
 #SBATCH --partition=class
-#SBATCH --qos=default
+#SBATCH --qos=medium
 #SBATCH --gres=gpu:rtxa5000:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
@@ -122,7 +122,7 @@ export RAY_TMPDIR="${JOB_TMPDIR}/ray"
 export RAY_NUM_CPUS="${SLURM_CPUS_PER_TASK:-4}"
 export RAY_OBJECT_STORE_MEMORY="$((8 * 1024 * 1024 * 1024))"
 export RAY_MEMORY="$((16 * 1024 * 1024 * 1024))"
-export PROOFWALA_SKIP_MODEL_SAVE=1
+export PROOFWALA_SKIP_MODEL_SAVE=0
 export PYTHONUNBUFFERED=1
 
 echo "Host: $(hostname)"
