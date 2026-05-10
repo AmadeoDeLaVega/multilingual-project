@@ -1,7 +1,7 @@
 # Day 3 smoke: E1 Lean-only baseline
 
 defaults:
-  - model_settings: codet5_base_2048.yaml
+  - model_settings: codet5_small_2048.yaml
   - training_settings: basic_100_010
   - override hydra/job_logging: 'disabled'
 
@@ -59,7 +59,8 @@ training_settings:
     logging_first_step: True
     save_strategy: steps
     save_steps: 50
-    save_total_limit: 2
+    save_total_limit: 1
+    save_only_model: False
     evaluation_strategy: steps
     eval_steps: 50
     load_best_model_at_end: False

@@ -42,17 +42,17 @@ Use [ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multili
 
 ### E1: Lean-Only Baseline
 
-Train `Salesforce/codet5-base` on the Lean training split from [ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset).
+Train `Salesforce/codet5-small` on the Lean training split from [ProofWalaDataset](https://huggingface.co/datasets/amitayusht/ProofWalaDataset).
 
 ### E3: Real Multilingual
 
-Train `Salesforce/codet5-base` on the multilingual split, or on an explicitly constructed Lean+Coq mixture from ProofWalaDataset.
+Train `Salesforce/codet5-small` on the multilingual split, or on an explicitly constructed Lean+Coq mixture from ProofWalaDataset.
 
 Using the dataset's `multilingual/train` is simpler. Constructing a custom Lean+Coq mixture gives tighter control if the team has time.
 
 ### E4: Pseudo-Multilingual
 
-Train `Salesforce/codet5-base` on the original Lean data plus a synthetic Lean variant.
+Train `Salesforce/codet5-small` on the original Lean data plus a synthetic Lean variant.
 
 This is the control that asks whether the multilingual gain is really about Coq transfer or mostly about extra variation.
 
@@ -78,17 +78,17 @@ time: 2 days
 
 If the queue has enough A5000 GPUs, all three trainings can run at the same time.
 
-## Why All Three Models Must Use CodeT5-Base
+## Why All Three Models Must Use CodeT5-Small
 
-The released ProofWala models are based on `Salesforce/codet5-base`.
+The released ProofWala models are based on `Salesforce/codet5-base`, so they remain useful references. For our primary Nexus runs, use `Salesforce/codet5-small` to reduce GPU memory use, checkpoint size, and storage pressure.
 
 For a fair comparison, E1, E3, and E4 should all start from:
 
 ```text
-Salesforce/codet5-base
+Salesforce/codet5-small
 ```
 
-Do not train only one experiment as CodeT5-small. That would mix up the data effect with a model-size effect.
+Do not train only one experiment as CodeT5-base. That would mix up the data effect with a model-size effect.
 
 Also do not initialize E4 from ProofWala-Multilingual, because that model has already learned from real Lean + Coq data.
 

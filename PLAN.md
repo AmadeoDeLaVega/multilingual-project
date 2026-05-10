@@ -22,7 +22,7 @@ Use these Hugging Face artifacts as first-class inputs and references:
 - Released Lean-only model reference: [amitayusht/ProofWala-Lean](https://huggingface.co/amitayusht/ProofWala-Lean)
 - Released real multilingual model reference: [amitayusht/ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual)
 
-The released models are CodeT5-base finetunes. Therefore E1, E3, and E4 should all start from `Salesforce/codet5-base`.
+The released models are CodeT5-base finetunes, so they remain useful references. Our primary E1, E3, and E4 runs should all start from `Salesforce/codet5-small` because Nexus class-account memory and storage limits make CodeT5-small the safer common base model.
 
 ## Main Research Question
 
@@ -66,9 +66,9 @@ These are the required experiments.
 | ID | Name | Train? | Starting Model | Data | Assigned Work |
 |---|---|---:|---|---|---|
 | E0 | Released multilingual sanity-check | No | [ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual) | Small fixed eval | Verify environment and evaluation pipeline |
-| E1 | Lean-only baseline | Yes | `Salesforce/codet5-base` | ProofWalaDataset `lean/train` | Student 1 |
-| E3 | Real multilingual | Yes | `Salesforce/codet5-base` | Smoke: ProofWalaDataset `multilingual/train`; final: token-matched Lean+Coq mixture | Student 2 |
-| E4 | Pseudo-multilingual | Yes | `Salesforce/codet5-base` | Lean train + synthetic Lean variant | Student 3 |
+| E1 | Lean-only baseline | Yes | `Salesforce/codet5-small` | ProofWalaDataset `lean/train` | Student 1 |
+| E3 | Real multilingual | Yes | `Salesforce/codet5-small` | Smoke: ProofWalaDataset `multilingual/train`; final: token-matched Lean+Coq mixture | Student 2 |
+| E4 | Pseudo-multilingual | Yes | `Salesforce/codet5-small` | Lean train + synthetic Lean variant | Student 3 |
 
 ## Optional Stretch Goal
 
@@ -99,7 +99,7 @@ This is still a pilot. It may use reduced subsets or fixed max-step budgets to f
 
 To keep the comparison clean:
 
-- train E1, E3, and E4 from the same base model: `Salesforce/codet5-base`
+- train E1, E3, and E4 from the same base model: `Salesforce/codet5-small`
 - use the same tokenizer
 - use the same prompt grammar and field order
 - use the same training settings where possible
@@ -155,7 +155,7 @@ If time is short or the token-matched mixture has a blocking implementation issu
 
 For E1, E3, and E4, keep the following matched as closely as possible:
 
-- base architecture: `Salesforce/codet5-base`
+- base architecture: `Salesforce/codet5-small`
 - tokenizer
 - max sequence length
 - prompt grammar and prompt field order
@@ -255,11 +255,11 @@ Avoid transformations that:
 
 ## Model Choice
 
-Use `Salesforce/codet5-base` for E1, E3, and E4.
+Use `Salesforce/codet5-small` for E1, E3, and E4.
 
 ### Non-Negotiable Rules
 
-- Do not train one experiment as CodeT5-small while the others use CodeT5-base.
+- Do not train one experiment as CodeT5-base while the others use CodeT5-small.
 - Do not initialize E4 from ProofWala-Multilingual.
 - Do not include real Coq data in E4.
 - Keep tokenizer and prompt grammar identical across E1, E3, and E4.
@@ -314,7 +314,7 @@ Training should use:
 - resume-from-checkpoint support
 - reduced subset first, then scale after a successful calibration run
 
-Use RTX A4000 only as a fallback for evaluation or very small training dry runs. Its 16GB VRAM is likely too tight for comfortable CodeT5-base training.
+Use RTX A4000 only as a fallback for evaluation or very small training dry runs. Its 16GB VRAM is still tighter than RTX A5000, but CodeT5-small makes fallback dry runs more realistic than CodeT5-base.
 
 ### Expected Training Time
 
@@ -446,7 +446,7 @@ Do **not** weaken the causal structure before reducing scale. In particular, do 
 - run a 100-step calibration first
 - reduce training examples
 - reduce total step count
-- keep CodeT5-base for all runs
+- keep CodeT5-small for all primary runs
 - use RTX A5000 with `medium` QoS
 - checkpoint frequently and resume across jobs if needed
 
@@ -555,9 +555,9 @@ No further data-composition or evaluation-subset changes after Day 2 unless a bl
 
 ### Tasks
 
-- Student 1 trains E1 from `Salesforce/codet5-base`
-- Student 2 trains E3 from `Salesforce/codet5-base`
-- Student 3 trains E4 from `Salesforce/codet5-base`
+- Student 1 trains E1 from `Salesforce/codet5-small`
+- Student 2 trains E3 from `Salesforce/codet5-small`
+- Student 3 trains E4 from `Salesforce/codet5-small`
 - all use Nexus `class` / `medium` / `gpu:rtxa5000:1`
 - monitor training and validation
 - record throughput and wall-clock time

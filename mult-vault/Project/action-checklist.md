@@ -48,6 +48,7 @@ This is the short execution sheet for the current parallel-training pilot. Use i
 - [ ] Run one 100-step calibration on RTX A5000.
 - [ ] Estimate full-run time from calibration.
 - [ ] Run short smoke tests for E1, E3, and E4.
+- [ ] Confirm E1, E3, and E4 smoke configs all use `Salesforce/codet5-small`.
 - [ ] Confirm fp16/bf16, gradient checkpointing, batch size 1, and checkpoint saving.
 - [ ] Save smoke logs under `runs/smoke/`.
 
@@ -56,6 +57,7 @@ This is the short execution sheet for the current parallel-training pilot. Use i
 - [ ] Student 1 submits E1 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
 - [ ] Student 2 submits E3 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
 - [ ] Student 3 submits E4 on Nexus with `class` / `medium` / `gpu:rtxa5000:1`.
+- [ ] Confirm all three full runs start from `Salesforce/codet5-small` with the same tokenizer.
 - [ ] Monitor with `squeue -u $USER` and `sacct -j <JOBID>`.
 - [ ] Resume from checkpoint if a job hits wall time.
 - [ ] Keep only the latest few checkpoints.

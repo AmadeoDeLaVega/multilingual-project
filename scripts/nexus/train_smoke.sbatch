@@ -106,6 +106,23 @@ JOB_TMPDIR="/tmp/${USER}/pw-smoke-${SMOKE_EXPERIMENT}-${SLURM_JOB_ID:-manual}"
 mkdir -p "${RUN_ROOT}" "${JOB_TMPDIR}"
 exec > "${RUN_ROOT}/slurm-${SLURM_JOB_ID:-manual}.out" 2>&1
 
+write_summary() {
+  local smoke_status="$1"
+  local summary_tmp="${RUN_ROOT}/smoke_summary.${SLURM_JOB_ID:-manual}.tmp"
+  cat > "${summary_tmp}" <<EOF
+# ${SMOKE_EXPERIMENT} Smoke Summary
+
+- job_id: ${SLURM_JOB_ID:-manual}
+- host: $(hostname)
+- config: ${CONFIG_NAME}
+- project_root: ${PROJECT_ROOT}
+- completed_at: $(date -Is)
+- expected_steps: 100
+- status: ${smoke_status}
+EOF
+  mv "${summary_tmp}" "${RUN_ROOT}/smoke_summary.md"
+}
+
 module load miniforge3/24.3.0
 module load cuda/12.4.1 || true
 
@@ -122,6 +139,7 @@ export RAY_TMPDIR="${JOB_TMPDIR}/ray"
 export RAY_NUM_CPUS="${SLURM_CPUS_PER_TASK:-4}"
 export RAY_OBJECT_STORE_MEMORY="$((8 * 1024 * 1024 * 1024))"
 export RAY_MEMORY="$((16 * 1024 * 1024 * 1024))"
+export PROOFWALA_TRAINING_DATA_USE_RAY=0
 export PROOFWALA_SKIP_MODEL_SAVE=0
 export PYTHONUNBUFFERED=1
 
@@ -134,6 +152,7 @@ echo "Smoke experiment: ${SMOKE_EXPERIMENT}"
 echo "Config: ${CONFIG_NAME}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
+echo "PROOFWALA_TRAINING_DATA_USE_RAY=${PROOFWALA_TRAINING_DATA_USE_RAY}"
 python --version
 command -v proof-wala-train
 nvidia-smi || true
@@ -156,16 +175,6 @@ if [[ "${TRAIN_STATUS}" -ne 0 ]]; then
   fi
 fi
 
-cat > "${RUN_ROOT}/smoke_summary.md" <<EOF
-# ${SMOKE_EXPERIMENT} Smoke Summary
-
-- job_id: ${SLURM_JOB_ID:-manual}
-- host: $(hostname)
-- config: ${CONFIG_NAME}
-- project_root: ${PROJECT_ROOT}
-- completed_at: $(date -Is)
-- expected_steps: 100
-- status: ${SMOKE_STATUS}
-EOF
+write_summary "${SMOKE_STATUS}"
 
 rm -rf "${JOB_TMPDIR}"

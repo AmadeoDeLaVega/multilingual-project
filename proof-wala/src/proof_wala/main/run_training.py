@@ -13,6 +13,17 @@ from itp_interface.tools.log_utils import setup_logger
 from proof_wala.llm_helpers.model import Model
 from proof_wala.main.config import Experiment, ExperimentType
 
+def _training_data_use_ray():
+    raw_value = os.environ.get("PROOFWALA_TRAINING_DATA_USE_RAY")
+    if raw_value is None:
+        return None
+    normalized = raw_value.strip().lower()
+    if normalized in {"1", "true", "yes", "on"}:
+        return True
+    if normalized in {"0", "false", "no", "off"}:
+        return False
+    raise ValueError(f"Invalid PROOFWALA_TRAINING_DATA_USE_RAY={raw_value!r}")
+
 def train_experiment(experiment: Experiment, time_now: str = None):
     assert experiment.expertiment_type == ExperimentType.Training, f"Experiment type must be {ExperimentType.Training}, but is {experiment.expertiment_type}"
     # assert experiment.training_data_settings.training_data_dir is not None, f"Training data directory must be specified"
@@ -38,8 +49,9 @@ def train_experiment(experiment: Experiment, time_now: str = None):
     gpuid = f"{gpuid_local}-{gpuid_global}-{gpuid_unique}"
     hf_training_dataset = None
     training_dataset_type = experiment.training_data_settings.training_dataset_type.get_class()
+    training_data_use_ray = _training_data_use_ray()
     if should_train:
-        training_data = TrainingData(experiment.training_data_settings.training_data_dir, experiment.training_data_settings.training_meta_filename, logger=setup_logger(f"TrainingData-{gpuid}", os.path.join(training_dataset_log_dir, f"training_data-{gpuid}.log")))
+        training_data = TrainingData(experiment.training_data_settings.training_data_dir, experiment.training_data_settings.training_meta_filename, logger=setup_logger(f"TrainingData-{gpuid}", os.path.join(training_dataset_log_dir, f"training_data-{gpuid}.log")), use_ray=training_data_use_ray)
         with training_dataset_type(training_data, **experiment.training_data_settings.training_dataset_args) as training_dataset:
             hf_training_dataset = training_dataset.get_hf_dataset()
             if should_split_train_eval:
@@ -54,14 +66,14 @@ def train_experiment(experiment: Experiment, time_now: str = None):
     # Load the eval data
     if should_load_eval:
         if experiment.training_data_settings.evals is None:
-            eval_data = TrainingData(experiment.training_data_settings.eval_data_dir, experiment.training_data_settings.eval_meta_filename, logger=setup_logger("EvalData-{gpuid}", os.path.join(eval_dataset_log_dir, f"eval_data-{gpuid}.log")))
+            eval_data = TrainingData(experiment.training_data_settings.eval_data_dir, experiment.training_data_settings.eval_meta_filename, logger=setup_logger("EvalData-{gpuid}", os.path.join(eval_dataset_log_dir, f"eval_data-{gpuid}.log")), use_ray=training_data_use_ray)
             with training_dataset_type(eval_data, **experiment.training_data_settings.training_dataset_args) as eval_dataset:
                 hf_eval_dataset = eval_dataset.get_hf_dataset()
         else:
             for eval_settings in experiment.training_data_settings.evals:
                 os.makedirs(eval_settings.eval_data_log_dir, exist_ok=True) # Create the log directories
             eval_datasets = {
-                eval_settings.eval_name: TrainingData(eval_settings.eval_data_dir, eval_settings.eval_meta_filename, logger=setup_logger(f"EvalData-{eval_settings.eval_name}-{gpuid}", os.path.join(eval_settings.eval_data_log_dir, f"eval_data-{eval_settings.eval_name}-{gpuid}.log")))
+                eval_settings.eval_name: TrainingData(eval_settings.eval_data_dir, eval_settings.eval_meta_filename, logger=setup_logger(f"EvalData-{eval_settings.eval_name}-{gpuid}", os.path.join(eval_settings.eval_data_log_dir, f"eval_data-{eval_settings.eval_name}-{gpuid}.log")), use_ray=training_data_use_ray)
                 for eval_settings in experiment.training_data_settings.evals
             }
             hf_eval_datasets = {}
@@ -81,7 +93,7 @@ def train_experiment(experiment: Experiment, time_now: str = None):
                 hf_eval_dataset = hf_eval_dataset.shuffle(seed=experiment.training_settings.training_args.data_seed).select(range(int(len(hf_eval_dataset) * experiment.training_settings.eval_percentage)))
     # Load the test data
     if should_load_test:
-        test_data = TrainingData(experiment.training_data_settings.test_data_dir, experiment.training_data_settings.test_meta_filename, logger=setup_logger("TestData-{gpuid}", os.path.join(test_dataset_log_dir, f"test_data-{gpuid}.log")))
+        test_data = TrainingData(experiment.training_data_settings.test_data_dir, experiment.training_data_settings.test_meta_filename, logger=setup_logger("TestData-{gpuid}", os.path.join(test_dataset_log_dir, f"test_data-{gpuid}.log")), use_ray=training_data_use_ray)
         with training_dataset_type(test_data, **experiment.training_data_settings.training_dataset_args) as test_dataset:
             hf_test_dataset = test_dataset.get_hf_dataset()
     else:
