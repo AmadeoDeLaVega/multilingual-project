@@ -10,6 +10,7 @@ if root_dir not in sys.path:
     sys.path.append(root_dir)
 import typing
 import logging
+import json
 import time
 import copy
 import numpy as np
@@ -44,6 +45,7 @@ class LlmProofActionGenerator(ProofActionGenerator):
         self._generation_args = generation_args if generation_args else {}
         self.logger = logger if logger else logging.getLogger(__name__)
         self._generation_args["num_return_sequences"] = self.width
+        self._debug_jsonl_path = os.environ.get("PROOFWALA_GENERATION_DEBUG_JSONL")
         pass
 
     def safe_response_parser(self, response: str) -> typing.List[str]:
@@ -53,6 +55,38 @@ class LlmProofActionGenerator(ProofActionGenerator):
             self.logger.error(f"Error while parsing response:\n {e}\nResponse: \n{response}\n")
             return []
 
+    def response_parser_error(self, response: str) -> typing.Optional[str]:
+        try:
+            self.response_parser(response)
+        except Exception as e:
+            return f"{type(e).__name__}: {e}"
+        return None
+
+    def write_generation_debug(
+        self,
+        problem: str,
+        prompt: str,
+        generation_time: float,
+        actual_output_size: int,
+        records: typing.List[typing.Dict[str, typing.Any]],
+    ) -> None:
+        if not self._debug_jsonl_path:
+            return
+        try:
+            os.makedirs(os.path.dirname(self._debug_jsonl_path), exist_ok=True)
+            payload = {
+                "problem": problem,
+                "generation_time_seconds": generation_time,
+                "actual_output_size": actual_output_size,
+                "distinct_output_size": len(records),
+                "prompt": prompt,
+                "outputs": records,
+            }
+            with open(self._debug_jsonl_path, "a", encoding="utf-8") as handle:
+                handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+        except Exception as e:
+            self.logger.error(f"Failed to write generation debug JSONL: {e}")
+
     def get_proof_end_for_language(self, language: ProofAction.Language) -> ProofAction:
         qed = get_qed_for_language(language)
         return ProofAction(ProofAction.ActionType.RUN_TACTIC, language, tactics=[qed])
@@ -61,9 +95,27 @@ class LlmProofActionGenerator(ProofActionGenerator):
         state : ProofState = state_info.proof_state
         done : bool = state_info.done
         if done:
+            problem = state.theorem_statement_with_name
+            self.write_generation_debug(problem, "", 0.0, 0, [{
+                "neg_log_likelihood": -100.0,
+                "raw_output": "",
+                "parsed_tactics": [],
+                "parse_error": None,
+                "accepted_as_action": False,
+                "reason": "state_marked_done_model_not_called",
+            }])
             return [(-100.0, ProofAction(ProofAction.ActionType.EXIT, state.language))]
         elif len(state.training_data_format.start_goals) == 0: # No more goals to prove
                 qed = get_qed_for_language(state.language)
+                problem = state.theorem_statement_with_name
+                self.write_generation_debug(problem, "", 0.0, 1, [{
+                    "neg_log_likelihood": -100.0,
+                    "raw_output": qed,
+                    "parsed_tactics": [qed],
+                    "parse_error": None,
+                    "accepted_as_action": True,
+                    "reason": "no_start_goals_model_not_called",
+                }])
                 return [(-100.0, ProofAction(ProofAction.ActionType.RUN_TACTIC, state.language, tactics=[qed]))]
         else:
             # generate actions using the model
@@ -112,9 +164,21 @@ class LlmProofActionGenerator(ProofActionGenerator):
             arg_max_output = raw_outputs[np.argmin(neg_log_probabilties)]
             self.logger.info(f"Generated {len(raw_outputs)} distinct actions (actual output size={actual_output_size}) in {end_time - start_time} seconds")
             self.logger.info(f"Best generated action: {arg_max_output}")
-            tactics_list = [self.safe_response_parser(output) for output in raw_outputs]
-            tactics_list = [tactics for tactics in tactics_list if len(tactics) > 0]
-            actions = [(neg_log_prob, ProofAction(ProofAction.ActionType.RUN_TACTIC, state.language, tactics=tactics)) for neg_log_prob, tactics in zip(neg_log_probabilties, tactics_list)]
+            debug_records = []
+            actions = []
+            for output, neg_log_prob in zip(raw_outputs, neg_log_probabilties):
+                tactics = self.safe_response_parser(output)
+                parse_error = None if len(tactics) > 0 else self.response_parser_error(output)
+                debug_records.append({
+                    "neg_log_likelihood": float(neg_log_prob),
+                    "raw_output": output,
+                    "parsed_tactics": tactics,
+                    "parse_error": parse_error,
+                    "accepted_as_action": len(tactics) > 0,
+                })
+                if len(tactics) > 0:
+                    actions.append((neg_log_prob, ProofAction(ProofAction.ActionType.RUN_TACTIC, state.language, tactics=tactics)))
+            self.write_generation_debug(problem, prompt, end_time - start_time, actual_output_size, debug_records)
             return actions
 
 class CodeT5PromptFormatter:

@@ -128,6 +128,7 @@ fi
 
 RUN_TAG="${SLURM_JOB_ID:-manual-$(date +%Y%m%d-%H%M%S)}"
 RUN_ROOT="${PROJECT_ROOT}/runs/proof_search/smoke_lean5/${RUN_TAG}"
+GENERATION_DEBUG_JSONL="${RUN_ROOT}/generation_debug.jsonl"
 JOB_TMPDIR="/tmp/${USER}/pw-search-smoke-${RUN_TAG}"
 RAY_MEMORY_BYTES="${RAY_MEMORY_BYTES:-8589934592}"
 RAY_PID=""
@@ -158,6 +159,8 @@ export TRANSFORMERS_CACHE="${PROJECT_ROOT}/.hf_cache/transformers"
 export TMPDIR="${JOB_TMPDIR}"
 export FOLLOW_SEED=True
 export PYTHONUNBUFFERED=1
+export PROOFWALA_GENERATION_DEBUG_JSONL="${GENERATION_DEBUG_JSONL}"
+export PYTHONPATH="${PROOF_WALA_ROOT}/src:${ITP_INTERFACE_ROOT}/src:${PYTHONPATH:-}"
 export PATH="${HOME}/.elan/bin:${PATH}"
 export LEAN_VERSION
 
@@ -173,6 +176,7 @@ echo "Tokenizer source: ${TOKENIZER_SOURCE}"
 echo "Config: ${CONFIG_NAME}"
 echo "Proof retries: ${PROOF_RETRIES}"
 echo "Run root: ${RUN_ROOT}"
+echo "Generation debug JSONL: ${GENERATION_DEBUG_JSONL}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 python --version
@@ -270,10 +274,9 @@ RESULTS_JSON="$(find "${RUN_ROOT}/proof_dumps" -name proof_results.json -type f 
   echo "- job_id: ${SLURM_JOB_ID:-manual}"
   echo "- model_path: ${MODEL_PATH}"
   echo "- config: ${CONFIG_NAME}"
-  echo "- theorem_file: Lean4Proj/Smoke.lean"
-  echo "- theorems: smoke_true, smoke_id_prop, smoke_and_intro, smoke_and_left, smoke_and_right"
   echo "- run_root: ${RUN_ROOT}"
   echo "- results_json: ${RESULTS_JSON:-not_found}"
+  echo "- generation_debug_jsonl: ${GENERATION_DEBUG_JSONL}"
   echo "- completed_at: $(date -Is)"
 } > "${RUN_ROOT}/summary.md"
 
@@ -294,5 +297,29 @@ with open(summary_path, "a") as f:
     f.write(f"- proved: {sum(1 for _, _, ok in rows if ok)}\n")
     for path, theorem, ok in rows:
         f.write(f"- {theorem}: {'proved' if ok else 'not_proved'} ({path})\n")
+PY
+fi
+
+if [[ -f "${GENERATION_DEBUG_JSONL}" ]]; then
+  python - "${GENERATION_DEBUG_JSONL}" "${RUN_ROOT}/summary.md" <<'PY'
+import json
+import sys
+
+debug_path, summary_path = sys.argv[1:3]
+records = []
+with open(debug_path, encoding="utf-8") as handle:
+    for line in handle:
+        line = line.strip()
+        if line:
+            records.append(json.loads(line))
+
+with open(summary_path, "a", encoding="utf-8") as f:
+    f.write("\n## Generation Debug\n")
+    f.write(f"- prompt_count: {len(records)}\n")
+    for record in records:
+        accepted = sum(1 for output in record.get("outputs", []) if output.get("accepted_as_action"))
+        total = len(record.get("outputs", []))
+        problem = " ".join(str(record.get("problem", "")).split())
+        f.write(f"- {problem[:120]}: {accepted}/{total} parsed as actions\n")
 PY
 fi
