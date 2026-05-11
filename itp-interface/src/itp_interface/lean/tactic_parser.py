@@ -300,13 +300,30 @@ def toolchain_version_and_env_version():
     toolchain_content = toolchain_content.strip()
     return toolchain_file, toolchain_content, lean_version_needed
 
+def lean_version_from_toolchain_content(toolchain_content: str) -> Optional[str]:
+    """Extract `4.x.y...` from an elan toolchain entry such as `leanprover/lean4:v4.7.0-rc2`."""
+    prefix = "leanprover/lean4:v"
+    toolchain_content = toolchain_content.strip()
+    if toolchain_content.startswith(prefix):
+        return toolchain_content[len(prefix):]
+    return None
+
+def lean_version_from_project(project_path: Optional[str]) -> Optional[str]:
+    """Return the Lean version pinned by a Lean project's lean-toolchain file, if present."""
+    if not project_path:
+        return None
+    toolchain_file = Path(project_path) / "lean-toolchain"
+    if not toolchain_file.is_file():
+        return None
+    return lean_version_from_toolchain_content(toolchain_file.read_text().strip())
+
 def change_toolchain_version(lean_version_needed: str, toolchain_file: str, toolchain_content: str):
     # Replace the version in the toolchain file
-    # The version should be like 4.x.y
-    pattern = r'^4\.\d+\.\d+$'
+    # The version should be like 4.x.y, optionally with a suffix such as -rc2.
+    pattern = r'^4\.\d+\.\d+(?:-[A-Za-z0-9.]+)?$'
     if not re.match(pattern, lean_version_needed):
         raise RuntimeError(f"Tactic parser built with Lean version {toolchain_content}, but version {lean_version_needed} is required." +
-        "Don't know how to build Lean which is not of the form 4.x.y. " +
+        "Don't know how to build Lean which is not of the form 4.x.y or 4.x.y-suffix. " +
         "Please rebuild the tactic parser.")
     toolchain_final = f"leanprover/lean4:v{lean_version_needed}"
     with open(toolchain_file, 'w') as f:
@@ -335,9 +352,19 @@ def build_lean4_project(project_folder, logger: Optional[logging.Logger] = None,
     if os.path.exists(lake_folder):
         logger.info(f"Cleaning existing .lake folder at {lake_folder} before build.")
         shutil.rmtree(lake_folder)
+    manifest_path = os.path.join(project_folder, "lake-manifest.json")
+    manifest_backup_path = None
+    if has_executable and os.path.abspath(project_folder) == get_path_to_tactic_parser_project() and os.path.exists(manifest_path):
+        # Older Lake releases used by target proof projects can reject manifests
+        # written by newer Lake. TacticParser has no Lake dependencies, so the
+        # manifest is not needed for building its executables.
+        manifest_backup_path = manifest_path + ".codex-build-backup"
+        if os.path.exists(manifest_backup_path):
+            os.remove(manifest_backup_path)
+        os.replace(manifest_path, manifest_backup_path)
     # Define the command
     if has_executable:
-        command = f"cd {project_folder} && lake build"
+        command = f"cd {project_folder} && lake build tactic-parser tactic-extractor dependency-parser"
     else:
         command = f"cd {project_folder} && lake exe cache get && lake build"
     
@@ -347,7 +374,13 @@ def build_lean4_project(project_folder, logger: Optional[logging.Logger] = None,
     # - shell=True is needed to process 'cd' and '&&'
     # - capture_output=True captures stdout and stderr
     # - text=True decodes stdout/stderr as text (using default encoding)
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    finally:
+        if manifest_backup_path is not None and os.path.exists(manifest_backup_path):
+            if os.path.exists(manifest_path):
+                os.remove(manifest_path)
+            os.replace(manifest_backup_path, manifest_path)
 
     # Print the build logs from stdout
     logging.info('-'*15 + f'Build Logs from {project_folder}' + '-'*15)
@@ -410,7 +443,7 @@ def analyze_lean_file_dependencies(
     if working_dir is None:
         working_dir = os.getcwd()
 
-    # Ensure the dependency parser is built
+    # Ensure the dependency parser is built.
     build_tactic_parser_if_needed(logger)
 
     # Get the executable path
@@ -515,8 +548,9 @@ class TacticParser:
     The parser process runs in the background and is reused across multiple requests.
 
     If you want to parse tactics that use mathlib or other dependencies, provide a
-    project_path when initializing the parser. The process will run from that directory
-    and automatically find the project's .lake/build with all dependencies.
+    project_path when initializing the parser. The process runs from that directory
+    only when the parser and target project use the same Lean version; otherwise it
+    runs from the parser project to avoid mixing incompatible Lean environments.
     """
 
     def __init__(self, parser_path: Optional[str] = None, project_path: Optional[str] = None, logger: Optional[logging.Logger] = None):
@@ -548,11 +582,23 @@ class TacticParser:
             # Determine working directory:
             # - If project_path provided: use project directory (finds .lake/build automatically)
             # - Otherwise: use tactic_parser directory (minimal environment)
-            if self.project_path:
+            parser_project_dir = Path(self.parser_path).parent.parent.parent
+            project_lean_version = lean_version_from_project(self.project_path)
+            _, parser_toolchain_content, lean_version_needed = toolchain_version_and_env_version()
+            parser_lean_version = lean_version_needed or lean_version_from_toolchain_content(parser_toolchain_content)
+            if self.project_path and project_lean_version == parser_lean_version:
                 working_dir = self.project_path
                 self.logger.debug(f"Starting parser in project mode from: {working_dir}")
             else:
-                working_dir = Path(self.parser_path).parent.parent.parent
+                working_dir = parser_project_dir
+                if self.project_path and project_lean_version != parser_lean_version:
+                    self.logger.warning(
+                        "Starting parser from its own Lake project because target project Lean version %s "
+                        "does not match parser Lean version %s: %s",
+                        project_lean_version,
+                        parser_lean_version,
+                        self.project_path,
+                    )
                 self.logger.debug(f"Starting parser in standalone mode from: {working_dir}")
             # Ensure the parser is built
             build_tactic_parser_if_needed(self.logger)

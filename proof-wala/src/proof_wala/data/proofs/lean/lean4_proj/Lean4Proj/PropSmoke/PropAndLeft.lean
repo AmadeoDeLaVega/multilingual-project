@@ -1,6 +1,6 @@
 namespace prop_smoke
 
 theorem prop_and_left (p q : Prop) (h : And p q) : p := by
-  exact h.left
+  sorry
 
 end prop_smoke

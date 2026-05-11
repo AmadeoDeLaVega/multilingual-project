@@ -28,7 +28,9 @@ benchmark:
   datasets:
   - project: src/proof_wala/data/proofs/lean/lean4_proj
     files:
-    - path: Lean4Proj/DebugSmoke.lean
+    - path: Lean4Proj/DebugSmokePropId.lean
       theorems:
       - prop_id
+    - path: Lean4Proj/DebugSmokePropAndIntro.lean
+      theorems:
       - prop_and_intro

@@ -8,6 +8,7 @@ Can work in two modes:
 -/
 import Lean
 import Lean.Elab.Frontend
+import Lean.Elab.Tactic
 import TacticParser.Types
 
 open Lean Elab

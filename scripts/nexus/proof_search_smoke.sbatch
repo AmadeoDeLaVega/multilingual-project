@@ -120,6 +120,7 @@ PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}
 PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
 ITP_INTERFACE_ROOT="${PROJECT_ROOT}/itp-interface"
 TACTIC_PARSER_ROOT="${ITP_INTERFACE_ROOT}/src/itp_interface/lean/tactic_parser"
+TACTIC_PARSER_BIN="${TACTIC_PARSER_ROOT}/.lake/build/bin/tactic-parser"
 DEPENDENCY_PARSER_BIN="${TACTIC_PARSER_ROOT}/.lake/build/bin/dependency-parser"
 MODEL_PATH="${MODEL_PATH:-runs/smoke/E1/model/smoke-e1-lean-only/final}"
 if [[ "${MODEL_PATH}" != /* ]]; then
@@ -233,14 +234,23 @@ fi
 
 cd "${TACTIC_PARSER_ROOT}"
 echo "Building itp-interface Lean tactic parser..."
-lake build dependency-parser
+python - <<'PY'
+from itp_interface.lean.tactic_parser import build_tactic_parser_if_needed
+
+build_tactic_parser_if_needed()
+PY
 
 if [[ ! -x "${DEPENDENCY_PARSER_BIN}" ]]; then
   echo "dependency-parser was not built or is not executable: ${DEPENDENCY_PARSER_BIN}" >&2
   exit 2
 fi
+if [[ ! -x "${TACTIC_PARSER_BIN}" ]]; then
+  echo "tactic-parser was not built or is not executable: ${TACTIC_PARSER_BIN}" >&2
+  exit 2
+fi
 
-echo "Validated dependency-parser:"
+echo "Validated tactic parser binaries:"
+ls -lh "${TACTIC_PARSER_BIN}"
 ls -lh "${DEPENDENCY_PARSER_BIN}"
 
 cd "${PROOF_WALA_ROOT}/src/proof_wala/data/proofs/lean/lean4_proj"
