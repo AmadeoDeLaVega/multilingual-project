@@ -1,0 +1,240 @@
+# Reference training settings for the ProofWala multilingual-transfer pilot.
+#
+# Purpose:
+#   Keep E1, E3, and E4 as close as possible to the ProofWala paper setup,
+#   except that this pilot uses Salesforce/codet5-small instead of CodeT5-base.
+#
+# Sources checked:
+#   - Nexus released model directory:
+#       /fs/classhomes/adelaveg/multilingual-project/original_trained_multilingual_model
+#   - ProofWala paper:
+#       Background/ProofWala.pdf
+#   - Local ProofWala configs:
+#       proof-wala/src/proof_wala/main/config/*_random_base_experiment.yaml
+#       proof-wala/src/proof_wala/main/config/training_settings/basic_100_010.yaml
+#       proof-wala/src/proof_wala/main/config/model_settings/codet5_small_2048.yaml
+#       proof-wala/src/proof_wala/main/config/training_data_settings/*_random_benchmark_training.yaml
+
+project:
+  local_root: /home/fall2025/multilingual-project
+  nexus_root_template: /fs/classhomes/<username>/multilingual-project
+  rule: write code locally, then sync or pull it into the Nexus project copy before running SLURM jobs
+
+paper_alignment:
+  original_base_model: Salesforce/codet5-base
+  pilot_base_model: Salesforce/codet5-small
+  reason_for_change: Nexus class-account GPU memory and storage constraints
+  paper_training_rule:
+    same_step_count_across_models: true
+    same_batch_sizes_across_models: true
+    initial_training_data_mixes:
+      lean: Mathlib / LeanDojo tactic data
+      coq: CompCert + MathComp + GeoCoq
+      multilingual: Lean + Coq mixture
+    paper_notes:
+      - The paper says the ProofWala-{Multilingual, Coq, Lean} models are trained with the same step count and batch sizes.
+      - The repo evaluation configs point to checkpoint-340000 for the released CodeT5-base models.
+      - The local training config uses num_train_epochs: 10 and max_steps: -1 for the original full-data setup.
+  pilot_training_rule:
+    matched_max_steps_for_E1_E3_E4: 5000
+    keep_same_tokenizer_prompt_and_decoding_controls: true
+    use_same_fixed_lean_eval_subset: true
+
+released_multilingual_model_on_nexus:
+  path: /fs/classhomes/adelaveg/multilingual-project/original_trained_multilingual_model
+  repo: amitayusht/ProofWala-Multilingual
+  revision: main
+  weight_file: model.safetensors
+  transformers_format: true
+  config_json:
+    architecture: T5ForConditionalGeneration
+    model_type: t5
+    original_name_or_path: amitayusht/ProofWala-Multilingual
+    transformers_version: 4.48.0
+    torch_dtype: float32
+    vocab_size: 32100
+    d_model: 768
+    d_ff: 3072
+    num_layers: 12
+    num_decoder_layers: 12
+    num_heads: 12
+    d_kv: 64
+    dropout_rate: 0.1
+    layer_norm_epsilon: 1.0e-6
+    relative_attention_num_buckets: 32
+    relative_attention_max_distance: 128
+    pad_token_id: 0
+    bos_token_id: 1
+    eos_token_id: 2
+    decoder_start_token_id: 0
+    use_cache: false
+    gradient_checkpointing_in_saved_config: false
+  generation_config_json:
+    pad_token_id: 0
+    bos_token_id: 1
+    eos_token_id: 2
+    decoder_start_token_id: 0
+    use_cache: false
+  tokenizer_files:
+    - tokenizer.json
+    - tokenizer_config.json
+    - vocab.json
+    - merges.txt
+    - special_tokens_map.json
+  tokenizer_config:
+    tokenizer_class: RobertaTokenizer
+    add_prefix_space: false
+    padding: true
+    truncation: true
+    clean_up_tokenization_spaces: true
+    max_length: 2048
+    model_max_length_in_downloaded_tokenizer_config: 512
+    note: ProofWala model_settings should still set max_seq_length and max_length to 2048.
+    special_tokens:
+      pad_token: <pad>
+      bos_token: <s>
+      cls_token: <s>
+      eos_token: </s>
+      sep_token: </s>
+      unk_token: <unk>
+      mask_token: <mask>
+      additional_special_tokens_count: 100
+
+model_settings_for_E1_E3_E4:
+  name_or_path: Salesforce/codet5-small
+  config_file: proof-wala/src/proof_wala/main/config/model_settings/codet5_small_2048.yaml
+  model_args:
+    no_init_eval: true
+    padding: true
+    truncation: true
+    max_seq_length: 2048
+    max_length: 2048
+    load_model: true
+    use_lora: false
+    is_seq2seq: true
+    token: null
+    comet_experiment: null
+
+data_formatter_settings:
+  training_dataset_type: CodeT5TrainingDataset
+  training_data_formatter_type: CodeT5PromptTrainingDataFormatter
+  training_dataset_args:
+    characters_per_token: 3.6
+    max_tokens: 2048
+    no_steps: true
+  prompt_format_rule:
+    keep_prompt_grammar_identical_across_E1_E3_E4: true
+    do_not_use_prompt_format_variation_as_E4_control: true
+
+experiment_data_sources:
+  E1:
+    description: Lean-only baseline
+    training_source: ProofWalaDataset lean/train frozen subset
+    final_config_should_point_to: <nexus_root>/data/frozen_splits/e1_lean_train_compat
+    note: This is a metadata-compatibility view over ProofWalaDataset lean/train because the released dataset metadata uses total_proof_step_cnt while itp-interface expects total_data_count.
+  E3:
+    description: Real multilingual model
+    smoke_source: ProofWalaDataset multilingual/train
+    final_source: token-matched Lean+Coq mixture when feasible
+    fallback_final_source: ProofWalaDataset multilingual/train
+    final_config_should_point_to: <nexus_root>/data/frozen_splits/e3_multilingual_train_compat
+  E4:
+    description: Pseudo-multilingual control
+    training_source: Lean train plus audited synthetic Lean variant
+    final_config_should_point_to: <nexus_root>/data/pseudo_multilingual/E4_or_materialized_lean_plus_pseudo_train
+  shared_eval:
+    description: Fixed Lean eval/test subset used by E1, E3, and E4
+    final_config_should_point_to: <nexus_root>/data/frozen_splits/lean_eval_1000
+
+training_hyperparameters:
+  source_config: proof-wala/src/proof_wala/main/config/training_settings/basic_100_010.yaml
+  train_eval_split: false
+  train_percentage: 1.0
+  eval_percentage_from_original_config: 0.1
+  test_percentage: 1.0
+  training_args:
+    do_train: true
+    do_eval: true
+    do_predict: false
+    evaluation_strategy: steps
+    per_device_train_batch_size: 1
+    per_device_eval_batch_size: 1
+    gradient_accumulation_steps: 1
+    learning_rate: 2.0e-4
+    weight_decay: 0.001
+    max_grad_norm: 0.3
+    num_train_epochs_from_original_config: 10
+    max_steps_for_original_full_data_config: -1
+    max_steps_for_pilot_E1_E3_E4: 5000
+    lr_scheduler_type: cosine
+    warmup_ratio: 0.03
+    warmup_steps: 0
+    logging_strategy: steps
+    logging_steps: 1
+    logging_first_step: true
+    save_strategy: steps
+    save_steps: 500
+    save_total_limit_original_config: 10
+    save_total_limit_nexus_recommended: 1
+    eval_steps: 500
+    load_best_model_at_end: true
+    metric_for_best_model: exact_match
+    greater_is_better: true
+    optim: adamw_torch
+    group_by_length: true
+    gradient_checkpointing: true
+    seed: 42
+    data_seed: 42
+    resume_from_checkpoint: false
+  precision_for_nexus:
+    fp16: true
+    bf16: false
+    note: The original repo training config does not force fp16, but Nexus CodeT5-small runs should keep fp16 enabled to reduce memory use.
+
+nexus_slurm_recommendation:
+  account: class
+  partition: class
+  qos: medium
+  gres: gpu:rtxa5000:1
+  cpus_per_task: 8
+  mem: 64G
+  time: 04:00:00
+  conda_env: proofwala-pilot
+  environment:
+    ROOT: <nexus_root>
+    HF_HOME: <nexus_root>/.hf_cache
+    HF_DATASETS_CACHE: <nexus_root>/.hf_cache/datasets
+    TRANSFORMERS_CACHE: <nexus_root>/.hf_cache/transformers
+    COMET_MODE: DISABLED
+    PROOFWALA_TRAINING_DATA_USE_RAY: 0
+    PROOFWALA_SKIP_MODEL_SAVE: 0
+    PYTHONUNBUFFERED: 1
+  expected_runtime_from_latest_smoke_logs:
+    E1_5000_steps_hours: 1.30
+    E3_5000_steps_hours: 2.18
+    E4_5000_steps_hours: 2.26
+    parallel_wall_clock_estimate_hours: 2.3
+    recommended_budget_hours_including_overhead: 3-4
+
+checkpoint_policy:
+  save_final_model: true
+  validate_final_model_safetensors: true
+  keep_latest_checkpoint_only_on_nexus_when_storage_is_tight: true
+  final_model_dirs:
+    E1: <nexus_root>/runs/E1/model/pilot-e1-lean-only/final
+    E3: <nexus_root>/runs/E3/model/pilot-e3-real-multilingual/final
+    E4: <nexus_root>/runs/E4/model/pilot-e4-pseudo-multilingual/final
+
+evaluation_after_training:
+  proof_search_budget_should_match_across_E1_E3_E4: true
+  primary_metrics:
+    - pass@1
+    - pass@5
+    - compilable_tactic_rate
+  diagnostics:
+    - valid_tactics_per_state
+    - early_dead_end_rate
+    - proof_tree_nodes
+    - proof_tree_edges
+    - branching_factor
+    - average_proof_search_time

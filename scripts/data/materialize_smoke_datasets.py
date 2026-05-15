@@ -13,7 +13,7 @@ import copy
 import json
 import pathlib
 import random
-import re
+import unicodedata
 from datetime import date
 from typing import Iterable
 
@@ -24,6 +24,10 @@ DEFAULT_OUTPUT_ROOT = "data/smoke"
 DEFAULT_MANIFEST = "data/manifests/smoke_manifest.yaml"
 DEFAULT_E4_AUDIT = "data/pseudo_multilingual/e4_audit.md"
 DEFAULT_SEED = 20260504
+PSEUDO_TRANSFORM_VERSION = "local_rename_v2"
+PSEUDO_PROOF_ID_SUFFIX = "pseudo-local-rename-v2"
+PSEUDO_THEOREM_SUFFIX = "__pseudo_local_rename_v2"
+MAX_RENAMES_PER_RECORD = 48
 
 
 def load_json(path: pathlib.Path) -> dict:
@@ -85,115 +89,193 @@ def records_from_refs(dataset_root: pathlib.Path, refs_path: pathlib.Path, count
     return records
 
 
-IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_']*$")
+LEAN_KEYWORDS_AND_GLOBALS = {
+    "_",
+    "Prop",
+    "Sort",
+    "Type",
+    "False",
+    "True",
+    "by",
+    "case",
+    "class",
+    "def",
+    "else",
+    "end",
+    "example",
+    "fun",
+    "have",
+    "if",
+    "import",
+    "in",
+    "inductive",
+    "instance",
+    "let",
+    "match",
+    "namespace",
+    "open",
+    "section",
+    "structure",
+    "term",
+    "then",
+    "theorem",
+    "variable",
+    "where",
+    "with",
+    "Bool",
+    "Char",
+    "Fin",
+    "Finset",
+    "Int",
+    "List",
+    "Nat",
+    "Option",
+    "Set",
+    "String",
+}
 
 
-def reformat_text(text: str | None) -> str | None:
-    if text is None:
+def is_lean_ident_char(char: str) -> bool:
+    if char in {"_", "'", "?", "«", "»", "✝"}:
+        return True
+    category = unicodedata.category(char)
+    return char.isalnum() or category.startswith("L") or category.startswith("M")
+
+
+def iter_lean_ident_spans(text: str) -> Iterable[tuple[int, int, str]]:
+    start: int | None = None
+    for idx, char in enumerate(text):
+        if is_lean_ident_char(char):
+            if start is None:
+                start = idx
+            continue
+        if start is not None:
+            yield start, idx, text[start:idx]
+            start = None
+    if start is not None:
+        yield start, len(text), text[start:]
+
+
+def valid_rename_candidate(name: str) -> bool:
+    if not name or name in LEAN_KEYWORDS_AND_GLOBALS:
+        return False
+    if name.startswith("pseudo_") or name.startswith("inst"):
+        return False
+    if any(char in name for char in ".?«»✝"):
+        return False
+    if all(char.isdigit() for char in name):
+        return False
+    first = name[0]
+    if first != "_" and not (first.isalpha() or unicodedata.category(first).startswith("L")):
+        return False
+    return all(is_lean_ident_char(char) for char in name)
+
+
+def hypothesis_binder_text(hypothesis: str) -> str | None:
+    separators = [separator for separator in (" : ", " := ") if separator in hypothesis]
+    if not separators:
         return None
-    original = text
-    lines = text.splitlines()
-    if len(lines) > 1:
-        text = lines[0] + "\n" + "\n".join(f"  {line}" for line in lines[1:])
-
-    replacements = [
-        (" : ", "  :  "),
-        (" = ", "  =  "),
-        (" <+ ", "  <+  "),
-        (" :: ", "  ::  "),
-        (" + ", "  +  "),
-        (" - ", "  -  "),
-        (" * ", "  *  "),
-        (" / ", "  /  "),
-        (" ↦ ", "  ↦  "),
-        (" → ", "  →  "),
-        (" ∧ ", "  ∧  "),
-        (" ∨ ", "  ∨  "),
-    ]
-    for old, new in replacements:
-        if old in text:
-            text = text.replace(old, new, 1)
-            break
-
-    if text != original:
-        return text
-
-    # Last-resort formatting-only change for compact strings such as "case cons"
-    # or "True": insert a line break/space without introducing new semantic tokens.
-    first_space = text.find(" ")
-    if first_space != -1:
-        return text[:first_space] + "\n  " + text[first_space + 1:]
-    return text + "\n"
+    separator_index = min(hypothesis.index(separator) for separator in separators)
+    return hypothesis[:separator_index]
 
 
-def collect_local_identifier_map(record: dict) -> dict[str, str]:
+def collect_local_identifier_map(record: dict, max_renames: int = MAX_RENAMES_PER_RECORD) -> dict[str, str]:
     names: list[str] = []
-    blocked = {
-        "_",
-        "case",
-        "Type",
-        "Prop",
-        "Sort",
-        "Nat",
-        "Int",
-        "Set",
-        "True",
-        "False",
-    }
     for goal_group in ["start_goals", "end_goals", "simplified_goals"]:
         for goal in record.get(goal_group) or []:
             for hypothesis in goal.get("hypotheses") or []:
-                separator = " : " if " : " in hypothesis else " := " if " := " in hypothesis else None
-                if separator is None:
+                binder_text = hypothesis_binder_text(hypothesis)
+                if binder_text is None:
                     continue
-                binder_text = hypothesis.split(separator, 1)[0].strip()
-                for raw_name in binder_text.split():
-                    name = raw_name.strip("(){}[],")
-                    if name in blocked or not IDENTIFIER_RE.match(name):
+                for _, _, name in iter_lean_ident_spans(binder_text):
+                    if not valid_rename_candidate(name):
                         continue
                     if name not in names:
                         names.append(name)
-    return {name: f"pseudo_{idx}" for idx, name in enumerate(names[:24])}
+                    if len(names) >= max_renames:
+                        return {local_name: f"pseudo_{idx}" for idx, local_name in enumerate(names)}
+    return {local_name: f"pseudo_{idx}" for idx, local_name in enumerate(names)}
+
+
+def apply_identifier_map_to_segment(text: str, rename_map: dict[str, str]) -> str:
+    pieces: list[str] = []
+    cursor = 0
+    for start, end, name in iter_lean_ident_spans(text):
+        previous_char = text[start - 1] if start > 0 else ""
+        if previous_char == "." or name not in rename_map:
+            continue
+        pieces.append(text[cursor:start])
+        pieces.append(rename_map[name])
+        cursor = end
+    if not pieces:
+        return text
+    pieces.append(text[cursor:])
+    return "".join(pieces)
 
 
 def apply_identifier_map(text: str | None, rename_map: dict[str, str]) -> str | None:
     if text is None or not rename_map:
         return text
-    result = text
-    for old_name, new_name in sorted(rename_map.items(), key=lambda item: len(item[0]), reverse=True):
-        result = re.sub(
-            rf"(?<![A-Za-z0-9_']){re.escape(old_name)}(?![A-Za-z0-9_'])",
-            new_name,
-            result,
-        )
-    return result
+    pieces: list[str] = []
+    in_string = False
+    escaped = False
+    segment_start = 0
+    for idx, char in enumerate(text):
+        if not in_string and char == '"':
+            pieces.append(apply_identifier_map_to_segment(text[segment_start:idx], rename_map))
+            segment_start = idx
+            in_string = True
+            escaped = False
+            continue
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                pieces.append(text[segment_start : idx + 1])
+                segment_start = idx + 1
+                in_string = False
+    if segment_start < len(text):
+        if in_string:
+            pieces.append(text[segment_start:])
+        else:
+            pieces.append(apply_identifier_map_to_segment(text[segment_start:], rename_map))
+    return "".join(pieces) if text else text
 
 
 def make_pseudo_record(record: dict, variant_index: int) -> dict:
     pseudo = copy.deepcopy(record)
     source_proof_id = str(record.get("proof_id") or f"missing-proof-id-{variant_index}")
     rename_map = collect_local_identifier_map(record)
-    pseudo["proof_id"] = f"{source_proof_id}-pseudo-local-rename-v1"
+    pseudo["proof_id"] = f"{source_proof_id}-{PSEUDO_PROOF_ID_SUFFIX}"
     if pseudo.get("theorem_name"):
-        pseudo["theorem_name"] = f"{pseudo['theorem_name']}__pseudo_format_v1"
+        pseudo["theorem_name"] = f"{pseudo['theorem_name']}{PSEUDO_THEOREM_SUFFIX}"
     pseudo["addition_state_info"] = dict(pseudo.get("addition_state_info") or {})
-    pseudo["addition_state_info"]["pseudo_variant"] = "local_rename_v1"
+    pseudo["addition_state_info"]["pseudo_variant"] = PSEUDO_TRANSFORM_VERSION
     pseudo["addition_state_info"]["source_proof_id"] = source_proof_id
     pseudo["addition_state_info"]["rename_map"] = rename_map
 
     for goal_group in ["start_goals", "end_goals", "simplified_goals"]:
         for goal in pseudo.get(goal_group) or []:
             goal["hypotheses"] = [
-                reformat_text(apply_identifier_map(hypothesis, rename_map))
+                apply_identifier_map(hypothesis, rename_map)
                 for hypothesis in goal.get("hypotheses") or []
             ]
-            goal["goal"] = reformat_text(apply_identifier_map(goal.get("goal"), rename_map))
+            goal["goal"] = apply_identifier_map(goal.get("goal"), rename_map)
 
     pseudo["proof_steps"] = [
         apply_identifier_map(step, rename_map) or step
         for step in pseudo.get("proof_steps") or []
     ]
     return pseudo
+
+
+def pseudo_record_changed(original: dict, pseudo: dict) -> bool:
+    for goal_group in ["start_goals", "end_goals", "simplified_goals"]:
+        if original.get(goal_group) != pseudo.get(goal_group):
+            return True
+    return original.get("proof_steps") != pseudo.get("proof_steps")
 
 
 def write_training_dir(output_dir: pathlib.Path, records: list[dict], buffer_size: int = 10000) -> None:
@@ -234,21 +316,52 @@ def goal_excerpt(record: dict) -> str:
 
 def write_e4_audit(path: pathlib.Path, originals: list[dict], pseudos: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    examples = list(zip(originals, pseudos))
+    empty_maps = sum(
+        1
+        for _, pseudo in examples
+        if not pseudo.get("addition_state_info", {}).get("rename_map")
+    )
+    proof_step_changes = sum(
+        1
+        for original, pseudo in examples
+        if original.get("proof_steps") != pseudo.get("proof_steps")
+    )
+    start_goal_changes = sum(
+        1
+        for original, pseudo in examples
+        if original.get("start_goals") != pseudo.get("start_goals")
+    )
+    byte_identical = sum(
+        1
+        for original, pseudo in examples
+        if json.dumps(original, sort_keys=True, ensure_ascii=False)
+        == json.dumps(pseudo, sort_keys=True, ensure_ascii=False)
+    )
     lines = [
-        "# E4 Pseudo-Multilingual Smoke Audit",
+        "# E4 Pseudo-Multilingual Audit",
         "",
         f"Generated on: {date.today().isoformat()}",
         "",
-        "Transformation: `local_rename_v1`",
+        f"Transformation: `{PSEUDO_TRANSFORM_VERSION}`",
         "",
-        "- Proof-step targets are updated with the same local identifier rename map.",
-        "- Pseudo records get a new `proof_id` suffix.",
-        "- Local identifiers parsed from hypotheses are renamed consistently to `pseudo_0`, `pseudo_1`, ...",
-        "- The same local rename map is applied to hypotheses, goals, and proof steps.",
-        "- Minor spacing/indentation changes are applied after renaming.",
-        "- `addition_state_info` records the source proof id.",
+        "- Candidate identifiers are extracted only from serialized hypothesis binder positions before ` : ` or ` := `.",
+        "- Unicode Lean identifier characters, primes, numeric suffixes, and subscript-like suffixes are tokenized as part of the same identifier.",
+        "- Generated inaccessible names containing `✝`, metavariable-looking names, `inst*` names, keywords, and common global names are excluded.",
+        "- Replacement is token-based, not substring-based; an identifier is not rewritten when it is the suffix of a qualified name such as `Nat.add`.",
+        "- String literals are copied without replacement.",
+        "- The same deterministic rename map is applied to hypotheses, goals, and proof-step targets.",
+        "- `addition_state_info` records `pseudo_variant`, `source_proof_id`, and `rename_map`.",
         "",
-        "Manual inspection sample: first 50 pseudo records.",
+        "## Aggregate Checks",
+        "",
+        f"- audited pseudo records: `{len(examples)}`",
+        f"- empty rename maps: `{empty_maps}`",
+        f"- proof-step target changed: `{proof_step_changes}`",
+        f"- start goals changed: `{start_goal_changes}`",
+        f"- byte-identical transformed records: `{byte_identical}`",
+        "",
+        "Manual inspection sample: first 50 pseudo records from the materialized sample.",
         "",
     ]
     for idx, (original, pseudo) in enumerate(zip(originals[:50], pseudos[:50]), start=1):

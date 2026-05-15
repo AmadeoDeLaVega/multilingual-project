@@ -39,6 +39,23 @@ When adding scripts, configs, or code, write and review them locally first, then
 
 Each student has their own Nexus class-home project copy and downloads or caches the ProofWala dataset separately under their own account. Large artifacts such as datasets, checkpoints, logs, caches, and `runs/` outputs should stay out of GitHub.
 
+## Current Progress Notes
+
+Recent Nexus work completed:
+
+- E1 full training completed successfully on Nexus with job `6822048`.
+- The E1 model was trained from `Salesforce/codet5-small` for `5000` steps and saved at `/fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only/final`.
+- E1 checkpointing was patched to reduce storage pressure: `save_only_model: True`, `save_steps: 1000`, `eval_steps: 1000`, and `save_total_limit: 2`.
+- The final E1 `model.safetensors` was validated after training.
+- `scripts/nexus/proof_search_smoke.sbatch` ran successfully against the final E1 model with job `6822090`; the proof-search pipeline initialized, generated parseable actions, and wrote results, but proved `0/5` smoke theorems.
+
+Immediate follow-up work:
+
+- Patch E3 and E4 training configs/scripts with the same minimal-checkpoint strategy used for E1.
+- Set up and verify the final Nexus dataset paths for E3 and E4 before submitting training jobs.
+- Improve the Lean-to-pseudo-Lean transformation for E4 according to `PLAN.md`; identifier renaming still needs careful auditing, especially Lean names with suffixes, primes, numeric components, or subscript-like conventions.
+- Re-run smoke checks for E3 and E4 after their dataset paths and checkpoint settings are fixed.
+
 ## Nexus Execution Rules
 
 Use Nexus class-cluster policies for training and evaluation:
