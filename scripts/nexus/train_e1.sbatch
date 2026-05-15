@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:rtxa5000:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=04:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=proofwala-e1-%j.out
 
 set -euo pipefail
@@ -63,7 +63,8 @@ fi
 
 EXPERIMENT="E1"
 CONFIG_NAME="pilot_e1.yaml"
-MODEL_RUN_NAME="pilot-e1-lean-only"
+MODEL_RUN_NAME="pilot-e1-lean-only-34000x1"
+EXPECTED_STEPS=34000
 PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}"
 PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
 RUN_ROOT="${PROJECT_ROOT}/runs/${EXPERIMENT}"
@@ -93,7 +94,7 @@ write_summary() {
 - model_output_dir: ${MODEL_OUTPUT_DIR}
 - final_model_dir: ${MODEL_FINAL_DIR}
 - completed_at: $(date -Is)
-- expected_steps: 5000
+- expected_steps: ${EXPECTED_STEPS}
 - status: ${status}
 EOF
   mv "${summary_tmp}" "${RUN_ROOT}/training_summary.md"

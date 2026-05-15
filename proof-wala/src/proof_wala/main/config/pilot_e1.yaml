@@ -1,15 +1,18 @@
 # Pilot E1: Lean-only baseline.
 #
 # This config follows scripts/proofwala_training_settings_reference.yaml:
-# CodeT5-small, ProofWala prompt formatting, 2048-token context, 5000 steps,
-# and best-checkpoint reloading based on exact-match validation.
+# CodeT5-small, ProofWala prompt formatting, 2048-token context, and
+# best-checkpoint reloading based on exact-match validation.
+#
+# This rerun uses the paper's 34,000 optimizer-step count while keeping the
+# Nexus-feasible pilot batch size: batch 1, gradient accumulation 1.
 
 defaults:
   - model_settings: codet5_small_2048.yaml
   - training_settings: basic_100_010
   - override hydra/job_logging: 'disabled'
 
-name: pilot-e1-lean-only
+name: pilot-e1-lean-only-34000x1
 experiment_type: 'Training'
 
 model_settings:
@@ -56,7 +59,7 @@ training_settings:
     learning_rate: 2e-4
     weight_decay: 0.001
     max_grad_norm: 0.3
-    max_steps: 5000
+    max_steps: 34000
     lr_scheduler_type: cosine
     warmup_ratio: 0.03
     warmup_steps: 0
@@ -64,11 +67,11 @@ training_settings:
     logging_steps: 1
     logging_first_step: True
     save_strategy: steps
-    save_steps: 1000
+    save_steps: 5000
     save_total_limit: 2
-    save_only_model: True
+    save_only_model: False
     evaluation_strategy: steps
-    eval_steps: 1000
+    eval_steps: 5000
     load_best_model_at_end: True
     metric_for_best_model: exact_match
     greater_is_better: True
