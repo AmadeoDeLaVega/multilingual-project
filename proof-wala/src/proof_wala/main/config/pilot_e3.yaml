@@ -1,9 +1,9 @@
 # Pilot E3: real multilingual training.
 #
 # This config follows scripts/proofwala_training_settings_reference.yaml.
-# Current final path uses the frozen released ProofWalaDataset multilingual
-# training split. If the token-matched Lean+Coq mixture is materialized later,
-# update training_data_dir to that materialized directory before final runs.
+# Deadline run path uses the frozen released ProofWalaDataset multilingual
+# training split, which PLAN.md allows as the fallback when the token-matched
+# Lean+Coq mixture is not ready in time.
 
 defaults:
   - model_settings: codet5_small_2048.yaml
@@ -57,7 +57,7 @@ training_settings:
     learning_rate: 2e-4
     weight_decay: 0.001
     max_grad_norm: 0.3
-    max_steps: 5000
+    max_steps: 20000
     lr_scheduler_type: cosine
     warmup_ratio: 0.03
     warmup_steps: 0
@@ -65,12 +65,12 @@ training_settings:
     logging_steps: 1
     logging_first_step: True
     save_strategy: steps
-    save_steps: 500
+    save_steps: 20000
     save_total_limit: 1
-    save_only_model: False
+    save_only_model: True
     evaluation_strategy: steps
-    eval_steps: 500
-    load_best_model_at_end: True
+    eval_steps: 20000
+    load_best_model_at_end: False
     metric_for_best_model: exact_match
     greater_is_better: True
     optim: adamw_torch

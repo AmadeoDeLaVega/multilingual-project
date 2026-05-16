@@ -201,7 +201,12 @@ def run_next_step_eval(
     )
 
     set_seed(seed)
-    tokenizer_path = model_path if (model_path / "tokenizer_config.json").exists() else tokenizer_source
+    tokenizer_files = ["tokenizer_config.json", "special_tokens_map.json", "vocab.json", "merges.txt"]
+    tokenizer_path = (
+        model_path
+        if all((model_path / name).exists() for name in tokenizer_files)
+        else tokenizer_source
+    )
     tokenizer = AutoTokenizer.from_pretrained(
         tokenizer_path,
         padding=True,

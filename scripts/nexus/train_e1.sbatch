@@ -64,12 +64,15 @@ fi
 EXPERIMENT="E1"
 CONFIG_NAME="pilot_e1.yaml"
 MODEL_RUN_NAME="pilot-e1-lean-only-34000x1"
-EXPECTED_STEPS=34000
+MAX_STEPS="${MAX_STEPS:-240000}"
+SAVE_STEPS="${SAVE_STEPS:-60000}"
+EXPECTED_STEPS="${MAX_STEPS}"
 PROJECT_ROOT="${PROJECT_ROOT:-/fs/classhomes/${NEXUS_USER}/multilingual-project}"
 PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
 RUN_ROOT="${PROJECT_ROOT}/runs/${EXPERIMENT}"
 MODEL_OUTPUT_DIR="${RUN_ROOT}/model/${MODEL_RUN_NAME}"
 MODEL_FINAL_DIR="${MODEL_OUTPUT_DIR}/final"
+MODEL_CHECKPOINT_DIR="${MODEL_OUTPUT_DIR}/checkpoint-${MAX_STEPS}"
 SOURCE_TRAIN_DATA_DIR="${PROJECT_ROOT}/data/proofwala_dataset/ProofWalaDataset/lean/train"
 TRAIN_DATA_DIR="${PROJECT_ROOT}/data/frozen_splits/e1_lean_train_compat"
 EVAL_DATA_DIR="${PROJECT_ROOT}/data/frozen_splits/lean_eval_1000"
@@ -93,8 +96,10 @@ write_summary() {
 - eval_data_dir: ${EVAL_DATA_DIR}
 - model_output_dir: ${MODEL_OUTPUT_DIR}
 - final_model_dir: ${MODEL_FINAL_DIR}
+- checkpoint_dir: ${MODEL_CHECKPOINT_DIR}
 - completed_at: $(date -Is)
 - expected_steps: ${EXPECTED_STEPS}
+- save_steps: ${SAVE_STEPS}
 - status: ${status}
 EOF
   mv "${summary_tmp}" "${RUN_ROOT}/training_summary.md"
@@ -248,6 +253,13 @@ print(f"Validated final model.safetensors: {safetensors_path} ({tensor_count} te
 PY
 }
 
+cleanup_checkpoints_after_final() {
+  if [[ -d "${MODEL_FINAL_DIR}" ]]; then
+    echo "Removing transient checkpoints after final model validation: ${MODEL_OUTPUT_DIR}/checkpoint-*"
+    find "${MODEL_OUTPUT_DIR}" -maxdepth 1 -type d -name 'checkpoint-*' -print -exec rm -rf {} +
+  fi
+}
+
 module load miniforge3/24.3.0
 module load cuda/12.4.1 || true
 
@@ -280,6 +292,9 @@ echo "Train data dir: ${TRAIN_DATA_DIR}"
 echo "Eval data dir: ${EVAL_DATA_DIR}"
 echo "Model output dir: ${MODEL_OUTPUT_DIR}"
 echo "Final model dir: ${MODEL_FINAL_DIR}"
+echo "Checkpoint dir: ${MODEL_CHECKPOINT_DIR}"
+echo "Max steps: ${MAX_STEPS}"
+echo "Save steps: ${SAVE_STEPS}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 python --version
@@ -297,7 +312,13 @@ cd "${PROOF_WALA_ROOT}"
 set +e
 proof-wala-train \
   --config-dir=src/proof_wala/main/config \
-  --config-name="${CONFIG_NAME}"
+  --config-name="${CONFIG_NAME}" \
+  "training_settings.training_args.max_steps=${MAX_STEPS}" \
+  "training_settings.training_args.save_only_model=True" \
+  "training_settings.training_args.save_steps=${SAVE_STEPS}" \
+  "training_settings.training_args.eval_steps=${MAX_STEPS}" \
+  "training_settings.training_args.save_total_limit=1" \
+  "training_settings.training_args.load_best_model_at_end=False"
 TRAIN_STATUS=$?
 set -e
 
@@ -310,6 +331,8 @@ if ! validate_final_model; then
   write_summary "failed_model_validation"
   exit 1
 fi
+
+cleanup_checkpoints_after_final
 
 write_summary "completed"
 rm -rf "${JOB_TMPDIR}"

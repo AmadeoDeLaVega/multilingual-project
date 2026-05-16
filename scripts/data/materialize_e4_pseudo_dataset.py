@@ -77,8 +77,6 @@ def write_meta(
             "lemma_ref_filename_prefix": "local_lemma_",
             "lemma_ref_filename_suffix": ".json",
             "num_theorems": unique_proof_ids,
-            "pseudo_transform": PSEUDO_TRANSFORM_VERSION,
-            "created_on": date.today().isoformat(),
         },
     )
 

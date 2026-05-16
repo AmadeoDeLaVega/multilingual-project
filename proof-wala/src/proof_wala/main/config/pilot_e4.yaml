@@ -57,7 +57,7 @@ training_settings:
     learning_rate: 2e-4
     weight_decay: 0.001
     max_grad_norm: 0.3
-    max_steps: 5000
+    max_steps: 20000
     lr_scheduler_type: cosine
     warmup_ratio: 0.03
     warmup_steps: 0
@@ -65,12 +65,12 @@ training_settings:
     logging_steps: 1
     logging_first_step: True
     save_strategy: steps
-    save_steps: 500
+    save_steps: 20000
     save_total_limit: 1
-    save_only_model: False
+    save_only_model: True
     evaluation_strategy: steps
-    eval_steps: 500
-    load_best_model_at_end: True
+    eval_steps: 20000
+    load_best_model_at_end: False
     metric_for_best_model: exact_match
     greater_is_better: True
     optim: adamw_torch

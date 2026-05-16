@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:rtxa5000:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=04:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=proofwala-e4-%j.out
 
 set -euo pipefail
@@ -69,8 +69,15 @@ PROOF_WALA_ROOT="${PROJECT_ROOT}/proof-wala"
 RUN_ROOT="${PROJECT_ROOT}/runs/${EXPERIMENT}"
 MODEL_OUTPUT_DIR="${RUN_ROOT}/model/${MODEL_RUN_NAME}"
 MODEL_FINAL_DIR="${MODEL_OUTPUT_DIR}/final"
+MAX_STEPS="${MAX_STEPS:-240000}"
+SAVE_STEPS="${SAVE_STEPS:-60000}"
+MODEL_CHECKPOINT_DIR="${MODEL_OUTPUT_DIR}/checkpoint-${MAX_STEPS}"
 TRAIN_DATA_DIR="${PROJECT_ROOT}/data/pseudo_multilingual/e4_train"
 EVAL_DATA_DIR="${PROJECT_ROOT}/data/frozen_splits/lean_eval_1000"
+RUN_DIAGNOSTICS="${RUN_DIAGNOSTICS:-0}"
+DIAGNOSTICS_LIMIT="${DIAGNOSTICS_LIMIT:-1000}"
+DIAGNOSTICS_BATCH_SIZE="${DIAGNOSTICS_BATCH_SIZE:-1}"
+DIAGNOSTICS_OUTPUT="${DIAGNOSTICS_OUTPUT:-${RUN_ROOT}/diagnostics/e4_checkpoint${MAX_STEPS}.json}"
 CONDA_ENV="${CONDA_ENV:-proofwala-pilot}"
 JOB_TMPDIR="/tmp/${USER}/pw-train-${EXPERIMENT}-${SLURM_JOB_ID:-manual}"
 
@@ -91,8 +98,10 @@ write_summary() {
 - eval_data_dir: ${EVAL_DATA_DIR}
 - model_output_dir: ${MODEL_OUTPUT_DIR}
 - final_model_dir: ${MODEL_FINAL_DIR}
+- checkpoint_dir: ${MODEL_CHECKPOINT_DIR}
 - completed_at: $(date -Is)
-- expected_steps: 5000
+- expected_steps: ${MAX_STEPS}
+- save_steps: ${SAVE_STEPS}
 - status: ${status}
 EOF
   mv "${summary_tmp}" "${RUN_ROOT}/training_summary.md"
@@ -116,6 +125,21 @@ validate_data_dir() {
     echo "Missing ${label} local_data_*.json files in: ${dir}" >&2
     exit 1
   fi
+}
+
+materialize_e4_train_if_needed() {
+  if [[ -d "${TRAIN_DATA_DIR}" && -f "${TRAIN_DATA_DIR}/local.meta.json" ]]; then
+    echo "Using existing E4 training data: ${TRAIN_DATA_DIR}"
+    return 0
+  fi
+
+  echo "Materializing E4 pseudo-multilingual training data at: ${TRAIN_DATA_DIR}"
+  python "${PROJECT_ROOT}/scripts/data/materialize_e4_pseudo_dataset.py" \
+    --dataset-root "${PROJECT_ROOT}/data/proofwala_dataset/ProofWalaDataset" \
+    --output-dir "${TRAIN_DATA_DIR}" \
+    --audit "${PROJECT_ROOT}/data/pseudo_multilingual/e4_audit.md" \
+    --chunk-size 10000 \
+    --audit-size 50
 }
 
 materialize_frozen_eval_if_needed() {
@@ -182,8 +206,9 @@ print(f"Materialized frozen eval data: {output_dir} ({len(records)} records)")
 PY
 }
 
-validate_final_model() {
-  python - "${MODEL_FINAL_DIR}" <<'PY'
+validate_model_dir() {
+  local model_dir="$1"
+  python - "${model_dir}" <<'PY'
 import sys
 from pathlib import Path
 from safetensors import safe_open
@@ -198,8 +223,35 @@ if safetensors_path.stat().st_size == 0:
     raise SystemExit(f"Empty model.safetensors: {safetensors_path}")
 with safe_open(str(safetensors_path), framework="pt") as handle:
     tensor_count = len(handle.keys())
-print(f"Validated final model.safetensors: {safetensors_path} ({tensor_count} tensors)")
+print(f"Validated model.safetensors: {safetensors_path} ({tensor_count} tensors)")
 PY
+}
+
+run_diagnostics() {
+  if [[ "${RUN_DIAGNOSTICS}" != "1" ]]; then
+    echo "Skipping diagnostics because RUN_DIAGNOSTICS=${RUN_DIAGNOSTICS}"
+    return 0
+  fi
+  local diagnostics_model_dir="${MODEL_VALIDATION_DIR:-${MODEL_CHECKPOINT_DIR}}"
+  mkdir -p "$(dirname "${DIAGNOSTICS_OUTPUT}")"
+  python "${PROJECT_ROOT}/scripts/eval/e1_diagnostics.py" \
+    --project-root "${PROJECT_ROOT}" \
+    --run-root "${RUN_ROOT}" \
+    --model "${diagnostics_model_dir}" \
+    --eval-dir "${EVAL_DATA_DIR}" \
+    --tokenizer-source "Salesforce/codet5-small" \
+    --limit "${DIAGNOSTICS_LIMIT}" \
+    --batch-size "${DIAGNOSTICS_BATCH_SIZE}" \
+    --output "${DIAGNOSTICS_OUTPUT}"
+  echo "Diagnostics written:"
+  ls -lh "${DIAGNOSTICS_OUTPUT}" "${DIAGNOSTICS_OUTPUT%.json}.md"
+}
+
+cleanup_checkpoint_after_final() {
+  if [[ -d "${MODEL_FINAL_DIR}" ]]; then
+    echo "Removing transient checkpoints after final model validation: ${MODEL_OUTPUT_DIR}/checkpoint-*"
+    find "${MODEL_OUTPUT_DIR}" -maxdepth 1 -type d -name 'checkpoint-*' -print -exec rm -rf {} +
+  fi
 }
 
 module load miniforge3/24.3.0
@@ -232,13 +284,18 @@ echo "Config: ${CONFIG_NAME}"
 echo "Train data dir: ${TRAIN_DATA_DIR}"
 echo "Eval data dir: ${EVAL_DATA_DIR}"
 echo "Model output dir: ${MODEL_OUTPUT_DIR}"
-echo "Final model dir: ${MODEL_FINAL_DIR}"
+echo "Checkpoint dir: ${MODEL_CHECKPOINT_DIR}"
+echo "Max steps: ${MAX_STEPS}"
+echo "Save steps: ${SAVE_STEPS}"
+echo "Run diagnostics: ${RUN_DIAGNOSTICS}"
+echo "Diagnostics output: ${DIAGNOSTICS_OUTPUT}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 python --version
 command -v proof-wala-train
 nvidia-smi || true
 
+materialize_e4_train_if_needed
 validate_data_dir "${TRAIN_DATA_DIR}" "training data"
 materialize_frozen_eval_if_needed
 validate_data_dir "${EVAL_DATA_DIR}" "eval data"
@@ -248,7 +305,13 @@ cd "${PROOF_WALA_ROOT}"
 set +e
 proof-wala-train \
   --config-dir=src/proof_wala/main/config \
-  --config-name="${CONFIG_NAME}"
+  --config-name="${CONFIG_NAME}" \
+  "training_settings.training_args.max_steps=${MAX_STEPS}" \
+  "training_settings.training_args.save_only_model=True" \
+  "training_settings.training_args.save_steps=${SAVE_STEPS}" \
+  "training_settings.training_args.eval_steps=${MAX_STEPS}" \
+  "training_settings.training_args.save_total_limit=1" \
+  "training_settings.training_args.load_best_model_at_end=False"
 TRAIN_STATUS=$?
 set -e
 
@@ -257,10 +320,20 @@ if [[ "${TRAIN_STATUS}" -ne 0 ]]; then
   exit "${TRAIN_STATUS}"
 fi
 
-if ! validate_final_model; then
+MODEL_VALIDATION_DIR="${MODEL_FINAL_DIR}"
+if [[ ! -d "${MODEL_VALIDATION_DIR}" ]]; then
+  echo "Final model directory is missing; falling back to checkpoint validation: ${MODEL_CHECKPOINT_DIR}"
+  MODEL_VALIDATION_DIR="${MODEL_CHECKPOINT_DIR}"
+fi
+
+if ! validate_model_dir "${MODEL_VALIDATION_DIR}"; then
   write_summary "failed_model_validation"
   exit 1
 fi
+
+cleanup_checkpoint_after_final
+
+run_diagnostics
 
 write_summary "completed"
 rm -rf "${JOB_TMPDIR}"

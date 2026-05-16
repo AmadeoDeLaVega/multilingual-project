@@ -85,6 +85,7 @@ MAX_STEPS="${MAX_STEPS:-auto}"
 RESUME_FROM_CHECKPOINT="${RESUME_FROM_CHECKPOINT:-auto}"
 MODEL_OUTPUT_DIR="${RUN_ROOT}/model/${MODEL_RUN_NAME}"
 MODEL_FINAL_DIR="${MODEL_OUTPUT_DIR}/final"
+DIAGNOSTICS_MODEL_DIR="${DIAGNOSTICS_MODEL_DIR:-auto}"
 SOURCE_TRAIN_DATA_DIR="${PROJECT_ROOT}/data/proofwala_dataset/ProofWalaDataset/lean/train"
 TRAIN_DATA_DIR="${PROJECT_ROOT}/data/frozen_splits/e1_lean_train_compat"
 EVAL_DATA_DIR="${PROJECT_ROOT}/data/frozen_splits/lean_eval_1000"
@@ -118,6 +119,7 @@ write_summary() {
 - model_run_name: ${MODEL_RUN_NAME}
 - model_output_dir: ${MODEL_OUTPUT_DIR}
 - final_model_dir: ${MODEL_FINAL_DIR}
+- diagnostics_model_dir: ${DIAGNOSTICS_MODEL_DIR}
 - resume_from_checkpoint: ${RESUME_FROM_CHECKPOINT}
 - stage_steps: ${STAGE_STEPS}
 - max_steps: ${MAX_STEPS}
@@ -299,8 +301,69 @@ print(f"Materialized frozen eval data: {output_dir} ({len(records)} records)")
 PY
 }
 
-validate_final_model() {
-  python - "${MODEL_FINAL_DIR}" <<'PY'
+resolve_post_train_model_dir() {
+  local stage_checkpoint="${MODEL_OUTPUT_DIR}/checkpoint-${MAX_STEPS}"
+  local best_checkpoint=""
+  local newest_best_model=""
+  local latest_checkpoint=""
+
+  if [[ "${DIAGNOSTICS_MODEL_DIR}" != "auto" ]]; then
+    return 0
+  fi
+
+  if [[ -f "${stage_checkpoint}/model.safetensors" ]]; then
+    DIAGNOSTICS_MODEL_DIR="${stage_checkpoint}"
+    return 0
+  fi
+
+  best_checkpoint="$(python - "${MODEL_OUTPUT_DIR}" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+states = sorted(root.rglob("trainer_state.json"), key=lambda p: p.stat().st_mtime, reverse=True)
+for state_path in states:
+    try:
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+    except Exception:
+        continue
+    checkpoint = state.get("best_model_checkpoint")
+    if checkpoint:
+        print(checkpoint)
+        break
+PY
+)"
+  if [[ -n "${best_checkpoint}" && -f "${best_checkpoint}/model.safetensors" ]]; then
+    DIAGNOSTICS_MODEL_DIR="${best_checkpoint}"
+    return 0
+  fi
+
+  newest_best_model="$(find "${MODEL_OUTPUT_DIR}" -maxdepth 1 -type d -name 'best-model-*' -printf '%T@ %p\n' 2>/dev/null \
+    | sort -n \
+    | tail -n 1 \
+    | cut -d' ' -f2- || true)"
+  if [[ -n "${newest_best_model}" && -f "${newest_best_model}/model.safetensors" ]]; then
+    DIAGNOSTICS_MODEL_DIR="${newest_best_model}"
+    return 0
+  fi
+
+  latest_checkpoint="$(find "${MODEL_OUTPUT_DIR}" -maxdepth 1 -type d -name 'checkpoint-*' -printf '%f\n' 2>/dev/null \
+    | sed 's/^checkpoint-//' \
+    | sort -n \
+    | tail -n 1 || true)"
+  if [[ -n "${latest_checkpoint}" && -f "${MODEL_OUTPUT_DIR}/checkpoint-${latest_checkpoint}/model.safetensors" ]]; then
+    DIAGNOSTICS_MODEL_DIR="${MODEL_OUTPUT_DIR}/checkpoint-${latest_checkpoint}"
+    return 0
+  fi
+
+  echo "Could not find a saved model checkpoint under: ${MODEL_OUTPUT_DIR}" >&2
+  return 1
+}
+
+validate_model_dir() {
+  local model_dir="$1"
+  python - "${model_dir}" <<'PY'
 import sys
 from pathlib import Path
 from safetensors import safe_open
@@ -308,14 +371,14 @@ from safetensors import safe_open
 model_path = Path(sys.argv[1])
 safetensors_path = model_path / "model.safetensors"
 if not model_path.is_dir():
-    raise SystemExit(f"Missing final model directory: {model_path}")
+    raise SystemExit(f"Missing model directory: {model_path}")
 if not safetensors_path.is_file():
     raise SystemExit(f"Missing model.safetensors: {safetensors_path}")
 if safetensors_path.stat().st_size == 0:
     raise SystemExit(f"Empty model.safetensors: {safetensors_path}")
 with safe_open(str(safetensors_path), framework="pt") as handle:
     tensor_count = len(handle.keys())
-print(f"Validated final model.safetensors: {safetensors_path} ({tensor_count} tensors)")
+print(f"Validated model.safetensors: {safetensors_path} ({tensor_count} tensors)")
 PY
 }
 
@@ -329,7 +392,7 @@ run_diagnostics() {
   python "${PROJECT_ROOT}/scripts/eval/e1_diagnostics.py" \
     --project-root "${PROJECT_ROOT}" \
     --run-root "${RUN_ROOT}" \
-    --model "${MODEL_FINAL_DIR}" \
+    --model "${DIAGNOSTICS_MODEL_DIR}" \
     --eval-dir "${EVAL_DATA_DIR}" \
     --tokenizer-source "Salesforce/codet5-small" \
     --output "${DIAGNOSTICS_OUTPUT}" \
@@ -379,6 +442,7 @@ echo "Train data dir: ${TRAIN_DATA_DIR}"
 echo "Eval data dir: ${EVAL_DATA_DIR}"
 echo "Model output dir: ${MODEL_OUTPUT_DIR}"
 echo "Final model dir: ${MODEL_FINAL_DIR}"
+echo "Diagnostics model dir: ${DIAGNOSTICS_MODEL_DIR}"
 echo "Run diagnostics: ${RUN_DIAGNOSTICS}"
 echo "Diagnostics output: ${DIAGNOSTICS_OUTPUT}"
 echo "Conda env: ${CONDA_DEFAULT_ENV:-unset}"
@@ -414,7 +478,8 @@ proof-wala-train \
   "training_settings.training_args.save_only_model=False" \
   "training_settings.training_args.save_steps=5000" \
   "training_settings.training_args.eval_steps=5000" \
-  "training_settings.training_args.save_total_limit=2"
+  "training_settings.training_args.save_total_limit=1" \
+  "training_settings.training_args.load_best_model_at_end=False"
 TRAIN_STATUS=$?
 set -e
 
@@ -423,7 +488,14 @@ if [[ "${TRAIN_STATUS}" -ne 0 ]]; then
   exit "${TRAIN_STATUS}"
 fi
 
-if ! validate_final_model; then
+if ! resolve_post_train_model_dir; then
+  write_summary "failed_model_resolution"
+  exit 1
+fi
+
+echo "Resolved diagnostics model dir: ${DIAGNOSTICS_MODEL_DIR}"
+
+if ! validate_model_dir "${DIAGNOSTICS_MODEL_DIR}"; then
   write_summary "failed_model_validation"
   exit 1
 fi

@@ -14,7 +14,7 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  sbatch scripts/nexus/proof_search_smoke.sbatch [--user USERNAME] [--model MODEL_PATH]
+  sbatch scripts/nexus/proof_search_smoke.sbatch [--user USERNAME] [--model MODEL_PATH] [--experiment E1]
   sbatch scripts/nexus/proof_search_smoke.sbatch [--USERNAME] [--model MODEL_PATH]
 
 Defaults:
@@ -29,12 +29,14 @@ Environment overrides:
   PROJECT_ROOT=/fs/classhomes/adelaveg/multilingual-project sbatch scripts/nexus/proof_search_smoke.sbatch
   MODEL_PATH=/fs/classhomes/adelaveg/multilingual-project/runs/smoke/E1/model/smoke-e1-lean-only/final sbatch scripts/nexus/proof_search_smoke.sbatch
   TOKENIZER_SOURCE=Salesforce/codet5-small sbatch scripts/nexus/proof_search_smoke.sbatch
+  EXPERIMENT=E1 sbatch scripts/nexus/proof_search_smoke.sbatch
 EOF
 }
 
 NEXUS_USER="${NEXUS_USER:-${USER:-}}"
 MODEL_PATH="${MODEL_PATH:-}"
 TOKENIZER_SOURCE="${TOKENIZER_SOURCE:-Salesforce/codet5-small}"
+EXPERIMENT="${EXPERIMENT:-}"
 CONFIG_NAME="${CONFIG_NAME:-eval_smoke_lean5.yaml}"
 CONDA_ENV="${CONDA_ENV:-proofwala-pilot}"
 LEAN_VERSION="${LEAN_VERSION:-4.15.0}"
@@ -71,6 +73,19 @@ while [[ $# -gt 0 ]]; do
       ;;
     --model=*)
       MODEL_PATH="${1#*=}"
+      shift
+      ;;
+    --experiment)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for $1" >&2
+        usage >&2
+        exit 2
+      fi
+      EXPERIMENT="$2"
+      shift 2
+      ;;
+    --experiment=*)
+      EXPERIMENT="${1#*=}"
       shift
       ;;
     --tokenizer-source)
@@ -128,8 +143,17 @@ if [[ "${MODEL_PATH}" != /* ]]; then
 fi
 
 RUN_TAG="${SLURM_JOB_ID:-manual-$(date +%Y%m%d-%H%M%S)}"
-RUN_ROOT="${PROJECT_ROOT}/runs/proof_search/smoke_lean5/${RUN_TAG}"
+if [[ -n "${EXPERIMENT}" ]]; then
+  if [[ ! "${EXPERIMENT}" =~ ^E[0-9A-Za-z_-]+$ ]]; then
+    echo "Invalid experiment label: ${EXPERIMENT}" >&2
+    exit 2
+  fi
+  RUN_ROOT="${PROJECT_ROOT}/runs/${EXPERIMENT}/proof_search/${RUN_TAG}"
+else
+  RUN_ROOT="${PROJECT_ROOT}/runs/proof_search/smoke_lean5/${RUN_TAG}"
+fi
 GENERATION_DEBUG_JSONL="${RUN_ROOT}/generation_debug.jsonl"
+METRICS_JSON="${RUN_ROOT}/proof_search_metrics.json"
 JOB_TMPDIR="/tmp/${USER}/pw-search-smoke-${RUN_TAG}"
 RAY_MEMORY_BYTES="${RAY_MEMORY_BYTES:-8589934592}"
 RAY_PID=""
@@ -174,6 +198,7 @@ echo "ITP interface root: ${ITP_INTERFACE_ROOT}"
 echo "Tactic parser root: ${TACTIC_PARSER_ROOT}"
 echo "Model path: ${MODEL_PATH}"
 echo "Tokenizer source: ${TOKENIZER_SOURCE}"
+echo "Experiment: ${EXPERIMENT:-unset}"
 echo "Config: ${CONFIG_NAME}"
 echo "Proof retries: ${PROOF_RETRIES}"
 echo "Run root: ${RUN_ROOT}"
@@ -218,7 +243,7 @@ from transformers import AutoTokenizer
 
 model_path = Path(sys.argv[1])
 tokenizer_source = sys.argv[2]
-required = ["tokenizer_config.json", "special_tokens_map.json"]
+required = ["tokenizer_config.json", "special_tokens_map.json", "vocab.json", "merges.txt"]
 if not all((model_path / name).exists() for name in required):
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, padding=True, truncation=True, max_length=2048)
     tokenizer.save_pretrained(model_path)
@@ -267,6 +292,7 @@ RAY_PID=$!
 
 sleep 20
 
+set +e
 proof-wala-search \
   --config-dir=src/proof_wala/main/config \
   --config-name="${CONFIG_NAME}" \
@@ -276,6 +302,8 @@ proof-wala-search \
   "eval_settings.model_name=${MODEL_PATH}" \
   "eval_settings.proof_retries=${PROOF_RETRIES}" \
   "benchmark.timeout_per_theorem_in_secs=${THEOREM_TIMEOUT}"
+SEARCH_EXIT_CODE=$?
+set -e
 
 RESULTS_JSON="$(find "${RUN_ROOT}/proof_dumps" -name proof_results.json -type f | sort | tail -n 1 || true)"
 {
@@ -287,6 +315,8 @@ RESULTS_JSON="$(find "${RUN_ROOT}/proof_dumps" -name proof_results.json -type f 
   echo "- run_root: ${RUN_ROOT}"
   echo "- results_json: ${RESULTS_JSON:-not_found}"
   echo "- generation_debug_jsonl: ${GENERATION_DEBUG_JSONL}"
+  echo "- metrics_json: ${METRICS_JSON}"
+  echo "- proof_wala_search_exit_code: ${SEARCH_EXIT_CODE}"
   echo "- completed_at: $(date -Is)"
 } > "${RUN_ROOT}/summary.md"
 
@@ -309,6 +339,17 @@ with open(summary_path, "a") as f:
         f.write(f"- {theorem}: {'proved' if ok else 'not_proved'} ({path})\n")
 PY
 fi
+
+python "${PROJECT_ROOT}/scripts/eval/proof_search_metrics.py" \
+  --run-root "${RUN_ROOT}" \
+  --output "${METRICS_JSON}"
+
+{
+  echo
+  echo "## Metrics"
+  echo "- metrics_json: ${METRICS_JSON}"
+  echo "- metrics_md: ${METRICS_JSON%.json}.md"
+} >> "${RUN_ROOT}/summary.md"
 
 if [[ -f "${GENERATION_DEBUG_JSONL}" ]]; then
   python - "${GENERATION_DEBUG_JSONL}" "${RUN_ROOT}/summary.md" <<'PY'
@@ -333,3 +374,5 @@ with open(summary_path, "a", encoding="utf-8") as f:
         f.write(f"- {problem[:120]}: {accepted}/{total} parsed as actions\n")
 PY
 fi
+
+exit "${SEARCH_EXIT_CODE}"
