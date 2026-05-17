@@ -5,6 +5,7 @@ root_dir = f"{__file__.split('itp_interface')[0]}"
 if root_dir not in sys.path:
     sys.path.append(root_dir)
 import os
+import shlex
 import typing
 from subprocess import Popen, PIPE, STDOUT
 from dataclasses import dataclass, field
@@ -41,7 +42,8 @@ class LeanCmdServer:
     def run(self, filepath: str, timeout_in_secs: float = 120.0):
         full_path = os.path.join(self.cwd, filepath)
         assert os.path.isfile(full_path), f"filepath must be a valid file: {filepath}"
-        lean_cmd = f'lean --memory={self.memory_in_mibs} {filepath}'
+        lean_binary = os.environ.get("LEAN3_BINARY", "lean")
+        lean_cmd = f'{shlex.quote(lean_binary)} --memory={self.memory_in_mibs} {shlex.quote(filepath)}'
         self.process = Popen(
             lean_cmd, 
             shell = True, 

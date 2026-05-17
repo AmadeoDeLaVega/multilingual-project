@@ -124,7 +124,11 @@ output rate, and mean eval loss.
 
 ## Proof-Search Metrics
 
-Run the same proof-search smoke fixture for each model:
+Run the same proof-search smoke fixture for each model. The default fixture is
+`eval_simple_lean_test_multilingual_easy.yaml`, which targets an unfinished
+`sorry` theorem in `Lean4Proj/Basic.lean`; do not use already-completed Lean
+theorems for this check, because ProofWala will see no active goals and skip the
+model.
 
 ```bash
 cd /fs/classhomes/<username>/multilingual-project

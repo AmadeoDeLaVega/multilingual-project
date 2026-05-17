@@ -7,5 +7,4 @@ package «repl-mathlib-tests» where
 
 @[default_target]
 lean_lib «ReplMathlibTests» where
-  globs := #[.submodules `test]
   -- add library configuration options here

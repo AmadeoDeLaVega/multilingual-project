@@ -22,6 +22,22 @@ shared_evaluation:
     count: 991
     unit: unique_proof_id
     purpose: final_reported_metrics
+  proof_search_250:
+    source: lean/test
+    refs: "data/proof_search_subsets/lean_test_250_refs.jsonl"
+    benchmark: "proof-wala/src/proof_wala/main/config/benchmark/leandojo_test_250.yaml"
+    manifest: "data/proof_search_subsets/lean_test_250_manifest.yaml"
+    count: 250
+    unit: unique_theorem_ref
+    purpose: final_proof_search_candidate_pool
+  proof_search_30min_calibration:
+    source: lean/test
+    refs: "data/proof_search_subsets/lean_test_30min_calibration_refs.jsonl"
+    benchmark: "proof-wala/src/proof_wala/main/config/benchmark/leandojo_test_30min_calibration.yaml"
+    manifest: "data/proof_search_subsets/lean_test_30min_calibration_manifest.yaml"
+    count: 11
+    unit: unique_theorem_ref
+    purpose: thirty_minute_parallel_throughput_calibration
 experiments:
   E1:
     name: Lean-only baseline

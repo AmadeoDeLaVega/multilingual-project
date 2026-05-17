@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - benchmark: leandojo_test_30min_calibration
+  - eval_settings: codet5_beam_16
+  - env_settings: bm25_retrieval
+  - override hydra/job_logging: 'disabled'
+
+log_dir: .log/proofs_logs/leandojo_test_30min_calibration
+eval_settings:
+  proof_dump_dir: .log/proofs_dumps/leandojo_test_30min_calibration
+  model_name: Salesforce/codet5-small
+  checkpoint_dir: .log/checkpoints/leandojo_test_30min_calibration
+  proof_retries: 1
+  timeout_in_secs: 120
+  temperature: 1.2
+  model_parallelism: 1
+benchmark:
+  timeout_per_theorem_in_secs: 120

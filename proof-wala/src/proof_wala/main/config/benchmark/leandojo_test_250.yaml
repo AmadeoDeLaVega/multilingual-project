@@ -1,0 +1,726 @@
+name: leandojo-test-250
+num_files: 232
+language: LEAN4
+few_shot_data_path_for_retrieval: null
+few_shot_metadata_filename_for_retrieval: null
+dfs_data_path_for_retrieval: null
+dfs_metadata_filename_for_retrieval: local.meta.json
+theorem_cnt: 250
+timeout_per_theorem_in_secs: 720
+datasets:
+- project: <root>/../itp-interface/src/data/test/Mathlib
+  files:
+  - path: .lake/packages/mathlib/Mathlib/Data/Set/Pointwise/Interval.lean
+    theorems:
+    - Set.image_neg_Ioo
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/Jacobson.lean
+    theorems:
+    - Ideal.Polynomial.isJacobson_polynomial_of_isJacobson
+  - path: .lake/packages/mathlib/Mathlib/Order/CompleteLattice.lean
+    theorems:
+    - iSup_option_elim
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Integral/IntervalIntegral.lean
+    theorems:
+    - intervalIntegral.integral_interval_sub_interval_comm
+  - path: .lake/packages/mathlib/Mathlib/Init/Logic.lean
+    theorems:
+    - let_eq
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Restrict.lean
+    theorems:
+    - MeasureTheory.Measure.restrict_eq_self
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Bicategory/Basic.lean
+    theorems:
+    - CategoryTheory.Bicategory.leftUnitor_inv_naturality
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/QuadraticForm/Prod.lean
+    theorems:
+    - QuadraticForm.posDef_prod_iff
+  - path: .lake/packages/mathlib/Mathlib/Order/LocallyFinite.lean
+    theorems:
+    - Finset.map_subtype_embedding_Ici
+  - path: .lake/packages/mathlib/Mathlib/Data/Rat/Star.lean
+    theorems:
+    - NNRat.addSubmonoid_closure_range_pow
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Periodic.lean
+    theorems:
+    - Function.Antiperiodic.neg_eq
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Convex/Topology.lean
+    theorems:
+    - Convex.openSegment_interior_closure_subset_interior
+  - path: .lake/packages/mathlib/Mathlib/Data/Ordmap/Ordset.lean
+    theorems:
+    - Ordnode.pos_size_of_mem
+  - path: .lake/packages/mathlib/Mathlib/Topology/Algebra/Order/Compact.lean
+    theorems:
+    - cocompact_le_atBot_atTop
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Homology/ShortComplex/RightHomology.lean
+    theorems:
+    - CategoryTheory.ShortComplex.RightHomologyMapData.opcyclesMap_eq
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/NumberField/Embeddings.lean
+    theorems:
+    - NumberField.InfinitePlace.exists_smul_eq_of_comap_eq
+  - path: .lake/packages/mathlib/Mathlib/Algebra/GCDMonoid/Basic.lean
+    theorems:
+    - normalize_coe_units
+    - lcm_mul_right
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Homology/ShortComplex/LeftHomology.lean
+    theorems:
+    - CategoryTheory.ShortComplex.LeftHomologyData.liftCycles_comp_cyclesIso_hom
+  - path: .lake/packages/mathlib/Mathlib/GroupTheory/Perm/Basic.lean
+    theorems:
+    - Equiv.mul_swap_eq_swap_mul
+  - path: .lake/packages/mathlib/Mathlib/Data/Real/NNReal.lean
+    theorems:
+    - Real.toNNReal_sum_of_nonneg
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/IntegralClosure.lean
+    theorems:
+    - IsIntegral.fg_adjoin_singleton
+  - path: .lake/packages/mathlib/Mathlib/Order/Filter/AtTopBot.lean
+    theorems:
+    - Filter.tendsto_const_mul_atBot_of_neg
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Pi.lean
+    theorems:
+    - LinearMap.pi_zero
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean
+    theorems:
+    - MeasureTheory.measure_eq_trim
+  - path: .lake/packages/mathlib/Mathlib/Order/ModularLattice.lean
+    theorems:
+    - eq_of_le_of_inf_le_of_sup_le
+  - path: .lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.lean
+    theorems:
+    - continuousAt_const_cpow
+  - path: .lake/packages/mathlib/Mathlib/Data/Polynomial/Degree/Definitions.lean
+    theorems:
+    - Polynomial.X_pow_add_C_ne_one
+    - Polynomial.leadingCoeff_quadratic
+  - path: .lake/packages/mathlib/Mathlib/Topology/UniformSpace/Compact.lean
+    theorems:
+    - nhdsSet_diagonal_eq_uniformity
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Closed/Ideal.lean
+    theorems:
+    - CategoryTheory.bijection_natural
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSpace.lean
+    theorems:
+    - ContinuousLinearMap.add_compLpL
+    - MeasureTheory.indicatorConstLp_empty
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/Flat/Basic.lean
+    theorems:
+    - Module.Flat.of_retract
+  - path: .lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/Projection.lean
+    theorems:
+    - exists_norm_eq_iInf_of_complete_convex
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/BilinearForm/Basic.lean
+    theorems:
+    - BilinForm.coe_injective
+  - path: .lake/packages/mathlib/Mathlib/Data/List/Chain.lean
+    theorems:
+    - List.Chain'.infix
+  - path: .lake/packages/mathlib/Mathlib/Topology/Separation.lean
+    theorems:
+    - Set.EqOn.of_subset_closure
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/LHopital.lean
+    theorems:
+    - deriv.lhopital_zero_atBot_on_Iio
+  - path: .lake/packages/mathlib/Mathlib/Topology/Constructions.lean
+    theorems:
+    - isClosedMap_sigmaMk
+    - isOpen_sigma_fst_preimage
+  - path: .lake/packages/mathlib/Mathlib/Order/Filter/Basic.lean
+    theorems:
+    - Filter.EventuallyLE.congr
+    - Filter.iInf_neBot_of_directed
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+    theorems:
+    - HasFTaylorSeriesUpTo.continuous
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Decomposition/RadonNikodym.lean
+    theorems:
+    - MeasureTheory.Measure.rnDeriv_eq_zero_of_mutuallySingular
+  - path: .lake/packages/mathlib/Mathlib/Topology/MetricSpace/Isometry.lean
+    theorems:
+    - IsometryEquiv.preimage_sphere
+  - path: .lake/packages/mathlib/Mathlib/Topology/Semicontinuous.lean
+    theorems:
+    - lowerSemicontinuousWithinAt_tsum
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Spectrum.lean
+    theorems:
+    - Matrix.IsHermitian.eigenvectorMatrix_apply
+  - path: .lake/packages/mathlib/Mathlib/Data/Set/Lattice.lean
+    theorems:
+    - Set.iInter_eq_empty_iff
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Homology/ShortComplex/QuasiIso.lean
+    theorems:
+    - CategoryTheory.ShortComplex.quasiIso_iff_isIso_descOpcycles
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Quotient.lean
+    theorems:
+    - CategoryTheory.Quotient.compClosure_eq_self
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/GCD/Basic.lean
+    theorems:
+    - Nat.coprime_pow_left_iff
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/Lattice.lean
+    theorems:
+    - Finset.card_le_of_interleaved
+  - path: .lake/packages/mathlib/Mathlib/ModelTheory/Algebra/Ring/Basic.lean
+    theorems:
+    - FirstOrder.Ring.realize_one
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Parity.lean
+    theorems:
+    - range_two_mul
+  - path: .lake/packages/mathlib/Mathlib/Order/SymmDiff.lean
+    theorems:
+    - Disjoint.symmDiff_eq_sup
+    - symmDiff_left_comm
+  - path: .lake/packages/mathlib/Mathlib/Topology/MetricSpace/Thickening.lean
+    theorems:
+    - Metric.cthickening_eq_biUnion_closedBall
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean
+    theorems:
+    - HasFDerivWithinAt.mul_const
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/ToIntervalMod.lean
+    theorems:
+    - toIcoMod_apply_left
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/Cyclotomic/Basic.lean
+    theorems:
+    - IsCyclotomicExtension.of_union_of_dvd
+  - path: .lake/packages/mathlib/Mathlib/Logic/Function/Conjugate.lean
+    theorems:
+    - Function.Semiconj.inverses_right
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/Ideal/Cotangent.lean
+    theorems:
+    - Ideal.to_quotient_square_range
+  - path: .lake/packages/mathlib/Mathlib/Data/List/Nodup.lean
+    theorems:
+    - List.inj_on_of_nodup_map
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Field/Basic.lean
+    theorems:
+    - div_mul_le_div_mul_of_div_le_div
+    - div_pos_iff
+  - path: .lake/packages/mathlib/Mathlib/GroupTheory/Submonoid/Membership.lean
+    theorems:
+    - Submonoid.mem_closure_singleton
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Group/Defs.lean
+    theorems:
+    - inv_mul_cancel_comm_assoc
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Constructions/Prod/Basic.lean
+    theorems:
+    - MeasureTheory.Measure.measure_prod_null
+    - MeasureTheory.Measure.prod_restrict
+  - path: .lake/packages/mathlib/Mathlib/Geometry/Manifold/InteriorBoundary.lean
+    theorems:
+    - ModelWithCorners.boundary_eq_complement_interior
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Integral/IntegrableOn.lean
+    theorems:
+    - MeasurableEmbedding.integrableAtFilter_map_iff
+  - path: .lake/packages/mathlib/Mathlib/Computability/AkraBazzi/GrowsPolynomially.lean
+    theorems:
+    - AkraBazziRecurrence.GrowsPolynomially.eventually_atTop_zero_or_pos_or_neg
+  - path: .lake/packages/mathlib/Mathlib/Topology/CompactOpen.lean
+    theorems:
+    - ContinuousMap.compactOpen_eq_iInf_induced
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Homology/HomotopyCofiber.lean
+    theorems:
+    - HomologicalComplex.cylinder.ι₁_π
+  - path: .lake/packages/mathlib/Mathlib/Data/Complex/Exponential.lean
+    theorems:
+    - Real.cosh_sub
+    - Complex.cos_sq
+    - Real.exp_1_approx_succ_eq
+  - path: .lake/packages/mathlib/Mathlib/Combinatorics/Additive/PluenneckeRuzsa.lean
+    theorems:
+    - Finset.card_mul_mul_le_card_div_mul_card_div
+  - path: .lake/packages/mathlib/Mathlib/Logic/Nontrivial/Basic.lean
+    theorems:
+    - Function.Injective.exists_ne
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Function/L1Space.lean
+    theorems:
+    - MeasureTheory.L1.dist_def
+  - path: .lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/LapMatrix.lean
+    theorems:
+    - SimpleGraph.lapMatrix_toLin'_apply_eq_zero_iff_forall_reachable
+  - path: .lake/packages/mathlib/Mathlib/Order/LiminfLimsup.lean
+    theorems:
+    - Filter.bliminf_false
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/LineDeriv/Basic.lean
+    theorems:
+    - HasFDerivWithinAt.hasLineDerivWithinAt
+  - path: .lake/packages/mathlib/Mathlib/Geometry/Euclidean/Angle/Oriented/RightAngle.lean
+    theorems:
+    - EuclideanGeometry.dist_div_sin_oangle_right_of_oangle_eq_pi_div_two
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/RootSystem/Basic.lean
+    theorems:
+    - RootPairing.isCrystallographic_iff
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Bicategory/Adjunction.lean
+    theorems:
+    - CategoryTheory.Bicategory.right_triangle_of_left_triangle
+  - path: .lake/packages/mathlib/Mathlib/Combinatorics/SetFamily/FourFunctions.lean
+    theorems:
+    - collapse_modular
+  - path: .lake/packages/mathlib/Mathlib/Algebra/CharP/Basic.lean
+    theorems:
+    - Ring.two_ne_zero
+  - path: .lake/packages/std/Std/Data/List/Lemmas.lean
+    theorems:
+    - List.drop_take
+  - path: .lake/packages/mathlib/Mathlib/Probability/Kernel/Disintegration/Density.lean
+    theorems:
+    - ProbabilityTheory.kernel.density_mono_set
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/Card.lean
+    theorems:
+    - Finset.injOn_of_card_image_eq
+  - path: .lake/packages/mathlib/Mathlib/Data/Option/Basic.lean
+    theorems:
+    - Option.guard_eq_some'
+  - path: .lake/packages/mathlib/Mathlib/Analysis/ODE/Gronwall.lean
+    theorems:
+    - le_gronwallBound_of_liminf_deriv_right_le
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Convex/Between.lean
+    theorems:
+    - Wbtw.left_ne_right_of_ne_right
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Convolution.lean
+    theorems:
+    - ConvolutionExistsAt.distrib_add
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Monoidal/Category.lean
+    theorems:
+    - CategoryTheory.MonoidalCategory.triangle_assoc_comp_left_inv
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Lie/IdealOperations.lean
+    theorems:
+    - LieSubmodule.lie_le_right
+  - path: .lake/packages/mathlib/Mathlib/Order/GaloisConnection.lean
+    theorems:
+    - OrderIso.bddBelow_preimage
+  - path: .lake/packages/mathlib/Mathlib/Topology/Algebra/Order/Field.lean
+    theorems:
+    - Filter.Tendsto.div_atTop
+  - path: .lake/packages/std/Std/Data/String/Lemmas.lean
+    theorems:
+    - Substring.ValidFor.all
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/DedekindDomain/SelmerGroup.lean
+    theorems:
+    - IsDedekindDomain.HeightOneSpectrum.valuation_of_unit_eq
+  - path: .lake/packages/mathlib/Mathlib/Data/List/Forall2.lean
+    theorems:
+    - List.forall₂_cons
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/AffineSpace/Matrix.lean
+    theorems:
+    - AffineBasis.det_smul_coords_eq_cramer_coords
+  - path: .lake/packages/mathlib/Mathlib/Order/SuccPred/Limit.lean
+    theorems:
+    - Order.not_isSuccLimit_of_noMax
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Haar/Unique.lean
+    theorems:
+    - MeasureTheory.Measure.isHaarMeasure_eq_of_isProbabilityMeasure
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/Rayleigh.lean
+    theorems:
+    - Beatty.hit_or_miss
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/Order/Basic.lean
+    theorems:
+    - Nat.findGreatest_spec
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/MeasurableSpace/Defs.lean
+    theorems:
+    - MeasurableSpace.measurableSet_bot_iff
+    - MeasurableSpace.measurableSpace_iSup_eq
+  - path: .lake/packages/mathlib/Mathlib/Order/Sublattice.lean
+    theorems:
+    - Sublattice.map_symm_eq_iff_eq_map
+  - path: .lake/packages/mathlib/Mathlib/Data/Complex/Cardinality.lean
+    theorems:
+    - mk_univ_complex
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/MaxPowDiv.lean
+    theorems:
+    - Nat.maxPowDiv.go_eq
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/NAry.lean
+    theorems:
+    - Finset.image_image₂_distrib
+  - path: .lake/packages/mathlib/Mathlib/Topology/MetricSpace/Bounded.lean
+    theorems:
+    - Metric.ediam_univ_eq_top_iff_noncompact
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Complex/PhragmenLindelof.lean
+    theorems:
+    - PhragmenLindelof.horizontal_strip
+    - PhragmenLindelof.right_half_plane_of_tendsto_zero_on_real
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/OuterMeasure/Basic.lean
+    theorems:
+    - MeasureTheory.OuterMeasure.restrict_apply
+  - path: .lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/Basic.lean
+    theorems:
+    - DFinsupp.inner_sum
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/Basic.lean
+    theorems:
+    - Finset.inter_erase
+    - Finset.left_eq_union
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Basic.lean
+    theorems:
+    - LinearEquiv.ofBijective_symm_apply_apply
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/AEDisjoint.lean
+    theorems:
+    - Disjoint.aedisjoint
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Function/Support.lean
+    theorems:
+    - Function.range_subset_insert_image_mulSupport
+  - path: .lake/packages/mathlib/Mathlib/Data/List/BigOperators/Basic.lean
+    theorems:
+    - Commute.list_prod_right
+    - List.prod_map_neg
+  - path: .lake/packages/mathlib/Mathlib/Probability/Independence/Kernel.lean
+    theorems:
+    - ProbabilityTheory.kernel.iIndepFun.indepFun_mul_left
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean
+    theorems:
+    - Matrix.nonsing_inv_mul_cancel_right
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Monovary.lean
+    theorems:
+    - antivary_iff_forall_mul_nonpos
+  - path: .lake/packages/mathlib/Mathlib/Data/DFinsupp/Order.lean
+    theorems:
+    - DFinsupp.support_tsub
+  - path: .lake/packages/mathlib/Mathlib/Order/ConditionallyCompleteLattice/Basic.lean
+    theorems:
+    - WithTop.coe_iSup
+  - path: .lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Exp.lean
+    theorems:
+    - Real.comap_exp_nhds_zero
+  - path: .lake/packages/std/Std/Data/RBMap/WF.lean
+    theorems:
+    - Std.RBNode.balance2_eq
+  - path: .lake/packages/mathlib/Mathlib/Topology/Baire/Lemmas.lean
+    theorems:
+    - dense_biInter_of_isOpen
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/JacobsonIdeal.lean
+    theorems:
+    - Ideal.eq_jacobson_iff_sInf_maximal
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/Ideal/Operations.lean
+    theorems:
+    - Ideal.iInf_span_singleton
+  - path: .lake/packages/mathlib/Mathlib/Topology/Connected/Basic.lean
+    theorems:
+    - IsConnected.union
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Contraction.lean
+    theorems:
+    - homTensorHomEquiv_toLinearMap
+  - path: .lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/NNReal.lean
+    theorems:
+    - NNReal.orderIsoRpow_symm_eq
+    - ENNReal.top_rpow_of_pos
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/Zsqrtd/Basic.lean
+    theorems:
+    - Zsqrtd.nonnegg_comm
+  - path: .lake/packages/mathlib/Mathlib/Topology/Instances/NNReal.lean
+    theorems:
+    - NNReal.tendsto_atTop_zero_of_summable
+  - path: .lake/packages/mathlib/Mathlib/Topology/Gluing.lean
+    theorems:
+    - TopCat.GlueData.rel_equiv
+  - path: .lake/packages/std/Std/Data/Rat/Lemmas.lean
+    theorems:
+    - Rat.neg_mkRat
+  - path: .lake/packages/mathlib/Mathlib/GroupTheory/Perm/Cycle/Type.lean
+    theorems:
+    - Equiv.Perm.IsThreeCycle.isCycle
+  - path: .lake/packages/mathlib/Mathlib/AlgebraicGeometry/PrimeSpectrum/Basic.lean
+    theorems:
+    - PrimeSpectrum.basicOpen_mul_le_left
+    - PrimeSpectrum.vanishingIdeal_strict_anti_mono_iff
+  - path: .lake/packages/mathlib/Mathlib/Geometry/Euclidean/Basic.lean
+    theorems:
+    - EuclideanGeometry.dist_smul_vadd_eq_dist
+  - path: .lake/packages/mathlib/Mathlib/Data/Erased.lean
+    theorems:
+    - Erased.out_mk
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean
+    theorems:
+    - CategoryTheory.Limits.ι_colimitLimitIso_limit_π
+  - path: .lake/packages/mathlib/Mathlib/Data/Matrix/Basis.lean
+    theorems:
+    - Matrix.mem_range_scalar_iff_commute_stdBasisMatrix
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/VectorMeasure.lean
+    theorems:
+    - MeasureTheory.VectorMeasure.hasSum_of_disjoint_iUnion
+    - MeasureTheory.Measure.toSignedMeasure_congr
+  - path: .lake/packages/mathlib/Mathlib/FieldTheory/Minpoly/IsIntegrallyClosed.lean
+    theorems:
+    - Algebra.adjoin.powerBasis'_gen
+  - path: .lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Exponential.lean
+    theorems:
+    - Ordinal.opow_dvd_opow
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Shapes/ConcreteCategory.lean
+    theorems:
+    - CategoryTheory.Limits.Concrete.pullbackMk_surjective
+  - path: .lake/packages/mathlib/Mathlib/Data/Int/Lemmas.lean
+    theorems:
+    - Int.natAbs_inj_of_nonneg_of_nonneg
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/BumpFunction/Normed.lean
+    theorems:
+    - ContDiffBump.measure_closedBall_div_le_integral
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/PrimeFin.lean
+    theorems:
+    - Nat.Prime.primeFactors
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/LocallyFinite/Basic.lean
+    theorems:
+    - Finset.map_add_left_Ioo
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Integral/IntegralEqImproper.lean
+    theorems:
+    - MeasureTheory.integral_Iic_of_hasDerivAt_of_tendsto
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Limits/Opposites.lean
+    theorems:
+    - CategoryTheory.Limits.PullbackCone.op_inl
+  - path: .lake/packages/mathlib/Mathlib/SetTheory/Game/PGame.lean
+    theorems:
+    - SetTheory.PGame.leftMoves_add_cases
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Constructions/Prod/Integral.lean
+    theorems:
+    - MeasureTheory.lintegral_fn_integral_sub
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/SmoothNumbers.lean
+    theorems:
+    - Nat.mem_smoothNumbers'
+  - path: .lake/packages/std/Std/Data/List/Perm.lean
+    theorems:
+    - List.nil_subperm
+  - path: .lake/packages/mathlib/Mathlib/Data/Fin/Tuple/Basic.lean
+    theorems:
+    - Fin.insertNth_apply_succAbove
+  - path: .lake/packages/mathlib/Mathlib/Analysis/SpecificLimits/Normed.lean
+    theorems:
+    - dist_partial_sum_le_of_le_geometric
+  - path: .lake/packages/mathlib/Mathlib/Algebra/BigOperators/Basic.lean
+    theorems:
+    - Finset.mulIndicator_biUnion
+  - path: .lake/packages/mathlib/Mathlib/RepresentationTheory/Action/Monoidal.lean
+    theorems:
+    - Action.rightUnitor_hom_hom
+  - path: .lake/packages/mathlib/Mathlib/Order/Lattice.lean
+    theorems:
+    - sup_right_comm
+  - path: .lake/packages/mathlib/Mathlib/Data/PFunctor/Multivariate/Basic.lean
+    theorems:
+    - MvPFunctor.const.get_map
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Function/LpSeminorm/Basic.lean
+    theorems:
+    - MeasureTheory.snorm'_measure_zero_of_neg
+  - path: .lake/packages/mathlib/Mathlib/Logic/Embedding/Basic.lean
+    theorems:
+    - Equiv.embeddingCongr_apply_trans
+  - path: .lake/packages/mathlib/Mathlib/Data/Matroid/Basic.lean
+    theorems:
+    - Matroid.base_compl_iff_mem_maximals_disjoint_base
+  - path: .lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/Orthogonal.lean
+    theorems:
+    - Submodule.sub_mem_orthogonal_of_inner_left
+  - path: .lake/packages/mathlib/Mathlib/Computability/TuringMachine.lean
+    theorems:
+    - Turing.TM0.univ_supports
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.lean
+    theorems:
+    - MeasureTheory.SimpleFunc.tendsto_approxOn_range_Lp
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Floor.lean
+    theorems:
+    - Int.fract_natCast
+  - path: .lake/packages/mathlib/Mathlib/Logic/Lemmas.lean
+    theorems:
+    - dite_dite_distrib_right
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Module/Submodule/LinearMap.lean
+    theorems:
+    - Submodule.subtype_comp_inclusion
+  - path: .lake/packages/mathlib/Mathlib/Algebra/BigOperators/Multiset/Basic.lean
+    theorems:
+    - Multiset.sum_int_mod
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Block.lean
+    theorems:
+    - Matrix.blockTriangular_stdBasisMatrix
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Module/Defs.lean
+    theorems:
+    - neg_of_smul_neg_right
+  - path: .lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/TwoDim.lean
+    theorems:
+    - Orientation.inner_mul_areaForm_sub'
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Group/PosPart.lean
+    theorems:
+    - one_lt_ltOnePart
+  - path: .lake/packages/mathlib/Mathlib/AlgebraicTopology/DoldKan/Projections.lean
+    theorems:
+    - AlgebraicTopology.DoldKan.Q_idem
+  - path: .lake/packages/mathlib/Mathlib/Data/Real/Pointwise.lean
+    theorems:
+    - Real.sSup_smul_of_nonneg
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/PolynomialAlgebra.lean
+    theorems:
+    - matPolyEquiv_map_C
+  - path: .lake/packages/mathlib/Mathlib/Data/Multiset/Basic.lean
+    theorems:
+    - Multiset.cons_subset
+  - path: .lake/packages/mathlib/Mathlib/Topology/EMetricSpace/Basic.lean
+    theorems:
+    - EMetric.mk_uniformity_basis_le
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Charpoly/Coeff.lean
+    theorems:
+    - Matrix.coeff_det_one_add_X_smul_one
+  - path: .lake/packages/mathlib/Mathlib/Logic/Equiv/PartialEquiv.lean
+    theorems:
+    - PartialEquiv.refl_restr_target
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Dual.lean
+    theorems:
+    - Subspace.map_dualCoannihilator
+  - path: .lake/packages/mathlib/Mathlib/Data/Rat/Cast/Order.lean
+    theorems:
+    - Rat.cast_abs
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/NoncommProd.lean
+    theorems:
+    - Multiset.noncommFoldr_eq_foldr
+  - path: .lake/packages/mathlib/Mathlib/Data/Complex/Basic.lean
+    theorems:
+    - Complex.normSq_sub
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/DedekindDomain/Ideal.lean
+    theorems:
+    - irreducible_pow_sup_of_le
+  - path: .lake/packages/mathlib/Mathlib/FieldTheory/Adjoin.lean
+    theorems:
+    - IntermediateField.adjoin_eq_top_of_adjoin_eq_top
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/Fib/Basic.lean
+    theorems:
+    - Nat.fib_two_mul_add_two
+  - path: .lake/packages/mathlib/Mathlib/CategoryTheory/Subobject/Limits.lean
+    theorems:
+    - CategoryTheory.Limits.factorThruKernelSubobject_comp_kernelSubobjectIso
+  - path: .lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Asymptotics.lean
+    theorems:
+    - Complex.isTheta_exp_arg_mul_im
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/Order/Lemmas.lean
+    theorems:
+    - Nat.div_eq_zero_iff
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Tropical/BigOperators.lean
+    theorems:
+    - List.trop_sum
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Complex/UpperHalfPlane/Basic.lean
+    theorems:
+    - UpperHalfPlane.im_inv_neg_coe_pos
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Ring/Semiconj.lean
+    theorems:
+    - SemiconjBy.sub_right
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/TensorAlgebra/Basic.lean
+    theorems:
+    - TensorAlgebra.ringQuot_mkAlgHom_freeAlgebra_ι_eq_ι
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/FractionalIdeal/Operations.lean
+    theorems:
+    - FractionalIdeal.map_symm_map
+  - path: .lake/packages/mathlib/Mathlib/Data/Int/GCD.lean
+    theorems:
+    - Int.lcm_zero_right
+  - path: .lake/packages/mathlib/Mathlib/FieldTheory/Separable.lean
+    theorems:
+    - Polynomial.rootMultiplicity_le_one_of_separable
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Lagrange.lean
+    theorems:
+    - Lagrange.natDegree_basisDivisor_self
+  - path: .lake/packages/mathlib/Mathlib/GroupTheory/Subgroup/Basic.lean
+    theorems:
+    - Subgroup.Normal.comap
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/FLT/Four.lean
+    theorems:
+    - Fermat42.comm
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/LinearIndependent.lean
+    theorems:
+    - linearIndependent_sum
+  - path: .lake/packages/mathlib/Mathlib/Algebra/IsPrimePow.lean
+    theorems:
+    - isPrimePow_nat_iff
+  - path: .lake/packages/mathlib/Mathlib/NumberTheory/Divisors.lean
+    theorems:
+    - Nat.sup_divisors_id
+  - path: .lake/packages/std/Std/Data/AssocList.lean
+    theorems:
+    - Std.AssocList.contains_eq
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Homology/Homotopy.lean
+    theorems:
+    - Homotopy.nullHomotopicMap'_f
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Inv.lean
+    theorems:
+    - HasDerivWithinAt.div
+  - path: .lake/packages/mathlib/Mathlib/Topology/LocallyFinite.lean
+    theorems:
+    - LocallyFinite.closure
+  - path: .lake/packages/mathlib/Mathlib/Probability/Martingale/Upcrossing.lean
+    theorems:
+    - MeasureTheory.upcrossingsBefore_bot
+  - path: .lake/packages/mathlib/Mathlib/Topology/ContinuousFunction/Weierstrass.lean
+    theorems:
+    - continuousMap_mem_polynomialFunctions_closure
+  - path: .lake/packages/mathlib/Mathlib/Topology/ContinuousFunction/NonUnitalFunctionalCalculus.lean
+    theorems:
+    - cfcₙHom_comp
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/Factorial/Basic.lean
+    theorems:
+    - Nat.factorial_mul_ascFactorial
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/Choose/Cast.lean
+    theorems:
+    - Nat.cast_choose
+  - path: .lake/packages/mathlib/Mathlib/Data/Polynomial/Smeval.lean
+    theorems:
+    - Polynomial.smeval_C
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Fourier/FourierTransformDeriv.lean
+    theorems:
+    - Real.hasDerivAt_fourierChar
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Normed/Group/SemiNormedGroupCat/Kernels.lean
+    theorems:
+    - SemiNormedGroupCat.explicitCokernelDesc_normNoninc
+  - path: .lake/packages/mathlib/Mathlib/Data/Vector.lean
+    theorems:
+    - Vector.toList_drop
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/CliffordAlgebra/Basic.lean
+    theorems:
+    - CliffordAlgebra.lift_comp_ι
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Calculus/Implicit.lean
+    theorems:
+    - ImplicitFunctionData.map_nhds_eq
+  - path: .lake/packages/mathlib/Mathlib/Topology/MetricSpace/Lipschitz.lean
+    theorems:
+    - lipschitzWith_iff_dist_le_mul
+  - path: .lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Basic.lean
+    theorems:
+    - Ordinal.lift_down'
+  - path: .lake/packages/mathlib/Mathlib/Data/Sign.lean
+    theorems:
+    - SignType.nonpos_iff_ne_one
+  - path: .lake/packages/mathlib/Mathlib/Data/List/Basic.lean
+    theorems:
+    - List.map₂Left_eq_map₂Left'
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Group/Defs.lean
+    theorems:
+    - inv_mul_lt_one_iff
+  - path: .lake/packages/mathlib/Mathlib/Data/Fin/Basic.lean
+    theorems:
+    - Fin.sub_one_lt_iff
+  - path: .lake/packages/mathlib/Mathlib/AlgebraicTopology/DoldKan/FunctorGamma.lean
+    theorems:
+    - AlgebraicTopology.DoldKan.Γ₀.Obj.map_epi_on_summand_id
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Portmanteau.lean
+    theorems:
+    - MeasureTheory.le_liminf_measure_open_of_forall_tendsto_measure
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Complex/AbelLimit.lean
+    theorems:
+    - Complex.tendsto_tsum_powerSeries_nhdsWithin_stolzSet
+  - path: .lake/packages/mathlib/Mathlib/Data/Finset/Pointwise.lean
+    theorems:
+    - Finset.preimage_mul_left_singleton
+  - path: .lake/packages/mathlib/Mathlib/Topology/Algebra/Module/Basic.lean
+    theorems:
+    - ContinuousLinearMap.map_neg
+  - path: .lake/packages/mathlib/Mathlib/Algebra/BigOperators/Intervals.lean
+    theorems:
+    - Finset.prod_Ico_reflect
+    - Finset.prod_Ico_mul_eq_prod_Icc
+  - path: .lake/packages/mathlib/Mathlib/Geometry/Euclidean/Angle/Oriented/Basic.lean
+    theorems:
+    - Orientation.oangle_eq_zero_iff_sameRay
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Basis.lean
+    theorems:
+    - Basis.repr_self_apply
+  - path: .lake/packages/mathlib/Mathlib/Init/Data/Nat/Lemmas.lean
+    theorems:
+    - Nat.bit1_lt_bit0
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/PosDef.lean
+    theorems:
+    - Matrix.PosSemidef.conjTranspose_mul_mul_same
+  - path: .lake/packages/mathlib/Mathlib/Combinatorics/SimpleGraph/AdjMatrix.lean
+    theorems:
+    - SimpleGraph.adjMatrix_pow_apply_eq_card_walk
+  - path: .lake/packages/mathlib/Mathlib/Data/Analysis/Topology.lean
+    theorems:
+    - Ctop.ofEquiv_val

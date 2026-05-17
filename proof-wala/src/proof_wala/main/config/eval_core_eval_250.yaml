@@ -1,0 +1,25 @@
+# @package _global_
+defaults:
+  - benchmark: core_eval_250
+  - eval_settings: codet5_beam_16
+  - env_settings: bm25_retrieval
+  - override hydra/job_logging: 'disabled'
+
+log_dir: .log/proofs_logs/core_eval_250
+eval_settings:
+  proof_dump_dir: .log/proofs_dumps/core_eval_250
+  model_name: <override-with-trained-model-path>
+  checkpoint_dir: .log/checkpoints/core_eval_250
+  should_checkpoint: True
+  proof_retries: 1
+  timeout_in_secs: 60
+  max_proof_depth: 20
+  width: 16
+  model_parallelism: 1
+  temperature: 0.75
+  do_sample: True
+  search_params:
+    beam_width: 16
+
+benchmark:
+  timeout_per_theorem_in_secs: 180

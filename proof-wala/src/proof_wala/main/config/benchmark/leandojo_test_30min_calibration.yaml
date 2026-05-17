@@ -1,0 +1,45 @@
+name: leandojo-test-30min-calibration
+num_files: 11
+language: LEAN4
+few_shot_data_path_for_retrieval: null
+few_shot_metadata_filename_for_retrieval: null
+dfs_data_path_for_retrieval: null
+dfs_metadata_filename_for_retrieval: local.meta.json
+theorem_cnt: 11
+timeout_per_theorem_in_secs: 120
+datasets:
+- project: <root>/../itp-interface/src/data/test/Mathlib
+  files:
+  - path: .lake/packages/mathlib/Mathlib/Data/Nat/MaxPowDiv.lean
+    theorems:
+    - Nat.maxPowDiv.go_eq
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/LinearIndependent.lean
+    theorems:
+    - linearIndependent_sum
+  - path: .lake/packages/mathlib/Mathlib/Data/Multiset/Basic.lean
+    theorems:
+    - Multiset.cons_subset
+  - path: .lake/packages/std/Std/Data/List/Lemmas.lean
+    theorems:
+    - List.drop_take
+  - path: .lake/packages/mathlib/Mathlib/Analysis/Complex/AbelLimit.lean
+    theorems:
+    - Complex.tendsto_tsum_powerSeries_nhdsWithin_stolzSet
+  - path: .lake/packages/mathlib/Mathlib/MeasureTheory/Measure/Haar/Unique.lean
+    theorems:
+    - MeasureTheory.Measure.isHaarMeasure_eq_of_isProbabilityMeasure
+  - path: .lake/packages/mathlib/Mathlib/LinearAlgebra/Basic.lean
+    theorems:
+    - LinearEquiv.ofBijective_symm_apply_apply
+  - path: .lake/packages/mathlib/Mathlib/Algebra/Order/Monovary.lean
+    theorems:
+    - antivary_iff_forall_mul_nonpos
+  - path: .lake/packages/mathlib/Mathlib/Algebra/BigOperators/Intervals.lean
+    theorems:
+    - Finset.prod_Ico_reflect
+  - path: .lake/packages/mathlib/Mathlib/Data/Int/GCD.lean
+    theorems:
+    - Int.lcm_zero_right
+  - path: .lake/packages/mathlib/Mathlib/RingTheory/JacobsonIdeal.lean
+    theorems:
+    - Ideal.eq_jacobson_iff_sInf_maximal

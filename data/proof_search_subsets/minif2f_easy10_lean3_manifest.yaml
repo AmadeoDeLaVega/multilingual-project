@@ -1,0 +1,33 @@
+name: minif2f_easy10_lean3
+source_repo: miniF2F
+source_file: miniF2F/lean/src/test.lean
+proofwala_benchmark_config: proof-wala/src/proof_wala/main/config/benchmark/miniF2F_test_easy10_lean3.yaml
+language: LEAN
+lean_version: leanprover-community/lean:3.42.1
+mathlib_rev: cb2b02fff213ed6f65bebd64446baac64137dcda
+selection_rule: >
+  Deterministic hand-picked smoke subset from miniF2F test.lean, favoring early
+  theorems with short existing Lean 3 proofs using simple tactics such as rw,
+  simp, norm_num, linarith, field_simp, or ring. This subset is intended for
+  proof-search plumbing and small-model comparison, not as a full miniF2F score.
+theorems:
+- name: mathd_algebra_478
+  reason: short arithmetic proof by rewriting hypotheses and norm_num
+- name: mathd_algebra_141
+  reason: algebraic identity plus linarith, ring, and norm_num
+- name: mathd_numbertheory_3
+  reason: finite arithmetic computation by dec_trivial
+- name: mathd_algebra_209
+  reason: equivalence simplification by rewriting and simp
+- name: mathd_algebra_33
+  reason: short field_simp and nlinarith proof
+- name: mathd_numbertheory_299
+  reason: direct modular arithmetic by norm_num
+- name: amc12b_2020_p2
+  reason: direct rational arithmetic by norm_num
+- name: mathd_numbertheory_345
+  reason: direct modular arithmetic by norm_num
+- name: mathd_numbertheory_207
+  reason: direct arithmetic identity by norm_num
+- name: mathd_numbertheory_342
+  reason: direct modular arithmetic by norm_num

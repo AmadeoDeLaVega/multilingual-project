@@ -18,6 +18,9 @@ Usage:
   sbatch scripts/nexus/proof_search_smoke.sbatch [--USERNAME] [--model MODEL_PATH]
 
 Defaults:
+  CONFIG_NAME defaults to eval_simple_lean_test_multilingual_easy.yaml, which
+  targets an unfinished Lean theorem in Lean4Proj/Basic.lean. This is the
+  intended proof-search smoke fixture because it gives ProofWala an active goal.
   MODEL_PATH defaults to runs/smoke/E1/model/smoke-e1-lean-only/final.
 
 Examples:
@@ -37,7 +40,7 @@ NEXUS_USER="${NEXUS_USER:-${USER:-}}"
 MODEL_PATH="${MODEL_PATH:-}"
 TOKENIZER_SOURCE="${TOKENIZER_SOURCE:-Salesforce/codet5-small}"
 EXPERIMENT="${EXPERIMENT:-}"
-CONFIG_NAME="${CONFIG_NAME:-eval_smoke_lean5.yaml}"
+CONFIG_NAME="${CONFIG_NAME:-eval_simple_lean_test_multilingual_easy.yaml}"
 CONDA_ENV="${CONDA_ENV:-proofwala-pilot}"
 LEAN_VERSION="${LEAN_VERSION:-4.15.0}"
 THEOREM_TIMEOUT="${THEOREM_TIMEOUT:-180}"

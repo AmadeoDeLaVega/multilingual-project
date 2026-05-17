@@ -1,0 +1,11 @@
+version: 1
+source_refs: data/frozen_splits/lean_test_991_proofs.jsonl
+source_benchmark: proof-wala/src/proof_wala/main/config/benchmark/leandojo_test.yaml
+output_refs: data/proof_search_subsets/lean_test_250_refs.jsonl
+output_benchmark: proof-wala/src/proof_wala/main/config/benchmark/leandojo_test_250.yaml
+name: leandojo-test-250
+count: 250
+seed: 20260516
+selection: python_random_sample_without_replacement_in_sample_order
+project_override: <root>/../itp-interface/src/data/test/Mathlib
+timeout_per_theorem_in_secs: 720

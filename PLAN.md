@@ -24,6 +24,42 @@ Use these Hugging Face artifacts as first-class inputs and references:
 
 The released models are CodeT5-base finetunes, so they remain useful references. Our primary E1, E3, and E4 runs should all start from `Salesforce/codet5-small` because Nexus class-account memory and storage limits make CodeT5-small the safer common base model.
 
+## Current Pilot Status
+
+As of the latest Nexus run, the project has moved from planning into execution.
+
+Completed or in progress:
+
+- E1, E3, and E4 were trained on Nexus from `Salesforce/codet5-small` using the ProofWalaDataset-derived frozen data.
+- The final training push used continuous overnight/approximately 12-hour training runs so the comparison would be more meaningful than the earlier short 5000-step smoke runs.
+- The main trained model directories are:
+  - E1: `runs/E1/model/pilot-e1-lean-only-34000x1/final`
+  - E3: `runs/E3/model/pilot-e3-real-multilingual/final`
+  - E4: `runs/E4/model/pilot-e4-pseudo-multilingual/final`
+- The earlier 5000-step smoke and staged checkpoints were useful for debugging, but the final report should primarily use the 12-hour trained checkpoints above.
+- The main proof-search evaluation is now the Lean 4 CoreEval batch:
+  - benchmark file: `proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean`
+  - benchmark config: `proof-wala/src/proof_wala/main/config/benchmark/core_eval_250.yaml`
+  - eval config: `proof-wala/src/proof_wala/main/config/eval_core_eval_250.yaml`
+  - Nexus sbatch: `scripts/nexus/proof_search_core_eval.sbatch`
+  - Nexus job: `6848604`
+- Job `6848604` runs E1, E3, and E4 as a three-task array with one RTX A5000 per model. It may time out before all 250 theorems finish, but partial `proof_results.json` and `generation_debug.jsonl` files are written incrementally and can be evaluated after timeout.
+- A deterministic Lean 3 miniF2F easy-10 subset was also created as exploratory infrastructure, but it is secondary to CoreEval because the ProofWala proof-search path is better exercised on Lean 4.
+
+The report should therefore treat CoreEval as the primary proof-search result source and miniF2F easy-10 as a secondary engineering note unless it completes cleanly and produces interpretable results.
+
+## Challenges Overcome
+
+The current plan reflects several practical problems that were solved during the pilot, not just the original ideal experiment design:
+
+- **Nexus storage pressure:** class-home storage was tight while training, saving checkpoints, caching Hugging Face assets, and running proof search. We repeatedly pruned unused checkpoints and model directories, switched to `save_only_model: True`, limited checkpoint retention, and moved large reusable artifacts off Nexus when possible.
+- **Training under limited GPU and wall-time budgets:** early 5000-step smoke runs were useful for validating scripts, but their results were too weak for the final comparison. We then moved to longer continuous overnight/approximately 12-hour E1/E3/E4 runs while keeping all models on the same `Salesforce/codet5-small` base.
+- **Repeated proof-search debugging:** the proof-search path needed multiple rounds of validation before it could run reliably, including model artifact checks, Lean environment checks, tactic-parser fixes, Ray/runtime debugging, and better logging of generated tactics and proof results.
+- **Evaluation benchmark instability:** external benchmark options were not immediately reliable in the available Nexus setup. LeanDojo/mathlib introduced heavy build/runtime issues, and miniF2F is Lean 3 while the most reliable local ProofWala path is Lean 4. This led to CoreEval 250 as a deterministic Lean 4 benchmark that can build quickly and run in the same environment as the proof-search scripts.
+- **Model-result interpretability:** early next-step exact-match and proof-search results were often weak or zero, so the plan now emphasizes multiple metrics: pass rates, compilable tactics, search traces, attempted-theorem counts, and intersection-based comparisons if long jobs time out.
+- **E4 data quality:** the first pseudo-Lean transformation audits showed that some synthetic examples were too close to the originals. The plan now keeps E4 as a core control but explicitly requires further auditing and refinement of identifier renaming before treating final E4 results as strong evidence.
+- **Reproducibility across local and Nexus copies:** scripts and configs were written locally first, then synced to `/fs/classhomes/<username>/multilingual-project` for SLURM execution. This workflow prevented accidental dependence on local-only paths and made the Nexus run artifacts easier to track.
+
 ## Main Research Question
 
 In a controlled pilot using the same dataset source and parallel Nexus training, is ProofWala's multilingual gain better explained by:
@@ -67,7 +103,7 @@ These are the required experiments.
 |---|---|---:|---|---|---|
 | E0 | Released multilingual sanity-check | No | [ProofWala-Multilingual](https://huggingface.co/amitayusht/ProofWala-Multilingual) | Small fixed eval | Verify environment and evaluation pipeline |
 | E1 | Lean-only baseline | Yes | `Salesforce/codet5-small` | ProofWalaDataset `lean/train` | Student 1 |
-| E3 | Real multilingual | Yes | `Salesforce/codet5-small` | Smoke: ProofWalaDataset `multilingual/train`; final: token-matched Lean+Coq mixture | Student 2 |
+| E3 | Real multilingual | Yes | `Salesforce/codet5-small` | Planned final: token-matched Lean+Coq mixture; executed deadline fallback: ProofWalaDataset `multilingual/train` compatible split | Student 2 |
 | E4 | Pseudo-multilingual | Yes | `Salesforce/codet5-small` | Lean train + synthetic Lean variant | Student 3 |
 
 ## Optional Stretch Goal
@@ -103,7 +139,7 @@ To keep the comparison clean:
 - use the same tokenizer
 - use the same prompt grammar and field order
 - use the same training settings where possible
-- use the same fixed Lean evaluation subset
+- use the same fixed Lean evaluation subset, now CoreEval 250 for the main proof-search comparison
 - use identical proof-search budgets and decoding settings
 - document any unavoidable budget or dataset-size mismatch explicitly
 
@@ -129,7 +165,86 @@ Each family includes `train/`, `test/`, and `eval/` splits. Each JSON file conta
 - **E3 smoke tests:** ProofWalaDataset `multilingual/train`
 - **E3 final training:** explicitly constructed token-matched Lean+Coq mixture
 - **E4:** Lean training split plus synthetic Lean augmentation
-- **Evaluation:** one fixed Lean eval/test subset shared by E1, E3, and E4
+- **Evaluation:** CoreEval 250 as the main fixed Lean proof-search subset shared by E1, E3, and E4
+
+## Primary Evaluation Set: CoreEval 250
+
+The main proof-search evaluation for this pilot is the deterministic CoreEval 250-theorem Lean 4 benchmark.
+
+### Why CoreEval Was Created
+
+The original plan considered using LeanDojo/mathlib or miniF2F for proof-search evaluation. On Nexus, the LeanDojo/mathlib route hit practical cluster/toolchain blockers, including Lean 4/mathlib build and runtime issues on the available class nodes. The cloned miniF2F repository is Lean 3, while the most reliable ProofWala proof-search path in this project is Lean 4. A small Lean 4 benchmark was therefore needed to test the trained models fairly without depending on a large external mathlib build.
+
+### How the Theorems Were Obtained
+
+CoreEval was constructed locally and then synced to Nexus:
+
+1. Start from the existing lightweight Lean 4 project at `proof-wala/src/proof_wala/data/proofs/lean/lean4_proj`.
+2. Remove the mathlib dependency from that project for this benchmark so the fixture uses only Lean core and can build on Nexus.
+3. Add `Lean4Proj/CoreEval.lean` with exactly 250 theorem declarations.
+4. Include the existing simple `Basic.lean`-style arithmetic shapes, such as:
+   - `n_plus_zero`
+   - `n_plus_succ`
+   - `n_zero_plus`
+   - `n_succ_plus`
+   - `n_mod_2_implies_square_mod`
+5. Add deterministic families of simple Lean-core theorem statements covering:
+   - propositional logic
+   - equality and substitution
+   - natural-number identities
+   - lists
+   - pairs/products
+   - options and booleans
+   - a small number of harder existential or induction-shaped statements
+6. Keep theorem bodies as `sorry` in the fixture so the file declares goals for the proof-search engine while still building as a Lean project.
+7. Verify the file contains exactly 250 theorem declarations and build it on Nexus with `lake build`.
+
+The resulting benchmark is not a standard public benchmark like miniF2F. Its purpose is controlled within-project comparison: E1, E3, and E4 see the same theorem order, same proof-search budget, same decoding settings, and same Lean environment.
+
+### CoreEval Evaluation Budget
+
+CoreEval currently runs through:
+
+```bash
+sbatch scripts/nexus/proof_search_core_eval.sbatch --user adelaveg
+```
+
+The active CoreEval job is:
+
+```text
+6848604
+```
+
+Each array task evaluates one model:
+
+- task 0: E1
+- task 1: E3
+- task 2: E4
+
+The script uses one RTX A5000 per task, `medium` QoS, and a 12-hour wall-time limit. Because proof search is slow, the job may not finish all 250 theorems. This is acceptable for the pilot if the report clearly states the number of attempted theorems per model and computes metrics over the attempted results.
+
+If the three array tasks attempt different numbers of theorems before timeout, report two views:
+
+1. **Intersection view:** compare E1/E3/E4 only on theorem names attempted by all three models. This should be the main comparison if the job times out.
+2. **Throughput view:** separately report all attempted theorems per model, including proved count, attempted count, and average time. This captures search-speed differences but is less controlled.
+
+Important result files:
+
+```text
+runs/proof_search_core_eval/6848604/E1/proof_dumps/core_eval_250/*/proof_results.json
+runs/proof_search_core_eval/6848604/E3/proof_dumps/core_eval_250/*/proof_results.json
+runs/proof_search_core_eval/6848604/E4/proof_dumps/core_eval_250/*/proof_results.json
+```
+
+Generation traces:
+
+```text
+runs/proof_search_core_eval/6848604/E1/generation_debug.jsonl
+runs/proof_search_core_eval/6848604/E3/generation_debug.jsonl
+runs/proof_search_core_eval/6848604/E4/generation_debug.jsonl
+```
+
+If SLURM kills the job at timeout before the final summary step, rerun the metrics script manually against the partial `proof_results.json` files.
 
 ## E3 Data Recommendation
 
@@ -151,9 +266,11 @@ The final-run goal is causal control. Build the final E3 mixture and record:
 
 If time is short or the token-matched mixture has a blocking implementation issue, fall back to `multilingual/train` for E3 final training and document that limitation explicitly.
 
-### Deadline Execution Note
+### Historical Short-Deadline Execution Note
 
-For the overnight deadline run, treat E1 as complete and use the already trained best local E1 artifact:
+The following was the earlier short-deadline fallback plan used before the 12-hour final training push. Keep it for reproducibility, but do not treat it as the primary final comparison if the 12-hour E1/E3/E4 artifacts are available.
+
+For the earlier overnight deadline run, treat E1 as complete and use the already trained best local E1 artifact:
 
 - E1 model: `runs/E1/model/pilot-e1-lean-only/final`
 - E1 diagnostic reference: `runs/E1/diagnostics/e1_diagnostics.json`
@@ -164,7 +281,7 @@ For E3, use the permitted short-deadline fallback source `ProofWalaDataset/multi
 
 For E4, train on the materialized Lean plus pseudo-Lean data in `data/pseudo_multilingual/e4_train`, generated by `scripts/data/materialize_e4_pseudo_dataset.py`. Keep the E4 caveat in the report: the pseudo-renaming logic is conservative and audited, but still needs more refinement before it should be considered a final causal control.
 
-For E3 and E4 under the class-home quota, use one resumable checkpoint at step 5000:
+For E3 and E4 under the class-home quota, the earlier fallback used one resumable checkpoint at step 5000:
 
 - `max_steps: 5000`
 - `save_steps: 5000`
@@ -173,7 +290,7 @@ For E3 and E4 under the class-home quota, use one resumable checkpoint at step 5
 - `save_only_model: False`
 - `load_best_model_at_end: False`
 
-Run the same next-step diagnostic script against `checkpoint-5000` for E3 and E4, and compare those results against the E1 final diagnostic.
+Run the same next-step diagnostic script against `checkpoint-5000` for E3 and E4, and compare those results against the E1 final diagnostic. This was useful for debugging but is superseded by the 12-hour trained final artifacts when those artifacts are available.
 
 ## Hard Control Rule
 
@@ -342,7 +459,7 @@ Use RTX A4000 only as a fallback for evaluation or very small training dry runs.
 
 ### Expected Training Time
 
-Assuming `max_steps` around 5000, 2048-token context, batch size 1, fp16/bf16, and gradient checkpointing on one RTX A5000:
+The earlier 5000-step estimates were:
 
 | Run | Expected Time |
 |---|---:|
@@ -357,6 +474,8 @@ Before full training, run a shared 100-step calibration. If 100 steps takes `T` 
 ```text
 5000-step time ~= T * 50
 ```
+
+The final executed pilot used longer continuous overnight/approximately 12-hour training runs for E1, E3, and E4, rather than relying on the 5000-step smoke results. Record the actual wall-clock time, final step count, and checkpoint path from those 12-hour runs in the final report.
 
 ## Storage Constraint
 
@@ -401,7 +520,7 @@ The project should emphasize both model behavior and search behavior, but priori
 
 The pilot succeeds if it clearly answers at least one of these:
 
-1. Does E3 outperform E1 on the fixed Lean evaluation subset?
+1. Does E3 outperform E1 on the fixed Lean evaluation subset, primarily CoreEval 250?
 2. Does E3 outperform E4?
 3. Do gains appear mainly in proof-search behavior rather than next-step accuracy?
 
@@ -586,12 +705,17 @@ No further data-composition or evaluation-subset changes after Day 2 unless a bl
 - monitor training and validation
 - record throughput and wall-clock time
 - record final training steps, examples, estimated token budget, and checkpoint path
+- completed for the current pilot with approximately 12-hour final training runs
 
 ### Deliverables
 
 - E1 checkpoint and training summary
 - E3 checkpoint and training summary
 - E4 checkpoint and training summary
+- final model inventory using the 12-hour trained checkpoints:
+  - `runs/E1/model/pilot-e1-lean-only-34000x1/final`
+  - `runs/E3/model/pilot-e3-real-multilingual/final`
+  - `runs/E4/model/pilot-e4-pseudo-multilingual/final`
 
 ## Days 6-7: Base Evaluation
 
@@ -601,8 +725,10 @@ No further data-composition or evaluation-subset changes after Day 2 unless a bl
 - evaluate trained E3
 - evaluate trained E4
 - optionally evaluate released ProofWala-Lean and ProofWala-Multilingual as references
-- use the same fixed Lean subset and proof-search budget for all models
+- use CoreEval 250 as the main fixed Lean proof-search subset
+- use the same proof-search budget and decoding settings for all models
 - compute pass@1, pass@5, and compilable-tactic rate
+- if the 12-hour CoreEval job times out, compute metrics from the partial `proof_results.json` files and use the theorem-name intersection as the main comparison
 
 ### Deliverables
 
@@ -610,10 +736,12 @@ No further data-composition or evaluation-subset changes after Day 2 unless a bl
 - optional released-checkpoint reference table
 - first interpretation note
 - checkpoint/model inventory
+- CoreEval attempted/proved table for E1, E3, and E4
+- CoreEval partial-results caveat if SLURM timeout occurs
 
 ### Exit Condition
 
-You should know whether E3 beats E1, and whether E4 is close to or far from E3.
+You should know whether E3 beats E1 on CoreEval, and whether E4 is close to or far from E3 on the same attempted-theorem intersection.
 
 ## Days 8-10: Search Diagnostics and Analysis
 
@@ -697,7 +825,8 @@ Run this only if the core experiments are already complete and stable.
 - frozen split manifest
 - token-budget note
 - E4 generation and audit note
-- base results table
+- CoreEval proof-search results table
+- base results table, if separate from CoreEval
 - search diagnostics table
 - 3 to 5 figures
 - short internal memo

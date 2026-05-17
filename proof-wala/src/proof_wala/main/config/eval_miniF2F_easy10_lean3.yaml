@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - benchmark: miniF2F_test_easy10_lean3
+  - eval_settings: codet5_beam_16
+  - env_settings: bm25_retrieval
+  - override hydra/job_logging: 'disabled'
+
+log_dir: <root>/data/miniF2F_easy10/proof_logs
+eval_settings:
+  proof_dump_dir: <root>/data/miniF2F_easy10/proof_dumps
+  model_name: Salesforce/codet5-small
+  checkpoint_dir: .log/checkpoints/miniF2F_easy10
+  proof_retries: 1
+  timeout_in_secs: 60
+  max_proof_depth: 20
+  width: 16
+  model_parallelism: 1
+  temperature: 0.75
+  do_sample: True
+  search_params:
+    beam_width: 16
+
+benchmark:
+  timeout_per_theorem_in_secs: 300

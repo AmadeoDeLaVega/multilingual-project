@@ -76,6 +76,20 @@ def proof_result_metrics(results_json: Path | None) -> dict[str, Any]:
 
     rows = flatten_results(results_json)
     proved = sum(1 for row in rows if row.get("proof_found") is True)
+    proved_by_attempt_1 = 0
+    proved_by_attempt_5 = 0
+    proved_with_unknown_attempt = 0
+    for row in rows:
+        if row.get("proof_found") is not True:
+            continue
+        attempt_idx = (row.get("additional_info") or {}).get("attempt_idx")
+        if isinstance(attempt_idx, int):
+            if attempt_idx < 1:
+                proved_by_attempt_1 += 1
+            if attempt_idx < 5:
+                proved_by_attempt_5 += 1
+        else:
+            proved_with_unknown_attempt += 1
     timeouts = sum(1 for row in rows if row.get("is_timeout") is True)
     exhausted = sum(1 for row in rows if row.get("is_inference_exhausted") is True)
     proof_times = [
@@ -103,6 +117,7 @@ def proof_result_metrics(results_json: Path | None) -> dict[str, Any]:
             "is_timeout": row.get("is_timeout"),
             "is_inference_exhausted": row.get("is_inference_exhausted"),
             "longest_success_path": row.get("longest_success_path"),
+            "attempt_idx": (row.get("additional_info") or {}).get("attempt_idx"),
             "num_of_backtracks": row.get("num_of_backtracks"),
             "possible_failed_paths": row.get("possible_failed_paths"),
         }
@@ -113,6 +128,11 @@ def proof_result_metrics(results_json: Path | None) -> dict[str, Any]:
         "theorem_count": len(rows),
         "proved_count": proved,
         "search_pass_rate": rate(proved, len(rows)),
+        "proved_by_attempt_1_count": proved_by_attempt_1,
+        "pass_at_1": rate(proved_by_attempt_1, len(rows)),
+        "proved_by_attempt_5_count": proved_by_attempt_5,
+        "pass_at_5_observed": rate(proved_by_attempt_5, len(rows)),
+        "proved_with_unknown_attempt_count": proved_with_unknown_attempt,
         "timeout_count": timeouts,
         "timeout_rate": rate(timeouts, len(rows)),
         "inference_exhausted_count": exhausted,
@@ -382,6 +402,8 @@ def write_markdown(path: Path, payload: dict[str, Any]) -> None:
         f"- theorems: `{result.get('theorem_count')}`",
         f"- proved: `{result.get('proved_count')}`",
         f"- search_pass_rate: `{result.get('search_pass_rate')}`",
+        f"- pass_at_1: `{result.get('pass_at_1')}`",
+        f"- pass_at_5_observed: `{result.get('pass_at_5_observed')}`",
         f"- timeout_rate: `{result.get('timeout_rate')}`",
         f"- mean_proof_time_in_secs: `{result.get('mean_proof_time_in_secs')}`",
         "",

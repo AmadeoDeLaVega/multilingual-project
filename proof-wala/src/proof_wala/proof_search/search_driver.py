@@ -12,11 +12,16 @@ import time
 import enum
 import uuid
 from abc import ABC, abstractmethod
-from itp_interface.tools.training_data_format import TrainingDataFormat, TrainingDataMetadataFormat
+from itp_interface.tools.training_data_format import (
+    TheoremProvingTrainingDataFormat,
+    TrainingDataFormat,
+    TrainingDataMetadataFormat,
+)
 from itp_interface.tools.training_data import TrainingData
 from itp_interface.rl.simple_proof_env import ProofEnv, ProofState, ProofAction, ProofTree, ProgressState
 from itp_interface.rl.simpl_proof_env_pool import ProofEnvPool, replicate_proof_env
 from itp_interface.tools.dynamic_coq_proof_exec import DynamicProofExecutor as DynamicCoqExecutor
+from itp_interface.tools.dynamic_lean_proof_exec import DynamicProofExecutor as DynamicLeanExecutor
 from itp_interface.tools.dynamic_lean4_proof_exec import DynamicProofExecutor as DynamicLean4Executor
 from itp_interface.rl.proof_tree import ProofSearchResult
 from proof_wala.search.search import SearchAlgorithm, Node, Edge
@@ -79,6 +84,8 @@ def convert_state_to_string(state: typing.Union[ProofState, TrainingDataFormat])
 def end_state_string(language: ProofAction.Language) -> str:
     if language == ProofAction.Language.COQ:
         return DynamicCoqExecutor.NotInProofModeDescription
+    elif language == ProofAction.Language.LEAN:
+        return DynamicLeanExecutor.NotInProofModeDescription
     elif language == ProofAction.Language.LEAN4:
         return DynamicLean4Executor.NotInProofModeDescription
     else:
@@ -271,7 +278,7 @@ class ProofSearchBranchGenerator(ABC):
                 'start_goal_id': state_idx,
                 'end_goal_id': new_state_id
             }
-            training_data_format = TrainingDataFormat(
+            training_data_format = TheoremProvingTrainingDataFormat(
                 proof_id=self.proof_id,
                 goal_description=next_state.training_data_format.goal_description if next_state is not None else 'Tactic failed/timed out',
                 start_goals=state.training_data_format.start_goals,
@@ -572,7 +579,10 @@ class ProofSearchDriver:
             last_state: ProofState = tree_node.other_data.proof_state
             proof_tree: ProofTree = last_state.proof_tree
             actions_till_state: typing.List[ProofAction] = proof_tree.tactics
-            proof_steps = [TrainingDataFormat(proof_steps=tactic.proof_steps) for _, tactic in actions_till_state]
+            proof_steps = [
+                TheoremProvingTrainingDataFormat(proof_steps=tactic.proof_steps)
+                for _, tactic in actions_till_state
+            ]
             proof_search_res = ProofSearchResult(
                         full_path,
                         True, 

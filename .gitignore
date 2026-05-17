@@ -16,6 +16,8 @@ wandb/
 !/data/frozen_splits/**
 !/data/eval_subsets/
 !/data/eval_subsets/**
+!/data/proof_search_subsets/
+!/data/proof_search_subsets/**
 !/data/pseudo_multilingual/
 /data/pseudo_multilingual/*
 !/data/pseudo_multilingual/e4_audit.md
