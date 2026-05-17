@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ True → Nat → p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rintro ⟨rfl, rfl⟩\n$0.55$"]
+	0 -> 1 [label="rintro ⟨y, h⟩\n$0.66$"]
+	0 -> 1 [label="rintro ⟨h₁, h₂⟩\n$0.57$"]
+	0 -> 2 [label="rintro ⟨n, hn⟩\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [hp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="intro h\n$0.46$"]
+	0 -> 4 [label="simp\n$0.48$"]
+	1 [label="(1/1)\ncase intro\np : Prop\nhp : p\n⊢ Nat → p\n$0.55$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\np : Prop\nhp : p\nh : True\n⊢ Nat → p\n$0.46$"]
+	4 [label="(1/1)\ncase intro\np : Prop\nhp : p\n⊢ p\n$0.48$"]
+}

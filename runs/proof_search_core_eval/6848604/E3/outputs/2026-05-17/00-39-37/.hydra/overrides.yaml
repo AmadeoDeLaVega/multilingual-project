@@ -1,0 +1,7 @@
+- log_dir=/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E3/logs
+- eval_settings.proof_dump_dir=/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E3/proof_dumps
+- eval_settings.checkpoint_dir=/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E3/checkpoints
+- eval_settings.model_name=/fs/classhomes/adelaveg/multilingual-project/runs/E3/model/pilot-e3-real-multilingual/final
+- eval_settings.proof_retries=1
+- eval_settings.timeout_in_secs=120
+- benchmark.timeout_per_theorem_in_secs=120

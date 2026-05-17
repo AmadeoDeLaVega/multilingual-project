@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ (n :: xs).length = xs.length.succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases xs <;> simp [Nat.succ_eq_add_one]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases xs <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [length_eq_succ]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases xs <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

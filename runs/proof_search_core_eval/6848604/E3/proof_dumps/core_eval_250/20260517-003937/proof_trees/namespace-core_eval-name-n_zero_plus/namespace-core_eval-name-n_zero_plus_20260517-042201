@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ 0 + n = n\n$0.00$"]
+	0 -> 1 [label="simp [Nat.zero_add]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="apply Nat.add_zero.2\ndone\n$-100.00$"]
+	0 -> 1 [label="by rewrite addnC addnC.\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp [Nat.add_zero]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

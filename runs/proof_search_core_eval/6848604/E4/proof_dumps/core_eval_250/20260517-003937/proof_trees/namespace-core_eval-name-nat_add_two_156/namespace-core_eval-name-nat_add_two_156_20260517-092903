@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ n + 2 = n.succ.succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases n <;> simp [Nat.lt_succ_self]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="decide\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [n.succ_ne_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.28$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\n⊢ 0 + 2 = (Nat.succ 0).succ\n(2/2)\ncase succ\nn✝ : Nat\n⊢ n✝ +...\n$0.28$"]
+}

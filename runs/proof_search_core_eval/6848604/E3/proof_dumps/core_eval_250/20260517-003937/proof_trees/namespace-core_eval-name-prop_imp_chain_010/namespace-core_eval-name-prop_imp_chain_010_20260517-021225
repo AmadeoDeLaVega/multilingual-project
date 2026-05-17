@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nhpr : p → r\nhp : p\n⊢ q → r\n$0.00$"]
+	0 -> 1 [label="simp only [hp, hpr, hpr, hpr]\n$0.92$"]
+	0 -> 2 [label="intro h\n$0.58$"]
+	1 [label="(1/1)\np q r : Prop\nhpr : p → r\nhp : p\n⊢ q → True\n$0.92$"]
+	2 [label="(1/1)\np q r : Prop\nhpr : p → r\nhp : p\nh : q\n⊢ True\n$0.58$"]
+}

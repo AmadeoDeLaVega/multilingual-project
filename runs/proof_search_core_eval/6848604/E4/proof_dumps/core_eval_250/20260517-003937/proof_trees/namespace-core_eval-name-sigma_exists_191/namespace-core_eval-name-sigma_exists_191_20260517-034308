@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ ∃ m, m = n\n$0.00$"]
+	0 -> 1 [label="cases h : n\n$0.53$"]
+	0 -> 2 [label="rcases n with ⟨m, hm⟩\n$0.49$"]
+	0 -> 2 [label="rcases n with ⟨m, rfl⟩\n$0.46$"]
+	1 [label="(1/2)\ncase zero\nn : Nat\nh : n = 0\n⊢ ∃ m, m = 0\n(2/2)\ncase succ\nn n✝ : Nat\nh...\n$0.53$"]
+	2 [label="(1/2)\ncase zero\n⊢ ∃ m, m = 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ ∃ m, m = n✝ + 1\n$0.46$"]
+	2 -> 3 [label="exact ⟨0, rfl⟩\n$0.23$"]
+	2 -> 4 [label="exact ⟨1, by simp⟩\n$0.27$"]
+	3 [label="(1/1)\ncase succ\nn✝ : Nat\n⊢ ∃ m, m = n✝ + 1\n$0.69$"]
+	4 [label="(1/2)\n\n⊢ False\n(2/2)\ncase succ\nn✝ : Nat\n⊢ ∃ m, m = n✝ + 1\n$0.74$"]
+}

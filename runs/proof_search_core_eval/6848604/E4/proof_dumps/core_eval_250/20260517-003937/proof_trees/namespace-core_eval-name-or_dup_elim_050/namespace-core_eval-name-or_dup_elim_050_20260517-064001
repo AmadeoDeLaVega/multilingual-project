@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nh : p ∨ p\n⊢ p\n$0.00$"]
+	0 -> 1 [label="rcases h with (h | h)\n$0.56$"]
+	0 -> 2 [label="cases h\n$0.51$"]
+	0 -> 3 [label="simp [h]\n$0.58$"]
+	1 [label="(1/2)\ncase inl\np : Prop\nh : p\n⊢ p\n(2/2)\ncase inr\np : Prop\nh : p\n⊢ p\n$0.56$"]
+	2 [label="(1/2)\ncase inl\np : Prop\nh✝ : p\n⊢ p\n(2/2)\ncase inr\np : Prop\nh✝ : p\n⊢ p\n$0.51$"]
+	3 [label="(1/1)\ncase inr\np : Prop\nh : p\n⊢ p\n$0.58$"]
+}

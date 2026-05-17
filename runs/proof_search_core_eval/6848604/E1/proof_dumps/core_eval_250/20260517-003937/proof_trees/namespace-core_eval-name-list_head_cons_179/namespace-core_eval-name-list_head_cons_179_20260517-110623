@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ (n :: xs).head? = some n\n$0.00$"]
+	0 -> 1 [label="simp [Nat.succ_eq_add_one]\ndone\n$-100.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> cases xs <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.add_succ]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [Nat.succ_pred]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp only [get_cons, get_cons, get_cons, List.head?, List.get_cons_head?, L...\n$-100.00$"]
+	0 -> 1 [label="rw [List.head?_cons]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases xs\n$0.36$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase nil\nn : Nat\n⊢ [n].head? = some n\n(2/2)\ncase cons\nn head✝ : Nat\nt...\n$0.36$"]
+}

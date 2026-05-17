@@ -1,0 +1,17 @@
+2026-05-17 03:51:33,585 - run_proof_search.py:135 - INFO - Getting all lemmas in file: /tmp/pwmf6849079_1/miniF2F/lean/src/test.lean with timeout: 60000 seconds
+2026-05-17 03:52:34,786 - run_proof_search.py:151 - INFO - Discovered 244 lemmas in file: /tmp/pwmf6849079_1/miniF2F/lean/src/test.lean
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_algebra_209
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_numbertheory_345
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_numbertheory_3
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_numbertheory_207
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_algebra_478
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_numbertheory_342
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_numbertheory_299
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_algebra_141
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: mathd_algebra_33
+2026-05-17 03:52:34,787 - run_proof_search.py:165 - INFO - Intersection lemma: amc12b_2020_p2
+2026-05-17 03:52:34,787 - run_proof_search.py:179 - INFO - Discovered 10 lemmas to prove in /tmp/pwmf6849079_1/miniF2F/lean/src/test.lean
+2026-05-17 03:52:34,787 - run_proof_search.py:180 - INFO - Lemmas to prove in file /tmp/pwmf6849079_1/miniF2F/lean/src/test.lean: 
+['mathd_algebra_478', 'mathd_algebra_141', 'mathd_numbertheory_3', 'mathd_algebra_209', 'mathd_algebra_33', 'mathd_numbertheory_299', 'amc12b_2020_p2', 'mathd_numbertheory_345', 'mathd_numbertheory_207', 'mathd_numbertheory_342']
+2026-05-17 03:52:34,787 - ray_utils.py:45 - INFO - Cleaning up Ray logs in /tmp/pwmf6849079_1/ray
+2026-05-17 03:52:34,788 - ray_utils.py:62 - INFO - Cleaned up 0.0 MB of Ray logs

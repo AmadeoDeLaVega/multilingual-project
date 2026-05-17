@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Nat → Prop\nh : Exists p\n⊢ True\n$0.00$"]
+	0 -> 1 [label="cases h\n$0.73$"]
+	0 -> 2 [label="have h' := h\n$0.95$"]
+	1 [label="(1/1)\ncase intro\np : Nat → Prop\nw✝ : Nat\nh✝ : p w✝\n⊢ True\n$0.73$"]
+	2 [label="(1/1)\np : Nat → Prop\nh h' : Exists p\n⊢ True\n$0.95$"]
+}

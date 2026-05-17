@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\n⊢ (2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [add_comm]\n$0.55$"]
+	0 -> 2 [label="ring\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="norm_num\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [add_zero]; rw [add_zero]\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="ring1\nend\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\n⊢ (2006 + (2000 + 2001 + 2002 + 2003 + 2004 + 2005)) % 7 = 0\n$0.55$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

@@ -1,0 +1,846 @@
+Host: tron48.umiacs.umd.edu
+Job: 6849080
+Array job: 6849079
+Array task: 0
+Experiment: E1
+Project root: /fs/classhomes/adelaveg/multilingual-project
+Run root: /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1
+Model path: /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final
+Config: eval_miniF2F_easy10_lean3.yaml
+miniF2F stage: /tmp/pwmf6849079_0/miniF2F
+Theorem timeout seconds: 300
+Proof retries: 1
+Python 3.10.20
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/bin/proof-wala-search
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/bin/proof-wala-init-ray
+Sun May 17 01:59:57 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:C1:00.0 Off |                  Off |
+| 30%   27C    P8             23W /  230W |       1MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Validated model.safetensors: /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final/model.safetensors (131 tensors)
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Tokenizer files already present in /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final
+info: downloading https://github.com/leanprover-community/lean/releases/download/v3.42.1/lean-3.42.1-linux.tar.gz
+info: installing /tmp/pwmf6849079_0/elan/toolchains/leanprover-community--lean---v3.42.1
+
+leanprover-community/lean:v3.42.1 installed - Lean (version 3.42.1, commit 68455b087d87, Release)
+
+info: override toolchain for '/tmp/pwmf6849079_0/miniF2F' set to 'leanprover-community/lean:v3.42.1'
+Lean (version 3.42.1, commit 68455b087d87, Release)
+configuring minif2f 1.0
+WARNING: leanpkg configurations not specifying `path = "src"` are deprecated.
+mathlib: cloning https://github.com/leanprover-community/mathlib to _target/deps/mathlib
+> git clone https://github.com/leanprover-community/mathlib _target/deps/mathlib
+Cloning into '_target/deps/mathlib'...
+> git checkout --detach cb2b02fff213ed6f65bebd64446baac64137dcda    # in directory _target/deps/mathlib
+HEAD is now at cb2b02fff2 feat(representation_theory/basic): representation theory without scalar actions (#13573)
+Looking for mathlib oleans for cb2b02fff2
+  locally...
+  Found local mathlib oleans
+Located matching cache
+Applying cache
+  files extracted: 0 [00:00, ?/s]  files extracted: 52 [00:00, 452.04/s]  files extracted: 103 [00:00, 481.80/s]  files extracted: 157 [00:00, 505.84/s]  files extracted: 228 [00:00, 579.40/s]  files extracted: 287 [00:00, 493.08/s]  files extracted: 343 [00:00, 512.64/s]  files extracted: 400 [00:00, 528.06/s]  files extracted: 469 [00:00, 576.30/s]  files extracted: 551 [00:00, 643.26/s]  files extracted: 617 [00:01, 638.44/s]  files extracted: 690 [00:01, 664.21/s]  files extracted: 771 [00:01, 702.91/s]  files extracted: 842 [00:01, 579.48/s]  files extracted: 904 [00:01, 536.88/s]  files extracted: 961 [00:01, 544.41/s]  files extracted: 1032 [00:01, 577.22/s]  files extracted: 1092 [00:01, 562.06/s]  files extracted: 1166 [00:02, 606.89/s]  files extracted: 1228 [00:02, 549.72/s]  files extracted: 1300 [00:02, 591.98/s]  files extracted: 1361 [00:02, 594.95/s]  files extracted: 1435 [00:02, 628.83/s]  files extracted: 1532 [00:02, 721.68/s]  files extracted: 1606 [00:02, 691.72/s]  files extracted: 1690 [00:02, 729.84/s]  files extracted: 1764 [00:02, 727.69/s]  files extracted: 1838 [00:03, 663.92/s]  files extracted: 1906 [00:03, 629.68/s]  files extracted: 1971 [00:03, 619.91/s]  files extracted: 2034 [00:03, 616.49/s]  files extracted: 2109 [00:03, 652.40/s]  files extracted: 2179 [00:03, 663.91/s]  files extracted: 2311 [00:03, 849.02/s]  files extracted: 2384 [00:03, 643.72/s]
+Initializing Ray
+PID:  1903545
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/ray/_private/worker.py:1350: UserWarning: iter(ctx) is deprecated. Use iter(ctx.address_info) instead.
+  warnings.warn(
+Ray session:  {'node_ip_address': '10.71.20.59', 'redis_address': None, 'object_store_address': '/tmp/pwmf6849079_0/ray/session_2026-05-17_02-01-04_593631_1903545/sockets/plasma_store', 'raylet_socket_name': '/tmp/pwmf6849079_0/ray/session_2026-05-17_02-01-04_593631_1903545/sockets/raylet', 'webui_url': '', 'session_dir': '/tmp/pwmf6849079_0/ray/session_2026-05-17_02-01-04_593631_1903545', 'metrics_export_port': -1, 'gcs_address': '10.71.20.59:45575', 'address': '10.71.20.59:45575', 'dashboard_agent_listen_port': -1, 'node_id': '5da0b69b3be5a42eda304b2798be02c2d6a141fa3fdf4f3d1a976265', 'main_pid': 1903545}
+Ray was started
+Ray session:  {'node_ip_address': '10.71.20.59', 'redis_address': None, 'object_store_address': '/tmp/pwmf6849079_0/ray/session_2026-05-17_02-01-04_593631_1903545/sockets/plasma_store', 'raylet_socket_name': '/tmp/pwmf6849079_0/ray/session_2026-05-17_02-01-04_593631_1903545/sockets/raylet', 'webui_url': '', 'session_dir': '/tmp/pwmf6849079_0/ray/session_2026-05-17_02-01-04_593631_1903545', 'metrics_export_port': -1, 'gcs_address': '10.71.20.59:45575', 'address': '10.71.20.59:45575', 'dashboard_agent_listen_port': -1, 'node_id': '5da0b69b3be5a42eda304b2798be02c2d6a141fa3fdf4f3d1a976265', 'main_pid': 1903545}
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+Starting run_proof_search Pid:  1904190
+2026-05-17 02:02:06,478	INFO worker.py:1814 -- Connecting to existing Ray cluster at address: 10.71.20.59:45575...
+2026-05-17 02:02:06,539	INFO worker.py:2012 -- Connected to Ray cluster.
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+Ray was already started
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'eval_miniF2F_easy10_lean3.yaml': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+[36m(pid=1904540)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(pid=1904540)[0m   warnings.warn(
+[36m(pid=1904540)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(pid=1904540)[0m   import pkg_resources
+[36m(pid=1904541)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.[32m [repeated 2x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(pid=1904541)[0m   warnings.warn([32m [repeated 2x across cluster][0m
+[36m(pid=1904540)[0m comet_ml version 3.33.9 is installed, but version 3.43.2 or higher is required. Please update comet_ml to the latest version to enable Comet logging with pip install 'comet-ml>=3.43.2'.
+[36m(pid=1904541)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.[32m [repeated 2x across cluster][0m
+[36m(pid=1904541)[0m   import pkg_resources[32m [repeated 2x across cluster][0m
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m   warnings.warn(
+[36m(pid=1904541)[0m comet_ml version 3.33.9 is installed, but version 3.43.2 or higher is required. Please update comet_ml to the latest version to enable Comet logging with pip install 'comet-ml>=3.43.2'.[32m [repeated 2x across cluster][0m
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m   import pkg_resources
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m 
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m thread 'main' (1907860) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m binary not found
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m 
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m thread 'main' (1908022) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m binary not found
+[36m(discover_lemmas_in_benchmark pid=1904541)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(pid=1904538)[0m   warnings.warn(
+[36m(pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(pid=1904538)[0m   import pkg_resources
+[36m(pid=1904538)[0m comet_ml version 3.33.9 is installed, but version 3.43.2 or higher is required. Please update comet_ml to the latest version to enable Comet logging with pip install 'comet-ml>=3.43.2'.
+[36m(ProofEnvActor pid=1909891)[0m 
+[36m(ProofEnvActor pid=1909891)[0m thread 'main' (1910770) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1909891)[0m binary not found
+[36m(ProofEnvActor pid=1909891)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1909891)[0m 
+[36m(ProofEnvActor pid=1909891)[0m thread 'main' (1910775) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1909891)[0m binary not found
+[36m(ProofEnvActor pid=1909891)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1909893)[0m 
+[36m(ProofEnvActor pid=1909893)[0m 
+[36m(ProofEnvActor pid=1909892)[0m 
+[36m(ProofEnvActor pid=1909892)[0m 
+[36m(ProofEnvActor pid=1909894)[0m 
+[36m(ProofEnvActor pid=1909894)[0m 
+[36m(ProofEnvActor pid=1910691)[0m 
+[36m(ProofEnvActor pid=1910691)[0m 
+[36m(ProofEnvActor pid=1910691)[0m thread 'main' (1911584) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1910691)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1910691)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1910693)[0m 
+[36m(ProofEnvActor pid=1910693)[0m 
+[36m(ProofEnvActor pid=1910883)[0m 
+[36m(ProofEnvActor pid=1910883)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
+[36m(ProofEnvActor pid=1910883)[0m thread 'main' (1911760) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1910883)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1910883)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1912705)[0m 
+[36m(ProofEnvActor pid=1912705)[0m 
+[36m(ProofEnvActor pid=1912705)[0m thread 'main' (1913134) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=1912705)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=1912705)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=1912706)[0m 
+[36m(ProofEnvActor pid=1912706)[0m 
+[36m(ProofEnvActor pid=1916049)[0m 
+[36m(ProofEnvActor pid=1916049)[0m 
+[36m(ProofEnvActor pid=1916049)[0m thread 'main' (1916476) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1916049)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1916049)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1916052)[0m 
+[36m(ProofEnvActor pid=1916052)[0m 
+[36m(ProofEnvActor pid=1921411)[0m 
+[36m(ProofEnvActor pid=1921411)[0m 
+[36m(ProofEnvActor pid=1921411)[0m thread 'main' (1921677) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1921411)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1921411)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1921416)[0m 
+[36m(ProofEnvActor pid=1921416)[0m 
+[36m(ProofEnvActor pid=1925075)[0m 
+[36m(ProofEnvActor pid=1925075)[0m 
+[36m(ProofEnvActor pid=1925075)[0m thread 'main' (1925765) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1925075)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1925075)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1925072)[0m 
+[36m(ProofEnvActor pid=1925072)[0m 
+[36m(ProofEnvActor pid=1925073)[0m 
+[36m(ProofEnvActor pid=1925073)[0m 
+[36m(ProofEnvActor pid=1925074)[0m 
+[36m(ProofEnvActor pid=1925074)[0m 
+[36m(ProofEnvActor pid=1925683)[0m 
+[36m(ProofEnvActor pid=1925683)[0m 
+[36m(ProofEnvActor pid=1925683)[0m thread 'main' (1926807) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1925683)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1925683)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1925719)[0m 
+[36m(ProofEnvActor pid=1925719)[0m 
+[36m(ProofEnvActor pid=1925958)[0m 
+[36m(ProofEnvActor pid=1925958)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(ProofEnvActor pid=1925958)[0m thread 'main' (1926937) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1925958)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1925958)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=1940623)[0m 
+[36m(ProofEnvActor pid=1940623)[0m thread 'main' (1941466) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1940623)[0m binary not found
+[36m(ProofEnvActor pid=1940623)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1940623)[0m 
+[36m(ProofEnvActor pid=1940623)[0m thread 'main' (1941475) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1940623)[0m binary not found
+[36m(ProofEnvActor pid=1940623)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1940624)[0m 
+[36m(ProofEnvActor pid=1940624)[0m 
+[36m(ProofEnvActor pid=1940625)[0m 
+[36m(ProofEnvActor pid=1940625)[0m 
+[36m(ProofEnvActor pid=1940626)[0m 
+[36m(ProofEnvActor pid=1940626)[0m 
+[36m(ProofEnvActor pid=1941354)[0m 
+[36m(ProofEnvActor pid=1941354)[0m 
+[36m(ProofEnvActor pid=1941354)[0m thread 'main' (1942532) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1941354)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1941354)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1941356)[0m 
+[36m(ProofEnvActor pid=1941356)[0m 
+[36m(ProofEnvActor pid=1941848)[0m 
+[36m(ProofEnvActor pid=1941848)[0m thread 'main' (1942971) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 3x across cluster][0m
+[36m(ProofEnvActor pid=1941848)[0m binary not found[32m [repeated 3x across cluster][0m
+[36m(ProofEnvActor pid=1941848)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 3x across cluster][0m
+[36m(ProofEnvActor pid=1941848)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(ProofEnvActor pid=1941848)[0m thread 'main' (1942972) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1941848)[0m binary not found
+[36m(ProofEnvActor pid=1941848)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=1953301)[0m 
+[36m(ProofEnvActor pid=1953301)[0m thread 'main' (1953865) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1953301)[0m binary not found
+[36m(ProofEnvActor pid=1953301)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1953301)[0m 
+[36m(ProofEnvActor pid=1953301)[0m thread 'main' (1953885) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1953301)[0m binary not found
+[36m(ProofEnvActor pid=1953301)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1953302)[0m 
+[36m(ProofEnvActor pid=1953302)[0m 
+[36m(ProofEnvActor pid=1953303)[0m 
+[36m(ProofEnvActor pid=1953303)[0m 
+[36m(ProofEnvActor pid=1953300)[0m 
+[36m(ProofEnvActor pid=1953300)[0m 
+[36m(ProofEnvActor pid=1953763)[0m 
+[36m(ProofEnvActor pid=1953763)[0m 
+[36m(ProofEnvActor pid=1953763)[0m thread 'main' (1954839) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1953763)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1953763)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1953761)[0m 
+[36m(ProofEnvActor pid=1953761)[0m 
+[36m(ProofEnvActor pid=1954066)[0m 
+[36m(ProofEnvActor pid=1954066)[0m 
+[36m(ProofEnvActor pid=1954066)[0m thread 'main' (1955163) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1954066)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1954066)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=1961135)[0m 
+[36m(ProofEnvActor pid=1961135)[0m thread 'main' (1962263) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1961135)[0m binary not found
+[36m(ProofEnvActor pid=1961135)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1961135)[0m 
+[36m(ProofEnvActor pid=1961135)[0m thread 'main' (1962275) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=1961135)[0m binary not found
+[36m(ProofEnvActor pid=1961135)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=1961132)[0m 
+[36m(ProofEnvActor pid=1961132)[0m 
+[36m(ProofEnvActor pid=1961133)[0m 
+[36m(ProofEnvActor pid=1961133)[0m 
+[36m(ProofEnvActor pid=1961134)[0m 
+[36m(ProofEnvActor pid=1961134)[0m 
+[33m(raylet)[0m WARNING: 16 PYTHON worker processes have been started on node: 5da0b69b3be5a42eda304b2798be02c2d6a141fa3fdf4f3d1a976265 with address: 10.71.20.59, which is 4x the maximum expected startup concurrency (4). This could be a result of using a large number of actors, tasks blocked in ray.get() calls, or tasks with fractional CPU requests (e.g., num_cpus=0.1) allowing high concurrency. See https://github.com/ray-project/ray/issues/3644 for some discussion of workarounds.
+[33m(raylet)[0m WARNING: 16 PYTHON worker processes have been started on node: 5da0b69b3be5a42eda304b2798be02c2d6a141fa3fdf4f3d1a976265 with address: 10.71.20.59, which is 4x the maximum expected startup concurrency (4). This could be a result of using a large number of actors, tasks blocked in ray.get() calls, or tasks with fractional CPU requests (e.g., num_cpus=0.1) allowing high concurrency. See https://github.com/ray-project/ray/issues/3644 for some discussion of workarounds.
+[36m(ProofEnvActor pid=1962047)[0m 
+[36m(ProofEnvActor pid=1962047)[0m 
+[36m(ProofEnvActor pid=1962047)[0m thread 'main' (1963150) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1962047)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1962047)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1962126)[0m 
+[36m(ProofEnvActor pid=1962126)[0m 
+[36m(ProofEnvActor pid=1962513)[0m 
+[36m(ProofEnvActor pid=1962513)[0m 
+[36m(ProofEnvActor pid=1962513)[0m thread 'main' (1963542) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1962513)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1962513)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[33m(raylet)[0m WARNING: 20 PYTHON worker processes have been started on node: 5da0b69b3be5a42eda304b2798be02c2d6a141fa3fdf4f3d1a976265 with address: 10.71.20.59, which is 5x the maximum expected startup concurrency (4). This could be a result of using a large number of actors, tasks blocked in ray.get() calls, or tasks with fractional CPU requests (e.g., num_cpus=0.1) allowing high concurrency. See https://github.com/ray-project/ray/issues/3644 for some discussion of workarounds.
+[33m(raylet)[0m WARNING: 20 PYTHON worker processes have been started on node: 5da0b69b3be5a42eda304b2798be02c2d6a141fa3fdf4f3d1a976265 with address: 10.71.20.59, which is 5x the maximum expected startup concurrency (4). This could be a result of using a large number of actors, tasks blocked in ray.get() calls, or tasks with fractional CPU requests (e.g., num_cpus=0.1) allowing high concurrency. See https://github.com/ray-project/ray/issues/3644 for some discussion of workarounds.
+[36m(ProofEnvActor pid=1962376)[0m 
+[36m(ProofEnvActor pid=1962376)[0m 
+[36m(ProofEnvActor pid=1962376)[0m thread 'main' (1966007) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=1962376)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=1962376)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=1962511)[0m 
+[36m(ProofEnvActor pid=1962511)[0m 
+[36m(ProofEnvActor pid=1968517)[0m 
+[36m(ProofEnvActor pid=1968517)[0m 
+[36m(ProofEnvActor pid=1968517)[0m thread 'main' (1969438) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1968517)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1968517)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1968515)[0m 
+[36m(ProofEnvActor pid=1968515)[0m 
+[36m(ProofEnvActor pid=1968516)[0m 
+[36m(ProofEnvActor pid=1968516)[0m 
+[36m(ProofEnvActor pid=1968518)[0m 
+[36m(ProofEnvActor pid=1968518)[0m 
+[36m(ProofEnvActor pid=1969199)[0m 
+[36m(ProofEnvActor pid=1969199)[0m 
+[36m(ProofEnvActor pid=1969199)[0m thread 'main' (1970257) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1969199)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1969199)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1969220)[0m 
+[36m(ProofEnvActor pid=1969220)[0m 
+[36m(ProofEnvActor pid=1976932)[0m 
+[36m(ProofEnvActor pid=1976932)[0m 
+[36m(ProofEnvActor pid=1976932)[0m thread 'main' (1977981) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1976932)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1976932)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1976934)[0m 
+[36m(ProofEnvActor pid=1976934)[0m 
+[36m(ProofEnvActor pid=1976933)[0m 
+[36m(ProofEnvActor pid=1976933)[0m 
+[36m(ProofEnvActor pid=1976935)[0m 
+[36m(ProofEnvActor pid=1976935)[0m 
+[36m(ProofEnvActor pid=1977858)[0m 
+[36m(ProofEnvActor pid=1977858)[0m 
+[36m(ProofEnvActor pid=1977858)[0m thread 'main' (1978882) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1977858)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1977858)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1977802)[0m 
+[36m(ProofEnvActor pid=1977802)[0m 
+[36m(ProofEnvActor pid=1983993)[0m 
+[36m(ProofEnvActor pid=1983993)[0m 
+[36m(ProofEnvActor pid=1983993)[0m thread 'main' (1984548) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1983993)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1983993)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1983992)[0m 
+[36m(ProofEnvActor pid=1983992)[0m 
+[36m(ProofEnvActor pid=1983994)[0m 
+[36m(ProofEnvActor pid=1983994)[0m 
+[36m(ProofEnvActor pid=1983990)[0m 
+[36m(ProofEnvActor pid=1983990)[0m 
+[36m(ProofEnvActor pid=1984497)[0m 
+[36m(ProofEnvActor pid=1984497)[0m 
+[36m(ProofEnvActor pid=1984497)[0m thread 'main' (1985378) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1984497)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1984497)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1984523)[0m 
+[36m(ProofEnvActor pid=1984523)[0m 
+[36m(ProofEnvActor pid=1995064)[0m 
+[36m(ProofEnvActor pid=1995064)[0m 
+[36m(ProofEnvActor pid=1995064)[0m thread 'main' (1996004) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1995064)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1995064)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=1995063)[0m 
+[36m(ProofEnvActor pid=1995063)[0m 
+[36m(ProofEnvActor pid=1995062)[0m 
+[36m(ProofEnvActor pid=1995062)[0m 
+[36m(ProofEnvActor pid=1995061)[0m 
+[36m(ProofEnvActor pid=1995061)[0m 
+[36m(ProofEnvActor pid=1995952)[0m 
+[36m(ProofEnvActor pid=1995952)[0m 
+[36m(ProofEnvActor pid=1995952)[0m thread 'main' (1997116) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1995952)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1995952)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=1995954)[0m 
+[36m(ProofEnvActor pid=1995954)[0m 
+[36m(ProofEnvActor pid=1996381)[0m 
+[36m(ProofEnvActor pid=1996381)[0m 
+[36m(ProofEnvActor pid=2004384)[0m 
+[36m(ProofEnvActor pid=2004384)[0m 
+[36m(ProofEnvActor pid=2004384)[0m thread 'main' (2005592) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2004384)[0m binary not found[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2004384)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2004383)[0m 
+[36m(ProofEnvActor pid=2004383)[0m 
+[36m(ProofEnvActor pid=2004380)[0m 
+[36m(ProofEnvActor pid=2004380)[0m 
+[36m(ProofEnvActor pid=2004379)[0m 
+[36m(ProofEnvActor pid=2004379)[0m 
+[36m(ProofEnvActor pid=2004379)[0m thread 'main' (2006023) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2004379)[0m binary not found[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2004379)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2005422)[0m 
+[36m(ProofEnvActor pid=2005422)[0m 
+[36m(ProofEnvActor pid=2005476)[0m 
+[36m(ProofEnvActor pid=2005476)[0m 
+[36m(ProofEnvActor pid=2005785)[0m 
+[36m(ProofEnvActor pid=2005785)[0m thread 'main' (2006425) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2005785)[0m binary not found[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2005785)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2005785)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(ProofEnvActor pid=2005785)[0m thread 'main' (2006426) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2005785)[0m binary not found
+[36m(ProofEnvActor pid=2005785)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=2012811)[0m 
+[36m(ProofEnvActor pid=2012811)[0m thread 'main' (2013954) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2012811)[0m binary not found
+[36m(ProofEnvActor pid=2012811)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2012811)[0m 
+[36m(ProofEnvActor pid=2012811)[0m thread 'main' (2013959) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2012811)[0m binary not found
+[36m(ProofEnvActor pid=2012811)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2012814)[0m 
+[36m(ProofEnvActor pid=2012814)[0m 
+[36m(ProofEnvActor pid=2012813)[0m 
+[36m(ProofEnvActor pid=2012813)[0m 
+[36m(ProofEnvActor pid=2012810)[0m 
+[36m(ProofEnvActor pid=2012810)[0m 
+[36m(ProofEnvActor pid=2013759)[0m 
+[36m(ProofEnvActor pid=2013759)[0m 
+[36m(ProofEnvActor pid=2013759)[0m thread 'main' (2014853) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2013759)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2013759)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2013813)[0m 
+[36m(ProofEnvActor pid=2013813)[0m 
+[36m(ProofEnvActor pid=2014123)[0m 
+[36m(ProofEnvActor pid=2014123)[0m 
+[36m(ProofEnvActor pid=2014123)[0m thread 'main' (2015279) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2014123)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2014123)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2014092)[0m 
+[36m(ProofEnvActor pid=2014092)[0m 
+[36m(ProofEnvActor pid=2014092)[0m thread 'main' (2018365) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2014092)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2014092)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2014207)[0m 
+[36m(ProofEnvActor pid=2014207)[0m 
+[36m(ProofEnvActor pid=2015079)[0m 
+[36m(ProofEnvActor pid=2015079)[0m 
+[36m(ProofEnvActor pid=2015004)[0m 
+[36m(ProofEnvActor pid=2015004)[0m 
+[36m(ProofEnvActor pid=2022430)[0m 
+[36m(ProofEnvActor pid=2022430)[0m thread 'main' (2023430) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2022430)[0m binary not found[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2022430)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2022432)[0m 
+[36m(ProofEnvActor pid=2022428)[0m 
+[36m(ProofEnvActor pid=2022428)[0m 
+[36m(ProofEnvActor pid=2022431)[0m 
+[36m(ProofEnvActor pid=2022430)[0m 
+[36m(ProofEnvActor pid=2022432)[0m 
+[36m(ProofEnvActor pid=2022431)[0m 
+[36m(ProofEnvActor pid=2023379)[0m 
+[36m(ProofEnvActor pid=2023379)[0m 
+[36m(ProofEnvActor pid=2023379)[0m thread 'main' (2024579) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 9x across cluster][0m
+[36m(ProofEnvActor pid=2023379)[0m binary not found[32m [repeated 9x across cluster][0m
+[36m(ProofEnvActor pid=2023379)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 9x across cluster][0m
+[36m(ProofEnvActor pid=2023325)[0m 
+[36m(ProofEnvActor pid=2023325)[0m 
+[36m(ProofEnvActor pid=2030005)[0m 
+[36m(ProofEnvActor pid=2030005)[0m 
+[36m(ProofEnvActor pid=2030005)[0m thread 'main' (2030965) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2030005)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2030005)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2030008)[0m 
+[36m(ProofEnvActor pid=2030008)[0m 
+[36m(ProofEnvActor pid=2030006)[0m 
+[36m(ProofEnvActor pid=2030006)[0m 
+[36m(ProofEnvActor pid=2030004)[0m 
+[36m(ProofEnvActor pid=2030004)[0m 
+[36m(ProofEnvActor pid=2030916)[0m 
+[36m(ProofEnvActor pid=2030916)[0m 
+[36m(ProofEnvActor pid=2030916)[0m thread 'main' (2031927) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2030916)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2030916)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2030890)[0m 
+[36m(ProofEnvActor pid=2030890)[0m 
+[36m(ProofEnvActor pid=2037656)[0m 
+[36m(ProofEnvActor pid=2037656)[0m 
+[36m(ProofEnvActor pid=2037656)[0m thread 'main' (2038441) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2037656)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2037656)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2037659)[0m 
+[36m(ProofEnvActor pid=2037659)[0m 
+[36m(ProofEnvActor pid=2037660)[0m 
+[36m(ProofEnvActor pid=2037660)[0m 
+[36m(ProofEnvActor pid=2037658)[0m 
+[36m(ProofEnvActor pid=2037658)[0m 
+[36m(ProofEnvActor pid=2038324)[0m 
+[36m(ProofEnvActor pid=2038324)[0m 
+[36m(ProofEnvActor pid=2038324)[0m thread 'main' (2039620) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2038324)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2038324)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2038409)[0m 
+[36m(ProofEnvActor pid=2038409)[0m 
+[36m(ProofEnvActor pid=2039039)[0m 
+[36m(ProofEnvActor pid=2039039)[0m 
+[36m(ProofEnvActor pid=2048682)[0m 
+[36m(ProofEnvActor pid=2048682)[0m 
+[36m(ProofEnvActor pid=2048682)[0m thread 'main' (2049307) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2048682)[0m binary not found[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2048682)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2048681)[0m 
+[36m(ProofEnvActor pid=2048681)[0m 
+[36m(ProofEnvActor pid=2048679)[0m 
+[36m(ProofEnvActor pid=2048679)[0m 
+[36m(ProofEnvActor pid=2048680)[0m 
+[36m(ProofEnvActor pid=2048680)[0m 
+[36m(ProofEnvActor pid=2049198)[0m 
+[36m(ProofEnvActor pid=2049198)[0m 
+[36m(ProofEnvActor pid=2049198)[0m thread 'main' (2050148) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2049198)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2049198)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2049156)[0m 
+[36m(ProofEnvActor pid=2049156)[0m 
+[36m(ProofEnvActor pid=2049986)[0m 
+[36m(ProofEnvActor pid=2049986)[0m 
+[36m(ProofEnvActor pid=2049986)[0m thread 'main' (2050659) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2049986)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2049986)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2055357)[0m 
+[36m(ProofEnvActor pid=2055357)[0m 
+[36m(ProofEnvActor pid=2055357)[0m thread 'main' (2055891) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2055357)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2055357)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2060874)[0m 
+[36m(ProofEnvActor pid=2060874)[0m 
+[36m(ProofEnvActor pid=2060874)[0m thread 'main' (2061733) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2060874)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2060874)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2060873)[0m 
+[36m(ProofEnvActor pid=2060873)[0m 
+[36m(ProofEnvActor pid=2060875)[0m 
+[36m(ProofEnvActor pid=2060875)[0m 
+[36m(ProofEnvActor pid=2060876)[0m 
+[36m(ProofEnvActor pid=2060876)[0m 
+[36m(ProofEnvActor pid=2061552)[0m 
+[36m(ProofEnvActor pid=2061552)[0m thread 'main' (2062823) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2061552)[0m binary not found[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2061552)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2061552)[0m 
+[36m(ProofEnvActor pid=2061705)[0m 
+[36m(ProofEnvActor pid=2061705)[0m 
+[36m(ProofEnvActor pid=2062065)[0m 
+[36m(ProofEnvActor pid=2062065)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(ProofEnvActor pid=2062065)[0m thread 'main' (2063021) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2062065)[0m binary not found[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2062065)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 5x across cluster][0m
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=2074722)[0m 
+[36m(ProofEnvActor pid=2074722)[0m thread 'main' (2075640) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2074722)[0m binary not found
+[36m(ProofEnvActor pid=2074722)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2074722)[0m 
+[36m(ProofEnvActor pid=2074722)[0m thread 'main' (2075647) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2074722)[0m binary not found
+[36m(ProofEnvActor pid=2074722)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2074720)[0m 
+[36m(ProofEnvActor pid=2074720)[0m 
+[36m(ProofEnvActor pid=2074721)[0m 
+[36m(ProofEnvActor pid=2074721)[0m 
+[36m(ProofEnvActor pid=2074723)[0m 
+[36m(ProofEnvActor pid=2074723)[0m 
+[36m(ProofEnvActor pid=2074723)[0m thread 'main' (2076130) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2074723)[0m binary not found[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2074723)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 6x across cluster][0m
+[36m(ProofEnvActor pid=2075545)[0m 
+[36m(ProofEnvActor pid=2075545)[0m 
+[36m(ProofEnvActor pid=2075601)[0m 
+[36m(ProofEnvActor pid=2075601)[0m 
+[36m(ProofEnvActor pid=2075927)[0m 
+[36m(ProofEnvActor pid=2075927)[0m thread 'main' (2077353) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2075927)[0m binary not found[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2075927)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2075927)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(ProofEnvActor pid=2075927)[0m thread 'main' (2077354) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2075927)[0m binary not found
+[36m(ProofEnvActor pid=2075927)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=2088510)[0m 
+[36m(ProofEnvActor pid=2088510)[0m thread 'main' (2089395) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2088510)[0m binary not found
+[36m(ProofEnvActor pid=2088510)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2088510)[0m 
+[36m(ProofEnvActor pid=2088510)[0m thread 'main' (2089407) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2088510)[0m binary not found
+[36m(ProofEnvActor pid=2088510)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2088512)[0m 
+[36m(ProofEnvActor pid=2088512)[0m 
+[36m(ProofEnvActor pid=2088513)[0m 
+[36m(ProofEnvActor pid=2088513)[0m 
+[36m(ProofEnvActor pid=2088511)[0m 
+[36m(ProofEnvActor pid=2088511)[0m 
+[36m(ProofEnvActor pid=2089099)[0m 
+[36m(ProofEnvActor pid=2089099)[0m 
+[36m(ProofEnvActor pid=2089099)[0m thread 'main' (2090460) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2089099)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2089099)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2089072)[0m 
+[36m(ProofEnvActor pid=2089072)[0m 
+[36m(ProofEnvActor pid=2089852)[0m 
+[36m(ProofEnvActor pid=2089852)[0m 
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(ProofEnvActor pid=2089852)[0m thread 'main' (2090704) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2089852)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2089852)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(ProofEnvActor pid=2097933)[0m 
+[36m(ProofEnvActor pid=2097933)[0m thread 'main' (2098445) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2097933)[0m binary not found
+[36m(ProofEnvActor pid=2097933)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2097933)[0m 
+[36m(ProofEnvActor pid=2097933)[0m thread 'main' (2098453) panicked at src/elan-cli/elan_mode.rs:292:10:
+[36m(ProofEnvActor pid=2097933)[0m binary not found
+[36m(ProofEnvActor pid=2097933)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+[36m(ProofEnvActor pid=2097932)[0m 
+[36m(ProofEnvActor pid=2097932)[0m 
+[36m(ProofEnvActor pid=2097930)[0m 
+[36m(ProofEnvActor pid=2097930)[0m 
+[36m(ProofEnvActor pid=2097931)[0m 
+[36m(ProofEnvActor pid=2097931)[0m 
+[36m(ProofEnvActor pid=2098400)[0m 
+[36m(ProofEnvActor pid=2098400)[0m 
+[36m(ProofEnvActor pid=2098400)[0m thread 'main' (2099507) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2098400)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2098400)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2098427)[0m 
+[36m(ProofEnvActor pid=2098427)[0m 
+[36m(ProofEnvActor pid=2103701)[0m 
+[36m(ProofEnvActor pid=2103701)[0m 
+[36m(ProofEnvActor pid=2103701)[0m thread 'main' (2104311) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2103701)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2103701)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2103709)[0m 
+[36m(ProofEnvActor pid=2103709)[0m 
+[36m(ProofEnvActor pid=2103707)[0m 
+[36m(ProofEnvActor pid=2103707)[0m 
+[36m(ProofEnvActor pid=2103710)[0m 
+[36m(ProofEnvActor pid=2103710)[0m 
+[36m(ProofEnvActor pid=2104181)[0m 
+[36m(ProofEnvActor pid=2104181)[0m thread 'main' (2104974) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2104181)[0m binary not found[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2104181)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2104181)[0m 
+[36m(ProofEnvActor pid=2111806)[0m 
+[36m(ProofEnvActor pid=2111806)[0m 
+[36m(ProofEnvActor pid=2111806)[0m thread 'main' (2112698) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 3x across cluster][0m
+[36m(ProofEnvActor pid=2111806)[0m binary not found[32m [repeated 3x across cluster][0m
+[36m(ProofEnvActor pid=2111806)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 3x across cluster][0m
+[36m(ProofEnvActor pid=2111805)[0m 
+[36m(ProofEnvActor pid=2111805)[0m 
+[36m(ProofEnvActor pid=2111808)[0m 
+[36m(ProofEnvActor pid=2111808)[0m 
+[36m(ProofEnvActor pid=2111809)[0m 
+[36m(ProofEnvActor pid=2111809)[0m 
+[36m(ProofEnvActor pid=2112369)[0m 
+[36m(ProofEnvActor pid=2112369)[0m 
+[36m(ProofEnvActor pid=2112369)[0m thread 'main' (2113669) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2112369)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2112369)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2118582)[0m 
+[36m(ProofEnvActor pid=2118582)[0m 
+[36m(ProofEnvActor pid=2118582)[0m thread 'main' (2119332) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2118582)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2118582)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2118583)[0m 
+[36m(ProofEnvActor pid=2118583)[0m 
+[36m(ProofEnvActor pid=2118578)[0m 
+[36m(ProofEnvActor pid=2118578)[0m 
+[36m(ProofEnvActor pid=2118581)[0m 
+[36m(ProofEnvActor pid=2118581)[0m 
+[36m(ProofEnvActor pid=2119244)[0m 
+[36m(ProofEnvActor pid=2119244)[0m 
+[36m(ProofEnvActor pid=2119244)[0m thread 'main' (2120270) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2119244)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2119244)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2130819)[0m 
+[36m(ProofEnvActor pid=2130819)[0m 
+[36m(ProofEnvActor pid=2130819)[0m thread 'main' (2131697) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2130819)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2130819)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2130812)[0m 
+[36m(ProofEnvActor pid=2130812)[0m 
+[36m(ProofEnvActor pid=2130818)[0m 
+[36m(ProofEnvActor pid=2130818)[0m 
+[36m(ProofEnvActor pid=2130814)[0m 
+[36m(ProofEnvActor pid=2130814)[0m 
+[36m(ProofEnvActor pid=2131649)[0m 
+[36m(ProofEnvActor pid=2131649)[0m thread 'main' (2132498) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2131649)[0m binary not found[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2131649)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2131660)[0m 
+[36m(ProofEnvActor pid=2131660)[0m 
+[36m(ProofEnvActor pid=2131649)[0m 
+[36m(ProofEnvActor pid=2139940)[0m 
+[36m(ProofEnvActor pid=2139940)[0m 
+[36m(ProofEnvActor pid=2139940)[0m thread 'main' (2140837) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2139940)[0m binary not found[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2139940)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2139938)[0m 
+[36m(ProofEnvActor pid=2139938)[0m 
+[36m(ProofEnvActor pid=2139939)[0m 
+[36m(ProofEnvActor pid=2139939)[0m 
+[36m(ProofEnvActor pid=2139941)[0m 
+[36m(ProofEnvActor pid=2139941)[0m 
+[36m(ProofEnvActor pid=2140749)[0m 
+[36m(ProofEnvActor pid=2140749)[0m thread 'main' (2141893) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2140749)[0m binary not found[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2140749)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 7x across cluster][0m
+[36m(ProofEnvActor pid=2140701)[0m 
+[36m(ProofEnvActor pid=2140701)[0m 
+[36m(ProofEnvActor pid=2140749)[0m 
+[36m(ProofEnvActor pid=2141047)[0m 
+[36m(ProofEnvActor pid=2141047)[0m 
+[36m(ProofEnvActor pid=2141047)[0m thread 'main' (2142216) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2141047)[0m binary not found[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2141047)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 5x across cluster][0m
+[36m(ProofEnvActor pid=2143354)[0m 
+[36m(ProofEnvActor pid=2143354)[0m 
+[36m(ProofEnvActor pid=2143354)[0m thread 'main' (2144118) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2143354)[0m binary not found[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2143354)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 2x across cluster][0m
+[36m(ProofEnvActor pid=2143357)[0m 
+[36m(ProofEnvActor pid=2143357)[0m 
+[36m(ProofEnvActor pid=2146944)[0m 
+[36m(ProofEnvActor pid=2146944)[0m 
+[36m(ProofEnvActor pid=2146944)[0m thread 'main' (2147416) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2146944)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2146944)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2146946)[0m 
+[36m(ProofEnvActor pid=2146946)[0m 
+[36m(ProofEnvActor pid=2152669)[0m 
+[36m(ProofEnvActor pid=2152669)[0m 
+[36m(ProofEnvActor pid=2152669)[0m thread 'main' (2152975) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2152669)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2152669)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2152672)[0m 
+[36m(ProofEnvActor pid=2152672)[0m 
+[36m(ProofEnvActor pid=2156096)[0m 
+[36m(ProofEnvActor pid=2156096)[0m 
+[36m(ProofEnvActor pid=2156096)[0m thread 'main' (2156636) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2156096)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2156096)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2156097)[0m 
+[36m(ProofEnvActor pid=2156097)[0m 
+[36m(ProofEnvActor pid=2156095)[0m 
+[36m(ProofEnvActor pid=2156095)[0m 
+[36m(ProofEnvActor pid=2156098)[0m 
+[36m(ProofEnvActor pid=2156098)[0m 
+[36m(ProofEnvActor pid=2156601)[0m 
+[36m(ProofEnvActor pid=2156601)[0m 
+[36m(ProofEnvActor pid=2156601)[0m thread 'main' (2157443) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2156601)[0m binary not found[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2156601)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 8x across cluster][0m
+[36m(ProofEnvActor pid=2156595)[0m 
+[36m(ProofEnvActor pid=2156595)[0m 
+[36m(ProofEnvActor pid=2156830)[0m 
+[36m(ProofEnvActor pid=2156830)[0m 
+[36m(ProofEnvActor pid=2156830)[0m thread 'main' (2157633) panicked at src/elan-cli/elan_mode.rs:292:10:[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2156830)[0m binary not found[32m [repeated 4x across cluster][0m
+[36m(ProofEnvActor pid=2156830)[0m note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace[32m [repeated 4x across cluster][0m
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   warnings.warn(
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m /fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/comet_ml/env_logging.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+[36m(eval_dataset_once_with_retries pid=1904538)[0m   import pkg_resources
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[36m(eval_dataset_once_with_retries pid=1904538)[0m Using the `COMET_MODE=DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+usage: proof_search_metrics.py [-h] --run-root RUN_ROOT
+                               [--results-json RESULTS_JSON]
+                               [--generation-debug-jsonl GENERATION_DEBUG_JSONL]
+                               [--output OUTPUT]
+proof_search_metrics.py: error: the following arguments are required: --run-root
+*** SIGTERM received at time=1779004151 on cpu 22 ***
+PC: @     0x7f3bd39a202f  (unknown)  select
+    @     0x7f3bd43df990  (unknown)  (unknown)
+[2026-05-17 03:49:11,368 E 1903545 1903545] logging.cc:474: *** SIGTERM received at time=1779004151 on cpu 22 ***
+[2026-05-17 03:49:11,368 E 1903545 1903545] logging.cc:474: PC: @     0x7f3bd39a202f  (unknown)  select
+[2026-05-17 03:49:11,368 E 1903545 1903545] logging.cc:474:     @     0x7f3bd43df990  (unknown)  (unknown)

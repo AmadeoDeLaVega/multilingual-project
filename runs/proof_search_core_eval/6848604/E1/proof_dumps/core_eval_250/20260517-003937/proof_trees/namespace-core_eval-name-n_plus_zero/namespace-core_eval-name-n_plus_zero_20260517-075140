@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ n + 0 = n\n$0.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp only [Nat.add_zero, Nat.add_zero, Nat.add_zero, Nat.zero_add]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [Nat.add_zero]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp only [Nat.zero_eq, Nat.succ_zero, Nat.add_zero, Nat.zero_add]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [Nat.add_zero, add_zero]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases n\n$0.47$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase zero\n⊢ 0 + 0 = 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ n✝ + 1 + 0 = n✝ + 1\n$0.47$"]
+}

@@ -1,0 +1,3 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a < b\nhbc : b < c\n⊢ a < c\n$0.00$"]
+}

@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\n⊢ n + m = m + n\n$0.00$"]
+	0 -> 1 [label="by_cases h : n = 0\n$0.23$"]
+	0 -> 2 [label="induction n with\n| zero => simp [Nat.add_succ, Nat.add_succ, add_assoc, Nat...\n$-100.00$"]
+	0 -> 2 [label="simp [Nat.add_comm]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp [Nat.add_comm, Nat.add_assoc]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp only [Nat.add_comm, Nat.add_right_comm]\ndone\n$-100.00$"]
+	0 -> 3 [label="rw [Nat.add_comm]\n$0.20$"]
+	0 -> 4 [label="cases n\n$0.20$"]
+	1 [label="(1/2)\ncase pos\nn m : Nat\nh : n = 0\n⊢ n + m = m + n\n(2/2)\ncase neg\nn m : Nat...\n$0.23$"]
+	2 [label="not in proof mode\n$-100.00$"]
+	3 [label="(1/1)\ncase neg\nn m : Nat\nh : ¬n = 0\n⊢ n + m = m + n\n$0.20$"]
+	4 [label="(1/2)\ncase zero\nm : Nat\n⊢ 0 + m = m + 0\n(2/2)\ncase succ\nm n✝ : Nat\n⊢ n✝ + 1...\n$0.20$"]
+}

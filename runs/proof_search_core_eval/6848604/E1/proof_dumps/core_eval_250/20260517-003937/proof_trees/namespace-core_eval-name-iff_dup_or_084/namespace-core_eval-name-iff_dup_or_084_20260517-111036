@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ p ∨ p ↔ p\n$0.00$"]
+	0 -> 1 [label="constructor\n$0.50$"]
+	0 -> 2 [label="simp [eq_comm]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases p <;> simp\ndone\n$-100.00$"]
+	0 -> 2 [label="simp\ndone\n$-100.00$"]
+	1 [label="(1/2)\ncase mp\np : Prop\n⊢ p ∨ p → p\n(2/2)\ncase mpr\np : Prop\n⊢ p → p ∨ p\n$0.50$"]
+	2 [label="not in proof mode\n$-100.00$"]
+}

@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ True → ∃ x, p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rintro ⟨k, hk⟩\n$0.75$"]
+	0 -> 2 [label="intro h\n$0.60$"]
+	0 -> 3 [label="simpa\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="simp [hp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 4 [label="simp\n$0.60$"]
+	1 [label="(1/1)\ncase intro\np : Prop\nhp : p\n⊢ ∃ x, p\n$0.75$"]
+	2 [label="(1/1)\np : Prop\nhp : p\nh : True\n⊢ ∃ x, p\n$0.60$"]
+	3 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	4 [label="(1/1)\ncase intro\np : Prop\nhp : p\n⊢ p\n$0.60$"]
+}

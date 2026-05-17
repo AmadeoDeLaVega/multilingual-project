@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬(p ∨ q)\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp only [hq, not_or, not_false_iff]\n$0.76$"]
+	0 -> 2 [label="simp [hp]\n$0.56$"]
+	0 -> 3 [label="simp [hp, not_or]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 4 [label="rintro (h | h)\n$0.65$"]
+	1 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬p ∧ True\n$0.76$"]
+	2 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬q\n$0.56$"]
+	3 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	4 [label="(1/2)\ncase inl\np q : Prop\nhp : ¬p\nhq : ¬q\nh : p\n⊢ False\n(2/2)\ncase inr\np q ...\n$0.65$"]
+}

@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ ∃ k, k = m\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [← h] at h\n$0.69$"]
+	0 -> 2 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="cases h\n$0.61$"]
+	0 -> 4 [label="subst h\n$0.58$"]
+	1 [label="(1/1)\nn m : Nat\nh : n = n\n⊢ ∃ k, k = m\n$0.69$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\ncase refl\nn : Nat\n⊢ ∃ k, k = n\n$0.61$"]
+	4 [label="(1/1)\nn : Nat\n⊢ ∃ k, k = n\n$0.58$"]
+}

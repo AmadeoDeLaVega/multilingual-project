@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\n\n⊢ none = none\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases h : none\n$0.71$"]
+	0 -> 2 [label="decide\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/2)\ncase none\nh : none = none\n⊢ none = none\n(2/2)\ncase some\nval✝ : Nat\nh ...\n$0.71$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

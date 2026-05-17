@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p ∧ q ∨ p ∧ r\n⊢ p\n$0.00$"]
+	0 -> 1 [label="rcases h with ⟨r', h'⟩\n$0.27$"]
+	0 -> 2 [label="rcases h with ⟨q, hq⟩\n$0.29$"]
+	0 -> 3 [label="cases h\n$0.22$"]
+	1 [label="(1/2)\ncase inl.intro\np q r : Prop\nr' : p\nh' : q\n⊢ p\n(2/2)\ncase inr\np q r : ...\n$0.27$"]
+	2 [label="(1/2)\ncase inl.intro\np q✝ r : Prop\nq : p\nhq : q✝\n⊢ p\n(2/2)\ncase inr\np q r :...\n$0.29$"]
+	3 [label="(1/2)\ncase inl\np q r : Prop\nh✝ : p ∧ q\n⊢ p\n(2/2)\ncase inr\np q r : Prop\nh✝ :...\n$0.22$"]
+}

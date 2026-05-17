@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\n⊢ n + m.succ = (n + m).succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp only [Nat.add_succ, Nat.add_mod]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases m <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [Nat.add_succ]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.37$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\nm : Nat\n⊢ 0 + m.succ = (0 + m).succ\n(2/2)\ncase succ\nm n✝ : ...\n$0.37$"]
+}

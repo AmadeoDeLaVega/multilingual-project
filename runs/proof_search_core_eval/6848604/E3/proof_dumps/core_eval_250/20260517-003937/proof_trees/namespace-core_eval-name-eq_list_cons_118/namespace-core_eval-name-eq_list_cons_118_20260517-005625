@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ n :: xs = n :: xs\n$0.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [List.cons_cons, List.cons_cons, List.cons_cons_of_ne]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [@eq_cons_of_nat (List.length 1) (List.length 1), Nat.sub_mul]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs.length <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [List.cons]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

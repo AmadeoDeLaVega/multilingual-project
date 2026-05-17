@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nh : a = b\n⊢ c + a = c + b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="subst_vars\n$0.56$"]
+	0 -> 1 [label="subst a\n$0.51$"]
+	0 -> 2 [label="subst b\n$0.54$"]
+	0 -> 2 [label="subst h\n$0.50$"]
+	0 -> 3 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\nb c : Nat\n⊢ c + b = c + b\n$0.51$"]
+	2 [label="(1/1)\na c : Nat\n⊢ c + a = c + a\n$0.50$"]
+	3 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

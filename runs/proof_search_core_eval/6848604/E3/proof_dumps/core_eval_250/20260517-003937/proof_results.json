@@ -1,0 +1,3737 @@
+{
+    "path": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E3/proof_dumps/core_eval_250/20260517-003937/proof_results.json",
+    "theorem_map": {
+        "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean": {
+            "{\"namespace\": \"core_eval\", \"name\": \"or_case_left_053\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_case_left_053\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 281.03742933273315,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_list_cons_118\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_list_cons_118\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 242.6113486289978,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_list_nil_117\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_list_nil_117\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 121.16597986221313,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_exists_240\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_exists_240\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 132.7537157535553,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_and_intro\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_and_intro\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 254.43997502326965,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_append_assoc_174\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"list_append_assoc_174\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 287.7255787849426,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"not_true_to_false_098\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem not_true_to_false_098 (h : Not True) : False :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h] at h"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 91.53247451782227,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"false_imp_090\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"false_imp_090\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 152.06965255737305,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_add_zero_127\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_add_zero_127\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 157.89088201522827,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_list_206\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_list_206\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 121.50380992889404,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_pair_right_208\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_subst_pair_right_208 (a b c : Nat) (h : a = b) : (c, a) = (c, b) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "rw [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 120.01001334190369,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_chain_009\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_chain_009\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 188.32707524299622,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_or_assoc_082\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_or_assoc_082\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 225.08773493766785,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_or_imp_230\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_or_imp_230\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 217.17419290542603,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"exists_and_194\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"exists_and_194\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 136.62950897216797,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"not_or_intro_096\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"not_or_intro_096\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 225.5897252559662,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_chain_010\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_chain_010\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 129.58257842063904,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_if_false_124\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_if_false_124 (a b : Nat) : (if false then a else b) = b :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [if_pos]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 121.95206069946289,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_right_true_048\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem or_right_true_048 (p : Prop) : Or p True :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 82.92747926712036,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"not_false_089\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"not_false_089\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 139.25754046440125,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_self_002\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_self_002\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 54.1752073764801,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_chain_013\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_chain_013\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 169.7145836353302,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_apply_007\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_apply_007\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 197.20506191253662,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_nat_eq_231\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_nat_eq_231\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 225.35076069831848,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_and_eq_211\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mixed_and_eq_211 (n m : Nat) (h : n = m) : And (n = m) (m = n) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 115.16597080230713,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_mul_assoc_139\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_mul_assoc_139\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 73.44006752967834,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"bool_and_true_161\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"bool_and_true_161\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 69.12297940254211,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"not_imp_false_097\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"not_imp_false_097\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 176.44117093086243,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_nil_append_172\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"list_nil_append_172\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 150.16399097442627,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"bool_not_false_166\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"bool_not_false_166\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 154.81628894805908,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_pred_succ_151\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem nat_pred_succ_151 (n : Nat) : Nat.pred (Nat.succ n) = n :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 116.72320079803467,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_imp_self_085\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_imp_self_085\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 123.8545126914978,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_true_intro_072\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_true_intro_072\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 224.81366300582886,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_list_nil_append_120\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_list_nil_append_120\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 162.21117496490479,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_elim_to_imp_064\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_elim_to_imp_064\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 196.34921789169312,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_and_distrib_051\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_and_distrib_051\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 665.5027892589569,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_option_nat_218\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mixed_option_nat_218 (n : Nat) : some n = (some n : Option Nat) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "congr"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 90.59394550323486,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"sigma_exists_191\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem sigma_exists_191 (n : Nat) : Exists (fun m : Nat => m = n) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "cases n <;> simp_all"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 109.44309568405151,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_reorder_037\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_reorder_037\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 782.932525396347,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_nat_110\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_subst_nat_110 (a b c : Nat) (h : a = b) : a * c = b * c :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "rw [h, Nat.mul_comm]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 109.13828134536743,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"fun_const_189\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem fun_const_189 (n m : Nat) : (fun _ : Nat => n) m = n :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 55.572189807891846,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"n_plus_succ\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"n_plus_succ\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 191.60879635810852,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"n_zero_plus\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"n_zero_plus\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 129.64885210990906,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_succ_pos_150\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_succ_pos_150\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 169.79807376861572,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_nil_ne_cons_178\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"list_nil_ne_cons_178\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 145.1548023223877,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_id\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_id\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 40.77512288093567,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_option_some_116\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_option_some_116 (n : Nat) : some n = (some n : Option Nat) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "cases n <;> simp [*]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 118.69410228729248,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_assoc_left_044\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_assoc_left_044\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 426.08939719200134,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_list_236\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_list_236\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 129.5781970024109,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_two_add_155\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem nat_two_add_155 (n : Nat) : 2 + n = Nat.succ (Nat.succ n) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply Nat.add_comm"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 106.41867709159851,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_list_237\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem hardish_list_237 (x y : Nat) (xs ys : List Nat) (hx : x = y) (hxs : xs = ys) : x :: xs = y :: ys :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "congr"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 103.0311849117279,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_zero_add_126\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem nat_zero_add_126 (n : Nat) : 0 + n = n :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "cases n <;> simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 117.46583700180054,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"contradiction_to_false_093\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"contradiction_to_false_093\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 155.2102291584015,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_refl_066\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_refl_066\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 123.3883068561554,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_comm_043\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_comm_043\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 603.3299427032471,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_succ_ne_zero_134\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem nat_succ_ne_zero_134 (n : Nat) : Not (Nat.succ n = 0) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simpa using Nat.succ_ne_zero n"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 74.74464154243469,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_project_026\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem and_project_026 (p q r : Prop) (h : And p (And q r)) : q :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 100.68903756141663,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_apply_008\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_apply_008\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 59.21545648574829,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_mul_comm_138\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_mul_comm_138\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 623.2328360080719,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_add_comm_136\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_add_comm_136\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 196.74493408203125,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_reorder_040\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_reorder_040\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 223.21136021614075,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_and_true_left_077\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_and_true_left_077\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 338.5118942260742,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_dup_left_024\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_dup_left_024\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 230.47341465950012,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_and_comm_073\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_and_comm_073\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 122.3969566822052,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_lt_trans_146\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_lt_trans_146\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 252.4945900440216,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_and_true_right_078\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_and_true_right_078\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 165.95187497138977,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_apply_006\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_imp_apply_006\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 206.88392806053162,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"n_mod_2_implies_square_mod\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"n_mod_2_implies_square_mod\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 811.183581829071,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"false_elim_086\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"false_elim_086\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 41.02060651779175,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"imp_exists_223\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"imp_exists_223\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 148.69493913650513,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"option_none_ne_some_170\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem option_none_ne_some_170 (n : Nat) : Not ((none : Option Nat) = some n) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 94.41753196716309,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prod_fst_181\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem prod_fst_181 (a b : Nat) : Prod.fst (a, b) = a :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 102.92441534996033,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"n_plus_zero\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"n_plus_zero\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 214.56245803833008,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_if_true_123\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_if_true_123\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 228.81379866600037,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"exists_zero_200\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"exists_zero_200\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 235.0931851863861,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"contradiction_to_true_092\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem contradiction_to_true_092 (p : Prop) (hp : p) (hn : Not p) : True :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [hp, hn]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 108.09435844421387,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_length_cons_176\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem list_length_cons_176 (n : Nat) (xs : List Nat) : (n :: xs).length = Nat.succ xs.length :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "cases xs <;> rfl"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 121.16394352912903,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"not_intro_087\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem not_intro_087 (p : Prop) (h : p -> False) : Not p :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exact h"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 67.7929904460907,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_swap_nested_058\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_swap_nested_058\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 317.1476745605469,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_nat_le_233\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_nat_le_233\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 153.1315712928772,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"unit_eq_184\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"unit_eq_184\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 37.76863718032837,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_dup_intro_049\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem or_dup_intro_049 (p : Prop) (hp : p) : Or p p :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exact Or.inl hp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 94.98869681358337,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_and_distrib_052\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_and_distrib_052\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 726.5454304218292,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_or_eq_212\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"mixed_or_eq_212\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 566.2834579944611,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_nat_eq_232\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_nat_eq_232\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 179.72583889961243,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_pair_fst_113\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_pair_fst_113\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 170.86380672454834,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_dup_elim_050\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_dup_elim_050\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 592.0315144062042,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"false_and_left_099\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem false_and_left_099 (p : Prop) (h : And False p) : False :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exact h.1"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 104.65400195121765,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_nat_111\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_nat_111\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 120.82583332061768,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"hardish_de_morgan_228\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"hardish_de_morgan_228\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 187.23177099227905,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_imp_eq_213\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mixed_imp_eq_213 (n m : Nat) (h : n = m) : n + 0 = m :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h, Nat.add_zero, Nat.add_zero]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 113.70662808418274,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_le_of_lt_148\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_le_of_lt_148\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 188.27996492385864,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_decide_210\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_decide_210\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 266.3653018474579,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"forall_const_196\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"forall_const_196\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 360.26693892478943,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_assoc_right_045\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_assoc_right_045\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 469.66031432151794,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_list_nat_217\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mixed_list_nat_217 (n : Nat) (xs : List Nat) : (n :: xs).length = xs.length + 1 :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "cases xs <;> simp [*]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 99.31540608406067,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_pair_left_207\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_subst_pair_left_207 (a b c : Nat) (h : a = b) : (a, c) = (b, c) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 52.421818256378174,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_length_nil_175\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem list_length_nil_175 : ([] : List Nat).length = 0 :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "decide"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 60.926827907562256,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_or_comm_074\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_or_comm_074\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 140.16031646728516,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"bool_true_and_162\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"bool_true_and_162\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 24.801192045211792,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_reorder_034\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem and_reorder_034 (p q r s : Prop) (h : And (And p q) (And r s)) : And q r :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 85.33865141868591,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_inl_041\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_inl_041\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 150.22848343849182,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_and_assoc_081\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem iff_and_assoc_081 (p q r : Prop) : Iff (And (And p q) r) (And p (And q r)) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "constructor <;> intro h <;> simp [*, h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 94.74938726425171,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_elim_to_or_062\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_elim_to_or_062\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 186.15817594528198,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_add_assoc_137\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_add_assoc_137\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 177.31055855751038,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_nat_prop_216\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"mixed_nat_prop_216\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 159.174884557724,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"option_some_inj_169\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"option_some_inj_169\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 521.7122807502747,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_refl_bool_102\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_refl_bool_102\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 19.579267024993896,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_head_cons_179\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem list_head_cons_179 (n : Nat) (xs : List Nat) : (n :: xs).head? = some n :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [List.head?_cons]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 118.95811939239502,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_dup_or_084\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem iff_dup_or_084 (p : Prop) : Iff (Or p p) p :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 109.15215373039246,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_option_nat_219\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mixed_option_nat_219 : (none : Option Nat) = none :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "decide"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 75.9925446510315,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"list_cons_ne_nil_177\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"list_cons_ne_nil_177\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 162.49483942985535,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prop_and_left\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prop_and_left\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 477.3874864578247,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"not_not_intro_091\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem not_not_intro_091 (p : Prop) (hp : p) : Not (Not p) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simpa using hp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 114.83784437179565,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prod_snd_182\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem prod_snd_182 (a b : Nat) : Prod.snd (a, b) = b :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "rfl"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 96.07358312606812,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_from_and_right_060\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_from_and_right_060\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 711.4016156196594,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_bool_prop_220\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"mixed_bool_prop_220\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 184.56405115127563,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"mixed_nat_prop_215\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"mixed_nat_prop_215\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 172.6308786869049,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_intro_true_right_022\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_intro_true_right_022\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 159.57081532478333,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_project_028\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_project_028\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 493.70106053352356,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_swap_nested_057\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_swap_nested_057\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 378.83541774749756,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_dup_intro_023\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem and_dup_intro_023 (p : Prop) (hp : p) : And p p :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "exact \u27e8hp, hp\u27e9"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 100.21278285980225,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_zero_ne_succ_135\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem nat_zero_ne_succ_135 (n : Nat) : Not (0 = Nat.succ n) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 79.86674571037292,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"forall_id_195\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem forall_id_195 (p : Nat -> Prop) (h : forall n, p n) (m : Nat) : p m :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply h"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 92.13726758956909,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_mul_one_129\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem nat_mul_one_129 (n : Nat) : n * 1 = n :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 110.04379534721375,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_pred_209\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_pred_209\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 162.63249444961548,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_intro_true_left_021\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem and_intro_true_left_021 (p : Prop) (hp : p) : And True p :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simpa using hp"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 111.41121077537537,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"or_elim_046\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"or_elim_046\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 148.11343455314636,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"exists_of_eq_193\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem exists_of_eq_193 (n m : Nat) (h : n = m) : Exists (fun k : Nat => k = m) :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "cases m <;> simp [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 85.98845028877258,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"fun_comp_id_left_188\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"fun_comp_id_left_188\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 166.78612303733826,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_left_id_019\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_left_id_019\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 350.36209201812744,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_nat_108\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_nat_108\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 146.39172649383545,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"and_project_030\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"and_project_030\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 134.46441292762756,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_le_trans_145\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_le_trans_145\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 143.8895287513733,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"nat_one_mul_128\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"nat_one_mul_128\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 654.5457010269165,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"iff_trans_068\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"iff_trans_068\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 161.62564301490784,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"bool_false_or_164\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"bool_false_or_164\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 17.989392042160034,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_subst_nat_109\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_subst_nat_109 (a b c : Nat) (h : a = b) : c + a = c + b :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 110.30565094947815,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"eq_cast_201\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem eq_cast_201 (a b : Nat) (h : a = b) : a = b :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "rw [h]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 54.55036020278931,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"imp_forall_224\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": true,
+                "lemma_name": "theorem imp_forall_224 (p : Prop) (hp : p) : True -> forall _ : Nat, p :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "simp [hp]"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "done"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 97.28548669815063,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            },
+            "{\"namespace\": \"core_eval\", \"name\": \"prod_eta_183\"}": {
+                "proof_file": "/fs/classhomes/adelaveg/multilingual-project/proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean",
+                "proof_found": false,
+                "lemma_name": "{\"namespace\": \"core_eval\", \"name\": \"prod_eta_183\"}",
+                "proof_steps": [],
+                "proof_time_in_secs": 209.75391793251038,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN4"
+            }
+        }
+    }
+}

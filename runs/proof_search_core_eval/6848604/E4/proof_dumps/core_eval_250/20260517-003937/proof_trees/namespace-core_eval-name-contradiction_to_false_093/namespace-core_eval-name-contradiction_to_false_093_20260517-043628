@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\nhn : ¬p\n⊢ False\n$0.00$"]
+	0 -> 1 [label="apply hn\n$0.55$"]
+	0 -> 2 [label="simp [hn] at hn\n$0.57$"]
+	0 -> 3 [label="simp [hp] at hn\ndone\n$-100.00$"]
+	1 [label="(1/1)\np : Prop\nhp : p\nhn : ¬p\n⊢ p\n$0.55$"]
+	2 [label="(1/1)\np : Prop\nhp : p\nhn : True\n⊢ False\n$0.57$"]
+	3 [label="not in proof mode\n$-100.00$"]
+}

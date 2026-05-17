@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ False → p\n$0.00$"]
+	0 -> 1 [label="intro e\n$0.43$"]
+	0 -> 2 [label="intro h\n$0.34$"]
+	0 -> 3 [label="intro H\n$0.39$"]
+	0 -> 4 [label="rintro (⟨rfl, rfl⟩ | ⟨rfl⟩)\ndone\n$-100.00$"]
+	1 [label="(1/1)\np : Prop\ne : False\n⊢ p\n$0.43$"]
+	2 [label="(1/1)\np : Prop\nh : False\n⊢ p\n$0.34$"]
+	3 [label="(1/1)\np : Prop\nH : False\n⊢ p\n$0.39$"]
+	4 [label="not in proof mode\n$-100.00$"]
+}

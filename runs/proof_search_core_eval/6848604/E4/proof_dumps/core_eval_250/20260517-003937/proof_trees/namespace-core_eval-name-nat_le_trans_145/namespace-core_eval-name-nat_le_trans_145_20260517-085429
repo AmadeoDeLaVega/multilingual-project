@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a ≤ b\nhbc : b ≤ c\n⊢ a ≤ c\n$0.00$"]
+	0 -> 1 [label="obtain ⟨a', b'⟩ := Nat.exists_eq_add_of_le hab\n$0.72$"]
+	1 [label="(1/1)\ncase intro\na b c : Nat\nhab : a ≤ b\nhbc : b ≤ c\na' : Nat\nb' : b = a + ...\n$0.72$"]
+	1 -> 2 [label="by_cases ha : a = a\n$0.52$"]
+	1 -> 3 [label="by_cases hab₁ : b = a'\n$0.63$"]
+	1 -> 4 [label="rw [b'] at hbc\n$0.43$"]
+	1 -> 5 [label="rw [b'] at hab\n$0.43$"]
+	2 [label="(1/2)\ncase pos\na b c : Nat\nhab : a ≤ b\nhbc : b ≤ c\na' : Nat\nb' : b = a + a'...\n$1.23$"]
+	3 [label="(1/2)\ncase pos\na b c : Nat\nhab : a ≤ b\nhbc : b ≤ c\na' : Nat\nb' : b = a + a'...\n$1.34$"]
+	4 [label="(1/1)\ncase intro\na b c : Nat\nhab : a ≤ b\na' : Nat\nhbc : a + a' ≤ c\nb' : b =...\n$1.14$"]
+	5 [label="(1/1)\ncase intro\na b c : Nat\nhbc : b ≤ c\na' : Nat\nhab : a ≤ a + a'\nb' : b =...\n$1.15$"]
+}

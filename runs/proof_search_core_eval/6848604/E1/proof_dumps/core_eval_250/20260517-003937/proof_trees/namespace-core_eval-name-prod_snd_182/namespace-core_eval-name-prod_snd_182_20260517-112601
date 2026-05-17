@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (a, b).snd = b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases a <;> simp [*, Nat.add_one_ne_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rcases Nat.eq_or_lt_of_le b with (rfl | h)\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.succ_eq_add_one]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

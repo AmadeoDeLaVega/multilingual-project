@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Prop\ninst✝ : Decidable p\n⊢ decide p = decide p\n$0.00$"]
+	0 -> 1 [label="by_cases h : p = p\n$0.56$"]
+	1 [label="(1/2)\ncase pos\np : Prop\ninst✝ : Decidable p\nh : p = p\n⊢ decide p = decide p...\n$0.56$"]
+	1 -> 2 [label="rfl\n$0.40$"]
+	2 [label="(1/1)\ncase neg\np : Prop\ninst✝ : Decidable p\nh : ¬p = p\n⊢ decide p = decide ...\n$0.96$"]
+}

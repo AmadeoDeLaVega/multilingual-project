@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nxs ys zs : List Nat\n⊢ xs ++ ys ++ zs = xs ++ (ys ++ zs)\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases xs <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [List.append, List.append_assoc]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [cons_append, cons_append, cons_append, cons_append, cons_append, cons...\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction xs <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

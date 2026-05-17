@@ -1,0 +1,18 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ False → p\n$0.00$"]
+	0 -> 1 [label="rintro ⟨p⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro ⟨⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro ⟨_, rfl⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro (h | h)\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro ⟨i, h⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro ⟨rfl⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="apply not_imp_not.mpr (exists_succ_of_valid p.eq_none)\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro ⟨p, rfl⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p <;> cases p <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro ⟨rfl, rfl⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p <;> simp [*, p]\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

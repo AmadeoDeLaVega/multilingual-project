@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\np : Prop\nhp : p\n⊢ n = n ∧ p\n$0.00$"]
+	0 -> 1 [label="revert hp\n$0.58$"]
+	0 -> 2 [label="rcases Nat.eq_zero_or_pos n with rfl | hp\n$0.70$"]
+	0 -> 3 [label="cases n\n$0.50$"]
+	0 -> 4 [label="simp [hp]\ndone\n$-100.00$"]
+	0 -> 5 [label="constructor\n$0.51$"]
+	1 [label="(1/1)\nn : Nat\np : Prop\n⊢ p → n = n ∧ p\n$0.58$"]
+	2 [label="(1/2)\ncase inl\np : Prop\n⊢ p → 0 = 0 ∧ p\n(2/2)\ncase inr\nn : Nat\np : Prop\nhp ...\n$0.70$"]
+	3 [label="(1/2)\ncase zero\np : Prop\nhp : p\n⊢ 0 = 0 ∧ p\n(2/2)\ncase succ\np : Prop\nhp : p...\n$0.50$"]
+	4 [label="not in proof mode\n$-100.00$"]
+	5 [label="(1/2)\ncase left\nn : Nat\np : Prop\nhp : p\n⊢ n = n\n(2/2)\ncase right\nn : Nat\np ...\n$0.51$"]
+}

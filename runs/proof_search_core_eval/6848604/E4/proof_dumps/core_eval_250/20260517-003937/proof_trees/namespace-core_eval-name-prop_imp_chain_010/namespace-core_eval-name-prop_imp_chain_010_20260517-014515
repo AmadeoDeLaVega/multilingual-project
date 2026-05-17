@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nhpr : p → r\nhp : p\n⊢ q → r\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa using hpr\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact fun h => hpr hp\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ true = true ∧ p\n$0.00$"]
+	0 -> 1 [label="simp [hp]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="refine ⟨fun ⟨h, h1⟩ => hp.1⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [hp, hp, hp]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

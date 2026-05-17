@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\n⊢ n + m.succ = (n + m).succ\n$0.00$"]
+	0 -> 1 [label="simp\n$0.35$"]
+	0 -> 2 [label="by_cases h0 : m = 0\n$0.42$"]
+	1 [label="(1/1)\nn m : Nat\n⊢ n + (m + 1) = n + m + 1\n$0.35$"]
+	2 [label="(1/2)\ncase pos\nn m : Nat\nh0 : m = 0\n⊢ n + m.succ = (n + m).succ\n(2/2)\ncase ...\n$0.42$"]
+}

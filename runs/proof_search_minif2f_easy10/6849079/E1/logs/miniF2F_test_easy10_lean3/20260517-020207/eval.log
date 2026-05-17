@@ -1,0 +1,179 @@
+2026-05-17 02:02:07,333 - run_proof_search.py:766 - INFO - Pid: 1904190
+2026-05-17 02:02:07,335 - run_proof_search.py:767 - INFO - Running Experiment: {
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "eval_settings": {
+        "name": "codet5_beam_16",
+        "use_hammer": false,
+        "model_name": "/fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final",
+        "is_seq2seq": true,
+        "max_proof_depth": 20,
+        "max_seq_length": 2048,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "character_per_token": 3.6,
+        "width": 16,
+        "max_tokens_per_action": 200,
+        "do_sample": true,
+        "top_k": 20,
+        "stop_tokens": [
+            "[END]"
+        ],
+        "padding": true,
+        "return_full_text": false,
+        "compute_probabilities": true,
+        "checkpoint_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1/checkpoints",
+        "should_checkpoint": false,
+        "temperature": 0.75,
+        "max_history_messages": 0,
+        "proof_dump_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1/proof_dumps",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": false,
+        "num_goal_per_prompt": null,
+        "search_strategy": "BeamSearch",
+        "search_params": {
+            "beam_width": 16
+        },
+        "proof_search_heuristic": "NegLoglikelihoodMinimizingHeuristic",
+        "model_parallelism": 1,
+        "do_lemmas_discovery": true,
+        "proof_tracer": null
+    },
+    "benchmark": {
+        "name": "miniF2F_test_easy10_lean3",
+        "num_files": 1,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "/tmp/pwmf6849079_0/miniF2F",
+                "files": [
+                    {
+                        "path": "lean/src/test.lean",
+                        "theorems": [
+                            "mathd_algebra_478",
+                            "mathd_algebra_141",
+                            "mathd_numbertheory_3",
+                            "mathd_algebra_209",
+                            "mathd_algebra_33",
+                            "mathd_numbertheory_299",
+                            "amc12b_2020_p2",
+                            "mathd_numbertheory_345",
+                            "mathd_numbertheory_207",
+                            "mathd_numbertheory_342"
+                        ],
+                        "max_retry_attempts_limits": {},
+                        "max_time_limits_in_secs": {}
+                    }
+                ],
+                "negation": false
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": "local.meta.json",
+        "timeout_per_theorem_in_secs": 300,
+        "setup_cmds": []
+    }
+}
+2026-05-17 02:02:07,351 - run_proof_search.py:584 - INFO - Strict time budget across attempts is enabled. Proofs will not be attempted beyond 300 seconds.
+2026-05-17 02:04:04,336 - run_proof_search.py:637 - INFO - Shuffling the discovered lemmas with seed: 3840
+2026-05-17 03:49:08,130 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_algebra_33 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_numbertheory_345 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_numbertheory_299 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_algebra_478 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_algebra_209 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: amc12b_2020_p2 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_numbertheory_207 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_algebra_141 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,131 - run_proof_search.py:701 - INFO - Proof not found for lemma: mathd_numbertheory_3 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,132 - run_proof_search.py:699 - INFO - Proof found for lemma: mathd_numbertheory_342 in file /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+2026-05-17 03:49:08,132 - run_proof_search.py:706 - INFO - Success rate: 1/10 = 0.1 for benchmark: miniF2F_test_easy10_lean3
+2026-05-17 03:49:08,134 - run_proof_search.py:755 - INFO - Finished running experiment: 
+{
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "eval_settings": {
+        "name": "codet5_beam_16",
+        "use_hammer": false,
+        "model_name": "/fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final",
+        "is_seq2seq": true,
+        "max_proof_depth": 20,
+        "max_seq_length": 2048,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "character_per_token": 3.6,
+        "width": 16,
+        "max_tokens_per_action": 200,
+        "do_sample": true,
+        "top_k": 20,
+        "stop_tokens": [
+            "[END]"
+        ],
+        "padding": true,
+        "return_full_text": false,
+        "compute_probabilities": true,
+        "checkpoint_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1/checkpoints/miniF2F_test_easy10_lean3/codet5_beam_16",
+        "should_checkpoint": false,
+        "temperature": 0.75,
+        "max_history_messages": 0,
+        "proof_dump_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1/proof_dumps/miniF2F_test_easy10_lean3/20260517-020207",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": false,
+        "num_goal_per_prompt": null,
+        "search_strategy": "BeamSearch",
+        "search_params": {
+            "beam_width": 16
+        },
+        "proof_search_heuristic": "NegLoglikelihoodMinimizingHeuristic",
+        "model_parallelism": 1,
+        "do_lemmas_discovery": true,
+        "proof_tracer": null
+    },
+    "benchmark": {
+        "name": "miniF2F_test_easy10_lean3",
+        "num_files": 1,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "/tmp/pwmf6849079_0/miniF2F",
+                "files": [
+                    {
+                        "path": "lean/src/test.lean",
+                        "theorems": [
+                            "mathd_algebra_478",
+                            "mathd_algebra_141",
+                            "mathd_numbertheory_3",
+                            "mathd_algebra_209",
+                            "mathd_algebra_33",
+                            "mathd_numbertheory_299",
+                            "amc12b_2020_p2",
+                            "mathd_numbertheory_345",
+                            "mathd_numbertheory_207",
+                            "mathd_numbertheory_342"
+                        ],
+                        "max_retry_attempts_limits": {},
+                        "max_time_limits_in_secs": {}
+                    }
+                ],
+                "negation": false
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": "local.meta.json",
+        "timeout_per_theorem_in_secs": 300,
+        "setup_cmds": []
+    }
+}

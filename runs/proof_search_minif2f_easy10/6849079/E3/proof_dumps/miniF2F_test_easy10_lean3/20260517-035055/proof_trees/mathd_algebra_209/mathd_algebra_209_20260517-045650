@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.00$"]
+	0 -> 1 [label="convert h₂\n$0.46$"]
+	0 -> 2 [label="rw [← h₀, ← h₁, ← h₂]\n$0.56$"]
+	0 -> 3 [label="rw [← h₁]\n$0.43$"]
+	0 -> 4 [label="simp\n$0.40$"]
+	1 [label="(1/2)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.46$"]
+	2 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.56$"]
+	3 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.43$"]
+	4 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.40$"]
+}

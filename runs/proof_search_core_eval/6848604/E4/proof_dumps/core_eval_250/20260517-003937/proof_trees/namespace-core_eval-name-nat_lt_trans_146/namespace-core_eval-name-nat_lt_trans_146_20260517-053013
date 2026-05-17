@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a < b\nhbc : b < c\n⊢ a < c\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases hab\n$0.46$"]
+	0 -> 2 [label="omega\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/2)\ncase refl\na c : Nat\nhbc : a.succ < c\n⊢ a < c\n(2/2)\ncase step\na c m✝ :...\n$0.46$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

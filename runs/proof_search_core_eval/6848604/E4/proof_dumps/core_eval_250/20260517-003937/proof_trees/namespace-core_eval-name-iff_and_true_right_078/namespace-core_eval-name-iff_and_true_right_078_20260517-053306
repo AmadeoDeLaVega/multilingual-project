@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ p ∧ True ↔ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [true_iff]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [false_iff]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [and_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases p <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact ⟨fun ⟨e₁, _⟩ => ⟨h₁, h₂⟩, fun h₁ => ⟨h₂, h₂⟩⟩\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [true_iff, and_imp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p ∧ q ∧ r\n⊢ (p ∧ q) ∧ r\n$0.00$"]
+	0 -> 1 [label="rw [and_comm] at h\n$0.65$"]
+	0 -> 2 [label="cases h\n$0.52$"]
+	0 -> 3 [label="cases h.2\n$0.59$"]
+	0 -> 4 [label="simp [h.2, h.2.1]\n$0.73$"]
+	1 [label="(1/1)\np q r : Prop\nh : (q ∧ r) ∧ p\n⊢ (p ∧ q) ∧ r\n$0.65$"]
+	2 [label="(1/1)\ncase intro\np q r : Prop\nleft✝ : p\nright✝ : q ∧ r\n⊢ (p ∧ q) ∧ r\n$0.52$"]
+	2 -> 5 [label="constructor\n$0.45$"]
+	3 [label="(1/1)\ncase intro\np q r : Prop\nh : p ∧ q ∧ r\nleft✝ : q\nright✝ : r\n⊢ (p ∧ q) ...\n$0.59$"]
+	4 [label="(1/1)\np q r : Prop\nh : p ∧ q ∧ r\n⊢ p\n$0.73$"]
+	5 [label="(1/2)\ncase intro.left\np q r : Prop\nleft✝ : p\nright✝ : q ∧ r\n⊢ p ∧ q\n(2/2)\nc...\n$0.98$"]
+}

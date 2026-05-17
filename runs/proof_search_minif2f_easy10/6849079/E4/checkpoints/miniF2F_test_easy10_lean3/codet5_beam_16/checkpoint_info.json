@@ -1,0 +1,21 @@
+{
+    "checkpoint_file": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E4/checkpoints/miniF2F_test_easy10_lean3/codet5_beam_16/checkpoint_info.json",
+    "logging_dirs": [
+        "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E4/logs/miniF2F_test_easy10_lean3/20260517-053022"
+    ],
+    "proof_dump_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E4/proof_dumps/miniF2F_test_easy10_lean3/20260517-053022",
+    "theorem_maps": {
+        "/tmp/pwmf6849079_2/miniF2F/lean/src/test.lean": {
+            "mathd_algebra_33": false,
+            "mathd_numbertheory_345": false,
+            "mathd_numbertheory_299": false,
+            "mathd_algebra_478": true,
+            "mathd_algebra_209": false,
+            "amc12b_2020_p2": false,
+            "mathd_numbertheory_207": true,
+            "mathd_algebra_141": false,
+            "mathd_numbertheory_3": true,
+            "mathd_numbertheory_342": false
+        }
+    }
+}

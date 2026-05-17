@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ (n :: xs).length = xs.length + 1\n$0.00$"]
+	0 -> 1 [label="simp only [Nat.add_succ, Nat.add_succ, Nat.succ_add]\n$0.57$"]
+	0 -> 2 [label="rw [← Nat.succ_eq_add_one]\n$0.45$"]
+	0 -> 3 [label="rw [List.length_cons]\ndone\n$-100.00$"]
+	0 -> 3 [label="rfl\ndone\n$-100.00$"]
+	0 -> 3 [label="simp [Nat.succ_eq_add_one]\ndone\n$-100.00$"]
+	0 -> 3 [label="rw [← Nat.add_one_eq_succ_iff, Nat.add_one, Nat.add_one_eq_succ_iff]\ndone\n$-100.00$"]
+	0 -> 3 [label="cases xs <;> simp\ndone\n$-100.00$"]
+	0 -> 3 [label="cases n <;> simp [*]\ndone\n$-100.00$"]
+	1 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ (n :: xs).length = (xs.length + 0).succ\n$0.57$"]
+	2 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ (n :: xs).length = xs.length.succ\n$0.45$"]
+	3 [label="not in proof mode\n$-100.00$"]
+}

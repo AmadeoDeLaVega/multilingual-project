@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ 0 < n.succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="exact Nat.succ_pos _\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [Nat.zero_lt]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa using Nat.succ_pos\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [Nat.succ_eq_add_one]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.succ_ne_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.62$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\n⊢ 0 < Nat.succ 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ 0 < (n✝ + 1).su...\n$0.62$"]
+}

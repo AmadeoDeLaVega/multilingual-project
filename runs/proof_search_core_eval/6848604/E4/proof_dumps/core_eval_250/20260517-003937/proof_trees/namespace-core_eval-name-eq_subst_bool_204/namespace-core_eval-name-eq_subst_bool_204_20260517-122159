@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\na b : Bool\nh : a = b\n⊢ (!a) = !b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases h\n$0.56$"]
+	0 -> 2 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="subst_vars\n$0.56$"]
+	1 [label="(1/1)\ncase refl\na : Bool\n⊢ (!a) = !a\n$0.56$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\nb : Bool\n⊢ (!b) = !b\n$0.56$"]
+}

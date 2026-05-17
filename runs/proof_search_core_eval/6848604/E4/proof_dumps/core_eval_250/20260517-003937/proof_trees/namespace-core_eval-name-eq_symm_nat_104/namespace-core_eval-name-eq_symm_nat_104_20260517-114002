@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ m = n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [← h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="revert h\n$0.71$"]
+	0 -> 3 [label="subst m\n$0.69$"]
+	0 -> 4 [label="cases h\n$0.63$"]
+	0 -> 5 [label="cases n\n$0.63$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\nn m : Nat\n⊢ n = m → m = n\n$0.71$"]
+	3 [label="(1/1)\nn : Nat\n⊢ n = n\n$0.69$"]
+	4 [label="(1/1)\ncase refl\nn : Nat\n⊢ n = n\n$0.63$"]
+	5 [label="(1/2)\ncase zero\nm : Nat\nh : 0 = m\n⊢ m = 0\n(2/2)\ncase succ\nm n✝ : Nat\nh : n✝...\n$0.63$"]
+}

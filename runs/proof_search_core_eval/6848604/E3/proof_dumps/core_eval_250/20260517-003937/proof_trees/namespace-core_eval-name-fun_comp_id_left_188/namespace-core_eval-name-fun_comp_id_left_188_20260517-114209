@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nf : Nat → Nat\nn : Nat\n⊢ (fun x => f x) n = f n\n$0.00$"]
+	0 -> 1 [label="unfold f\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> rfl\ndone\n$-100.00$"]
+	0 -> 2 [label="cases n\n$0.36$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase zero\nf : Nat → Nat\n⊢ (fun x => f x) 0 = f 0\n(2/2)\ncase succ\nf : ...\n$0.36$"]
+}

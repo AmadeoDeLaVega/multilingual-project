@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ ¬none = some n\n$0.00$"]
+	0 -> 1 [label="cases n\n$0.52$"]
+	0 -> 2 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp [Nat.not_not.mpr (Nat.not_not.mpr n)]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp\ndone\n$-100.00$"]
+	0 -> 2 [label="simp [Nat.succ_ne_zero]\ndone\n$-100.00$"]
+	0 -> 3 [label="intro h\n$0.55$"]
+	1 [label="(1/2)\ncase zero\n⊢ ¬none = some 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ ¬none = some (n...\n$0.52$"]
+	2 [label="not in proof mode\n$-100.00$"]
+	3 [label="(1/1)\nn : Nat\nh : none = some n\n⊢ False\n$0.55$"]
+}

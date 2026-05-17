@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\np q r s : Prop\nh : (p ∧ q) ∧ r ∧ s\n⊢ q ∧ r\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases h\n$0.62$"]
+	0 -> 2 [label="obtain ⟨a|, ha⟩ := h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\ncase intro\np q r s : Prop\nleft✝ : p ∧ q\nright✝ : r ∧ s\n⊢ q ∧ r\n$0.62$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

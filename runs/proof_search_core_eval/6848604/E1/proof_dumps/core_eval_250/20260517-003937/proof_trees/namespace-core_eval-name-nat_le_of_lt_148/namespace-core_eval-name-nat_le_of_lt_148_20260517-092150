@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\nh : a < b\n⊢ a ≤ b\n$0.00$"]
+	0 -> 1 [label="simpa using Nat.le_of_lt h\ndone\n$-100.00$"]
+	0 -> 1 [label="exact Nat.le_of_lt h\ndone\n$-100.00$"]
+	0 -> 2 [label="cases h\n$0.47$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase refl\na : Nat\n⊢ a ≤ a.succ\n(2/2)\ncase step\na m✝ : Nat\na✝ : a.succ...\n$0.47$"]
+}

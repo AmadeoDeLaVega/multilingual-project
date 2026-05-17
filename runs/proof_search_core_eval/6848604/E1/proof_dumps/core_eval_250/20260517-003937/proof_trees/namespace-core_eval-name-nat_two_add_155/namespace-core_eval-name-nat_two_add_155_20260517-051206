@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ 2 + n = n.succ.succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [Nat.add_comm]\n$0.48$"]
+	0 -> 2 [label="rw [Nat.succ_eq_add_one]\n$0.48$"]
+	0 -> 3 [label="cases n\n$0.43$"]
+	0 -> 4 [label="omega\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\nn : Nat\n⊢ n + 2 = 1 + (n + 1)\n$0.48$"]
+	2 [label="(1/1)\nn : Nat\n⊢ 2 + n = n + 1 + 1\n$0.48$"]
+	3 [label="(1/2)\ncase zero\n⊢ 2 + 0 = (Nat.succ 0).succ\n(2/2)\ncase succ\nn✝ : Nat\n⊢ 2 + ...\n$0.43$"]
+	4 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

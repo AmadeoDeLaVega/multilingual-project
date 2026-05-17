@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nxs : List Nat\n⊢ [] ++ xs = xs\n$0.00$"]
+	0 -> 1 [label="cases xs <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.eq_of_lt_of_le, Nat.add_comm xs]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs <;> simp [*]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

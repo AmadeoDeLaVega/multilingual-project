@@ -1,0 +1,17 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a.succ = c.succ\n$0.00$"]
+	0 -> 1 [label="have := hab\n$0.38$"]
+	0 -> 2 [label="subst hbc\n$0.31$"]
+	0 -> 3 [label="rw [hab, Nat.succ_eq_add_one]\n$0.34$"]
+	0 -> 4 [label="simp [hab]\n$0.30$"]
+	0 -> 5 [label="subst hab\n$0.31$"]
+	0 -> 6 [label="rw [← hbc]\n$0.33$"]
+	0 -> 7 [label="cases hbc\n$0.31$"]
+	1 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\nthis : a = b\n⊢ a.succ = c.succ\n$0.38$"]
+	2 [label="(1/1)\na b : Nat\nhab : a = b\n⊢ a.succ = b.succ\n$0.31$"]
+	3 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ b + 1 = c.succ\n$0.34$"]
+	4 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ b = c\n$0.30$"]
+	5 [label="(1/1)\na c : Nat\nhbc : a = c\n⊢ a.succ = c.succ\n$0.31$"]
+	6 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a.succ = b.succ\n$0.33$"]
+	7 [label="(1/1)\ncase refl\na b : Nat\nhab : a = b\n⊢ a.succ = b.succ\n$0.31$"]
+}

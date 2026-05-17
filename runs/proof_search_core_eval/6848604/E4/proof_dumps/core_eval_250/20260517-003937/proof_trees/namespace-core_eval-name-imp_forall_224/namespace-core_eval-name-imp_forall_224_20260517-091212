@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ True → Nat → p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rintro ⟨h₁, h₂⟩\n$0.71$"]
+	0 -> 2 [label="exact fun h => h (Nat.le_of_lt (Nat.le_of_lt hp))\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [hp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="intros\n$0.62$"]
+	1 [label="(1/1)\ncase intro\np : Prop\nhp : p\n⊢ Nat → p\n$0.71$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\np : Prop\nhp : p\na✝ : True\nx✝ : Nat\n⊢ p\n$0.62$"]
+}

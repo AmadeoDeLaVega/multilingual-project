@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (if false = true then a else b) = b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [if_pos]\n$0.32$"]
+	0 -> 2 [label="simp [if_neg]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="exact Nat.eq_dec_of_ne_zero a b\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [if_pos]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/2)\na b : Nat\n⊢ a = b\n(2/2)\ncase hc\na b : Nat\n⊢ false = true\n$0.32$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

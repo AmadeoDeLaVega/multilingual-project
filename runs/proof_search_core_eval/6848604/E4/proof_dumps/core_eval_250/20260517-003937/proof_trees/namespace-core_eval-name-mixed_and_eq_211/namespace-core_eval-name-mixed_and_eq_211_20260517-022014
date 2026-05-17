@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ n = m ∧ m = n\n$0.00$"]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases m <;> cases n\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa [h] using Nat.eq_sub_of_add_eq_add_of_sub_eq_self h\ndone\n$-100.00$"]
+	0 -> 2 [label="rw [h]\n$0.49$"]
+	0 -> 3 [label="subst h\n$0.47$"]
+	0 -> 4 [label="cases n\n$0.51$"]
+	0 -> 5 [label="cases h\n$0.49$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ m = m ∧ m = m\n$0.49$"]
+	3 [label="(1/1)\nn : Nat\n⊢ n = n ∧ n = n\n$0.47$"]
+	4 [label="(1/2)\ncase zero\nm : Nat\nh : 0 = m\n⊢ 0 = m ∧ m = 0\n(2/2)\ncase succ\nm n✝ : Na...\n$0.51$"]
+	5 [label="(1/1)\ncase refl\nn : Nat\n⊢ n = n ∧ n = n\n$0.49$"]
+}

@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ p ∧ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa using hp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="unfold p\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact ⟨hp, hp⟩\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [hp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp\n$0.48$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\np : Prop\nhp : p\n⊢ p\n$0.48$"]
+}

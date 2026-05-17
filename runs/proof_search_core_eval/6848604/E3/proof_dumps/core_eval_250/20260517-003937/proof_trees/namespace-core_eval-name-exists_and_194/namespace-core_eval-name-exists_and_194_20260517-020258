@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ ∃ x, p\n$0.00$"]
+	0 -> 1 [label="simpa only [← hp.isAux.isAux, h] using hp.isAux.isAux₂\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa using hp\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

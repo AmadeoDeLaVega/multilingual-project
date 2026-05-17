@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ n + 0 = m\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rwa [Nat.add_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="omega\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h, Nat.add_zero, Nat.add_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="subst m\n$0.59$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\nn : Nat\n⊢ n + 0 = n\n$0.59$"]
+}

@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nh : p ∧ q\n⊢ q\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="exact h.2\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact h.right\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="revert h\n$0.59$"]
+	0 -> 3 [label="cases h\n$0.51$"]
+	0 -> 4 [label="rcases h with ⟨_, h⟩\n$0.62$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\np q : Prop\n⊢ p ∧ q → q\n$0.59$"]
+	3 [label="(1/1)\ncase intro\np q : Prop\nleft✝ : p\nright✝ : q\n⊢ q\n$0.51$"]
+	4 [label="(1/1)\ncase intro\np q : Prop\nleft✝ : p\nh : q\n⊢ q\n$0.62$"]
+}

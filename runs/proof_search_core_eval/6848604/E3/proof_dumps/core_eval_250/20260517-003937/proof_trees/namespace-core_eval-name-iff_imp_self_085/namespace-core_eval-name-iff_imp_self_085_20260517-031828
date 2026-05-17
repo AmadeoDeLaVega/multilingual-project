@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ p → p ↔ True\n$0.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="rintro h\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

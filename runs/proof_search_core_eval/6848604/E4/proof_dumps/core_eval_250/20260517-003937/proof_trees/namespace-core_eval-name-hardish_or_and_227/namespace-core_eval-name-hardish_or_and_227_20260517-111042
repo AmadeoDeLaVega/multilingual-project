@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p ∧ q ∨ p ∧ r\n⊢ p ∧ (q ∨ r)\n$0.00$"]
+	0 -> 1 [label="rcases h with ⟨r', h'⟩\n$0.59$"]
+	0 -> 2 [label="cases h\n$0.49$"]
+	0 -> 3 [label="simp only [h, or_self_iff] at h\n$0.67$"]
+	1 [label="(1/2)\ncase inl.intro\np q r : Prop\nr' : p\nh' : q\n⊢ p ∧ (q ∨ r)\n(2/2)\ncase in...\n$0.59$"]
+	2 [label="(1/2)\ncase inl\np q r : Prop\nh✝ : p ∧ q\n⊢ p ∧ (q ∨ r)\n(2/2)\ncase inr\np q r :...\n$0.49$"]
+	3 [label="(1/1)\np q r : Prop\nh : True\n⊢ p ∧ (q ∨ r)\n$0.67$"]
+}

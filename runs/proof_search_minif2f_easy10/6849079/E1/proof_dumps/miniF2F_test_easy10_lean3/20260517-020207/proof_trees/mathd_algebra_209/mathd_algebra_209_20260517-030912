@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.00$"]
+	0 -> 1 [label="simp [← h₀, h₂]\n$0.50$"]
+	0 -> 2 [label="rw [← h₁, ← h₂, ← h₁]\n$0.51$"]
+	0 -> 3 [label="simp [h₁, h₂]\n$0.41$"]
+	0 -> 3 [label="simp [h₁]\n$0.39$"]
+	0 -> 4 [label="have h₂1 : σ.inv_fun 1 = 1 := by norm_num\n$0.63$"]
+	1 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.50$"]
+	2 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.51$"]
+	3 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.39$"]
+	4 [label="(1/1)\nσ : ℝ ≃ ℝ\nh₀ : σ.inv_fun 2 = 10\nh₁ : σ.inv_fun 10 = 1\nh₂ : σ.inv_fun ...\n$0.63$"]
+}

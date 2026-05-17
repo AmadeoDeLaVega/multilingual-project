@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬(p ∨ q)\n$0.00$"]
+	0 -> 1 [label="simp only [not_or, not_or]\n$0.58$"]
+	0 -> 2 [label="simp [hp]\n$0.46$"]
+	1 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬p ∧ ¬q\n$0.58$"]
+	2 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬q\n$0.46$"]
+}

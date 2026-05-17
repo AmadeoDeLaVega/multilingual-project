@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p → q → r\nhp : p\nhq : q\n⊢ r\n$0.00$"]
+	0 -> 1 [label="revert hp hq\n$0.85$"]
+	1 [label="(1/1)\np q r : Prop\nh : p → q → r\n⊢ p → q → r\n$0.85$"]
+}

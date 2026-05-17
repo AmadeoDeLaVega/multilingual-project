@@ -1,7 +1,0 @@
-{
-  "repo": "amitayusht/ProofWala-Multilingual",
-  "revision": "main",
-  "downloaded_at": "2026-05-10T20:53:27.692834+00:00",
-  "format": "transformers",
-  "weight_file": "model.safetensors"
-}

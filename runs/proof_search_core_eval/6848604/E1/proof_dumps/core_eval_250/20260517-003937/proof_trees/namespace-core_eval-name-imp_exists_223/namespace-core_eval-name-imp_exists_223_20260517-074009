@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ True → ∃ x, p\n$0.00$"]
+	0 -> 1 [label="intro hp\n$0.56$"]
+	0 -> 2 [label="intro h\n$0.51$"]
+	0 -> 3 [label="rintro ⟨r, hr⟩\n$0.59$"]
+	0 -> 3 [label="rintro ⟨x, rfl⟩\n$0.52$"]
+	0 -> 3 [label="rintro ⟨x, hx⟩\n$0.51$"]
+	0 -> 4 [label="simp\n$0.51$"]
+	0 -> 5 [label="simp [hp]\ndone\n$-100.00$"]
+	1 [label="(1/1)\np : Prop\nhp✝ : p\nhp : True\n⊢ ∃ x, p\n$0.56$"]
+	2 [label="(1/1)\np : Prop\nhp : p\nh : True\n⊢ ∃ x, p\n$0.51$"]
+	3 [label="(1/1)\ncase intro\np : Prop\nhp : p\n⊢ ∃ x, p\n$0.51$"]
+	4 [label="(1/1)\np : Prop\nhp✝ : p\nhp : True\n⊢ p\n$0.51$"]
+	5 [label="not in proof mode\n$-100.00$"]
+}

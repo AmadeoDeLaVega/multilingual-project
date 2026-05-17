@@ -1,0 +1,239 @@
+{
+    "path": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E3/proof_dumps/miniF2F_test_easy10_lean3/20260517-035055/proof_results.json",
+    "theorem_map": {
+        "/tmp/pwmf6849079_1/miniF2F/lean/src/test.lean": {
+            "mathd_algebra_33": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_33",
+                "proof_steps": [],
+                "proof_time_in_secs": 903.1739954948425,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_345": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_345",
+                "proof_steps": [],
+                "proof_time_in_secs": 406.4290347099304,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_299": {
+                "proof_file": "/tmp/pwmf6849079_1/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_299",
+                "proof_steps": [],
+                "proof_time_in_secs": 87.71603465080261,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_478": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_478",
+                "proof_steps": [],
+                "proof_time_in_secs": 1020.959310054779,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_209": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_209",
+                "proof_steps": [],
+                "proof_time_in_secs": 1290.3895602226257,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12b_2020_p2": {
+                "proof_file": "/tmp/pwmf6849079_1/miniF2F/lean/src/test.lean",
+                "proof_found": true,
+                "lemma_name": "theorem amc12b_2020_p2 :\n((100 ^ 2 - 7 ^ 2):\u211d) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1 :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "ring1"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "end"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 114.8097608089447,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_207": {
+                "proof_file": "/tmp/pwmf6849079_1/miniF2F/lean/src/test.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mathd_numbertheory_207 :\n8 * 9^2 + 5 * 9 + 2 = 695 :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "norm_num"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "end"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 100.66168260574341,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_141": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_141",
+                "proof_steps": [],
+                "proof_time_in_secs": 764.7976515293121,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_3": {
+                "proof_file": "/tmp/pwmf6849079_1/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_3",
+                "proof_steps": [],
+                "proof_time_in_secs": 107.49888920783997,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_342": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_342",
+                "proof_steps": [],
+                "proof_time_in_secs": 375.25085735321045,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            }
+        }
+    }
+}

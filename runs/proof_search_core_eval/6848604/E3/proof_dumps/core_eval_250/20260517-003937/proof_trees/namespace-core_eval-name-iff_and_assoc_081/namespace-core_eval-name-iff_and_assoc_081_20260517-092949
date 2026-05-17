@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\n⊢ (p ∧ q) ∧ r ↔ p ∧ q ∧ r\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa only [or_imp, and_imp, and_left_comm, and_comm, and_imp] using and_co...\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="constructor\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="constructor <;> intro h <;> simp [*, h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp only [or_imp, and_comm, and_assoc]\n$0.55$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\np q r : Prop\n⊢ r ∧ p ∧ q ↔ p ∧ q ∧ r\n$0.55$"]
+}

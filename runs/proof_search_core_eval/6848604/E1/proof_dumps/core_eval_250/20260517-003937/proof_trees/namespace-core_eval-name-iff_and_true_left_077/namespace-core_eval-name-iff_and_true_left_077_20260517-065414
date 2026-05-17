@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ True ∧ p ↔ p\n$0.00$"]
+	0 -> 1 [label="simp [false_iff_true]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [not_or]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [true_and_iff, true_and_iff, and_assoc, and_assoc]\ndone\n$-100.00$"]
+	0 -> 1 [label="constructor <;> intro h\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [False.elim]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

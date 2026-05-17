@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nh : p ↔ q\nhp : p\n⊢ q\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases p <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa [hp] using h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [← h]\n$0.44$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\np q : Prop\nh : p ↔ q\nhp : p\n⊢ p\n$0.44$"]
+}

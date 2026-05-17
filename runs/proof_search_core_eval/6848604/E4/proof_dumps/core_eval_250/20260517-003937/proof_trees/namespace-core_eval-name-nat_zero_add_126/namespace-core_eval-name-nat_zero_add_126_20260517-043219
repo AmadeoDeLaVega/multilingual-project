@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ 0 + n = n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [Nat.zero_add]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction n <;> simp [Nat.add_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.add_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact Nat.add_zero n\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.zero_add]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction n <;> simp [*, Nat.add_comm, Nat.add_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.57$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\n⊢ 0 + 0 = 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ 0 + (n✝ + 1) = n✝ + ...\n$0.57$"]
+}

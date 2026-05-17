@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nh : p → False\n⊢ ¬p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa only [not_and, not_false_iff] using h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa only [false_iff, Bool.true_iff] using h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [← not_not]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa using h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact h\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

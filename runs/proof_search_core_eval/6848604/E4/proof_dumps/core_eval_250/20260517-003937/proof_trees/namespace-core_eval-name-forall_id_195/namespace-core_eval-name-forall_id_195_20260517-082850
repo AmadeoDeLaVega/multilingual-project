@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np : Nat → Prop\nh : ∀ (n : Nat), p n\nm : Nat\n⊢ p m\n$0.00$"]
+	0 -> 1 [label="cases m <;> intros <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="exact h m\ndone\n$-100.00$"]
+	0 -> 1 [label="simp only [Nat.succ_eq_add_one, h m]\ndone\n$-100.00$"]
+	0 -> 1 [label="exact h _ _\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [h m]\ndone\n$-100.00$"]
+	0 -> 1 [label="apply h\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ Nat → p\n$0.00$"]
+	0 -> 1 [label="rintro ⟨h₁, h₂⟩\n$0.47$"]
+	0 -> 1 [label="rintro ⟨h | h, h⟩\n$0.55$"]
+	0 -> 2 [label="exact fun h => hp\ndone\n$-100.00$"]
+	0 -> 2 [label="simp\ndone\n$-100.00$"]
+	0 -> 2 [label="rw [← Bool.ne_iff]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp [hp]\ndone\n$-100.00$"]
+	0 -> 3 [label="intros\n$0.41$"]
+	1 [label="(1/2)\ncase zero\np : Prop\nhp : p\n⊢ p\n(2/2)\ncase succ\np : Prop\nhp : p\nn✝ : Na...\n$0.47$"]
+	2 [label="not in proof mode\n$-100.00$"]
+	3 [label="(1/1)\np : Prop\nhp : p\nx✝ : Nat\n⊢ p\n$0.41$"]
+}

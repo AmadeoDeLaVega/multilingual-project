@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nh : a = b\n⊢ c * a = c * b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h, Nat.mul_left_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h, Nat.mul_comm, Nat.mul_comm, Nat.mul_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="subst h\n$0.54$"]
+	0 -> 3 [label="subst_vars\n$0.60$"]
+	0 -> 4 [label="by_cases hab : b = 0\n$0.76$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\na c : Nat\n⊢ c * a = c * a\n$0.54$"]
+	3 [label="(1/1)\nb c : Nat\n⊢ c * b = c * b\n$0.60$"]
+	4 [label="(1/2)\ncase pos\na b c : Nat\nh : a = b\nhab : b = 0\n⊢ c * a = c * b\n(2/2)\ncase...\n$0.76$"]
+}

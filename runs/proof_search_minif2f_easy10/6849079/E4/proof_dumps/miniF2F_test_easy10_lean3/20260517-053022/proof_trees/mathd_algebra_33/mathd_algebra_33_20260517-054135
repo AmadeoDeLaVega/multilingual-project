@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\nx y z : ℝ\nh₀ : x ≠ 0\nh₁ : 2 * x = 5 * y\nh₂ : 7 * y = 10 * z\n⊢ z / x =...\n$0.00$"]
+	0 -> 1 [label="rcases eq_or_ne x 0 with (rfl | h₁)\n$0.40$"]
+	0 -> 1 [label="rcases eq_or_ne x 0 with rfl | h₁\n$0.41$"]
+	1 [label="(1/2)\ny z : ℝ\nh₂ : 7 * y = 10 * z\nh₀ : 0 ≠ 0\nh₁ : 2 * 0 = 5 * y\n⊢ z / 0 = 7...\n$0.40$"]
+}

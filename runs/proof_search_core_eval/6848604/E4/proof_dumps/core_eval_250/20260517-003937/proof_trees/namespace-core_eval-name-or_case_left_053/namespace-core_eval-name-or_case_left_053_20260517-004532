@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nhp : p\n⊢ p ∧ q ∨ p ∧ r → p\n$0.00$"]
+	0 -> 1 [label="exact fun ⟨h⟩ => ⟨p, h⟩\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [hp]\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa [hp] using hp\ndone\n$-100.00$"]
+	0 -> 2 [label="rintro ⟨h₂, h₂⟩\n$0.54$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase inl.intro\np q r : Prop\nhp h₂✝ : p\nh₂ : q\n⊢ p\n(2/2)\ncase inr\np q ...\n$0.54$"]
+}

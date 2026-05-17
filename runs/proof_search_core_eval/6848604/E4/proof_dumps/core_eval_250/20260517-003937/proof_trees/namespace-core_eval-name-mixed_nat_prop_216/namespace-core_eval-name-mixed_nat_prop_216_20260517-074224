@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\np : Prop\nhp : p\n⊢ n = n.succ ∨ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases p <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact Or.inr hp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.70$"]
+	0 -> 3 [label="rcases n with (_ | _ | hp)\n$0.94$"]
+	0 -> 4 [label="rw [Nat.succ_eq_add_one]\n$0.77$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\np : Prop\nhp : p\n⊢ 0 = Nat.succ 0 ∨ p\n(2/2)\ncase succ\np : Pr...\n$0.70$"]
+	3 [label="(1/3)\ncase zero\np : Prop\nhp : p\n⊢ 0 = Nat.succ 0 ∨ p\n(2/3)\ncase succ.zero\np...\n$0.94$"]
+	4 [label="(1/1)\nn : Nat\np : Prop\nhp : p\n⊢ n = n + 1 ∨ p\n$0.77$"]
+}

@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ True → n = n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa using n.eq_one_of_nat_eq_nat _\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp_all\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.ne_zero_iff_eq_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases n\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="intro h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.not_le]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="intro\n$0.75$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\nn : Nat\na✝ : True\n⊢ n = n\n$0.75$"]
+}

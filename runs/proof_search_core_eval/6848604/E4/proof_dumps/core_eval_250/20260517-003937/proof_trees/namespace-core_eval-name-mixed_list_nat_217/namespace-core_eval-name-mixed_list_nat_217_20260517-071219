@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ (n :: xs).length = xs.length + 1\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases xs\n$0.64$"]
+	0 -> 2 [label="induction xs <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [Nat.succ_eq_add_one, List.length_cons]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [Nat.succ_eq_add_one]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [Nat.lt_succ_self]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="rfl\n$0.62$"]
+	1 [label="(1/2)\ncase nil\nn : Nat\n⊢ [n].length = [].length + 1\n(2/2)\ncase cons\nn head✝...\n$0.64$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\ncase cons\nn head✝ : Nat\ntail✝ : List Nat\n⊢ (n :: head✝ :: tail✝).leng...\n$0.62$"]
+}

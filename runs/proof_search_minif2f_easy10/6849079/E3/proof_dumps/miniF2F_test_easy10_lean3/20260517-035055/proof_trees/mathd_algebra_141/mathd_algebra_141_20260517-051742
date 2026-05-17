@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na b : ℝ\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\n⊢ a ^ 2 + b ^ 2 = 369\n$0.00$"]
+	0 -> 1 [label="rcases eq_or_ne b 0 with rfl | hne\n$0.23$"]
+	1 [label="(1/2)\na : ℝ\nh₁ : a * 0 = 180\nh₂ : 2 * (a + 0) = 54\n⊢ a ^ 2 + 0 ^ 2 = 369\n(2...\n$0.23$"]
+}

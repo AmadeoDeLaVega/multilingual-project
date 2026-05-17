@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\n⊢ n * m = m * n\n$0.00$"]
+	0 -> 1 [label="rw [Nat.mul_comm, Nat.mul_comm, Nat.mul_comm]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [Nat.mul_comm, Nat.mul_comm]\ndone\n$-100.00$"]
+	0 -> 1 [label="rcases m with (⟨n, rfl⟩)\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp [Nat.mul_comm, Nat.mul_comm]\ndone\n$-100.00$"]
+	0 -> 1 [label="rcases n with _ | m\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.mul_comm]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [Nat.mul_comm]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

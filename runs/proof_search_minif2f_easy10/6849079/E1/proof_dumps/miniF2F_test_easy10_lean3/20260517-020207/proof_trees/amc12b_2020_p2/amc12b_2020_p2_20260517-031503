@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\n⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((...\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [div_eq_mul_inv]\n$0.47$"]
+	0 -> 2 [label="ring\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="norm_num\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="field_simp\n$0.41$"]
+	1 [label="(1/1)\n⊢ (100 ^ 2 - 7 ^ 2) * (70 ^ 2 - 11 ^ 2)⁻¹ * ((70 - 11) * (70 + 11) / ...\n$0.47$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\n⊢ (100 ^ 2 - 7 ^ 2) * ((70 - 11) * (70 + 11)) / ((70 ^ 2 - 11 ^ 2) * ...\n$0.41$"]
+}

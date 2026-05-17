@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ n = m ∧ m = n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [h]\n$0.48$"]
+	0 -> 2 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simpa [h] using\n  Nat.eq_of_lt_of_lt <| Nat.le_refl _\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="subst_vars\n$0.53$"]
+	0 -> 4 [label="subst h\n$0.46$"]
+	1 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ m = m ∧ m = m\n$0.48$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\nm : Nat\n⊢ m = m ∧ m = m\n$0.53$"]
+	4 [label="(1/1)\nn : Nat\n⊢ n = n ∧ n = n\n$0.46$"]
+}

@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p ∧ r ∨ q ∧ r\n⊢ r\n$0.00$"]
+	0 -> 1 [label="rcases h with ⟨p, hp⟩\n$0.13$"]
+	0 -> 2 [label="cases h\n$0.10$"]
+	0 -> 3 [label="rcases h with ⟨h, h⟩\n$0.13$"]
+	1 [label="(1/2)\ncase inl.intro\np✝ q r : Prop\np : p✝\nhp : r\n⊢ r\n(2/2)\ncase inr\np q r :...\n$0.13$"]
+	2 [label="(1/2)\ncase inl\np q r : Prop\nh✝ : p ∧ r\n⊢ r\n(2/2)\ncase inr\np q r : Prop\nh✝ :...\n$0.10$"]
+	3 [label="(1/2)\ncase inl.intro\np q r : Prop\nh✝ : p\nh : r\n⊢ r\n(2/2)\ncase inr\np q r : P...\n$0.13$"]
+	3 -> 4 [label="exact h\n$0.66$"]
+	4 [label="(1/1)\ncase inr\np q r : Prop\nh✝ : q ∧ r\n⊢ r\n$0.79$"]
+}

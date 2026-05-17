@@ -1,0 +1,17 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\n⊢ (p ∧ q) ∧ r ↔ p ∧ q ∧ r\n$0.00$"]
+	0 -> 1 [label="constructor <;> intro h\n$0.30$"]
+	0 -> 2 [label="rw [and_iff_right]\n$0.37$"]
+	0 -> 3 [label="constructor <;> intro H\n$0.34$"]
+	0 -> 4 [label="constructor\n$0.27$"]
+	0 -> 5 [label="rw [← and_assoc, and_comm]\n$0.34$"]
+	1 [label="(1/2)\ncase mp\np q r : Prop\nh : (p ∧ q) ∧ r\n⊢ p ∧ q ∧ r\n(2/2)\ncase mpr\np q r...\n$0.30$"]
+	2 [label="(1/2)\np q r : Prop\n⊢ r ↔ p ∧ q ∧ r\n(2/2)\np q r : Prop\n⊢ p ∧ q\n$0.37$"]
+	3 [label="(1/2)\ncase mp\np q r : Prop\nH : (p ∧ q) ∧ r\n⊢ p ∧ q ∧ r\n(2/2)\ncase mpr\np q r...\n$0.34$"]
+	4 [label="(1/2)\ncase mp\np q r : Prop\n⊢ (p ∧ q) ∧ r → p ∧ q ∧ r\n(2/2)\ncase mpr\np q r :...\n$0.27$"]
+	4 -> 6 [label="all_goals rintro ⟨r, hr⟩\n$0.41$"]
+	4 -> 7 [label="rintro ⟨h₁, h₂⟩\n$0.33$"]
+	5 [label="(1/2)\np q r : Prop\n⊢ r ↔ r ∧ p ∧ q\n(2/2)\np q r : Prop\n⊢ p ∧ q\n$0.34$"]
+	6 [label="(1/2)\ncase mp.intro\np q r✝ : Prop\nr : p ∧ q\nhr : r✝\n⊢ p ∧ q ∧ r✝\n(2/2)\ncase...\n$0.68$"]
+	7 [label="(1/2)\ncase mp.intro\np q r : Prop\nh₁ : p ∧ q\nh₂ : r\n⊢ p ∧ q ∧ r\n(2/2)\ncase m...\n$0.60$"]
+}

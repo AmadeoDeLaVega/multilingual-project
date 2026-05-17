@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nh : p ∧ p\n⊢ p\n$0.00$"]
+	0 -> 1 [label="rcases h with ⟨h⟩\n$0.69$"]
+	0 -> 2 [label="rcases h with ⟨p', hp⟩\n$0.74$"]
+	0 -> 3 [label="simpa using h\ndone\n$-100.00$"]
+	0 -> 4 [label="cases h\n$0.58$"]
+	1 [label="(1/1)\ncase intro\np : Prop\nh right✝ : p\n⊢ p\n$0.69$"]
+	2 [label="(1/1)\ncase intro\np : Prop\np' hp : p\n⊢ p\n$0.74$"]
+	3 [label="not in proof mode\n$-100.00$"]
+	4 [label="(1/1)\ncase intro\np : Prop\nleft✝ right✝ : p\n⊢ p\n$0.58$"]
+}

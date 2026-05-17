@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\n⊢ (fun x => n) m = n\n$0.00$"]
+	0 -> 1 [label="simp [Nat.zero_eq]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.eq_of_le_of_le (Nat.le_of_eq_succ_lt (Nat.le_of_lt_succ (Nat.le_o...\n$-100.00$"]
+	0 -> 1 [label="dsimp only [Nat.succ_pred]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases' n with n\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n\ndone\n$-100.00$"]
+	0 -> 1 [label="cases m <;> simp\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\n⊢ (p ∨ q) ∨ r ↔ p ∨ q ∨ r\n$0.00$"]
+	0 -> 1 [label="simp [and_comm, or_comm]\n$0.38$"]
+	1 [label="(1/1)\np q r : Prop\n⊢ r ∨ p ∨ q ↔ p ∨ q ∨ r\n$0.38$"]
+}

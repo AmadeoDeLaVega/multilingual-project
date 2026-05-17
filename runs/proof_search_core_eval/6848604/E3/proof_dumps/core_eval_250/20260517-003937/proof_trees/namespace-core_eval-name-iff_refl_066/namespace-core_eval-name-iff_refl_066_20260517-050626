@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ p ↔ p\n$0.00$"]
+	0 -> 1 [label="refine' ⟨fun h => _, fun h => _⟩\n$0.28$"]
+	0 -> 2 [label="constructor\n$0.24$"]
+	1 [label="(1/2)\ncase refine'_1\np : Prop\nh : p\n⊢ p\n(2/2)\ncase refine'_2\np : Prop\nh : p...\n$0.28$"]
+	2 [label="(1/2)\ncase mp\np : Prop\n⊢ p → p\n(2/2)\ncase mpr\np : Prop\n⊢ p → p\n$0.24$"]
+}

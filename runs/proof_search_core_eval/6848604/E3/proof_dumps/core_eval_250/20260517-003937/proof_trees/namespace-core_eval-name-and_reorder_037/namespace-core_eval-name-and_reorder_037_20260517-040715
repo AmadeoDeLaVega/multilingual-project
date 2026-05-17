@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np q r s : Prop\nh : ((p ∧ q) ∧ r) ∧ s\n⊢ p ∧ q ∧ r ∧ s\n$0.00$"]
+	0 -> 1 [label="cases h\n$0.52$"]
+	1 [label="(1/1)\ncase intro\np q r s : Prop\nleft✝ : (p ∧ q) ∧ r\nright✝ : s\n⊢ p ∧ q ∧ r ...\n$0.52$"]
+	1 -> 2 [label="simp [*]\ndone\n$-100.00$"]
+	2 [label="not in proof mode\n$-99.48$"]
+}

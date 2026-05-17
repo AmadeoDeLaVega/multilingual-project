@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\nu : Unit\n⊢ u = ()\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="ext x\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases u <;> simp [Unit.unit]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="ext\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases u\n$0.75$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\ncase unit\n⊢ PUnit.unit = ()\n$0.75$"]
+}

@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nf : Nat → Nat\nn : Nat\n⊢ f n = f n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases n <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases n\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction n <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

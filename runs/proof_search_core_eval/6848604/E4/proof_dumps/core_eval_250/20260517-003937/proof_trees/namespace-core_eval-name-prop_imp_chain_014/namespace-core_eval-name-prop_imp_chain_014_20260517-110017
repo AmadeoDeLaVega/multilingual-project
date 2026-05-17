@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nh : q\n⊢ p → q\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact fun h => h.symm\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="intro H\n$0.52$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\np q : Prop\nh : q\nH : p\n⊢ q\n$0.52$"]
+}

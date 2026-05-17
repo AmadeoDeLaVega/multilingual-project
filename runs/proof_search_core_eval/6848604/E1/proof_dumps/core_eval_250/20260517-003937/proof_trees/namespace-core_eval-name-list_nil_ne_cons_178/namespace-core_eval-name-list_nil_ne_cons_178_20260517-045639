@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ ¬[] = n :: xs\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [Nat.lt_succ_iff]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.le_add_right, Nat.le_add_right, Nat.le_add_left]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.56$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\nxs : List Nat\n⊢ ¬[] = 0 :: xs\n(2/2)\ncase succ\nxs : List Nat...\n$0.56$"]
+}

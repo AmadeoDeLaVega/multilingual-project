@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (if true = true then a else b) = a\n$0.00$"]
+	0 -> 1 [label="rw [if_pos rfl]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="split <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases b <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="split <;> simp_all\ndone\n$-100.00$"]
+	0 -> 2 [label="simp only [Nat.succ_eq_add_one]\n$0.40$"]
+	0 -> 3 [label="split\n$0.31$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/1)\na b : Nat\n⊢ (if True then a else b) = a\n$0.40$"]
+	3 [label="(1/2)\ncase isTrue\na b : Nat\nh✝ : true = true\n⊢ a = a\n(2/2)\ncase isFalse\na b...\n$0.31$"]
+}

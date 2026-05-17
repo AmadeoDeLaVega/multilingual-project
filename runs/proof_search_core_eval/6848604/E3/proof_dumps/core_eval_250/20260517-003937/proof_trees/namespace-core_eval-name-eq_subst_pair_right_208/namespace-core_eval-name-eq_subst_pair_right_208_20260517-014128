@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nh : a = b\n⊢ (c, a) = (c, b)\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases c <;> simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

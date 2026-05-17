@@ -1,0 +1,53 @@
+benchmark:
+  name: core_eval_250
+  num_files: 1
+  language: LEAN4
+  few_shot_data_path_for_retrieval: null
+  few_shot_metadata_filename_for_retrieval: null
+  dfs_data_path_for_retrieval: null
+  dfs_metadata_filename_for_retrieval: local.meta.json
+  theorem_cnt: 250
+  timeout_per_theorem_in_secs: 120
+  datasets:
+  - project: <root>/src/proof_wala/data/proofs/lean/lean4_proj
+    files:
+    - path: Lean4Proj/CoreEval.lean
+      theorems: '*'
+eval_settings:
+  name: codet5_beam_16
+  use_hammer: false
+  model_name: /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final
+  is_seq2seq: true
+  max_proof_depth: 20
+  max_seq_length: 2048
+  timeout_in_secs: 120
+  proof_retries: 1
+  character_per_token: 3.6
+  width: 16
+  max_tokens_per_action: 200
+  temperature: 0.75
+  do_sample: true
+  top_k: 20
+  stop_tokens:
+  - '[END]'
+  padding: true
+  return_full_text: false
+  compute_probabilities: true
+  checkpoint_dir: /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E1/checkpoints
+  should_checkpoint: true
+  proof_dump_dir: /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E1/proof_dumps
+  use_human_readable_proof_context: true
+  sample: 1.0
+  sample_seed: 3840
+  use_example_retrieval: false
+  always_use_useful_theorem_retrieval: false
+  num_goal_per_prompt: null
+  search_strategy: BeamSearch
+  search_params:
+    beam_width: 16
+  proof_search_heuristic: NegLoglikelihoodMinimizingHeuristic
+  model_parallelism: 1
+env_settings:
+  name: bm25_retrieval
+  retrieval_strategy: BM25
+log_dir: /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_core_eval/6848604/E1/logs

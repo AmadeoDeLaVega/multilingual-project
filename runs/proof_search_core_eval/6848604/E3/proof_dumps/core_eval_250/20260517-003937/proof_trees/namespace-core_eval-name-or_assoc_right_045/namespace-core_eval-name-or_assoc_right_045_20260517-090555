@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p ∨ q ∨ r\n⊢ (p ∨ q) ∨ r\n$0.00$"]
+	0 -> 1 [label="left\n$0.46$"]
+	0 -> 2 [label="cases h\n$0.42$"]
+	0 -> 3 [label="right\n$0.43$"]
+	1 [label="(1/1)\ncase h\np q r : Prop\nh : p ∨ q ∨ r\n⊢ p ∨ q\n$0.46$"]
+	2 [label="(1/2)\ncase inl\np q r : Prop\nh✝ : p\n⊢ (p ∨ q) ∨ r\n(2/2)\ncase inr\np q r : Pro...\n$0.42$"]
+	2 -> 4 [label="left\n$0.14$"]
+	2 -> 5 [label="right\n$0.13$"]
+	3 [label="(1/1)\ncase h\np q r : Prop\nh : p ∨ q ∨ r\n⊢ r\n$0.43$"]
+	4 [label="(1/2)\ncase inl.h\np q r : Prop\nh✝ : p\n⊢ p ∨ q\n(2/2)\ncase inr\np q r : Prop\nh✝...\n$0.56$"]
+	5 [label="(1/2)\ncase inl.h\np q r : Prop\nh✝ : p\n⊢ r\n(2/2)\ncase inr\np q r : Prop\nh✝ : q...\n$0.56$"]
+}

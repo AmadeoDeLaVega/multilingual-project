@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\n⊢ n + m.succ = (n + m).succ\n$0.00$"]
+	0 -> 1 [label="induction m <;> simp [*]\n$0.47$"]
+	0 -> 2 [label="simp\n$0.39$"]
+	0 -> 3 [label="rcases m with ⟨n, rfl⟩\n$0.50$"]
+	0 -> 4 [label="cases n <;> rfl\ndone\n$-100.00$"]
+	0 -> 4 [label="rw [Nat.add_succ]\ndone\n$-100.00$"]
+	0 -> 5 [label="by_cases h : n.succ = n\n$0.56$"]
+	1 [label="(1/1)\ncase succ\nn n✝ : Nat\na✝ : n + n✝.succ = (n + n✝).succ\n⊢ n + (n✝ + 1 +...\n$0.47$"]
+	2 [label="(1/1)\nn m : Nat\n⊢ n + (m + 1) = n + m + 1\n$0.39$"]
+	3 [label="(1/2)\ncase zero\nn : Nat\n⊢ n + Nat.succ 0 = (n + 0).succ\n(2/2)\ncase succ\nn n...\n$0.50$"]
+	4 [label="not in proof mode\n$-100.00$"]
+	5 [label="(1/2)\ncase pos\nn m : Nat\nh : n.succ = n\n⊢ n + m.succ = (n + m).succ\n(2/2)\nc...\n$0.56$"]
+}

@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\n\n⊢ none = none\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="ext x\n$0.75$"]
+	0 -> 2 [label="cases rfl\n$0.73$"]
+	0 -> 3 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\ncase a\nx : Nat\n⊢ x ∈ none ↔ x ∈ none\n$0.75$"]
+	2 [label="(1/1)\ncase refl\n⊢ none = none\n$0.73$"]
+	3 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

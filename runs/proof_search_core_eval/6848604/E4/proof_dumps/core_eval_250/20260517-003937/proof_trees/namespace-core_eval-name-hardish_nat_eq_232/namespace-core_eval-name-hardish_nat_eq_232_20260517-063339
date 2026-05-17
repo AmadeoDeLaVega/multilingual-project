@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a.succ = c.succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="exact (Nat.succ_eq_add_one_of_ne_zero hab hab).symm\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa [hab, hbc] using Nat.succ_eq_add_one_of_lt hab\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [hbc]\n$0.55$"]
+	0 -> 3 [label="rw [Nat.succ_eq_add_one, Nat.add_comm]\n$0.65$"]
+	0 -> 4 [label="subst_vars\n$0.56$"]
+	0 -> 5 [label="simp [hab]\n$0.53$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a = c\n$0.55$"]
+	3 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ 1 + a = c.succ\n$0.65$"]
+	4 [label="(1/1)\nc : Nat\n⊢ c.succ = c.succ\n$0.56$"]
+	5 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ b = c\n$0.53$"]
+}

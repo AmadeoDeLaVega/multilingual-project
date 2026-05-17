@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ n ≤ n\n$0.00$"]
+	0 -> 1 [label="simpa using n.le_of_le_add_one n\ndone\n$-100.00$"]
+	0 -> 1 [label="induction n <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [nat.le_iff_le_zero]\ndone\n$-100.00$"]
+	0 -> 1 [label="apply Nat.le_of_lt_succ\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa using Nat.le_of_not_le' n\ndone\n$-100.00$"]
+	0 -> 1 [label="induction n using Nat.strong_induction with\n| nil => simp\n| cons n ih =>\n  ...\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 2 [label="cases n\n$0.17$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase zero\n⊢ 0 ≤ 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ n✝ + 1 ≤ n✝ + 1\n$0.17$"]
+}

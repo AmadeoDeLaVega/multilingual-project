@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ ¬[] = n :: xs\n$0.00$"]
+	0 -> 1 [label="norm_cast\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="intro h\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="apply eq_nil_of_nth_nil\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

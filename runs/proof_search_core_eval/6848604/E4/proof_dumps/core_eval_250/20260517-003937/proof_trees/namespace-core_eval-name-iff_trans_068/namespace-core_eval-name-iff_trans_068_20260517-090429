@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nhpq : p ↔ q\nhqr : q ↔ r\n⊢ p ↔ r\n$0.00$"]
+	0 -> 1 [label="have hq' := hpq\n$0.61$"]
+	0 -> 2 [label="simp [hpq]\n$0.48$"]
+	0 -> 3 [label="rw [← hqr]\n$0.50$"]
+	1 [label="(1/1)\np q r : Prop\nhpq : p ↔ q\nhqr : q ↔ r\nhq' : p ↔ q\n⊢ p ↔ r\n$0.61$"]
+	2 [label="(1/1)\np q r : Prop\nhpq : p ↔ q\nhqr : q ↔ r\n⊢ q ↔ r\n$0.48$"]
+	2 -> 4 [label="simpa only [hpq, hqr] using hqr\ndone\n$-100.00$"]
+	2 -> 4 [label="exact hqr\ndone\n$-100.00$"]
+	2 -> 4 [label="rw [hqr]\ndone\n$-100.00$"]
+	2 -> 4 [label="simpa using hqr\ndone\n$-100.00$"]
+	3 [label="(1/1)\np q r : Prop\nhpq : p ↔ q\nhqr : q ↔ r\nhq' : p ↔ q\n⊢ p ↔ q\n$0.50$"]
+	4 [label="not in proof mode\n$-99.52$"]
+}

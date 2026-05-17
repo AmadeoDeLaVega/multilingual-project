@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\nhn : ¬p\n⊢ False\n$0.00$"]
+	0 -> 1 [label="rw [← not_nonempty_iff_eq_empty] at hp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp only [hp, hp, not_true, not_false_iff, not_false_iff] at hn\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [hp] at hn\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

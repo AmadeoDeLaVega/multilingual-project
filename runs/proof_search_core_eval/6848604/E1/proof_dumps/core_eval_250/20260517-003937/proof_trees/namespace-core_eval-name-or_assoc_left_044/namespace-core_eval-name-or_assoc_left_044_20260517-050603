@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : (p ∨ q) ∨ r\n⊢ p ∨ q ∨ r\n$0.00$"]
+	0 -> 1 [label="revert h\n$0.57$"]
+	0 -> 2 [label="cases h\n$0.48$"]
+	1 [label="(1/1)\np q r : Prop\n⊢ (p ∨ q) ∨ r → p ∨ q ∨ r\n$0.57$"]
+	2 [label="(1/2)\ncase inl\np q r : Prop\nh✝ : p ∨ q\n⊢ p ∨ q ∨ r\n(2/2)\ncase inr\np q r : P...\n$0.48$"]
+}

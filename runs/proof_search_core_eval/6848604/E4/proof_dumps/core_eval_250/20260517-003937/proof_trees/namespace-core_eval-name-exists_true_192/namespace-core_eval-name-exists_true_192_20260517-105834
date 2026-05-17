@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\n\n⊢ ∃ x, True\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa using (exists_ne_zero_of_mem_of_mem (mem_top _)).elim\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa using exists_pos_of_mem_nhds (@mem_range _ _ _ _ _ _ _ _ _ fun x => _...\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases' exists_pos_of_ne (zero_lt_one' ℝ) with _ _\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact not_exists.1 <| not_exists.1 <| not_mem_empty _ _\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

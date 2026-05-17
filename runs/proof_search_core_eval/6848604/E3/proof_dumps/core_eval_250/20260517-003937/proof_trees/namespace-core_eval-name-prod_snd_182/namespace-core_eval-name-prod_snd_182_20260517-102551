@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (a, b).snd = b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases a\n$0.45$"]
+	0 -> 2 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/2)\ncase zero\nb : Nat\n⊢ (0, b).snd = b\n(2/2)\ncase succ\nb n✝ : Nat\n⊢ (n✝ +...\n$0.45$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

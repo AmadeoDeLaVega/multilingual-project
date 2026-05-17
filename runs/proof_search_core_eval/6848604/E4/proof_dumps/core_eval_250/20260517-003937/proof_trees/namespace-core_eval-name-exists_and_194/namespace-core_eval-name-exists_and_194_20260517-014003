@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ ∃ x, p\n$0.00$"]
+	0 -> 1 [label="simp only [hp, exists_prop]\n$0.78$"]
+	1 [label="(1/1)\np : Prop\nhp : p\n⊢ ∃ x, True\n$0.78$"]
+	1 -> 2 [label="simp [hp]\ndone\n$-100.00$"]
+	2 [label="not in proof mode\n$-99.22$"]
+}

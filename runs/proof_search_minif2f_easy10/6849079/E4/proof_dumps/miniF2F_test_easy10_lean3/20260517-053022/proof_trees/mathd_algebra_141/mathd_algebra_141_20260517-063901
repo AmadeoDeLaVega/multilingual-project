@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\na b : ℝ\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\n⊢ a ^ 2 + b ^ 2 = 369\n$0.00$"]
+	0 -> 1 [label="simp only [sq, ← two_mul, div_add_div, mul_comm]\n$0.51$"]
+	0 -> 2 [label="rw [add_comm]\n$0.30$"]
+	1 [label="(1/1)\na b : ℝ\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\n⊢ a * a + b * b = 369\n$0.51$"]
+	2 [label="(1/1)\na b : ℝ\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\n⊢ b ^ 2 + a ^ 2 = 369\n$0.30$"]
+}

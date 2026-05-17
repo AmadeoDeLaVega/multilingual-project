@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\n⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((...\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [mul_comm]\n$0.46$"]
+	0 -> 2 [label="ring\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="ring1\nend\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\n⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 + 11) * (70 - 11) / ((...\n$0.46$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ HEq n n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [Nat.zero_le]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction' n with n ih\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases n\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction n <;> simp [*, *]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction n <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="by_cases hn : n = 0\n$0.36$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase pos\nn : Nat\nhn : n = 0\n⊢ HEq n n\n(2/2)\ncase neg\nn : Nat\nhn : ¬n ...\n$0.36$"]
+}

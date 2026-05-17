@@ -1,6 +1,16 @@
 # Runtime logs and outputs
 /.log/
 /runs/
+!/runs/
+/runs/*
+!/runs/proof_search_core_eval/
+!/runs/proof_search_core_eval/**
+!/runs/proof_search_minif2f_easy10/
+!/runs/proof_search_minif2f_easy10/**
+!/runs/analysis/
+/runs/analysis/*
+!/runs/analysis/day8_10/
+!/runs/analysis/day8_10/**
 /logs/
 wandb/
 

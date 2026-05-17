@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a < b\nhbc : b < c\n⊢ a < c\n$0.00$"]
+	0 -> 1 [label="by_cases hab0 : a < b\n$0.49$"]
+	1 [label="(1/2)\ncase pos\na b c : Nat\nhab : a < b\nhbc : b < c\nhab0 : a < b\n⊢ a < c\n(2/...\n$0.49$"]
+}

@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : some n = some m\n⊢ n = m\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="have h := Nat.le_of_lt (Nat.le_of_lt h)\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases h <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.45$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\nm : Nat\nh : some 0 = some m\n⊢ 0 = m\n(2/2)\ncase succ\nm n✝ : ...\n$0.45$"]
+}

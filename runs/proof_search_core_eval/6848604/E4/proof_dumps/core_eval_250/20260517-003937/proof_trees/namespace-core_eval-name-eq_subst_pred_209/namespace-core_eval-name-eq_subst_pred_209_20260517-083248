@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\nh : a = b\n⊢ a.pred = b.pred\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases a\n$0.45$"]
+	0 -> 2 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [← h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="subst h\n$0.41$"]
+	1 [label="(1/2)\ncase zero\nb : Nat\nh : 0 = b\n⊢ Nat.pred 0 = b.pred\n(2/2)\ncase succ\nb n...\n$0.45$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\na : Nat\n⊢ a.pred = a.pred\n$0.41$"]
+}

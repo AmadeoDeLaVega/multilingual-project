@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nhp : p\n⊢ p ∨ q\n$0.00$"]
+	0 -> 1 [label="simp [hp]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [hp, hp]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

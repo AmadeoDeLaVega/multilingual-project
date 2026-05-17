@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nxs : List Nat\n⊢ [] ++ xs = xs\n$0.00$"]
+	0 -> 1 [label="simp [nil]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

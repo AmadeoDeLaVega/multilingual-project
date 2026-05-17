@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ some n = some n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases n\n$0.37$"]
+	0 -> 2 [label="congr\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [some_eq, Nat.not_lt]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="by_cases hn : n = 1\n$0.53$"]
+	1 [label="(1/2)\ncase zero\n⊢ some 0 = some 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ some (n✝ + 1) ...\n$0.37$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/2)\ncase pos\nn : Nat\nhn : n = 1\n⊢ some n = some n\n(2/2)\ncase neg\nn : Nat\n...\n$0.53$"]
+}

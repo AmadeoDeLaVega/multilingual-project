@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\np : Nat × Nat\n⊢ (p.fst, p.snd) = p\n$0.00$"]
+	0 -> 1 [label="cases p\n$0.12$"]
+	0 -> 2 [label="by_cases h0 : p.snd = 0\n$0.15$"]
+	0 -> 3 [label="rfl\ndone\n$-100.00$"]
+	0 -> 3 [label="simp [p.fst_eq_snd]\ndone\n$-100.00$"]
+	0 -> 3 [label="simp [snd, Nat.cast_one, Nat.cast_one]\ndone\n$-100.00$"]
+	0 -> 3 [label="induction p <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 4 [label="ext1\n$0.13$"]
+	1 [label="(1/1)\ncase mk\nfst✝ snd✝ : Nat\n⊢ ((fst✝, snd✝).fst, (fst✝, snd✝).snd) = (fst...\n$0.12$"]
+	2 [label="(1/2)\ncase pos\np : Nat × Nat\nh0 : p.snd = 0\n⊢ (p.fst, p.snd) = p\n(2/2)\ncase...\n$0.15$"]
+	3 [label="not in proof mode\n$-100.00$"]
+	4 [label="(1/2)\ncase fst\np : Nat × Nat\n⊢ (p.fst, p.snd).fst = p.fst\n(2/2)\ncase snd\np ...\n$0.13$"]
+}

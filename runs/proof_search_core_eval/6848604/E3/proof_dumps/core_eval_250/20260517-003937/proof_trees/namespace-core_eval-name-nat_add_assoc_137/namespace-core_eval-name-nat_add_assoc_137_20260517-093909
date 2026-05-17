@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\n⊢ a + b + c = a + (b + c)\n$0.00$"]
+	0 -> 1 [label="rw [Nat.add_comm]\n$0.57$"]
+	0 -> 2 [label="by_cases h0 : a = 0\n$0.68$"]
+	1 [label="(1/1)\na b c : Nat\n⊢ c + (a + b) = a + (b + c)\n$0.57$"]
+	2 [label="(1/2)\ncase pos\na b c : Nat\nh0 : a = 0\n⊢ a + b + c = a + (b + c)\n(2/2)\ncase ...\n$0.68$"]
+}

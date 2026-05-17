@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nxs : List Nat\n⊢ [] ++ xs = xs\n$0.00$"]
+	0 -> 1 [label="induction xs <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="have := Nat.rec (m % xs)\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [List.nil_append]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs <;> simp [*, List.nil, Nat.zero_add, Nat.zero_add]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs <;> simp [*, List.nil_append]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs <;> simp [Nat.zero_le, *, Nat.zero_le]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

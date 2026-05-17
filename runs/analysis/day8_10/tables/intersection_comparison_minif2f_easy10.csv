@@ -1,0 +1,4 @@
+benchmark,experiment,intersection_size,attempted,proved,pass_rate,pass_at_1,pass_at_5_observed,timeouts,timeout_rate,mean_proof_time_in_secs,total_proof_time_in_secs
+miniF2F easy-10,E1,10,10,1,0.1,0.1,0.1,9,0.9,608.4864518880844,6084.864518880844
+miniF2F easy-10,E3,10,10,2,0.2,0.2,0.2,6,0.6,517.1686776638031,5171.686776638031
+miniF2F easy-10,E4,10,10,1,0.1,0.1,0.1,7,0.7,406.7683383464813,4067.6833834648132

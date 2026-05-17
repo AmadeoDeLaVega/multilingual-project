@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ n * 1 = n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="by_cases h₂ : n = 0\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="by_cases h : n = 0\n$0.61$"]
+	0 -> 3 [label="by_cases h0 : n = 0\n$0.65$"]
+	0 -> 4 [label="by_cases hn : n = 0\n$0.61$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase pos\nn : Nat\nh : n = 0\n⊢ n * 1 = n\n(2/2)\ncase neg\nn : Nat\nh : ¬n ...\n$0.61$"]
+	3 [label="(1/2)\ncase pos\nn : Nat\nh0 : n = 0\n⊢ n * 1 = n\n(2/2)\ncase neg\nn : Nat\nh0 : ¬...\n$0.65$"]
+	4 [label="(1/2)\ncase pos\nn : Nat\nhn : n = 0\n⊢ n * 1 = n\n(2/2)\ncase neg\nn : Nat\nhn : ¬...\n$0.61$"]
+}

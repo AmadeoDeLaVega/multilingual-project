@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np q r s : Prop\nh : ((p ∧ q) ∧ r) ∧ s\n⊢ p ∧ q ∧ r ∧ s\n$0.00$"]
+	0 -> 1 [label="simp_all only [h.1, and_true]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases h\ndone\n$-100.00$"]
+	0 -> 1 [label="rwa [h.1]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [h.1, h.2]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp only [h.1, or_imp, forall_and, exists_and_left, exists_and_left]\n$0.82$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/1)\np q r s : Prop\nh : ((p ∧ q) ∧ r) ∧ s\n⊢ True ∧ True ∧ True ∧ s\n$0.82$"]
+}

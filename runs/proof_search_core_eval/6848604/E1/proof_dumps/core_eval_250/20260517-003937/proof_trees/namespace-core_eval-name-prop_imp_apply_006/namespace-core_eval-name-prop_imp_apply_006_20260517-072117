@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nh : p → q\nhp : p\n⊢ q\n$0.00$"]
+	0 -> 1 [label="cases' h p with p hp <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp only [h hp, h]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

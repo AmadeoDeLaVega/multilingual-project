@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nhp : p\n⊢ p ∨ q\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa [hp] using hp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [or_comm]\n$0.32$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\np q : Prop\nhp : p\n⊢ q ∨ p\n$0.32$"]
+}

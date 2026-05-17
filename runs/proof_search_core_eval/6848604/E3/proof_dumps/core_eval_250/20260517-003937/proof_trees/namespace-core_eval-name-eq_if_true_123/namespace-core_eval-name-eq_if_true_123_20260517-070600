@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (if true = true then a else b) = a\n$0.00$"]
+	0 -> 1 [label="simp [if_neg]\ndone\n$-100.00$"]
+	0 -> 1 [label="split_ifs <;> simp [h, Nat.cast_eq]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 2 [label="split\n$0.43$"]
+	0 -> 3 [label="rw [if_neg]\n$0.47$"]
+	0 -> 4 [label="by_cases hab : a = b\n$0.57$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase isTrue\na b : Nat\nh✝ : true = true\n⊢ a = a\n(2/2)\ncase isFalse\na b...\n$0.43$"]
+	3 [label="(1/2)\na b : Nat\n⊢ b = a\n(2/2)\ncase hnc\na b : Nat\n⊢ ¬true = true\n$0.47$"]
+	4 [label="(1/2)\ncase pos\na b : Nat\nhab : a = b\n⊢ (if true = true then a else b) = a\n(...\n$0.57$"]
+}

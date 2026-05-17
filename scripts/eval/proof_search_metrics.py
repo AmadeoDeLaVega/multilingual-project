@@ -358,7 +358,7 @@ def parse_dot_tree(path: Path) -> dict[str, Any]:
     }
 
 
-def proof_tree_metrics(run_root: Path) -> dict[str, Any]:
+def proof_tree_metrics(run_root: Path, max_trees: int | None = 50) -> dict[str, Any]:
     tree_root_candidates = list(run_root.rglob("proof_trees"))
     tree_files: list[Path] = []
     for tree_root in tree_root_candidates:
@@ -382,7 +382,7 @@ def proof_tree_metrics(run_root: Path) -> dict[str, Any]:
         "mean_average_branching_factor": mean(branching),
         "single_node_tree_count": single_node_count,
         "single_node_tree_rate": rate(single_node_count, len(trees)),
-        "trees": trees[:50],
+        "trees": trees if max_trees is None else trees[:max_trees],
     }
 
 
@@ -446,6 +446,11 @@ def main() -> int:
     parser.add_argument("--results-json", default=None)
     parser.add_argument("--generation-debug-jsonl", default=None)
     parser.add_argument("--output", default=None)
+    parser.add_argument(
+        "--include-all-trees",
+        action="store_true",
+        help="Include metadata for every dumped proof tree in the JSON output.",
+    )
     args = parser.parse_args()
 
     run_root = Path(args.run_root).resolve()
@@ -461,7 +466,7 @@ def main() -> int:
         "run_root": str(run_root),
         "proof_results": proof_result_metrics(results_json),
         "generation": generation_metrics(debug_jsonl),
-        "proof_trees": proof_tree_metrics(run_root),
+        "proof_trees": proof_tree_metrics(run_root, max_trees=None if args.include_all_trees else 50),
     }
     write_json(output, payload)
     write_markdown(output.with_suffix(".md"), payload)

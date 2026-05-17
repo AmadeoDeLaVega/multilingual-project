@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\nxs ys : List Nat\nh : xs = ys\n⊢ xs ++ [] = ys\n$0.00$"]
+	0 -> 1 [label="cases xs <;> simp [h]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="subst xs\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases xs\n$0.68$"]
+	0 -> 3 [label="rw [h]\n$0.68$"]
+	0 -> 4 [label="subst ys\n$0.63$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase nil\nys : List Nat\nh : [] = ys\n⊢ [] ++ [] = ys\n(2/2)\ncase cons\nys...\n$0.68$"]
+	3 [label="(1/1)\nxs ys : List Nat\nh : xs = ys\n⊢ ys ++ [] = ys\n$0.68$"]
+	4 [label="(1/1)\nxs : List Nat\n⊢ xs ++ [] = xs\n$0.63$"]
+}

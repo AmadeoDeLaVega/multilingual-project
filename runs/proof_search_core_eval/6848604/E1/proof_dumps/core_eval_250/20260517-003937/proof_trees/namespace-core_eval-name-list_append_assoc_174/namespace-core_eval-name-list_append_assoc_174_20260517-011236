@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nxs ys zs : List Nat\n⊢ xs ++ ys ++ zs = xs ++ (ys ++ zs)\n$0.00$"]
+	0 -> 1 [label="simp [Nat.add_assoc]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs generalizing ys <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs generalizing ys <;> simp [*, *, *, *]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

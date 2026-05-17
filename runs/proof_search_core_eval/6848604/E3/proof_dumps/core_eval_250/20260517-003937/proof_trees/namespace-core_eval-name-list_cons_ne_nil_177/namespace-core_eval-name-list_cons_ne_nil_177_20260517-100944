@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ ¬n :: xs = []\n$0.00$"]
+	0 -> 1 [label="cases xs <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [nodup_nil, List.cons_nil, List.cons_nil]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.lt_succ_iff_ne_zero, Nat.succ_eq_zero]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction xs using Nat.recOn\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [ne_eq]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases xs\n$0.34$"]
+	0 -> 3 [label="simp [*]\n$0.35$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase nil\nn : Nat\n⊢ ¬[n] = []\n(2/2)\ncase cons\nn head✝ : Nat\ntail✝ : Li...\n$0.34$"]
+	3 [label="(1/1)\ncase cons\nn head✝ : Nat\ntail✝ : List Nat\n⊢ ¬n :: head✝ :: tail✝ = []\n$0.35$"]
+}

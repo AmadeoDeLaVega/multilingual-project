@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nh : p → q\n⊢ p → q\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="intro h'\n$0.83$"]
+	0 -> 2 [label="simpa using h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rintro rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="exact h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="intro h\n$0.80$"]
+	1 [label="(1/1)\np q : Prop\nh : p → q\nh' : p\n⊢ q\n$0.83$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\np q : Prop\nh✝ : p → q\nh : p\n⊢ q\n$0.80$"]
+}

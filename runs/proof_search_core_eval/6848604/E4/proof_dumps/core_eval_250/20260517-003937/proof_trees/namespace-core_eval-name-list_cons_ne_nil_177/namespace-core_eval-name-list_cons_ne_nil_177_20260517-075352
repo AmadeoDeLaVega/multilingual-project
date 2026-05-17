@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ ¬n :: xs = []\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.not_le]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp only [Nat.succ_ne_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.not_mem_cons]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.succ_ne_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="intro h\n$0.36$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\nn : Nat\nxs : List Nat\nh : n :: xs = []\n⊢ False\n$0.36$"]
+}

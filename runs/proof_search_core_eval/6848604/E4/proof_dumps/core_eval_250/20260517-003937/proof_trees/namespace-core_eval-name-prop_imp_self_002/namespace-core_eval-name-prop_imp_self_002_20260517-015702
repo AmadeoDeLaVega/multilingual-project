@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nhp : p\n⊢ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [hp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases p <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact hp\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

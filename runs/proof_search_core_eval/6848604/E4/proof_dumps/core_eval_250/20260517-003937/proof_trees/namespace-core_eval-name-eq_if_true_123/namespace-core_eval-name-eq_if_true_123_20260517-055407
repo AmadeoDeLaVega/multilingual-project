@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (if true = true then a else b) = a\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [if_pos rfl]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="split_ifs <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases b <;> simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="by_cases ha : a = b\n$0.80$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase pos\na b : Nat\nha : a = b\n⊢ (if true = true then a else b) = a\n(2...\n$0.80$"]
+}

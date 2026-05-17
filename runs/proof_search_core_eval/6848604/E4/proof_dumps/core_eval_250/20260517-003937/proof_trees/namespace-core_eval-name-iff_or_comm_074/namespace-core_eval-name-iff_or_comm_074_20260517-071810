@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\n⊢ p ∨ q ↔ q ∨ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [or_iff_left]\n$0.52$"]
+	0 -> 2 [label="classical rw [or_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [or_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="rw [or_iff_right]\n$0.51$"]
+	1 [label="(1/2)\np q : Prop\n⊢ p ↔ q ∨ p\n(2/2)\np q : Prop\n⊢ ¬q\n$0.52$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/2)\np q : Prop\n⊢ q ↔ q ∨ p\n(2/2)\np q : Prop\n⊢ ¬p\n$0.51$"]
+}

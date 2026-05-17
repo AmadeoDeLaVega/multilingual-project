@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\nh : a = b\nxs : List Nat\n⊢ a :: xs = b :: xs\n$0.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp_all\ndone\n$-100.00$"]
+	0 -> 1 [label="simp (config := {decide := true }) [h]\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa using h\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [h, List.length_cons]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> cases xs <;> cases xs <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [← h, h]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$"]
+	0 -> 2 [label="subst h\n$0.59$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/1)\na : Nat\nxs : List Nat\n⊢ a :: xs = a :: xs\n$0.59$"]
+}

@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nb : Bool\n⊢ (true && b) = b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases b\n$0.85$"]
+	0 -> 2 [label="cases b <;> simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases b <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases b <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/2)\ncase false\n⊢ (true && false) = false\n(2/2)\ncase true\n⊢ (true && true)...\n$0.85$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

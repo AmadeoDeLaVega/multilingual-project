@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nh : a = b\n⊢ (c, a) = (c, b)\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [h, Nat.succ_eq_add_one]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="exact Nat.mod_eq_of_eq_of_lt h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="induction b <;> simp [*, Nat.add_comm]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="subst h\n$0.56$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\na c : Nat\n⊢ (c, a) = (c, a)\n$0.56$"]
+}

@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nh : p ∨ q\nhp : p → r\nhq : q → r\n⊢ r\n$0.00$"]
+	0 -> 1 [label="cases h\n$0.39$"]
+	1 [label="(1/2)\ncase inl\np q r : Prop\nhp : p → r\nhq : q → r\nh✝ : p\n⊢ r\n(2/2)\ncase inr...\n$0.39$"]
+	1 -> 2 [label="all_goals apply hq\n$0.54$"]
+	2 [label="(1/2)\ncase inl\np q r : Prop\nhp : p → r\nhq : q → r\nh✝ : p\n⊢ q\n(2/2)\ncase inr...\n$0.93$"]
+}

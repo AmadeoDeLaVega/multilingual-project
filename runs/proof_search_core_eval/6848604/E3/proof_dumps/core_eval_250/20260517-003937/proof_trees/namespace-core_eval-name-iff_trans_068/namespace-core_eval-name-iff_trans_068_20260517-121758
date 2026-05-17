@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nhpq : p ↔ q\nhqr : q ↔ r\n⊢ p ↔ r\n$0.00$"]
+	0 -> 1 [label="cases hqr\n$0.32$"]
+	1 [label="(1/1)\ncase intro\np q r : Prop\nhpq : p ↔ q\nmp✝ : q → r\nmpr✝ : r → q\n⊢ p ↔ r\n$0.32$"]
+}

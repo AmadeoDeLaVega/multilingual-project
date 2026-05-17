@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : some n = some m\n⊢ n = m\n$0.00$"]
+	0 -> 1 [label="cases m\n$0.12$"]
+	0 -> 2 [label="cases n\n$0.12$"]
+	0 -> 3 [label="cases h\n$0.12$"]
+	1 [label="(1/2)\ncase zero\nn : Nat\nh : some n = some 0\n⊢ n = 0\n(2/2)\ncase succ\nn n✝ : ...\n$0.12$"]
+	2 [label="(1/2)\ncase zero\nm : Nat\nh : some 0 = some m\n⊢ 0 = m\n(2/2)\ncase succ\nm n✝ : ...\n$0.12$"]
+	2 -> 4 [label="cases m\n$0.66$"]
+	2 -> 5 [label="cases m <;> simp\n$0.74$"]
+	3 [label="(1/1)\ncase refl\nn : Nat\n⊢ n = n\n$0.12$"]
+	4 [label="(1/3)\ncase zero.zero\nh : some 0 = some 0\n⊢ 0 = 0\n(2/3)\ncase zero.succ\nn✝ : ...\n$0.78$"]
+	5 [label="(1/2)\ncase zero.succ\nn✝ : Nat\nh : some 0 = some (n✝ + 1)\n⊢ False\n(2/2)\ncase...\n$0.86$"]
+}

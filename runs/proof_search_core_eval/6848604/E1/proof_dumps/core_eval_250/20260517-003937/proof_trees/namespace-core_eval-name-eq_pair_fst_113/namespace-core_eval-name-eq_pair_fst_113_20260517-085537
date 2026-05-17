@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (a, b).fst = a\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases a <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.lt_succ_iff]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases a <;> simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases a <;> intros\n$0.49$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\nb : Nat\n⊢ (0, b).fst = 0\n(2/2)\ncase succ\nb n✝ : Nat\n⊢ (n✝ +...\n$0.49$"]
+}

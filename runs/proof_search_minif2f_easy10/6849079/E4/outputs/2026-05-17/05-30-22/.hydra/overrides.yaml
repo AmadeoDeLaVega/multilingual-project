@@ -1,0 +1,8 @@
+- log_dir=/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E4/logs
+- eval_settings.proof_dump_dir=/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E4/proof_dumps
+- eval_settings.checkpoint_dir=/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E4/checkpoints
+- eval_settings.model_name=/fs/classhomes/adelaveg/multilingual-project/runs/E4/model/pilot-e4-pseudo-multilingual/final
+- eval_settings.proof_retries=1
+- eval_settings.timeout_in_secs=60
+- benchmark.timeout_per_theorem_in_secs=300
+- benchmark.datasets.0.project=/tmp/pwmf6849079_2/miniF2F

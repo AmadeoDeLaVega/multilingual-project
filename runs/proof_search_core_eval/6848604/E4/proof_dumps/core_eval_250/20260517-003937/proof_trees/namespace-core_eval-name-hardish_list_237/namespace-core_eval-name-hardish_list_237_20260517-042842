@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\nx y : Nat\nxs ys : List Nat\nhx : x = y\nhxs : xs = ys\n⊢ x :: xs = y :: ...\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [hx, hx]\n$0.91$"]
+	0 -> 1 [label="simp [hx]\n$0.81$"]
+	0 -> 2 [label="cases hxs\n$0.85$"]
+	0 -> 3 [label="rw [hxs]\n$0.79$"]
+	0 -> 3 [label="simp only [hxs, List.cons_append]\n$0.94$"]
+	0 -> 4 [label="simp [hxs]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 5 [label="subst hx\n$0.83$"]
+	1 [label="(1/1)\nx y : Nat\nxs ys : List Nat\nhx : x = y\nhxs : xs = ys\n⊢ xs = ys\n$0.81$"]
+	2 [label="(1/1)\ncase refl\nx y : Nat\nxs : List Nat\nhx : x = y\n⊢ x :: xs = y :: xs\n$0.85$"]
+	3 [label="(1/1)\nx y : Nat\nxs ys : List Nat\nhx : x = y\nhxs : xs = ys\n⊢ x :: ys = y :: ...\n$0.79$"]
+	4 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	5 [label="(1/1)\nx : Nat\nxs ys : List Nat\nhxs : xs = ys\n⊢ x :: xs = x :: ys\n$0.83$"]
+}

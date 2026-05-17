@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ some n = some n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases n <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases n <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [← Option.some_inj, Option.some_inj]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases n <;> simpa [*] using Nat.mul_eq_mul_ofNat_pos n\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n\n$0.52$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase zero\n⊢ some 0 = some 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ some (n✝ + 1) ...\n$0.52$"]
+}

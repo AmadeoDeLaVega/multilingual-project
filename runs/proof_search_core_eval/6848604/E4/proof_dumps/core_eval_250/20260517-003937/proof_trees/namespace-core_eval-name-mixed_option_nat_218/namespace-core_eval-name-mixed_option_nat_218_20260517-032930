@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ some n = some n\n$0.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp [Nat.le_antisymm_iff]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.eq_of_le_of_lt (Nat.le_of_lt_succ n)]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [n]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> cases n <;> cases n <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="induction n <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases n\n$0.50$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase zero\n⊢ some 0 = some 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ some (n✝ + 1) ...\n$0.50$"]
+}

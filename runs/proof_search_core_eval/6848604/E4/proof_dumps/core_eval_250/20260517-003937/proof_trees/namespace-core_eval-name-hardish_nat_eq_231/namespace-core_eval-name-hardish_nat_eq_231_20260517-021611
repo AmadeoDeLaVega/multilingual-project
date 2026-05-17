@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a + 0 = c\n$0.00$"]
+	0 -> 1 [label="rw [hbc]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [hbc, hab]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [hab, hbc, hab, Nat.add_zero, Nat.add_zero]\ndone\n$-100.00$"]
+	0 -> 2 [label="simp\n$0.53$"]
+	0 -> 2 [label="simp [hbc, Nat.zero_eq]\n$0.65$"]
+	0 -> 3 [label="subst hbc\n$0.54$"]
+	0 -> 4 [label="simp [hab, Nat.add_zero, Nat.add_zero]\n$0.66$"]
+	0 -> 4 [label="simp [hab]\n$0.53$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a = c\n$0.53$"]
+	3 [label="(1/1)\na b : Nat\nhab : a = b\n⊢ a + 0 = b\n$0.54$"]
+	4 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ b = c\n$0.53$"]
+}

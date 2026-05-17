@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ ∃ m, m = n\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases n\n$0.38$"]
+	0 -> 2 [label="unfold Nat.succ\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="cases n <;> simp_all\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="by_cases h₁ : n = 0\n$0.48$"]
+	1 [label="(1/2)\ncase zero\n⊢ ∃ m, m = 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ ∃ m, m = n✝ + 1\n$0.38$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/2)\ncase pos\nn : Nat\nh₁ : n = 0\n⊢ ∃ m, m = n\n(2/2)\ncase neg\nn : Nat\nh₁ : ...\n$0.48$"]
+}

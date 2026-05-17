@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ True ∧ p ↔ p\n$0.00$"]
+	0 -> 1 [label="simp [true_iff]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [true_or]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*, true, true, true, true]\ndone\n$-100.00$"]
+	0 -> 2 [label="constructor\n$0.31$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase mp\np : Prop\n⊢ True ∧ p → p\n(2/2)\ncase mpr\np : Prop\n⊢ p → True ∧ ...\n$0.31$"]
+}

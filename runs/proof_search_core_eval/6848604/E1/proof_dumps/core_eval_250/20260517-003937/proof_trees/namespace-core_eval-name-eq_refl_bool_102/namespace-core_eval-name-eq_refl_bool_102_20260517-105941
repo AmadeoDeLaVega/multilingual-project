@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nb : Bool\n⊢ b = b\n$0.00$"]
+	0 -> 1 [label="cases b <;> simp [*, Bool.or_true]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases b <;> simp\ndone\n$-100.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="cases b <;> simp [Int.ofNat]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases b <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="cases b <;> simp [ Bool.eq_comm]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases b <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases b\n$0.72$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase false\n⊢ false = false\n(2/2)\ncase true\n⊢ true = true\n$0.72$"]
+}

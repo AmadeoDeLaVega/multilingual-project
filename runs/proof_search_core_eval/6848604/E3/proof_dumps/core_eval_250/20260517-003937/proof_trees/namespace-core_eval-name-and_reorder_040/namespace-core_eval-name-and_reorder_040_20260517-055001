@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\np q r : Prop\nhp : p\nhq : q\nhr : r\n⊢ (q ∧ r) ∧ p\n$0.00$"]
+	0 -> 1 [label="simp [hp]\n$0.42$"]
+	1 [label="(1/1)\np q r : Prop\nhp : p\nhq : q\nhr : r\n⊢ q ∧ r\n$0.42$"]
+}

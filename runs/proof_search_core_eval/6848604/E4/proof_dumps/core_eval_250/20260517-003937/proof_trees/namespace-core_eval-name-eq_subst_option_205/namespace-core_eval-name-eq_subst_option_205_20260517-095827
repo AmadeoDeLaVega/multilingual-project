@@ -1,0 +1,15 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\nh : a = b\n⊢ some a = some b\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases a <;> simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [← h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases a <;> cases b <;> simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [← Nat.succ_le_iff, ← h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases a <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="cases h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simpa [h] using some_eq_some.1 h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="subst h\n$0.53$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\na : Nat\n⊢ some a = some a\n$0.53$"]
+}

@@ -1,0 +1,16 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nhab : a = b\nhbc : b = c\n⊢ a = c\n$0.00$"]
+	0 -> 1 [label="subst hbc\n$0.63$"]
+	0 -> 2 [label="cases b\n$0.67$"]
+	0 -> 3 [label="cases hab\n$0.61$"]
+	1 [label="(1/1)\na b : Nat\nhab : a = b\n⊢ a = b\n$0.63$"]
+	2 [label="(1/2)\ncase zero\na c : Nat\nhab : a = 0\nhbc : 0 = c\n⊢ a = c\n(2/2)\ncase succ\na...\n$0.67$"]
+	3 [label="(1/1)\ncase refl\na c : Nat\nhbc : a = c\n⊢ a = c\n$0.61$"]
+	3 -> 4 [label="rw [hbc]\ndone\n$-100.00$"]
+	3 -> 4 [label="simp [hbc]\ndone\n$-100.00$"]
+	3 -> 5 [label="subst hbc\n$0.46$"]
+	3 -> 6 [label="cases hbc\n$0.46$"]
+	4 [label="not in proof mode\n$-99.39$"]
+	5 [label="(1/1)\ncase refl\na : Nat\n⊢ a = a\n$1.07$"]
+	6 [label="(1/1)\ncase refl.refl\na : Nat\n⊢ a = a\n$1.07$"]
+}

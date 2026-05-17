@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\n⊢ (a, b).fst = a\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases a\n$0.48$"]
+	0 -> 2 [label="cases a <;> rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rfl\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp only [Nat.fst_eq_fst]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="rw [fst, Nat.fst]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="induction a <;> simp [*]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="simp\n$0.46$"]
+	1 [label="(1/2)\ncase zero\nb : Nat\n⊢ (0, b).fst = 0\n(2/2)\ncase succ\nb n✝ : Nat\n⊢ (n✝ +...\n$0.48$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	3 [label="(1/1)\ncase succ\nb n✝ : Nat\n⊢ (n✝ + 1, b).fst = n✝ + 1\n$0.46$"]
+}

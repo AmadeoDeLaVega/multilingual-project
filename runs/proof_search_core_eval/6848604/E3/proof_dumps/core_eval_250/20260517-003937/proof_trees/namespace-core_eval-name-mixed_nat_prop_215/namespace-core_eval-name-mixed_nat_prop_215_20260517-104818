@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\np : Prop\nhp : p\n⊢ n = n ∧ p\n$0.00$"]
+	0 -> 1 [label="simp [hp]\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [hp] at hp\ndone\n$-100.00$"]
+	0 -> 1 [label="cases n <;> simp [hp]\ndone\n$-100.00$"]
+	0 -> 2 [label="cases n\n$0.33$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/2)\ncase zero\np : Prop\nhp : p\n⊢ 0 = 0 ∧ p\n(2/2)\ncase succ\np : Prop\nhp : p...\n$0.33$"]
+}

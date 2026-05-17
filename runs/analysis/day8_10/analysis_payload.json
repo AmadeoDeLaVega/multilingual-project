@@ -1,0 +1,592 @@
+{
+  "benchmark_summaries": {
+    "CoreEval 250": {
+      "E1": {
+        "attempted": 127,
+        "mean_proof_time_in_secs": 231.33838735978435,
+        "pass_at_1": 0.3858267716535433,
+        "pass_at_5_observed": 0.3858267716535433,
+        "pass_rate": 0.3858267716535433,
+        "proved": 49,
+        "timeout_rate": 0.5826771653543307,
+        "timeouts": 74,
+        "total_proof_time_in_secs": 29379.97519469261
+      },
+      "E3": {
+        "attempted": 141,
+        "mean_proof_time_in_secs": 195.71499963855067,
+        "pass_at_1": 0.3049645390070922,
+        "pass_at_5_observed": 0.3049645390070922,
+        "pass_rate": 0.3049645390070922,
+        "proved": 43,
+        "timeout_rate": 0.624113475177305,
+        "timeouts": 88,
+        "total_proof_time_in_secs": 27595.814949035645
+      },
+      "E4": {
+        "attempted": 198,
+        "mean_proof_time_in_secs": 150.5111589263184,
+        "pass_at_1": 0.6363636363636364,
+        "pass_at_5_observed": 0.6363636363636364,
+        "pass_rate": 0.6363636363636364,
+        "proved": 126,
+        "timeout_rate": 0.3181818181818182,
+        "timeouts": 63,
+        "total_proof_time_in_secs": 29801.20946741104
+      }
+    },
+    "miniF2F easy-10": {
+      "E1": {
+        "attempted": 10,
+        "mean_proof_time_in_secs": 608.4864518880844,
+        "pass_at_1": 0.1,
+        "pass_at_5_observed": 0.1,
+        "pass_rate": 0.1,
+        "proved": 1,
+        "timeout_rate": 0.9,
+        "timeouts": 9,
+        "total_proof_time_in_secs": 6084.864518880844
+      },
+      "E3": {
+        "attempted": 10,
+        "mean_proof_time_in_secs": 517.1686776638031,
+        "pass_at_1": 0.2,
+        "pass_at_5_observed": 0.2,
+        "pass_rate": 0.2,
+        "proved": 2,
+        "timeout_rate": 0.6,
+        "timeouts": 6,
+        "total_proof_time_in_secs": 5171.686776638031
+      },
+      "E4": {
+        "attempted": 10,
+        "mean_proof_time_in_secs": 406.7683383464813,
+        "pass_at_1": 0.1,
+        "pass_at_5_observed": 0.1,
+        "pass_rate": 0.1,
+        "proved": 1,
+        "timeout_rate": 0.7,
+        "timeouts": 7,
+        "total_proof_time_in_secs": 4067.6833834648132
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "accepted_action_count": 1821,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "CoreEval 250",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E1",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 4.163934426229508,
+      "mean_edge_count": 4.1796875,
+      "mean_generation_time_in_secs": 0.6701029878578438,
+      "mean_node_count": 3.140625,
+      "mean_proof_time_in_secs": 231.33838735978435,
+      "model_called_output_count": 1821,
+      "model_called_state_count": 151,
+      "no_start_goal_count": 0,
+      "output_count": 1821,
+      "outputs_per_model_called_state": 12.059602649006623,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 1821,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 12.059602649006623,
+      "pass_rate": 0.3858267716535433,
+      "prompt_state_count": 151,
+      "proof_tree_file_count": 128,
+      "single_node_tree_rate": 0.046875,
+      "theorems_attempted": 127,
+      "theorems_proved": 49,
+      "timeout_rate": 0.5826771653543307,
+      "top_tactics": [
+        [
+          "simp",
+          51
+        ],
+        [
+          "cases h",
+          33
+        ],
+        [
+          "rfl",
+          31
+        ],
+        [
+          "cases n",
+          21
+        ],
+        [
+          "cases p",
+          18
+        ],
+        [
+          "cases hp",
+          17
+        ],
+        [
+          "simp [h]",
+          17
+        ],
+        [
+          "simp [hp]",
+          15
+        ],
+        [
+          "rintro rfl",
+          14
+        ],
+        [
+          "exact hp",
+          14
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 12.059602649006623,
+      "zero_parsed_state_rate": 0.0
+    },
+    {
+      "accepted_action_count": 2093,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "CoreEval 250",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E3",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 3.2580645161290325,
+      "mean_edge_count": 3.0638297872340425,
+      "mean_generation_time_in_secs": 0.6653775232701213,
+      "mean_node_count": 2.9148936170212765,
+      "mean_proof_time_in_secs": 195.71499963855067,
+      "model_called_output_count": 2093,
+      "model_called_state_count": 163,
+      "no_start_goal_count": 0,
+      "output_count": 2093,
+      "outputs_per_model_called_state": 12.840490797546012,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 2093,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 12.840490797546012,
+      "pass_rate": 0.3049645390070922,
+      "prompt_state_count": 163,
+      "proof_tree_file_count": 141,
+      "single_node_tree_rate": 0.12056737588652482,
+      "theorems_attempted": 141,
+      "theorems_proved": 43,
+      "timeout_rate": 0.624113475177305,
+      "top_tactics": [
+        [
+          "simp",
+          38
+        ],
+        [
+          "cases h",
+          24
+        ],
+        [
+          "rfl",
+          23
+        ],
+        [
+          "exact h",
+          21
+        ],
+        [
+          "by [].",
+          18
+        ],
+        [
+          "decide",
+          17
+        ],
+        [
+          "rw [h]",
+          17
+        ],
+        [
+          "cases p",
+          17
+        ],
+        [
+          "rintro rfl",
+          15
+        ],
+        [
+          "right",
+          15
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 12.840490797546012,
+      "zero_parsed_state_rate": 0.0
+    },
+    {
+      "accepted_action_count": 3095,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "CoreEval 250",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E4",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 3.9285714285714284,
+      "mean_edge_count": 3.984848484848485,
+      "mean_generation_time_in_secs": 0.6268551960464351,
+      "mean_node_count": 3.2323232323232323,
+      "mean_proof_time_in_secs": 150.5111589263184,
+      "model_called_output_count": 3095,
+      "model_called_state_count": 242,
+      "no_start_goal_count": 0,
+      "output_count": 3095,
+      "outputs_per_model_called_state": 12.789256198347108,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 3095,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 12.789256198347108,
+      "pass_rate": 0.6363636363636364,
+      "prompt_state_count": 242,
+      "proof_tree_file_count": 198,
+      "single_node_tree_rate": 0.045454545454545456,
+      "theorems_attempted": 198,
+      "theorems_proved": 126,
+      "timeout_rate": 0.3181818181818182,
+      "top_tactics": [
+        [
+          "simp",
+          79
+        ],
+        [
+          "cases h",
+          52
+        ],
+        [
+          "rfl",
+          49
+        ],
+        [
+          "simp [h]",
+          32
+        ],
+        [
+          "subst h",
+          24
+        ],
+        [
+          "rw [h]",
+          24
+        ],
+        [
+          "cases n",
+          24
+        ],
+        [
+          "simp [*]",
+          23
+        ],
+        [
+          "simp [hp]",
+          21
+        ],
+        [
+          "cases p",
+          20
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 12.789256198347108,
+      "zero_parsed_state_rate": 0.0
+    },
+    {
+      "accepted_action_count": 149,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "miniF2F easy-10",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E1",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 2.75,
+      "mean_edge_count": 2.2,
+      "mean_generation_time_in_secs": 0.8237725037794846,
+      "mean_node_count": 2.5,
+      "mean_proof_time_in_secs": 608.4864518880844,
+      "model_called_output_count": 149,
+      "model_called_state_count": 13,
+      "no_start_goal_count": 0,
+      "output_count": 149,
+      "outputs_per_model_called_state": 11.461538461538462,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 149,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 11.461538461538462,
+      "pass_rate": 0.1,
+      "prompt_state_count": 13,
+      "proof_tree_file_count": 10,
+      "single_node_tree_rate": 0.2,
+      "theorems_attempted": 10,
+      "theorems_proved": 1,
+      "timeout_rate": 0.9,
+      "top_tactics": [
+        [
+          "norm_num",
+          10
+        ],
+        [
+          "ring",
+          7
+        ],
+        [
+          "rw [h₁, h₂]",
+          4
+        ],
+        [
+          "norm_num1",
+          3
+        ],
+        [
+          "decide",
+          3
+        ],
+        [
+          "rfl",
+          3
+        ],
+        [
+          "omega",
+          2
+        ],
+        [
+          "rw [h₃]",
+          2
+        ],
+        [
+          "simp [h₁]",
+          2
+        ],
+        [
+          "simp",
+          2
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 11.461538461538462,
+      "zero_parsed_state_rate": 0.0
+    },
+    {
+      "accepted_action_count": 168,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "miniF2F easy-10",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E3",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 2.4285714285714284,
+      "mean_edge_count": 1.7,
+      "mean_generation_time_in_secs": 0.7528571231024606,
+      "mean_node_count": 2.5,
+      "mean_proof_time_in_secs": 517.1686776638031,
+      "model_called_output_count": 168,
+      "model_called_state_count": 14,
+      "no_start_goal_count": 0,
+      "output_count": 168,
+      "outputs_per_model_called_state": 12.0,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 168,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 12.0,
+      "pass_rate": 0.2,
+      "prompt_state_count": 14,
+      "proof_tree_file_count": 10,
+      "single_node_tree_rate": 0.3,
+      "theorems_attempted": 10,
+      "theorems_proved": 2,
+      "timeout_rate": 0.6,
+      "top_tactics": [
+        [
+          "ring",
+          7
+        ],
+        [
+          "norm_num",
+          5
+        ],
+        [
+          "rw [h₁]",
+          4
+        ],
+        [
+          "linarith",
+          3
+        ],
+        [
+          "field_simp",
+          2
+        ],
+        [
+          "ring1",
+          2
+        ],
+        [
+          "simp [h₂]",
+          2
+        ],
+        [
+          "rw [← h₁]",
+          2
+        ],
+        [
+          "have h₃ := mul_eq_mul_of_one_ne_zero h₂",
+          1
+        ],
+        [
+          "gcongr",
+          1
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 12.0,
+      "zero_parsed_state_rate": 0.0
+    },
+    {
+      "accepted_action_count": 126,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "miniF2F easy-10",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E4",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 2.875,
+      "mean_edge_count": 2.3,
+      "mean_generation_time_in_secs": 0.7376373030922629,
+      "mean_node_count": 2.5,
+      "mean_proof_time_in_secs": 406.7683383464813,
+      "model_called_output_count": 126,
+      "model_called_state_count": 11,
+      "no_start_goal_count": 0,
+      "output_count": 126,
+      "outputs_per_model_called_state": 11.454545454545455,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 126,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 11.454545454545455,
+      "pass_rate": 0.1,
+      "prompt_state_count": 11,
+      "proof_tree_file_count": 10,
+      "single_node_tree_rate": 0.2,
+      "theorems_attempted": 10,
+      "theorems_proved": 1,
+      "timeout_rate": 0.7,
+      "top_tactics": [
+        [
+          "norm_num",
+          6
+        ],
+        [
+          "ring",
+          6
+        ],
+        [
+          "simp",
+          6
+        ],
+        [
+          "simp [h₁, h₂]",
+          3
+        ],
+        [
+          "simp [h₂]",
+          3
+        ],
+        [
+          "rw [add_comm]",
+          2
+        ],
+        [
+          "simp [h₁]",
+          2
+        ],
+        [
+          "rw [div_eq_mul_inv, mul_assoc, div_eq_mul_inv, mul_assoc, mul_comm (10 * y), mul_comm (10 * x)]",
+          1
+        ],
+        [
+          "rw [h₂, mul_div_cancel₀, div_eq_mul_inv, ← mul_assoc, mul_div_cancel₀ (two_ne_zero' ℝ)]",
+          1
+        ],
+        [
+          "rw [← mul_div_assoc, ← mul_assoc, ← mul_assoc, ← mul_assoc, mul_comm]",
+          1
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 11.454545454545455,
+      "zero_parsed_state_rate": 0.0
+    }
+  ],
+  "intersection_summaries": {
+    "CoreEval 250": {
+      "E1": {
+        "attempted": 127,
+        "mean_proof_time_in_secs": 231.33838735978435,
+        "pass_at_1": 0.3858267716535433,
+        "pass_at_5_observed": 0.3858267716535433,
+        "pass_rate": 0.3858267716535433,
+        "proved": 49,
+        "timeout_rate": 0.5826771653543307,
+        "timeouts": 74,
+        "total_proof_time_in_secs": 29379.97519469261
+      },
+      "E3": {
+        "attempted": 127,
+        "mean_proof_time_in_secs": 197.74616558345284,
+        "pass_at_1": 0.30708661417322836,
+        "pass_at_5_observed": 0.30708661417322836,
+        "pass_rate": 0.30708661417322836,
+        "proved": 39,
+        "timeout_rate": 0.6220472440944882,
+        "timeouts": 79,
+        "total_proof_time_in_secs": 25113.76302909851
+      },
+      "E4": {
+        "attempted": 127,
+        "mean_proof_time_in_secs": 151.21041889078035,
+        "pass_at_1": 0.6141732283464567,
+        "pass_at_5_observed": 0.6141732283464567,
+        "pass_rate": 0.6141732283464567,
+        "proved": 78,
+        "timeout_rate": 0.33070866141732286,
+        "timeouts": 42,
+        "total_proof_time_in_secs": 19203.723199129105
+      }
+    },
+    "miniF2F easy-10": {
+      "E1": {
+        "attempted": 10,
+        "mean_proof_time_in_secs": 608.4864518880844,
+        "pass_at_1": 0.1,
+        "pass_at_5_observed": 0.1,
+        "pass_rate": 0.1,
+        "proved": 1,
+        "timeout_rate": 0.9,
+        "timeouts": 9,
+        "total_proof_time_in_secs": 6084.864518880844
+      },
+      "E3": {
+        "attempted": 10,
+        "mean_proof_time_in_secs": 517.1686776638031,
+        "pass_at_1": 0.2,
+        "pass_at_5_observed": 0.2,
+        "pass_rate": 0.2,
+        "proved": 2,
+        "timeout_rate": 0.6,
+        "timeouts": 6,
+        "total_proof_time_in_secs": 5171.686776638031
+      },
+      "E4": {
+        "attempted": 10,
+        "mean_proof_time_in_secs": 406.7683383464813,
+        "pass_at_1": 0.1,
+        "pass_at_5_observed": 0.1,
+        "pass_rate": 0.1,
+        "proved": 1,
+        "timeout_rate": 0.7,
+        "timeouts": 7,
+        "total_proof_time_in_secs": 4067.6833834648132
+      }
+    }
+  }
+}

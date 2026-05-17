@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\nxs : List Nat\n⊢ n :: xs = n :: xs\n$0.00$"]
+	0 -> 1 [label="simp [Nat.lt_succ_iff]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [Nat.succ_eq_add_one, Nat.add_assoc, Nat.add_one]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [List.cons_cons, List.cons_append]\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa using (Nat.le_of_succ_le (Nat.le_of_lt n.lt_succ_self))\ndone\n$-100.00$"]
+	0 -> 1 [label="cases xs <;> simp only [*]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nh : p ∧ p\n⊢ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases h\n$0.28$"]
+	0 -> 1 [label="rcases h with ⟨⟩\n$0.32$"]
+	0 -> 2 [label="cases' h with h h\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="simp [h, h.1]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\ncase intro\np : Prop\nleft✝ right✝ : p\n⊢ p\n$0.28$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

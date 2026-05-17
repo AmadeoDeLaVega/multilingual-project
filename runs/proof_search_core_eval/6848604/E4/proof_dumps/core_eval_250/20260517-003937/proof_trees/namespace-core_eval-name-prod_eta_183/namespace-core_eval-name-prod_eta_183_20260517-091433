@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np : Nat × Nat\n⊢ (p.fst, p.snd) = p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rcases p with ⟨⟨⟩, hp⟩\n$0.56$"]
+	0 -> 2 [label="obtain ⟨p', ⟨p'', hp'⟩⟩ := p\n$0.76$"]
+	0 -> 3 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 4 [label="ext\n$0.42$"]
+	1 [label="(1/2)\ncase mk.zero\nhp : Nat\n⊢ ((0, hp).fst, (0, hp).snd) = (0, hp)\n(2/2)\nca...\n$0.56$"]
+	2 [label="(1/2)\ncase mk.zero\np' : Nat\n⊢ ((p', 0).fst, (p', 0).snd) = (p', 0)\n(2/2)\nca...\n$0.76$"]
+	3 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	4 [label="(1/2)\ncase fst\np : Nat × Nat\n⊢ (p.fst, p.snd).fst = p.fst\n(2/2)\ncase snd\np ...\n$0.42$"]
+}

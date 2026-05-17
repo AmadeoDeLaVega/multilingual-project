@@ -1,0 +1,66 @@
+File: /tmp/pwmf6849079_0/miniF2F/lean/src/test.lean
+Dataset:
+ {
+    "project": "/tmp/pwmf6849079_0/miniF2F",
+    "files": [
+        {
+            "path": "lean/src/test.lean",
+            "theorems": [
+                "mathd_algebra_33",
+                "mathd_numbertheory_345",
+                "mathd_numbertheory_299",
+                "mathd_algebra_478",
+                "mathd_algebra_209",
+                "amc12b_2020_p2",
+                "mathd_numbertheory_207",
+                "mathd_algebra_141",
+                "mathd_numbertheory_3",
+                "mathd_numbertheory_342"
+            ],
+            "max_retry_attempts_limits": {},
+            "max_time_limits_in_secs": {}
+        }
+    ],
+    "negation": false
+}
+Evaluation Settings:
+ {
+    "name": "codet5_beam_16",
+    "use_hammer": false,
+    "model_name": "/fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final",
+    "is_seq2seq": true,
+    "max_proof_depth": 20,
+    "max_seq_length": 2048,
+    "timeout_in_secs": 60,
+    "proof_retries": 1,
+    "character_per_token": 3.6,
+    "width": 16,
+    "max_tokens_per_action": 200,
+    "do_sample": true,
+    "top_k": 20,
+    "stop_tokens": [
+        "[END]"
+    ],
+    "padding": true,
+    "return_full_text": false,
+    "compute_probabilities": true,
+    "checkpoint_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1/checkpoints/miniF2F_test_easy10_lean3/codet5_beam_16",
+    "should_checkpoint": false,
+    "temperature": 0.75,
+    "max_history_messages": 0,
+    "proof_dump_dir": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_easy10/6849079/E1/proof_dumps/miniF2F_test_easy10_lean3/20260517-020207",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": false,
+    "num_goal_per_prompt": null,
+    "search_strategy": "BeamSearch",
+    "search_params": {
+        "beam_width": 16
+    },
+    "proof_search_heuristic": "NegLoglikelihoodMinimizingHeuristic",
+    "model_parallelism": 1,
+    "do_lemmas_discovery": true,
+    "proof_tracer": null
+}

@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nhp : p\nhq : q\n⊢ p ∧ q\n$0.00$"]
+	0 -> 1 [label="simp [hp, hp]\n$0.57$"]
+	0 -> 1 [label="simp [hp]\n$0.53$"]
+	0 -> 2 [label="simp only [hq, hq, true_and]\n$0.70$"]
+	1 [label="(1/1)\np q : Prop\nhp : p\nhq : q\n⊢ q\n$0.53$"]
+	2 [label="(1/1)\np q : Prop\nhp : p\nhq : q\n⊢ p ∧ True\n$0.70$"]
+}

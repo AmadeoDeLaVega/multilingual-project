@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nh : ¬True\n⊢ False\n$0.00$"]
+	0 -> 1 [label="simp [h] at h\ndone\n$-100.00$"]
+	0 -> 1 [label="simp at h\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [h, not_false_iff] at h\ndone\n$-100.00$"]
+	0 -> 1 [label="cases h\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*, not_false_iff] at h\ndone\n$-100.00$"]
+	0 -> 1 [label="rw [not_false_iff] at h\ndone\n$-100.00$"]
+	0 -> 1 [label="exact not_false_of_not_false h\ndone\n$-100.00$"]
+	0 -> 1 [label="have : 0 < h := not_false_of_not_false h\ndone\n$-100.00$"]
+	0 -> 1 [label="contradiction\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

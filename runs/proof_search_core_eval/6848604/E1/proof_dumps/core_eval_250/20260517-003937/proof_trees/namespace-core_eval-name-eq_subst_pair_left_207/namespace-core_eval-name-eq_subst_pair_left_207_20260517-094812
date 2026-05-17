@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\na b c : Nat\nh : a = b\n⊢ (a, c) = (b, c)\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="cases h\n$0.48$"]
+	0 -> 2 [label="subst h\n$0.45$"]
+	0 -> 3 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 3 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\ncase refl\na c : Nat\n⊢ (a, c) = (a, c)\n$0.48$"]
+	2 [label="(1/1)\na c : Nat\n⊢ (a, c) = (a, c)\n$0.45$"]
+	3 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

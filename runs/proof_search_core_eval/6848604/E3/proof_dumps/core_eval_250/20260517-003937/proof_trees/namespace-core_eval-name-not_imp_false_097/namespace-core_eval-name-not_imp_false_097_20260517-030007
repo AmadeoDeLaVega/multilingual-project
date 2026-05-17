@@ -1,0 +1,12 @@
+digraph {
+	0 [label="(1/1)\np : Prop\nh : ¬p\n⊢ p → False\n$0.00$"]
+	0 -> 1 [label="exact h\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simpa [h] using h\ndone\n$-100.00$"]
+	0 -> 2 [label="intro h\n$0.56$"]
+	0 -> 3 [label="intro h1\n$0.64$"]
+	1 [label="not in proof mode\n$-100.00$"]
+	2 [label="(1/1)\np : Prop\nh✝ : ¬p\nh : p\n⊢ False\n$0.56$"]
+	3 [label="(1/1)\np : Prop\nh : ¬p\nh1 : p\n⊢ False\n$0.64$"]
+}

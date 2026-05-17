@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\n⊢ ¬0 = n.succ\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simpa using n.zero_ne_zero\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [Nat.zero_eq]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="intro hn\n$0.46$"]
+	0 -> 3 [label="intro h\n$0.42$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\nn : Nat\nhn : 0 = n.succ\n⊢ False\n$0.46$"]
+	3 [label="(1/1)\nn : Nat\nh : 0 = n.succ\n⊢ False\n$0.42$"]
+}

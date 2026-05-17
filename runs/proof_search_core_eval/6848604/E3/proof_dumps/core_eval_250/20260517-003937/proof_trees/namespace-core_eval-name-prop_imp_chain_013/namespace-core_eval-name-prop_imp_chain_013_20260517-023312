@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nh : p\n⊢ q → p\n$0.00$"]
+	0 -> 1 [label="intro hq\n$0.65$"]
+	0 -> 2 [label="intro hx\n$0.72$"]
+	0 -> 3 [label="exact h\ndone\n$-100.00$"]
+	0 -> 3 [label="exact fun h => h.symm.trans (h.eq _)\ndone\n$-100.00$"]
+	0 -> 3 [label="simp [h]\ndone\n$-100.00$"]
+	1 [label="(1/1)\np q : Prop\nh : p\nhq : q\n⊢ p\n$0.65$"]
+	2 [label="(1/1)\np q : Prop\nh : p\nhx : q\n⊢ p\n$0.72$"]
+	3 [label="not in proof mode\n$-100.00$"]
+}

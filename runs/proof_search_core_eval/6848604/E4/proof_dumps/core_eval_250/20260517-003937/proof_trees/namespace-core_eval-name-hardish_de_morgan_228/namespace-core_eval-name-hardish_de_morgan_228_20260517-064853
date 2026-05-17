@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬(p ∨ q)\n$0.00$"]
+	0 -> 1 [label="simp\n$0.77$"]
+	0 -> 2 [label="by_cases hqq : q = q\n$0.97$"]
+	0 -> 3 [label="simp [hp]\n$0.76$"]
+	1 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬p ∧ ¬q\n$0.77$"]
+	2 [label="(1/2)\ncase pos\np q : Prop\nhp : ¬p\nhq : ¬q\nhqq : q = q\n⊢ ¬(p ∨ q)\n(2/2)\ncase...\n$0.97$"]
+	3 [label="(1/1)\np q : Prop\nhp : ¬p\nhq : ¬q\n⊢ ¬q\n$0.76$"]
+	3 -> 4 [label="exact hq\ndone\n$-100.00$"]
+	4 [label="not in proof mode\n$-99.24$"]
+}

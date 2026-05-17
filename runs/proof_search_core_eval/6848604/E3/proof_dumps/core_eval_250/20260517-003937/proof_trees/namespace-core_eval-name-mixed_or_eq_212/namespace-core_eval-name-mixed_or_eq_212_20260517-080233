@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nn m : Nat\nh : n = m\n⊢ n = m ∨ ¬n = m\n$0.00$"]
+	0 -> 1 [label="right\n$0.59$"]
+	0 -> 2 [label="subst h\n$0.54$"]
+	1 [label="(1/1)\ncase h\nn m : Nat\nh : n = m\n⊢ ¬n = m\n$0.59$"]
+	2 [label="(1/1)\nn : Nat\n⊢ n = n ∨ ¬n = n\n$0.54$"]
+	2 -> 3 [label="induction n <;> simpa using Nat.not_not_ne_zero\ndone\n$-100.00$"]
+	2 -> 4 [label="cases n\n$0.32$"]
+	2 -> 5 [label="right\n$0.32$"]
+	3 [label="not in proof mode\n$-99.46$"]
+	4 [label="(1/2)\ncase zero\n⊢ 0 = 0 ∨ ¬0 = 0\n(2/2)\ncase succ\nn✝ : Nat\n⊢ n✝ + 1 = n✝ + 1...\n$0.86$"]
+	5 [label="(1/1)\ncase h\nn : Nat\n⊢ ¬n = n\n$0.87$"]
+}

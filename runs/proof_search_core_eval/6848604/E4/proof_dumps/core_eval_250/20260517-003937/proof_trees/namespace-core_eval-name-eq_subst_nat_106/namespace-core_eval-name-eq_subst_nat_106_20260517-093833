@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\na b : Nat\nh : a = b\n⊢ a + 0 = b + 0\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="omega\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [h, Nat.add_zero]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="simp [h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 1 [label="rw [← h]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="subst h\n$0.83$"]
+	0 -> 3 [label="rw [Nat.add_zero]\n$0.92$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/1)\na : Nat\n⊢ a + 0 = a + 0\n$0.83$"]
+	3 [label="(1/1)\na b : Nat\nh : a = b\n⊢ a = b + 0\n$0.92$"]
+}

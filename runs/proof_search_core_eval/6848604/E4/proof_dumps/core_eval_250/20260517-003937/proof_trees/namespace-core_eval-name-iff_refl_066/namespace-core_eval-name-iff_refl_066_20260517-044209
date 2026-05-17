@@ -1,0 +1,10 @@
+digraph {
+	0 [label="(1/1)\np : Prop\n⊢ p ↔ p\n$0.00$"]
+	0 -> 1 [label="simp\ndone\n$-100.00$"]
+	0 -> 1 [label="induction p <;> simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="cases p <;> cases p <;> rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="rfl\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [*]\ndone\n$-100.00$"]
+	0 -> 1 [label="simp [exists_prop, eq_comm]\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\n\n⊢ ¬False\n$0.00$"]
+	0 -> 1 [label="rw [not_false_iff, not_false_iff, not_false_iff, not_false_iff, Ne.def, not...\n$-100.00$"]
+	0 -> 1 [label="decide\ndone\n$-100.00$"]
+	1 [label="not in proof mode\n$-100.00$"]
+}

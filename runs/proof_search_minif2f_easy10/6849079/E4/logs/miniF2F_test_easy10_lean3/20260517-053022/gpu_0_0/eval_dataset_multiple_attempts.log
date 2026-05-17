@@ -1,0 +1,1713 @@
+2026-05-17 05:32:43,898 - run_proof_search.py:541 - INFO - Starting evaluation for dataset: /tmp/pwmf6849079_2/miniF2F
+2026-05-17 05:32:43,898 - run_proof_search.py:543 - INFO - File in dataset: lean/src/test.lean
+2026-05-17 05:32:43,898 - run_proof_search.py:544 - INFO - Theorems in file: ['mathd_algebra_33', 'mathd_numbertheory_345', 'mathd_numbertheory_299', 'mathd_algebra_478', 'mathd_algebra_209', 'amc12b_2020_p2', 'mathd_numbertheory_207', 'mathd_algebra_141', 'mathd_numbertheory_3', 'mathd_numbertheory_342']
+2026-05-17 05:33:22,395 - run_proof_search.py:486 - INFO - (Retry Number #: 1) Restarting evaluation for dataset: /tmp/pwmf6849079_2/miniF2F
+2026-05-17 05:33:22,395 - run_proof_search.py:218 - INFO - Starting evaluation for dataset: /tmp/pwmf6849079_2/miniF2F, attempt: 1
+2026-05-17 05:33:22,395 - ray_utils.py:45 - INFO - Cleaning up Ray logs in /tmp/pwmf6849079_2/ray
+2026-05-17 05:33:22,396 - ray_utils.py:62 - INFO - Cleaned up 0.0 MB of Ray logs
+2026-05-17 05:33:22,416 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_algebra_33 [# 1/1]
+2026-05-17 05:33:27,872 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_algebra_33 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:33:27,873 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_algebra_33 with timeout: 300 seconds
+2026-05-17 05:33:27,873 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 05:33:27,893 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:34:29,646 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:34:45,219 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 05:34:45,220 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_algebra_33
+(x y z : ℝ)
+(h₀ : x ≠ 0)
+(h₁ : 2 * x = 5 * y)
+(h₂ : 7 * y = 10 * z) :
+z / x = 7 / 25 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+z / x = 7 / 25
+[HYPOTHESES] 1
+[HYPOTHESIS] x y z : ℝ
+[HYPOTHESIS] h₀ : x ≠ 0
+[HYPOTHESIS] h₁ : 2 * x = 5 * y
+[HYPOTHESIS] h₂ : 7 * y = 10 * z
+[END]
+2026-05-17 05:34:46,494 - llm_tactic_generator.py:165 - INFO - Generated 15 distinct actions (actual output size=16) in 1.2741918563842773 seconds
+2026-05-17 05:34:46,494 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+norm_num
+[END]
+2026-05-17 05:34:46,803 - search_driver.py:327 - INFO - Adding 1 new environments to the pool
+2026-05-17 05:34:46,804 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [7]
+2026-05-17 05:35:15,800 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['0']
+2026-05-17 05:35:41,558 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0]
+2026-05-17 05:35:41,558 - ray_proof_env_pool.py:339 - INFO - Reset environments: [7]
+2026-05-17 05:35:41,558 - search_driver.py:331 - INFO - Added 1 new environments in 54.75536060333252 seconds
+2026-05-17 05:35:41,558 - search_driver.py:334 - INFO - Resetting 8 environments
+2026-05-17 05:36:00,228 - search_driver.py:340 - INFO - Reset 8 environments in 18.669413328170776 seconds
+2026-05-17 05:36:00,228 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:36:00,228 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['7']
+2026-05-17 05:36:30,004 - ray_proof_env_pool.py:472 - INFO - Removed environments: [7]
+2026-05-17 05:36:30,005 - ray_proof_env_pool.py:372 - INFO - Activating environments: [0]
+2026-05-17 05:36:30,006 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0]
+2026-05-17 05:36:56,609 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0]
+2026-05-17 05:36:56,609 - ray_proof_env_pool.py:409 - INFO - Activated environments: [0]
+2026-05-17 05:37:35,840 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:38:22,472 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [7]
+2026-05-17 05:38:22,472 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['0']
+2026-05-17 05:38:45,136 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0]
+2026-05-17 05:38:45,137 - ray_proof_env_pool.py:372 - INFO - Activating environments: [7]
+2026-05-17 05:38:45,138 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [7]
+2026-05-17 05:39:11,349 - ray_proof_env_pool.py:339 - INFO - Reset environments: [7]
+2026-05-17 05:39:11,349 - ray_proof_env_pool.py:409 - INFO - Activated environments: [7]
+2026-05-17 05:39:37,462 - search_driver.py:357 - INFO - Finished executing 15 actions parallely in 217.23415064811707 seconds.
+2026-05-17 05:39:37,462 - search_driver.py:254 - INFO - Action: rw [← mul_one_mul, div_one], Done: False, Progress: Failed, Error: Got error in 'rw [← mul_one_mul, div_on...': 
+ error: unknown identifier 'mul_one_mul'
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,462 - search_driver.py:254 - INFO - Action: rw [div_eq_mul_inv, mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [div_eq_mul_inv, mul_a...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4 * ?m_5
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z * x⁻¹ = 7 / 25
+2026-05-17 05:39:37,462 - search_driver.py:254 - INFO - Action: rcases eq_or_ne x 0 with rfl | h₁, Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:39:37,462 - search_driver.py:254 - INFO - Action: simp [h₁, h₂], Done: False, Progress: Failed, Error: Got error in 'simp [h₁, h₂]': 
+ error: simplify tactic failed to simplify
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,462 - search_driver.py:254 - INFO - Action: rw [← mul_assoc, mul_comm, div_self h₁], Done: False, Progress: Failed, Error: Got error in 'rw [← mul_assoc, mul_comm...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * (?m_4 * ?m_5)
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,462 - search_driver.py:254 - INFO - Action: norm_num, Done: False, Progress: Failed, Error: Got error in 'norm_num': 
+ error: norm_num failed to simplify
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [← div_eq_mul_inv, div_eq_mul_inv], Done: False, Progress: Failed, Error: Got error in 'rw [← div_eq_mul_inv, div...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4⁻¹
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [div_eq_mul_inv, mul_assoc, div_eq_mul_inv, mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [div_eq_mul_inv, mul_a...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4 * ?m_5
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z * x⁻¹ = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: have : 2 * (10 * y) ≠ 0 := by
+  simp only [one_mul, h₂, mul_zero], Done: False, Progress: Failed, Error: Got error in '  simp only [one_mul, h₂,...': 
+ error: simplify tactic failed to simplify
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ 2 * (10 * y) ≠ 0
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [← mul_right_distrib, div_self h₁], Done: False, Progress: Failed, Error: Got error in 'rcases eq_or_ne x 0 with ...': 
+ error: don't know how to synthesize placeholder
+context:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ Type ?
+Got error in 'rw [← mul_right_distrib, ...': 
+ error: unknown identifier 'rw'
+Got error in 'rw [← mul_right_distrib, ...': 
+ error: invalid expression
+Got error in 'rw [← mul_right_distrib, ...': 
+ error: sync
+Got error in 'rw [← mul_right_distrib, ...': 
+ error: unknown identifier 'h₁'
+Got error in 'rw [← mul_right_distrib, ...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'rw [← mul_right_distrib, ...': 
+ error: don't know how to synthesize placeholder
+context:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ Type ?
+Got error in 'end': 
+ error: sync
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [mul_comm], Done: False, Progress: Failed, Error: Got error in 'rw [mul_comm]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rcases eq_or_ne x 0 with (rfl | h₁), Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [← mul_div_assoc, ← mul_assoc, ← mul_assoc, ← mul_assoc, mul_comm], Done: False, Progress: Failed, Error: Got error in 'rw [← mul_div_assoc, ← mu...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * (?m_4 / ?m_5)
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [h₂, mul_div_cancel₀, div_eq_mul_inv, ← mul_assoc, mul_div_cancel₀ (two_ne_zero' ℝ)], Done: False, Progress: Failed, Error: Got error in 'rw [h₂, mul_div_cancel₀, ...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  7 * y
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z / x = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:254 - INFO - Action: rw [div_eq_mul_inv, mul_assoc, div_eq_mul_inv, mul_assoc, mul_comm (10 * y), mul_comm (10 * x)], Done: False, Progress: Failed, Error: Got error in 'rw [div_eq_mul_inv, mul_a...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4 * ?m_5
+state:
+x y z : ℝ,
+h₀ : x ≠ 0,
+h₁ : 2 * x = 5 * y,
+h₂ : 7 * y = 10 * z
+⊢ z * x⁻¹ = 7 / 25
+2026-05-17 05:39:37,463 - search_driver.py:395 - INFO - Finished executing 2 branches in 292.24353432655334 seconds
+2026-05-17 05:40:39,952 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6, 7]
+2026-05-17 05:41:35,285 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6, 7]
+2026-05-17 05:41:35,286 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 05:41:35,286 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 05:41:36,200 - run_proof_search.py:362 - INFO - Dumping proof search result:
+mathd_algebra_33
+begin
+by
+
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: mathd_algebra_33
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: True
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 352.754709482193
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 05:41:36,200 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_algebra_33 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 05:41:36,200 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: mathd_algebra_33 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:41:36,227 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_numbertheory_345 [# 1/1]
+2026-05-17 05:41:41,367 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_numbertheory_345 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:41:41,367 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_numbertheory_345 with timeout: 300 seconds
+2026-05-17 05:41:41,367 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 05:41:41,371 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:42:48,441 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:43:11,322 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 05:43:11,322 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_numbertheory_345 :
+(2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+(2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0
+[END]
+2026-05-17 05:43:11,897 - llm_tactic_generator.py:165 - INFO - Generated 12 distinct actions (actual output size=16) in 0.5747473239898682 seconds
+2026-05-17 05:43:11,897 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+norm_num
+[END]
+2026-05-17 05:43:11,994 - search_driver.py:334 - INFO - Resetting 5 environments
+2026-05-17 05:43:49,327 - search_driver.py:340 - INFO - Reset 5 environments in 37.33294224739075 seconds
+2026-05-17 05:43:49,327 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:44:39,512 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4]
+2026-05-17 05:45:14,740 - search_driver.py:357 - INFO - Finished executing 12 actions parallely in 85.41297459602356 seconds.
+2026-05-17 05:45:14,740 - search_driver.py:254 - INFO - Action: simp [add_mod_assoc, add_mod_add_mod_div, add_mod], Done: False, Progress: Failed, Error: Got error in 'simp [add_mod_assoc, add_...': 
+ error: unknown identifier 'add_mod_assoc'
+state:
+⊢ (2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0
+2026-05-17 05:45:14,740 - search_driver.py:254 - INFO - Action: simp, Done: False, Progress: Failed, Error: Got error in 'simp': 
+ error: simplify tactic failed to simplify
+state:
+⊢ (2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0
+2026-05-17 05:45:14,740 - search_driver.py:254 - INFO - Action: rw [add_comm], Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:45:14,740 - search_driver.py:254 - INFO - Action: simp [add_mod_eq_zero_iff, Nat.add_mod], Done: False, Progress: Failed, Error: Got error in 'simp [add_mod_eq_zero_iff...': 
+ error: unknown identifier 'add_mod_eq_zero_iff'
+state:
+⊢ (2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0
+2026-05-17 05:45:14,740 - search_driver.py:254 - INFO - Action: ring1, Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:45:14,740 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [4]
+2026-05-17 05:45:48,797 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 05:45:48,798 - search_driver.py:254 - INFO - Action: ring, Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:45:48,798 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [5]
+2026-05-17 05:46:19,098 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 05:46:19,098 - search_driver.py:254 - INFO - Action: rw [add_comm, add_mod_add_div_cancel_left, add_mod_cancel_right], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm, add_mod_add...': 
+ error: unknown identifier 'add_mod_add_div_cancel_left'
+state:
+⊢ (2006 + (2000 + 2001 + 2002 + 2003 + 2004 + 2005)) % 7 = 0
+2026-05-17 05:46:19,098 - search_driver.py:254 - INFO - Action: norm_num, Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:46:19,098 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0]
+2026-05-17 05:46:43,011 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 05:46:43,011 - search_driver.py:254 - INFO - Action: rw [add_comm, add_comm], Done: False, Progress: StateUnchanged, Error: None
+2026-05-17 05:46:43,011 - search_driver.py:254 - INFO - Action: norm_num1, Done: False, Progress: Failed, Error: Got warning in 'theorem mathd_numbertheor...': 
+ warning: declaration 'mathd_numbertheory_345' uses sorry
+Got error in 'norm_num1': 
+ error: unknown identifier 'norm_num1'
+2026-05-17 05:46:43,011 - search_driver.py:254 - INFO - Action: rw [add_mod_cancel_left, add_mod_cancel_left], Done: False, Progress: Failed, Error: Got error in 'rw [add_mod_cancel_left, ...': 
+ error: unknown identifier 'add_mod_cancel_left'
+state:
+⊢ (2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0
+2026-05-17 05:46:43,011 - search_driver.py:254 - INFO - Action: rw [add_zero]; rw [add_zero], Done: False, Progress: Failed, Error: Got error in 'ring1': 
+ error: don't know how to synthesize placeholder
+context:
+⊢ Type ?
+Got error in 'rw [add_zero]; rw [add_ze...': 
+ error: unknown identifier 'rw'
+2026-05-17 05:46:43,011 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [4]
+2026-05-17 05:46:51,718 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 05:46:51,718 - search_driver.py:395 - INFO - Finished executing 5 branches in 220.39595937728882 seconds
+2026-05-17 05:47:46,963 - beam_search.py:55 - INFO - Frontier size: 2
+2026-05-17 05:47:58,939 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:48:54,287 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:48:54,287 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 05:48:54,288 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 05:48:56,445 - run_proof_search.py:362 - INFO - Dumping proof search result:
+theorem mathd_numbertheory_345 :
+(2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0 :=
+begin
+by
+ring1
+end
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: theorem mathd_numbertheory_345 :
+(2000 + 2001 + 2002 + 2003 + 2004 + 2005 + 2006) % 7 = 0 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 278.55278396606445
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 05:48:56,445 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_numbertheory_345 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 05:48:56,445 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: mathd_numbertheory_345 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:48:56,487 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_numbertheory_299 [# 1/1]
+2026-05-17 05:49:05,292 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_numbertheory_299 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:49:05,292 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_numbertheory_299 with timeout: 300 seconds
+2026-05-17 05:49:05,292 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 05:49:05,296 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:50:08,740 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:50:31,089 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 05:50:31,089 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_numbertheory_299 :
+(1 * 3 * 5 * 7 * 9 * 11 * 13) % 10 = 5 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5
+[END]
+2026-05-17 05:50:31,956 - llm_tactic_generator.py:165 - INFO - Generated 7 distinct actions (actual output size=16) in 0.8670709133148193 seconds
+2026-05-17 05:50:31,956 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+norm_num
+[END]
+2026-05-17 05:50:32,020 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:52:07,972 - search_driver.py:357 - INFO - Finished executing 7 actions parallely in 95.95171356201172 seconds.
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: rw [← Nat.mod_eq_of_lt (by decide), ← mul_assoc, ← mul_emod_left, mul_assoc,
+  one_mul, mul_one, ← mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [← Nat.mod_eq_of_lt (b...': 
+ error: unknown identifier 'decide'
+Got error in 'rw [← Nat.mod_eq_of_lt (b...': 
+ error: unknown identifier 'Nat.mod_eq_of_lt'
+state:
+⊢ 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: rw [Nat.mul_comm, Nat.mul_div_mod_right, Nat.mul_div_cancel_left], Done: False, Progress: Failed, Error: Got error in 'rw [Nat.mul_comm, Nat.mul...': 
+ error: unknown identifier 'Nat.mul_comm'
+state:
+⊢ 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: rw [mul_assoc], Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: rw [mul_assoc, mul_comm], Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: have := mul_emod_sq 3 3, Done: False, Progress: Failed, Error: Got error in 'have := mul_emod_sq 3 3': 
+ error: unknown identifier 'mul_emod_sq'
+state:
+⊢ 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: ring, Done: False, Progress: Failed, Error: The tactic timed out, probably because of repeated application of a tactic which created a very big goal.
+2026-05-17 05:52:07,972 - search_driver.py:254 - INFO - Action: norm_num, Done: False, Progress: StateChanged, Error: None
+2026-05-17 05:52:07,972 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [6]
+2026-05-17 05:52:28,700 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 05:52:28,700 - search_driver.py:395 - INFO - Finished executing 3 branches in 117.61131930351257 seconds
+2026-05-17 05:53:17,716 - beam_search.py:55 - INFO - Frontier size: 3
+2026-05-17 05:53:25,137 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:54:19,990 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:54:19,990 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 05:54:19,991 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 05:54:21,036 - run_proof_search.py:362 - INFO - Dumping proof search result:
+theorem mathd_numbertheory_299 :
+(1 * 3 * 5 * 7 * 9 * 11 * 13) % 10 = 5 :=
+begin
+by
+norm_num
+end
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: theorem mathd_numbertheory_299 :
+(1 * 3 * 5 * 7 * 9 * 11 * 13) % 10 = 5 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 168.72271013259888
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 05:54:21,036 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_numbertheory_299 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 05:54:21,036 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: mathd_numbertheory_299 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:54:21,062 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_algebra_478 [# 1/1]
+2026-05-17 05:54:24,543 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_algebra_478 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:54:24,543 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_algebra_478 with timeout: 300 seconds
+2026-05-17 05:54:24,544 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 05:54:24,547 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:55:11,172 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:55:23,702 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 05:55:23,702 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+v = 65
+[HYPOTHESES] 1
+[HYPOTHESIS] b h v : ℝ
+[HYPOTHESIS] h₀ : 0 < b ∧ 0 < h ∧ 0 < v
+[HYPOTHESIS] h₁ : v = 1 / 3 * (b * h)
+[HYPOTHESIS] h₂ : b = 30
+[HYPOTHESIS] h₃ : h = 13 / 2
+[END]
+2026-05-17 05:55:24,525 - llm_tactic_generator.py:165 - INFO - Generated 9 distinct actions (actual output size=16) in 0.822704553604126 seconds
+2026-05-17 05:55:24,525 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+norm_num
+[END]
+2026-05-17 05:55:24,611 - search_driver.py:334 - INFO - Resetting 2 environments
+2026-05-17 05:55:40,968 - search_driver.py:340 - INFO - Reset 2 environments in 16.356562614440918 seconds
+2026-05-17 05:55:40,968 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:56:16,993 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1]
+2026-05-17 05:56:39,470 - search_driver.py:357 - INFO - Finished executing 9 actions parallely in 58.50198721885681 seconds.
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: norm_num [h₂, h₃], Done: False, Progress: Failed, Error: Got error in 'norm_num [h₂, h₃]': 
+ error: norm_num failed to simplify
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: norm_num1 at h₁, Done: False, Progress: Failed, Error: Got error in 'norm_num1 at h₁': 
+ error: norm_num failed to simplify
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: rw [← h₂, h₂], Done: False, Progress: Failed, Error: Got error in 'rw [← h₂, h₂]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  30
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: rw [show 4 * 4 * (b * h) = 3 * (b * h) by ring], Done: False, Progress: Failed, Error: Got error in 'rw [show 4 * 4 * (b * h) ...': 
+ error: invalid 'show' declaration, ',' expected
+Try this: ring_nf
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: rw [h₂, abs_of_pos h₀.le, ← two_mul, mul_assoc, ← mul_div_assoc, mul_div_cancel_left₀ h₀.ne'], Done: False, Progress: Failed, Error: Got error in 'rw [h₂, abs_of_pos h₀.le,...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  b
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: norm_num at h₂, Done: False, Progress: Failed, Error: Got error in 'norm_num at h₂': 
+ error: norm_num failed to simplify
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,470 - search_driver.py:254 - INFO - Action: simp [h₂], Done: False, Progress: Failed, Error: Got error in 'simp [h₂]': 
+ error: simplify tactic failed to simplify
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,471 - search_driver.py:254 - INFO - Action: norm_num, Done: False, Progress: Failed, Error: Got error in 'norm_num': 
+ error: norm_num failed to simplify
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,471 - search_driver.py:254 - INFO - Action: norm_num at h₁ h₁, Done: False, Progress: Failed, Error: Got error in 'norm_num at h₁ h₁': 
+ error: norm_num failed to simplify
+state:
+b h v : ℝ,
+h₀ : 0 < b ∧ 0 < h ∧ 0 < v,
+h₁ : v = 1 / 3 * (b * h),
+h₂ : b = 30,
+h₃ : h = 13 / 2
+⊢ v = 65
+2026-05-17 05:56:39,471 - search_driver.py:395 - INFO - Finished executing 0 branches in 75.76877784729004 seconds
+2026-05-17 05:56:40,679 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:57:52,891 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:57:52,891 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 05:57:52,892 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 05:57:54,936 - run_proof_search.py:362 - INFO - Dumping proof search result:
+mathd_algebra_478
+begin
+by
+
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: mathd_algebra_478
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 75.87622308731079
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 05:57:54,936 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_algebra_478 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 05:57:54,936 - run_proof_search.py:422 - INFO - Prover for lemma: mathd_algebra_478 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 05:57:54,978 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_algebra_209 [# 1/1]
+2026-05-17 05:58:03,188 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_algebra_209 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 05:58:03,188 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_algebra_209 with timeout: 300 seconds
+2026-05-17 05:58:03,188 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 05:58:03,192 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:59:10,215 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 05:59:31,390 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 05:59:31,391 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_algebra_209
+(σ : equiv ℝ ℝ)
+(h₀ : σ.2 2 = 10)
+(h₁ : σ.2 10 = 1)
+(h₂ : σ.2 1 = 2) :
+σ.1 (σ.1 10) = 1 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+σ.to_fun (σ.to_fun 10) = 1
+[HYPOTHESES] 1
+[HYPOTHESIS] σ : ℝ ≃ ℝ
+[HYPOTHESIS] h₀ : σ.inv_fun 2 = 10
+[HYPOTHESIS] h₁ : σ.inv_fun 10 = 1
+[HYPOTHESIS] h₂ : σ.inv_fun 1 = 2
+[END]
+2026-05-17 05:59:31,958 - llm_tactic_generator.py:165 - INFO - Generated 15 distinct actions (actual output size=16) in 0.566929817199707 seconds
+2026-05-17 05:59:31,958 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+simp
+[END]
+2026-05-17 05:59:32,065 - search_driver.py:327 - INFO - Adding 1 new environments to the pool
+2026-05-17 05:59:32,066 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [7]
+2026-05-17 06:00:03,970 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['0']
+2026-05-17 06:00:19,243 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0]
+2026-05-17 06:00:19,243 - ray_proof_env_pool.py:339 - INFO - Reset environments: [7]
+2026-05-17 06:00:19,243 - search_driver.py:331 - INFO - Added 1 new environments in 47.17839002609253 seconds
+2026-05-17 06:00:19,243 - search_driver.py:334 - INFO - Resetting 8 environments
+2026-05-17 06:00:46,708 - search_driver.py:340 - INFO - Reset 8 environments in 27.46449589729309 seconds
+2026-05-17 06:00:46,708 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:00:46,708 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['7']
+2026-05-17 06:01:05,028 - ray_proof_env_pool.py:472 - INFO - Removed environments: [7]
+2026-05-17 06:01:05,028 - ray_proof_env_pool.py:372 - INFO - Activating environments: [0]
+2026-05-17 06:01:05,029 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0]
+2026-05-17 06:01:28,941 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0]
+2026-05-17 06:01:28,941 - ray_proof_env_pool.py:409 - INFO - Activated environments: [0]
+2026-05-17 06:02:08,357 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:02:52,762 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [7]
+2026-05-17 06:02:52,762 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['0']
+2026-05-17 06:03:11,851 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0]
+2026-05-17 06:03:11,851 - ray_proof_env_pool.py:372 - INFO - Activating environments: [7]
+2026-05-17 06:03:11,852 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [7]
+2026-05-17 06:03:35,589 - ray_proof_env_pool.py:339 - INFO - Reset environments: [7]
+2026-05-17 06:03:35,589 - ray_proof_env_pool.py:409 - INFO - Activated environments: [7]
+2026-05-17 06:03:55,798 - search_driver.py:357 - INFO - Finished executing 15 actions parallely in 189.09056425094604 seconds.
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simp [h₁, h₂], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simp [h₁], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: rw [← h₂, ← h₀, ← inv_one], Done: False, Progress: Failed, Error: Got error in 'rw [← h₂, ← h₀, ← inv_one...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  10
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ σ.to_fun (σ.to_fun (bit0 (bit1 (σ.inv_fun 1)))) = 1
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simp [h₂], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: rw [← h₁, h₂, h₁], Done: False, Progress: Failed, Error: Got error in 'rw [← h₁, h₂, h₁]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  σ.inv_fun 1
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ σ.to_fun (σ.to_fun (bit0 (bit1 (bit0 (σ.inv_fun 10))))) = σ.inv_fun 10
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: cases h₁, Done: False, Progress: Failed, Error: Got error in 'cases h₁': 
+ error: cases tactic failed, unsupported equality between type and constructor indices
+(only equalities between constructors and/or variables are supported, try cases on the indices):
+one = σ.inv_fun 10
+
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ one = σ.inv_fun 10 → h₁ == _ → σ.to_fun (σ.to_fun 10) = 1
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: exact h₁, Done: False, Progress: Failed, Error: Got error in 'exact h₁': 
+ error: invalid type ascription, term has type
+  σ.inv_fun 10 = 1
+but is expected to have type
+  σ.to_fun (σ.to_fun 10) = 1
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ σ.to_fun (σ.to_fun 10) = 1
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: rw [h₂, h₂], Done: False, Progress: Failed, Error: Got error in 'simp [h₁, h₂]': 
+ error: don't know how to synthesize placeholder
+context:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ Type ?
+Got error in 'rw [h₂, h₂]': 
+ error: unknown identifier 'rw'
+Got error in 'rw [h₂, h₂]': 
+ error: unknown identifier 'h₂'
+Got error in 'rw [h₂, h₂]': 
+ error: unknown identifier 'h₂'
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simp [σ.inv_eq_one, h₁], Done: False, Progress: Failed, Error: Got error in 'simp [h₁]': 
+ error: don't know how to synthesize placeholder
+context:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ Type ?
+Got error in 'simp [σ.inv_eq_one, h₁]': 
+ error: unknown identifier 'simp'
+Got error in 'simp [σ.inv_eq_one, h₁]': 
+ error: unknown identifier 'σ.inv_eq_one'
+Got error in 'simp [σ.inv_eq_one, h₁]': 
+ error: unknown identifier 'h₁'
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simp [h₂, h₀], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: rw [h₂, h₁], Done: False, Progress: Failed, Error: Got error in 'simp [h₂]': 
+ error: don't know how to synthesize placeholder
+context:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ Type ?
+Got error in 'rw [h₂, h₁]': 
+ error: unknown identifier 'rw'
+Got error in 'rw [h₂, h₁]': 
+ error: unknown identifier 'h₂'
+Got error in 'rw [h₂, h₁]': 
+ error: unknown identifier 'h₁'
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: rw [h₁, h₂], Done: False, Progress: Failed, Error: Got error in 'rw [h₁, h₂]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  σ.inv_fun 10
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ σ.to_fun (σ.to_fun 10) = 1
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simp, Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: simpa using h₁, Done: False, Progress: Failed, Error: Got error in 'simpa using h₁': 
+ error: simpa failed
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₂ : σ.inv_fun 1 = 2,
+h₁ : ⇑(σ.symm) 10 = 1
+⊢ ⇑σ (⇑σ 10) = 1
+2026-05-17 06:03:55,799 - search_driver.py:254 - INFO - Action: rw [← h₁, h₂], Done: False, Progress: Failed, Error: Got error in 'rw [← h₁, h₂]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  σ.inv_fun 1
+state:
+σ : ℝ ≃ ℝ,
+h₀ : σ.inv_fun 2 = 10,
+h₁ : σ.inv_fun 10 = 1,
+h₂ : σ.inv_fun 1 = 2
+⊢ σ.to_fun (σ.to_fun (bit0 (bit1 (bit0 (σ.inv_fun 10))))) = σ.inv_fun 10
+2026-05-17 06:03:55,799 - search_driver.py:395 - INFO - Finished executing 5 branches in 264.408762216568 seconds
+2026-05-17 06:04:56,677 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6, 7]
+2026-05-17 06:06:09,966 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6, 7]
+2026-05-17 06:06:09,968 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 06:06:09,969 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 06:06:11,468 - run_proof_search.py:362 - INFO - Dumping proof search result:
+mathd_algebra_209
+begin
+by
+
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: mathd_algebra_209
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: True
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 323.30768966674805
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 06:06:11,468 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_algebra_209 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:06:11,468 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: mathd_algebra_209 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:06:11,501 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: amc12b_2020_p2 [# 1/1]
+2026-05-17 06:06:18,614 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: amc12b_2020_p2 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:06:18,614 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: amc12b_2020_p2 with timeout: 300 seconds
+2026-05-17 06:06:18,615 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 06:06:18,618 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:07:13,375 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:07:34,938 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:07:34,938 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem amc12b_2020_p2 :
+((100 ^ 2 - 7 ^ 2):ℝ) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+(100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1
+[END]
+2026-05-17 06:07:35,466 - llm_tactic_generator.py:165 - INFO - Generated 11 distinct actions (actual output size=16) in 0.5285167694091797 seconds
+2026-05-17 06:07:35,467 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+ring
+[END]
+2026-05-17 06:07:35,559 - search_driver.py:334 - INFO - Resetting 4 environments
+2026-05-17 06:08:00,547 - search_driver.py:340 - INFO - Reset 4 environments in 24.98805046081543 seconds
+2026-05-17 06:08:00,547 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:08:42,536 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3]
+2026-05-17 06:09:12,830 - search_driver.py:357 - INFO - Finished executing 11 actions parallely in 72.28251934051514 seconds.
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: rw [mul_div_cancel'], Done: False, Progress: Failed, Error: Got error in 'rw [mul_div_cancel']': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * (?m_4 / ?m_3)
+state:
+⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: rw [div_eq_inv_mul, mul_comm], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: rw [div_mul_div_cancel_left, mul_comm], Done: False, Progress: Failed, Error: Got error in 'rw [div_mul_div_cancel_le...': 
+ error: unknown identifier 'div_mul_div_cancel_left'
+state:
+⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: rw [mul_div_cancel_left], Done: False, Progress: Failed, Error: Got error in 'rw [mul_div_cancel_left]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4 / ?m_3
+state:
+⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: field_simp [sq], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: simp, Done: False, Progress: Failed, Error: Got error in 'simp': 
+ error: simplify tactic failed to simplify
+state:
+⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1
+2026-05-17 06:09:12,830 - search_driver.py:254 - INFO - Action: ring, Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:09:12,830 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [6]
+2026-05-17 06:09:30,074 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 06:09:30,074 - search_driver.py:254 - INFO - Action: rw [div_mul_div_self, mul_one], Done: False, Progress: Failed, Error: Got error in 'rw [div_mul_div_self, mul...': 
+ error: unknown identifier 'div_mul_div_self'
+state:
+⊢ (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1
+2026-05-17 06:09:30,074 - search_driver.py:254 - INFO - Action: simp only [div_eq_mul_inv, div_eq_inv_mul, mul_one], Done: False, Progress: Failed, Error: Got error in 'simp only [div_eq_mul_inv...': 
+ error: unknown identifier 'simp'
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: sync
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: type mismatch at application
+  tactic.istep 12 27 12 27 291 div_eq_inv_mul
+term
+  div_eq_inv_mul
+has type
+  ?m_3 / ?m_4 = ?m_4⁻¹ * ?m_3 : Prop
+but is expected to have type
+  tactic ?m_1 : Type ?
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: type mismatch at application
+  tactic.istep 12 43 12 43 295 mul_one
+term
+  mul_one
+has type
+  ∀ (a : ?m_1), a * 1 = a : Prop
+but is expected to have type
+  tactic ?m_1 : Type ?
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: don't know how to synthesize placeholder
+context:
+⊢ Type ?
+Got error in 'simp only [div_eq_mul_inv...': 
+ error: don't know how to synthesize placeholder
+context:
+⊢ Type ?
+Got error in 'end': 
+ error: sync
+2026-05-17 06:09:30,074 - search_driver.py:254 - INFO - Action: rw [mul_comm, mul_assoc, mul_div_self_comm], Done: False, Progress: Failed, Error: Got error in 'rw [mul_comm, mul_assoc, ...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4 * ?m_5
+state:
+⊢ (70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7)) * ((100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2)) = 1
+2026-05-17 06:09:30,074 - search_driver.py:254 - INFO - Action: field_simp, Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:09:30,074 - search_driver.py:395 - INFO - Finished executing 4 branches in 115.1362841129303 seconds
+2026-05-17 06:10:27,528 - beam_search.py:55 - INFO - Frontier size: 4
+2026-05-17 06:10:38,260 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:11:44,993 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:11:44,993 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 06:11:44,994 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 06:11:46,853 - run_proof_search.py:362 - INFO - Dumping proof search result:
+theorem amc12b_2020_p2 :
+((100 ^ 2 - 7 ^ 2):ℝ) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1 :=
+begin
+by
+ring
+end
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: theorem amc12b_2020_p2 :
+((100 ^ 2 - 7 ^ 2):ℝ) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7))) = 1 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 174.9021348953247
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 06:11:46,853 - run_proof_search.py:363 - INFO - Prover for lemma: amc12b_2020_p2 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:11:46,853 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: amc12b_2020_p2 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:11:46,887 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_numbertheory_207 [# 1/1]
+2026-05-17 06:11:52,467 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_numbertheory_207 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:11:52,467 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_numbertheory_207 with timeout: 300 seconds
+2026-05-17 06:11:52,467 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 06:11:52,471 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:13:07,112 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:13:23,896 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:13:23,896 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_numbertheory_207 :
+8 * 9^2 + 5 * 9 + 2 = 695 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+8 * 9 ^ 2 + 5 * 9 + 2 = 695
+[END]
+2026-05-17 06:13:24,478 - llm_tactic_generator.py:165 - INFO - Generated 4 distinct actions (actual output size=16) in 0.5816280841827393 seconds
+2026-05-17 06:13:24,478 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+ring
+[END]
+2026-05-17 06:13:24,521 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3]
+2026-05-17 06:13:58,791 - search_driver.py:357 - INFO - Finished executing 4 actions parallely in 34.270241260528564 seconds.
+2026-05-17 06:13:58,791 - search_driver.py:254 - INFO - Action: have := lt_of_add_le_add_left two_pos, Done: False, Progress: Failed, Error: Got error in 'have := lt_of_add_le_add_...': 
+ error: unknown identifier 'lt_of_add_le_add_left'
+state:
+⊢ 8 * 9 ^ 2 + 5 * 9 + 2 = 695
+2026-05-17 06:13:58,791 - search_driver.py:254 - INFO - Action: rw [← pow_succ', ← pow_two, add_add_add_one_add_two], Done: False, Progress: Failed, Error: Got error in 'rw [← pow_succ', ← pow_tw...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 ^ ?m_4 * ?m_3
+state:
+⊢ 8 * 9 ^ 2 + 5 * 9 + 2 = 695
+2026-05-17 06:13:58,791 - search_driver.py:254 - INFO - Action: rw [two_mul, mul_sum, add_comm, mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [two_mul, mul_sum, add...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  2 * ?m_3
+state:
+⊢ 8 * 9 ^ 2 + 5 * 9 + 2 = 695
+2026-05-17 06:13:58,791 - search_driver.py:254 - INFO - Action: ring, Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:13:58,791 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [3]
+2026-05-17 06:14:29,126 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 06:14:29,127 - search_driver.py:395 - INFO - Finished executing 1 branches in 65.23062944412231 seconds
+2026-05-17 06:15:16,673 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:15:25,454 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:16:43,103 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:16:43,103 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 06:16:43,104 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 06:16:45,390 - run_proof_search.py:362 - INFO - Dumping proof search result:
+theorem mathd_numbertheory_207 :
+8 * 9^2 + 5 * 9 + 2 = 695 :=
+begin
+by
+ring
+end
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: theorem mathd_numbertheory_207 :
+8 * 9^2 + 5 * 9 + 2 = 695 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 114.62123823165894
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 06:16:45,390 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_numbertheory_207 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:16:45,390 - run_proof_search.py:422 - INFO - Prover for lemma: mathd_numbertheory_207 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:16:45,434 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_algebra_141 [# 1/1]
+2026-05-17 06:16:52,122 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_algebra_141 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:16:52,122 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_algebra_141 with timeout: 300 seconds
+2026-05-17 06:16:52,122 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 06:16:52,126 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:17:47,844 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:18:05,392 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:18:05,392 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_algebra_141
+(a b : ℝ)
+(h₁ : (a * b)=180)
+(h₂ : 2 * (a + b)=54) :
+(a^2 + b^2) = 369 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+a ^ 2 + b ^ 2 = 369
+[HYPOTHESES] 1
+[HYPOTHESIS] a b : ℝ
+[HYPOTHESIS] h₁ : a * b = 180
+[HYPOTHESIS] h₂ : 2 * (a + b) = 54
+[END]
+2026-05-17 06:18:06,257 - llm_tactic_generator.py:165 - INFO - Generated 13 distinct actions (actual output size=16) in 0.865081787109375 seconds
+2026-05-17 06:18:06,257 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+ring
+[END]
+2026-05-17 06:18:06,356 - search_driver.py:334 - INFO - Resetting 6 environments
+2026-05-17 06:18:33,407 - search_driver.py:340 - INFO - Reset 6 environments in 27.050302028656006 seconds
+2026-05-17 06:18:33,407 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:19:14,085 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5]
+2026-05-17 06:19:54,467 - search_driver.py:357 - INFO - Finished executing 13 actions parallely in 81.05978465080261 seconds.
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [← mul_assoc, add_comm a, pow_add, ← mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [← mul_assoc, add_comm...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * (?m_4 * ?m_5)
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [add_comm, mul_assoc, mul_assoc, mul_right_comm, mul_comm, mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm, mul_assoc, ...': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 * ?m_4 * ?m_5
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ b ^ 2 + a ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [← div_eq_iff h₁, mul_comm, div_def], Done: False, Progress: Failed, Error: Got error in 'rw [← div_eq_iff h₁, mul_...': 
+ error: type mismatch at application
+  div_eq_iff h₁
+term
+  h₁
+has type
+  a * b = 180
+but is expected to have type
+  ?m_2 ≠ 0
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [sq, ← Nat.add_assoc, ← Nat.add_pow, ← mul_assoc, mul_assoc,
+  mul_add, mul_comm, mul_assoc, mul_add, ← mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [sq, ← Nat.add_assoc, ...': 
+ error: unknown identifier 'Nat.add_assoc'
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a * a + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [show 8 * (a + b) = 16 from this, add_comm, mul_assoc, ← h₂, mul_one], Done: False, Progress: Failed, Error: Got error in 'rw [show 8 * (a + b) = 16...': 
+ error: invalid 'show' declaration, ',' expected
+Got error in 'rw [show 8 * (a + b) = 16...': 
+ error: unknown identifier 'this'
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [← two_mul, pow_two], Done: False, Progress: Failed, Error: Got error in 'rw [← two_mul, pow_two]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ?m_3 + ?m_3
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [two_mul, one_mul], Done: False, Progress: Failed, Error: Got error in 'rw [two_mul, one_mul]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  2 * ?m_3
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: simp only [sq, ← two_mul, div_add_div, mul_comm], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: rw [add_comm], Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: have := (add_right_cancel b).mpr (by norm_num), Done: False, Progress: Failed, Error: Got error in 'have := (add_right_cancel...': 
+ error: type mismatch at application
+  add_right_cancel b
+term
+  b
+has type
+  ℝ : Type
+but is expected to have type
+  ?m_3 + ?m_4 = ?m_5 + ?m_4 : Prop
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: simp [h₁, -two_mul], Done: False, Progress: Failed, Error: Got error in 'simp [h₁, -two_mul]': 
+ error: simplify tactic failed to simplify
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: ring, Done: False, Progress: Failed, Error: Got info in 'end': 
+ info: Try this: ring_nf
+
+2026-05-17 06:19:54,467 - search_driver.py:254 - INFO - Action: simp only [h₂, mul_one, mul_one, ofReal_add], Done: False, Progress: Failed, Error: Got error in 'simp only [h₂, mul_one, m...': 
+ error: unknown identifier 'ofReal_add'
+state:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ a ^ 2 + b ^ 2 = 369
+2026-05-17 06:19:54,467 - search_driver.py:395 - INFO - Finished executing 2 branches in 109.07564854621887 seconds
+2026-05-17 06:20:31,986 - beam_search.py:55 - INFO - Frontier size: 2
+2026-05-17 06:20:31,987 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_algebra_141
+(a b : ℝ)
+(h₁ : (a * b)=180)
+(h₂ : 2 * (a + b)=54) :
+(a^2 + b^2) = 369 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+b ^ 2 + a ^ 2 = 369
+[HYPOTHESES] 1
+[HYPOTHESIS] a b : ℝ
+[HYPOTHESIS] h₁ : a * b = 180
+[HYPOTHESIS] h₂ : 2 * (a + b) = 54
+[END]
+2026-05-17 06:20:32,699 - llm_tactic_generator.py:165 - INFO - Generated 14 distinct actions (actual output size=16) in 0.7119162082672119 seconds
+2026-05-17 06:20:32,699 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+ring
+[END]
+2026-05-17 06:20:32,782 - search_driver.py:327 - INFO - Adding 8 new environments to the pool
+2026-05-17 06:20:32,786 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [7, 8, 9, 10, 11, 12, 13]
+2026-05-17 06:21:21,224 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['6', '0', '1', '2', '3', '4', '5']
+2026-05-17 06:22:14,488 - ray_proof_env_pool.py:472 - INFO - Removed environments: [6, 0, 1, 2, 3, 4, 5]
+2026-05-17 06:22:14,488 - ray_proof_env_pool.py:339 - INFO - Reset environments: [7, 8, 9, 10, 11, 12, 13]
+2026-05-17 06:22:14,488 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [14]
+2026-05-17 06:22:36,164 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['7']
+2026-05-17 06:22:51,092 - ray_proof_env_pool.py:472 - INFO - Removed environments: [7]
+2026-05-17 06:22:51,092 - ray_proof_env_pool.py:339 - INFO - Reset environments: [14]
+2026-05-17 06:22:51,093 - search_driver.py:331 - INFO - Added 8 new environments in 138.31061458587646 seconds
+2026-05-17 06:22:51,093 - search_driver.py:334 - INFO - Resetting 13 environments
+2026-05-17 06:22:51,093 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [2, 6, 3, 4, 5, 7, 8]
+2026-05-17 06:22:51,093 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['9', '10', '11', '12', '13', '14']
+2026-05-17 06:23:38,555 - ray_proof_env_pool.py:472 - INFO - Removed environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:23:38,555 - ray_proof_env_pool.py:372 - INFO - Activating environments: [2, 6, 3, 4, 5, 7]
+2026-05-17 06:23:38,560 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [2, 6, 3, 4, 5, 7]
+2026-05-17 06:24:36,614 - ray_proof_env_pool.py:339 - INFO - Reset environments: [2, 6, 3, 4, 5, 7]
+2026-05-17 06:25:42,960 - ray_proof_env_pool.py:409 - INFO - Activated environments: [2, 6, 3, 4, 5, 7]
+2026-05-17 06:26:33,366 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:26:33,366 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['8', '2', '6', '3', '4', '5']
+2026-05-17 06:27:16,126 - ray_proof_env_pool.py:472 - INFO - Removed environments: [8, 2, 6, 3, 4, 5]
+2026-05-17 06:27:16,126 - ray_proof_env_pool.py:372 - INFO - Activating environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:27:16,130 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:28:04,096 - ray_proof_env_pool.py:339 - INFO - Reset environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:28:04,096 - ray_proof_env_pool.py:409 - INFO - Activated environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:29:09,909 - search_driver.py:340 - INFO - Reset 13 environments in 378.81675362586975 seconds
+2026-05-17 06:29:09,910 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [1, 2, 6, 3, 4, 5, 7]
+2026-05-17 06:29:09,910 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['9', '10', '11', '12', '13', '14']
+2026-05-17 06:30:19,200 - ray_proof_env_pool.py:472 - INFO - Removed environments: [9, 10, 11, 12, 13, 14]
+2026-05-17 06:30:19,200 - ray_proof_env_pool.py:372 - INFO - Activating environments: [1, 2, 6, 3, 4, 5]
+2026-05-17 06:30:19,205 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [1, 2, 6, 3, 4, 5]
+2026-05-17 06:31:16,116 - ray_proof_env_pool.py:339 - INFO - Reset environments: [1, 2, 6, 3, 4, 5]
+2026-05-17 06:33:21,273 - ray_proof_env_pool.py:409 - INFO - Activated environments: [1, 2, 6, 3, 4, 5]
+2026-05-17 06:34:02,191 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:34:02,191 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: ['7', '1', '2', '6', '3', '4', '5']
+2026-05-17 06:35:17,975 - ray_proof_env_pool.py:472 - INFO - Removed environments: [7, 1, 2, 6, 3, 4, 5]
+2026-05-17 06:35:17,975 - ray_proof_env_pool.py:372 - INFO - Activating environments: [8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:35:17,979 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:36:19,973 - ray_proof_env_pool.py:339 - INFO - Reset environments: [8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:37:02,997 - ray_proof_env_pool.py:409 - INFO - Activated environments: [8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:37:48,917 - search_driver.py:357 - INFO - Finished executing 14 actions parallely in 519.0073742866516 seconds.
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: have h₂ := add_mul_div_sq_eq_mul_sq_add_sq_of_eq_one h₂, Done: False, Progress: Failed, Error: Got error in 'have h₂ := add_mul_div_sq...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'end': 
+ error: sync
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: simp [h₁, h₂], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'simp [h₁, h₂]': 
+ error: unknown identifier 'simp'
+Got error in 'simp [h₁, h₂]': 
+ error: unknown identifier 'h₁'
+Got error in 'simp [h₁, h₂]': 
+ error: unknown identifier 'h₂'
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: simp [h₂], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'simp [h₂]': 
+ error: unknown identifier 'simp'
+Got error in 'simp [h₂]': 
+ error: unknown identifier 'h₂'
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: rw [← mul_assoc, ← two_mul_add_pow_eq_pow_sq, mul_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: unknown identifier 'rw'
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: invalid expression
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: sync
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: sync
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: type mismatch at application
+  tactic.istep 15 46 15 46 279 mul_assoc
+term
+  mul_assoc
+has type
+  ∀ (a b c : ?m_1), a * b * c = a * (b * c) : Prop
+but is expected to have type
+  tactic ?m_1 : Type ?
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [← mul_assoc, ← two_mu...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'end': 
+ error: sync
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: simp only [pow_add, mul_assoc, mul_right_comm], Done: False, Progress: Failed, Error: Got error in 'simp only [pow_add, mul_a...': 
+ error: unknown identifier 'simp'
+Got error in 'simp only [pow_add, mul_a...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'simp only [pow_add, mul_a...': 
+ error: sync
+Got error in 'simp only [pow_add, mul_a...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'simp only [pow_add, mul_a...': 
+ error: type mismatch at application
+  tactic.istep 15 20 15 20 274 mul_assoc
+term
+  mul_assoc
+has type
+  ∀ (a b c : ?m_1), a * b * c = a * (b * c) : Prop
+but is expected to have type
+  tactic ?m_1 : Type ?
+Got error in 'simp only [pow_add, mul_a...': 
+ error: type mismatch at application
+  tactic.istep 15 31 15 31 278 mul_right_comm
+term
+  mul_right_comm
+has type
+  ∀ (a b c : ?m_1), a * b * c = a * c * b : Prop
+but is expected to have type
+  tactic ?m_1 : Type ?
+Got error in 'simp only [pow_add, mul_a...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'simp only [pow_add, mul_a...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'end': 
+ error: sync
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: simp [two_mul, h₂, 2 *, zero_mul], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'simp [two_mul, h₂, 2 *, z...': 
+ error: unknown identifier 'simp'
+Got error in 'simp [two_mul, h₂, 2 *, z...': 
+ error: unknown identifier 'h₂'
+Got error in 'simp [two_mul, h₂, 2 *, z...': 
+ error: invalid expression
+Got error in 'simp [two_mul, h₂, 2 *, z...': 
+ error: type mismatch at application
+  list.cons two_mul
+term
+  two_mul
+has type
+  ∀ (n : ?m_1), 2 * n = n + n : Prop
+but is expected to have type
+  ?m_1 : Type ?
+Additional information:
+Got context in 'simp [two_mul, h₂, 2 *, z...': 
+ context: switched to simple application elaboration procedure because failed to use expected type to elaborate it, error message
+  type mismatch, term
+    ?m_2 :: ?m_3
+  has type
+    list ?m_1 : Type ?
+  but is expected to have type
+    tactic_state : Type
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: cases' h₂ with h₂ h₁ <;> rfl, Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'cases' h₂ with h₂ h₁ <;> ...': 
+ error: unknown identifier 'cases''
+Got error in 'cases' h₂ with h₂ h₁ <;> ...': 
+ error: unknown identifier 'h₂'
+Got error in 'cases' h₂ with h₂ h₁ <;> ...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'cases' h₂ with h₂ h₁ <;> ...': 
+ error: sync
+Got error in 'cases' h₂ with h₂ h₁ <;> ...': 
+ error: type mismatch at application
+  ⁇ > rfl
+term
+  rfl
+has type
+  ?m_2 = ?m_2 : Prop
+but is expected to have type
+  ?m_1 : Type ?
+Additional information:
+Got context in 'cases' h₂ with h₂ h₁ <;> ...': 
+ context: switched to simple application elaboration procedure because failed to use expected type to elaborate it, error message
+  type mismatch, term
+    ?m_3 > ?m_4
+  has type
+    Prop : Type
+  but is expected to have type
+    tactic ?m_1 : Type ?
+Got error in 'cases' h₂ with h₂ h₁ <;> ...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: rw [two_mul, ← mul_add, ← mul_assoc, mul_assoc, ← mul_assoc, ← mul_one h₁], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: unknown identifier 'rw'
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: invalid expression
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: sync
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: sync
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: invalid expression
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: sync
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: type mismatch at application
+  list.cons two_mul
+term
+  two_mul
+has type
+  ∀ (n : ?m_1), 2 * n = n + n : Prop
+but is expected to have type
+  ?m_1 : Type ?
+Additional information:
+Got context in 'rw [two_mul, ← mul_add, ←...': 
+ context: switched to simple application elaboration procedure because failed to use expected type to elaborate it, error message
+  type mismatch, term
+    ?m_2 :: ?m_3
+  has type
+    list ?m_1 : Type ?
+  but is expected to have type
+    tactic_state : Type
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: type mismatch at application
+  tactic.istep 15 37 15 37 281 mul_assoc
+term
+  mul_assoc
+has type
+  ∀ (a b c : ?m_1), a * b * c = a * (b * c) : Prop
+but is expected to have type
+  tactic ?m_1 : Type ?
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [two_mul, ← mul_add, ←...': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'end': 
+ error: sync
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: ring, Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: type mismatch at application
+  tactic.interactive.rw
+    {rules := [{pos := {line := 14, column := 4}, symm := ff, rule := ``(add_comm)}],
+     end_pos := some {line := 14, column := 12}}
+    (interactive.loc.ns [none])
+    ring
+term
+  ring
+has type
+  Type ? → Type ? : Type (?+1)
+but is expected to have type
+  opt_param tactic.rewrite_cfg
+    {to_apply_cfg := {md := reducible,
+                      approx := tt,
+                      new_goals := tactic.new_goals.non_dep_first,
+                      instances := tt,
+                      auto_param := tt,
+                      opt_param := tt,
+                      unify := tt},
+     symm := ff,
+     occs := occurrences.all} : Type
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: rw [h₂, two_mul, Nat.add_assoc], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'rw [h₂, two_mul, Nat.add_...': 
+ error: unknown identifier 'rw'
+Got error in 'rw [h₂, two_mul, Nat.add_...': 
+ error: unknown identifier 'h₂'
+Got error in 'rw [h₂, two_mul, Nat.add_...': 
+ error: unknown identifier 'Nat.add_assoc'
+Got error in 'rw [h₂, two_mul, Nat.add_...': 
+ error: type mismatch at application
+  list.cons two_mul
+term
+  two_mul
+has type
+  ∀ (n : ?m_1), 2 * n = n + n : Prop
+but is expected to have type
+  ?m_1 : Type ?
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: simp [h₁], Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: don't know how to synthesize placeholder
+context:
+a b : ℝ,
+h₁ : a * b = 180,
+h₂ : 2 * (a + b) = 54
+⊢ Type ?
+Got error in 'simp [h₁]': 
+ error: unknown identifier 'simp'
+Got error in 'simp [h₁]': 
+ error: unknown identifier 'h₁'
+2026-05-17 06:37:48,917 - search_driver.py:254 - INFO - Action: simpa using h₂, Done: False, Progress: Failed, Error: Got warning in 'theorem mathd_algebra_141': 
+ warning: declaration 'mathd_algebra_141' uses sorry
+Got error in 'simpa using h₂': 
+ error: unknown identifier 'simpa'
+Got error in 'simpa using h₂': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'end': 
+ error: sync
+2026-05-17 06:37:48,918 - search_driver.py:254 - INFO - Action: rfl, Done: False, Progress: Failed, Error: Got error in 'rw [add_comm]': 
+ error: type mismatch at application
+  tactic.interactive.rw
+    {rules := [{pos := {line := 14, column := 4}, symm := ff, rule := ``(add_comm)}],
+     end_pos := some {line := 14, column := 12}}
+    (interactive.loc.ns [none])
+    rfl
+term
+  rfl
+has type
+  ?m_2 = ?m_2 : Prop
+but is expected to have type
+  opt_param tactic.rewrite_cfg
+    {to_apply_cfg := {md := reducible,
+                      approx := tt,
+                      new_goals := tactic.new_goals.non_dep_first,
+                      instances := tt,
+                      auto_param := tt,
+                      opt_param := tt,
+                      unify := tt},
+     symm := ff,
+     occs := occurrences.all} : Type
+2026-05-17 06:37:48,918 - search_driver.py:254 - INFO - Action: simp, Done: False, Progress: Failed, Error: Got warning in 'theorem mathd_algebra_141': 
+ warning: declaration 'mathd_algebra_141' uses sorry
+Got error in 'simp': 
+ error: unknown identifier 'simp'
+2026-05-17 06:37:48,918 - search_driver.py:248 - INFO - Search timed out, returning without generating more nodes
+2026-05-17 06:37:50,910 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:39:01,895 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+2026-05-17 06:39:01,895 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 06:39:01,897 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 06:39:03,434 - run_proof_search.py:362 - INFO - Dumping proof search result:
+mathd_algebra_141
+begin
+by
+
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: mathd_algebra_141
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: True
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 1183.6509456634521
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 06:39:03,434 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_algebra_141 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:39:03,434 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: mathd_algebra_141 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:39:03,465 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_numbertheory_3 [# 1/1]
+2026-05-17 06:39:10,021 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_numbertheory_3 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:39:10,022 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_numbertheory_3 with timeout: 300 seconds
+2026-05-17 06:39:10,022 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 06:39:10,026 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:40:14,494 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:40:32,081 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:40:32,082 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_numbertheory_3 :
+(∑ x in finset.range 10, ((x + 1)^2)) % 10 = 5 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+(∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+[END]
+2026-05-17 06:40:32,760 - llm_tactic_generator.py:165 - INFO - Generated 12 distinct actions (actual output size=16) in 0.6779212951660156 seconds
+2026-05-17 06:40:32,760 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+simp
+[END]
+2026-05-17 06:40:32,852 - search_driver.py:334 - INFO - Resetting 5 environments
+2026-05-17 06:41:07,826 - search_driver.py:340 - INFO - Reset 5 environments in 34.97390913963318 seconds
+2026-05-17 06:41:07,826 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:41:52,197 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4]
+2026-05-17 06:42:34,663 - search_driver.py:357 - INFO - Finished executing 12 actions parallely in 86.83733773231506 seconds.
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: rw [Finset.sum_range_succ, pow_two], Done: False, Progress: Failed, Error: Got error in 'rw [Finset.sum_range_succ...': 
+ error: unknown identifier 'Finset.sum_range_succ'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: have : (∑ x : ℕ in finset.range10, x + 1)) ≠ 0 := by simp, Done: False, Progress: Failed, Error: Got error in 'have : (∑ x : ℕ in finset...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'have : (∑ x : ℕ in finset...': 
+ error: failed to synthesize type class instance for
+⊢ has_add (Sort ?)
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+Got error in 'end': 
+ error: sync
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: obtain rfl | h := eq_or_ne1010 0, Done: False, Progress: Failed, Error: Got error in 'obtain rfl | h := eq_or_n...': 
+ error: unknown identifier 'eq_or_ne1010'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: simp [sum_range_succ, Nat.add_sub_cancel_right], Done: False, Progress: Failed, Error: Got error in 'simp [sum_range_succ, Nat...': 
+ error: unknown identifier 'sum_range_succ'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: have h := Nat.div_mul_div_cancel₀ (Nat.even_of_dvd _ (Nat.odd_of_dvd _ _)), Done: False, Progress: Failed, Error: Got error in 'have h := Nat.div_mul_div...': 
+ error: unknown identifier 'Nat.div_mul_div_cancel₀'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: simp, Done: False, Progress: Failed, Error: Got error in 'simp': 
+ error: simplify tactic failed to simplify
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: simpa [← Finset.sum_range_succ', Finset.sum_range_succ] using Finset.prod_range_succ_eq_sum_range, Done: False, Progress: Failed, Error: Got error in 'simpa [← Finset.sum_range...': 
+ error: unknown identifier 'Finset.prod_range_succ_eq_sum_range'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: congr 1, Done: False, Progress: Failed, Error: Got error in 'congr 1': 
+ error: failed to synthesize type class instance for
+⊢ has_one tactic_state
+Got error in 'congr 1': 
+ error: don't know how to synthesize placeholder
+context:
+⊢ Type ?
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: norm_num, Done: False, Progress: Failed, Error: Got error in 'norm_num': 
+ error: norm_num failed to simplify
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,663 - search_driver.py:254 - INFO - Action: rw [← ofReal_nat_cast, Nat.cast_ofNat, pow_two], Done: False, Progress: Failed, Error: Got error in 'rw [← ofReal_nat_cast, Na...': 
+ error: unknown identifier 'ofReal_nat_cast'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,664 - search_driver.py:254 - INFO - Action: rw [← Finset.sum_range_succ], Done: False, Progress: Failed, Error: Got error in 'rw [← Finset.sum_range_su...': 
+ error: unknown identifier 'Finset.sum_range_succ'
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,664 - search_driver.py:254 - INFO - Action: rw [← map_sum], Done: False, Progress: Failed, Error: Got error in 'rw [← map_sum]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  ∑ (x : ?m_2) in ?m_4, ⇑?m_9 (?m_10 x)
+state:
+⊢ (∑ (x : ℕ) in finset.range 10, (x + 1) ^ 2) % 10 = 5
+2026-05-17 06:42:34,664 - search_driver.py:395 - INFO - Finished executing 0 branches in 122.5821623802185 seconds
+2026-05-17 06:42:35,790 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:43:38,216 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:43:38,217 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 06:43:38,218 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 06:43:39,709 - run_proof_search.py:362 - INFO - Dumping proof search result:
+mathd_numbertheory_3
+begin
+by
+
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: mathd_numbertheory_3
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 122.73033118247986
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 06:43:39,709 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_numbertheory_3 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:43:39,709 - run_proof_search.py:422 - INFO - Prover for lemma: mathd_numbertheory_3 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:43:39,746 - run_proof_search.py:283 - INFO - Will check if attempt possible for lemma: mathd_numbertheory_342 [# 1/1]
+2026-05-17 06:43:47,132 - run_proof_search.py:375 - INFO - Attempt 1 for proving lemma: mathd_numbertheory_342 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:43:47,132 - run_proof_search.py:381 - INFO - Running the prover agent for lemma: mathd_numbertheory_342 with timeout: 300 seconds
+2026-05-17 06:43:47,133 - simple_proof_env_pool.py:63 - INFO - ProofEnvPool: Using Ray-based implementation
+2026-05-17 06:43:47,136 - ray_proof_env_pool.py:311 - INFO - Resetting environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:45:04,442 - ray_proof_env_pool.py:339 - INFO - Reset environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:45:30,293 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:45:30,294 - llm_tactic_generator.py:124 - INFO - Prompt for [theorem mathd_numbertheory_342 :
+54 % 6 = 0 :=]:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+54 % 6 = 0
+[END]
+2026-05-17 06:45:30,937 - llm_tactic_generator.py:165 - INFO - Generated 14 distinct actions (actual output size=16) in 0.6433017253875732 seconds
+2026-05-17 06:45:30,937 - llm_tactic_generator.py:166 - INFO - Best generated action: [RUN TACTIC]
+simp
+[END]
+2026-05-17 06:45:31,038 - search_driver.py:334 - INFO - Resetting 7 environments
+2026-05-17 06:46:01,660 - search_driver.py:340 - INFO - Reset 7 environments in 30.621982097625732 seconds
+2026-05-17 06:46:01,660 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:46:42,342 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:47:28,276 - search_driver.py:357 - INFO - Finished executing 14 actions parallely in 86.61621332168579 seconds.
+2026-05-17 06:47:28,276 - search_driver.py:254 - INFO - Action: rw [odd_iff], Done: False, Progress: Failed, Error: Got error in 'rw [odd_iff]': 
+ error: unknown identifier 'odd_iff'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: rw [← Nat.mod_two_mod, %_two_mul], Done: False, Progress: Failed, Error: Got warning in 'theorem mathd_numbertheor...': 
+ warning: declaration 'mathd_numbertheory_342' uses sorry
+Got error in 'rw [← Nat.mod_two_mod, %_...': 
+ error: expression expected
+Got error in 'rw [← Nat.mod_two_mod, %_...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'end': 
+ error: sync
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: simp [odd_iff, mod_zero], Done: False, Progress: Failed, Error: Got error in 'simp [odd_iff, mod_zero]': 
+ error: unknown identifier 'odd_iff'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: rw [div_self_of_false, add_zero, Nat.Mod_one], Done: False, Progress: Failed, Error: Got error in 'rw [div_self_of_false, ad...': 
+ error: unknown identifier 'div_self_of_false'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: rw [odd_iff_not_even] <;> simp [*], Done: False, Progress: Failed, Error: Got error in 'rw [odd_iff_not_even] <;>...': 
+ error: invalid 'begin-end' expression, ',' expected
+Got error in 'rw [odd_iff_not_even] <;>...': 
+ error: sync
+Got error in 'rw [odd_iff_not_even] <;>...': 
+ error: unknown identifier 'simp'
+Got error in 'rw [odd_iff_not_even] <;>...': 
+ error: invalid expression
+Got error in 'rw [odd_iff_not_even] <;>...': 
+ error: invalid expression
+Got error in 'rw [odd_iff_not_even] <;>...': 
+ error: don't know how to synthesize placeholder
+context:
+⊢ Type ?
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: simp [bit0_eq_zero_iff_mod_two], Done: False, Progress: Failed, Error: Got error in 'simp [bit0_eq_zero_iff_mo...': 
+ error: unknown identifier 'bit0_eq_zero_iff_mod_two'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: simp only [even_iff, Nat.even_iff_two_dvd, Nat.odd_iff], Done: False, Progress: Failed, Error: Got error in 'simp only [even_iff, Nat....': 
+ error: unknown identifier 'even_iff'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: rw [odd_iff, ← Nat.odd_iff, Nat.even_iff_mod_two, Nat.odd_iff], Done: False, Progress: Failed, Error: Got error in 'rw [odd_iff, ← Nat.odd_if...': 
+ error: unknown identifier 'odd_iff'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: rw [odd_iff_not_even, ← Nat.odd_of_odd_two (by decide)], Done: False, Progress: Failed, Error: Got error in 'rw [odd_iff_not_even, ← N...': 
+ error: unknown identifier 'decide'
+Got error in 'rw [odd_iff_not_even, ← N...': 
+ error: unknown identifier 'odd_iff_not_even'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:28,277 - search_driver.py:254 - INFO - Action: norm_num, Done: False, Progress: StateChanged, Error: None
+2026-05-17 06:47:28,277 - ray_proof_env_pool.py:353 - INFO - Stepping environments: [2]
+2026-05-17 06:47:50,602 - search_driver.py:254 - INFO - Action: end, Done: True, Progress: Done, Error: None
+2026-05-17 06:47:50,602 - search_driver.py:254 - INFO - Action: simp, Done: False, Progress: Failed, Error: Got error in 'simp': 
+ error: simplify tactic failed to simplify
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:50,602 - search_driver.py:254 - INFO - Action: rw [← Nat.mod_two_mul_div_one_div], Done: False, Progress: Failed, Error: Got error in 'rw [← Nat.mod_two_mul_div...': 
+ error: unknown identifier 'Nat.mod_two_mul_div_one_div'
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:50,602 - search_driver.py:254 - INFO - Action: rw [← add_zero 4], Done: False, Progress: Failed, Error: Got error in 'rw [← add_zero 4]': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  4
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:50,602 - search_driver.py:254 - INFO - Action: rw [log_mod'], Done: False, Progress: Failed, Error: Got error in 'rw [log_mod']': 
+ error: unknown identifier 'log_mod''
+state:
+⊢ 54 % 6 = 0
+2026-05-17 06:47:50,602 - search_driver.py:395 - INFO - Finished executing 1 branches in 140.308420419693 seconds
+2026-05-17 06:48:34,850 - beam_search.py:55 - INFO - Frontier size: 1
+2026-05-17 06:48:49,828 - ray_proof_env_pool.py:428 - INFO - Cleaning up environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:49:53,422 - ray_proof_env_pool.py:472 - INFO - Removed environments: [0, 1, 2, 3, 4, 5, 6]
+2026-05-17 06:49:53,423 - search_driver.py:619 - INFO - Did not get exception while searching for proof
+2026-05-17 06:49:53,423 - run_proof_search.py:334 - INFO - Proof search finished.
+2026-05-17 06:49:54,607 - run_proof_search.py:362 - INFO - Dumping proof search result:
+theorem mathd_numbertheory_342 :
+54 % 6 = 0 :=
+begin
+by
+norm_num
+end
+
+
+ProofFile: /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+LemmaName: theorem mathd_numbertheory_342 :
+54 % 6 = 0 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: 186.51717901229858
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'attempt_idx': 0}
+
+
+2026-05-17 06:49:54,607 - run_proof_search.py:363 - INFO - Prover for lemma: mathd_numbertheory_342 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean completed.
+2026-05-17 06:49:54,607 - run_proof_search.py:388 - INFO - Time budget exhausted for lemma: mathd_numbertheory_342 in file /tmp/pwmf6849079_2/miniF2F/lean/src/test.lean
+2026-05-17 06:49:54,937 - run_proof_search.py:569 - INFO - ================================================================================
+2026-05-17 06:49:54,937 - run_proof_search.py:570 - INFO - Proof attempt (# 1/1) done for dataset: /tmp/pwmf6849079_2/miniF2F
+2026-05-17 06:49:54,937 - run_proof_search.py:571 - INFO - ================================================================================

@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nn : Nat\np : Prop\nhp : p\n⊢ n = n ∧ p\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="simp [hp, hp]\ndone\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="constructor\n$0.64$"]
+	0 -> 3 [label="cases n\n$0.63$"]
+	1 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+	2 [label="(1/2)\ncase left\nn : Nat\np : Prop\nhp : p\n⊢ n = n\n(2/2)\ncase right\nn : Nat\np ...\n$0.64$"]
+	3 [label="(1/2)\ncase zero\np : Prop\nhp : p\n⊢ 0 = 0 ∧ p\n(2/2)\ncase succ\np : Prop\nhp : p...\n$0.63$"]
+}
