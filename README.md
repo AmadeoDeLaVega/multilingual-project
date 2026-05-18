@@ -15,6 +15,20 @@ Released assets used by the project:
 - Reference models: `amitayusht/ProofWala-Lean`,
   `amitayusht/ProofWala-Multilingual`
 
+## Current Interpretation
+
+The main pilot result should be read as distribution-dependent rather than as a
+single winner across all theorem sets.
+
+- **CoreEval:** E4 is strongest so far. This is evidence that pseudo-multilingual
+  regularization can help on in-distribution Lean-style proof search.
+- **miniF2F:** E1 and E4 are more comparable, while E3 has the clearest early
+  advantage. This suggests real multilingual Lean+Coq training may help more on
+  external theorem styles where proof semantics and abstraction transfer matter.
+
+This reframes the project from "regularization versus transfer" to: **when does
+each mechanism matter?**
+
 ## Workflow
 
 Edit code locally first:

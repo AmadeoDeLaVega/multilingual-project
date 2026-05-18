@@ -44,9 +44,14 @@ Completed or in progress:
   - Nexus sbatch: `scripts/nexus/proof_search_core_eval.sbatch`
   - Nexus job: `6848604`
 - Job `6848604` runs E1, E3, and E4 as a three-task array with one RTX A5000 per model. It may time out before all 250 theorems finish, but partial `proof_results.json` and `generation_debug.jsonl` files are written incrementally and can be evaluated after timeout.
-- A deterministic Lean 3 miniF2F easy-10 subset was also created as exploratory infrastructure, but it is secondary to CoreEval because the ProofWala proof-search path is better exercised on Lean 4.
+- Deterministic miniF2F subsets were also created as external generalization checks. These are technically harder to run because miniF2F is Lean 3 while the most reliable local ProofWala path is Lean 4, but their results are scientifically important because they are less tied to the CoreEval construction process.
 
-The report should therefore treat CoreEval as the primary proof-search result source and miniF2F easy-10 as a secondary engineering note unless it completes cleanly and produces interpretable results.
+The report should therefore use both views:
+
+- **CoreEval:** controlled in-project Lean evaluation, useful for testing whether pseudo-multilingual regularization helps on theorem statements close to our Lean-side distribution.
+- **miniF2F:** external robustness/generalization check, useful for testing whether real multilingual training gives gains that transfer beyond the CoreEval distribution.
+
+The emerging interpretation is distribution-dependent rather than binary. CoreEval currently favors E4, which is consistent with pseudo-multilingual regularization helping on in-distribution Lean-style proof search. miniF2F makes E1 and E4 more comparable while E3 has the clearest early advantage, which is consistent with real Lean+Coq training helping more on external theorem styles where proof-relevant semantics and abstraction matter. This reframes the project from "regularization versus transfer" to **when each mechanism matters**.
 
 ## Challenges Overcome
 
@@ -520,9 +525,10 @@ The project should emphasize both model behavior and search behavior, but priori
 
 The pilot succeeds if it clearly answers at least one of these:
 
-1. Does E3 outperform E1 on the fixed Lean evaluation subset, primarily CoreEval 250?
-2. Does E3 outperform E4?
+1. Does E4 outperform E1/E3 on CoreEval, suggesting pseudo-multilingual regularization helps on in-distribution Lean-style theorem statements?
+2. Does E3 outperform E1/E4 on miniF2F-style external theorem statements, suggesting real multilingual training helps generalization beyond the CoreEval distribution?
 3. Do gains appear mainly in proof-search behavior rather than next-step accuracy?
+4. Do CoreEval and miniF2F produce different model rankings, showing that the mechanism depends on evaluation distribution?
 
 ## Interpretable Outcomes
 
@@ -547,7 +553,14 @@ The pilot succeeds if it clearly answers at least one of these:
 
 **Interpretation:** gains may be driven largely by better search calibration.
 
-### Optional Outcome D
+### Outcome D
+
+- CoreEval: E4 > E1 and E4 > E3
+- miniF2F: E3 >= E1 and E3 >= E4, while E1 ~= E4
+
+**Interpretation:** evidence for a distribution-dependent mechanism. Pseudo-multilingual regularization appears useful on Lean-like in-distribution proof search, while real multilingual training may help more on external theorem styles where proof semantics and abstraction transfer matter.
+
+### Optional Outcome E
 
 - E5b > E5a
 
