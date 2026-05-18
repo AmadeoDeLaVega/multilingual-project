@@ -35,39 +35,39 @@
         "total_proof_time_in_secs": 29801.20946741104
       }
     },
-    "miniF2F easy-10": {
+    "miniF2F": {
       "E1": {
-        "attempted": 10,
-        "mean_proof_time_in_secs": 608.4864518880844,
-        "pass_at_1": 0.1,
-        "pass_at_5_observed": 0.1,
-        "pass_rate": 0.1,
-        "proved": 1,
-        "timeout_rate": 0.9,
-        "timeouts": 9,
-        "total_proof_time_in_secs": 6084.864518880844
+        "attempted": 77,
+        "mean_proof_time_in_secs": 490.1947388370316,
+        "pass_at_1": 0.025974025974025976,
+        "pass_at_5_observed": 0.025974025974025976,
+        "pass_rate": 0.025974025974025976,
+        "proved": 2,
+        "timeout_rate": 0.8701298701298701,
+        "timeouts": 67,
+        "total_proof_time_in_secs": 37744.99489045143
       },
       "E3": {
-        "attempted": 10,
-        "mean_proof_time_in_secs": 517.1686776638031,
-        "pass_at_1": 0.2,
-        "pass_at_5_observed": 0.2,
-        "pass_rate": 0.2,
-        "proved": 2,
-        "timeout_rate": 0.6,
-        "timeouts": 6,
-        "total_proof_time_in_secs": 5171.686776638031
+        "attempted": 81,
+        "mean_proof_time_in_secs": 456.315483175678,
+        "pass_at_1": 0.04938271604938271,
+        "pass_at_5_observed": 0.04938271604938271,
+        "pass_rate": 0.04938271604938271,
+        "proved": 4,
+        "timeout_rate": 0.8765432098765432,
+        "timeouts": 71,
+        "total_proof_time_in_secs": 36961.55413722992
       },
       "E4": {
-        "attempted": 10,
-        "mean_proof_time_in_secs": 406.7683383464813,
-        "pass_at_1": 0.1,
-        "pass_at_5_observed": 0.1,
-        "pass_rate": 0.1,
-        "proved": 1,
-        "timeout_rate": 0.7,
-        "timeouts": 7,
-        "total_proof_time_in_secs": 4067.6833834648132
+        "attempted": 87,
+        "mean_proof_time_in_secs": 405.30086051184554,
+        "pass_at_1": 0.034482758620689655,
+        "pass_at_5_observed": 0.034482758620689655,
+        "pass_rate": 0.034482758620689655,
+        "proved": 3,
+        "timeout_rate": 0.8390804597701149,
+        "timeouts": 73,
+        "total_proof_time_in_secs": 35261.17486453056
       }
     }
   },
@@ -295,225 +295,225 @@
       "zero_parsed_state_rate": 0.0
     },
     {
-      "accepted_action_count": 149,
+      "accepted_action_count": 1204,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "miniF2F easy-10",
+      "benchmark": "miniF2F",
       "early_dead_end_rate": 0.0,
       "experiment": "E1",
       "generation_reason_counts": {},
-      "mean_average_branching_factor": 2.75,
-      "mean_edge_count": 2.2,
-      "mean_generation_time_in_secs": 0.8237725037794846,
-      "mean_node_count": 2.5,
-      "mean_proof_time_in_secs": 608.4864518880844,
-      "model_called_output_count": 149,
-      "model_called_state_count": 13,
+      "mean_average_branching_factor": 2.1372549019607843,
+      "mean_edge_count": 1.4155844155844155,
+      "mean_generation_time_in_secs": 0.8105724330218333,
+      "mean_node_count": 2.116883116883117,
+      "mean_proof_time_in_secs": 490.1947388370316,
+      "model_called_output_count": 1204,
+      "model_called_state_count": 106,
       "no_start_goal_count": 0,
-      "output_count": 149,
-      "outputs_per_model_called_state": 11.461538461538462,
+      "output_count": 1204,
+      "outputs_per_model_called_state": 11.358490566037736,
       "parse_error_count": 0,
       "parse_error_rate": 0.0,
-      "parsed_tactic_count": 149,
+      "parsed_tactic_count": 1204,
       "parsed_tactic_rate": 1.0,
-      "parsed_tactics_per_model_called_state": 11.461538461538462,
-      "pass_rate": 0.1,
-      "prompt_state_count": 13,
-      "proof_tree_file_count": 10,
-      "single_node_tree_rate": 0.2,
-      "theorems_attempted": 10,
-      "theorems_proved": 1,
-      "timeout_rate": 0.9,
+      "parsed_tactics_per_model_called_state": 11.358490566037736,
+      "pass_rate": 0.025974025974025976,
+      "prompt_state_count": 106,
+      "proof_tree_file_count": 77,
+      "single_node_tree_rate": 0.33766233766233766,
+      "theorems_attempted": 77,
+      "theorems_proved": 2,
+      "timeout_rate": 0.8701298701298701,
       "top_tactics": [
         [
           "norm_num",
-          10
+          72
         ],
         [
           "ring",
-          7
-        ],
-        [
-          "rw [h₁, h₂]",
-          4
+          33
         ],
         [
           "norm_num1",
-          3
-        ],
-        [
-          "decide",
-          3
-        ],
-        [
-          "rfl",
-          3
+          27
         ],
         [
           "omega",
-          2
+          25
         ],
         [
-          "rw [h₃]",
-          2
-        ],
-        [
-          "simp [h₁]",
-          2
+          "decide",
+          24
         ],
         [
           "simp",
-          2
-        ]
-      ],
-      "valid_tactics_per_model_called_state": 11.461538461538462,
-      "zero_parsed_state_rate": 0.0
-    },
-    {
-      "accepted_action_count": 168,
-      "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "miniF2F easy-10",
-      "early_dead_end_rate": 0.0,
-      "experiment": "E3",
-      "generation_reason_counts": {},
-      "mean_average_branching_factor": 2.4285714285714284,
-      "mean_edge_count": 1.7,
-      "mean_generation_time_in_secs": 0.7528571231024606,
-      "mean_node_count": 2.5,
-      "mean_proof_time_in_secs": 517.1686776638031,
-      "model_called_output_count": 168,
-      "model_called_state_count": 14,
-      "no_start_goal_count": 0,
-      "output_count": 168,
-      "outputs_per_model_called_state": 12.0,
-      "parse_error_count": 0,
-      "parse_error_rate": 0.0,
-      "parsed_tactic_count": 168,
-      "parsed_tactic_rate": 1.0,
-      "parsed_tactics_per_model_called_state": 12.0,
-      "pass_rate": 0.2,
-      "prompt_state_count": 14,
-      "proof_tree_file_count": 10,
-      "single_node_tree_rate": 0.3,
-      "theorems_attempted": 10,
-      "theorems_proved": 2,
-      "timeout_rate": 0.6,
-      "top_tactics": [
-        [
-          "ring",
-          7
-        ],
-        [
-          "norm_num",
-          5
-        ],
-        [
-          "rw [h₁]",
-          4
+          11
         ],
         [
           "linarith",
-          3
+          10
         ],
         [
-          "field_simp",
-          2
+          "simp [h₀]",
+          9
         ],
         [
-          "ring1",
-          2
+          "rw [h₀]",
+          9
         ],
         [
-          "simp [h₂]",
-          2
-        ],
-        [
-          "rw [← h₁]",
-          2
-        ],
-        [
-          "have h₃ := mul_eq_mul_of_one_ne_zero h₂",
-          1
-        ],
-        [
-          "gcongr",
-          1
+          "rfl",
+          8
         ]
       ],
-      "valid_tactics_per_model_called_state": 12.0,
+      "valid_tactics_per_model_called_state": 11.358490566037736,
       "zero_parsed_state_rate": 0.0
     },
     {
-      "accepted_action_count": 126,
+      "accepted_action_count": 1320,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "miniF2F easy-10",
+      "benchmark": "miniF2F",
       "early_dead_end_rate": 0.0,
-      "experiment": "E4",
+      "experiment": "E3",
       "generation_reason_counts": {},
-      "mean_average_branching_factor": 2.875,
-      "mean_edge_count": 2.3,
-      "mean_generation_time_in_secs": 0.7376373030922629,
-      "mean_node_count": 2.5,
-      "mean_proof_time_in_secs": 406.7683383464813,
-      "model_called_output_count": 126,
-      "model_called_state_count": 11,
+      "mean_average_branching_factor": 1.9814814814814814,
+      "mean_edge_count": 1.3209876543209877,
+      "mean_generation_time_in_secs": 0.9140831395691517,
+      "mean_node_count": 2.185185185185185,
+      "mean_proof_time_in_secs": 456.315483175678,
+      "model_called_output_count": 1320,
+      "model_called_state_count": 102,
       "no_start_goal_count": 0,
-      "output_count": 126,
-      "outputs_per_model_called_state": 11.454545454545455,
+      "output_count": 1320,
+      "outputs_per_model_called_state": 12.941176470588236,
       "parse_error_count": 0,
       "parse_error_rate": 0.0,
-      "parsed_tactic_count": 126,
+      "parsed_tactic_count": 1320,
       "parsed_tactic_rate": 1.0,
-      "parsed_tactics_per_model_called_state": 11.454545454545455,
-      "pass_rate": 0.1,
-      "prompt_state_count": 11,
-      "proof_tree_file_count": 10,
-      "single_node_tree_rate": 0.2,
-      "theorems_attempted": 10,
-      "theorems_proved": 1,
-      "timeout_rate": 0.7,
+      "parsed_tactics_per_model_called_state": 12.941176470588236,
+      "pass_rate": 0.04938271604938271,
+      "prompt_state_count": 102,
+      "proof_tree_file_count": 81,
+      "single_node_tree_rate": 0.3333333333333333,
+      "theorems_attempted": 81,
+      "theorems_proved": 4,
+      "timeout_rate": 0.8765432098765432,
       "top_tactics": [
         [
           "norm_num",
-          6
+          46
         ],
         [
           "ring",
-          6
+          26
+        ],
+        [
+          "linarith",
+          18
+        ],
+        [
+          "decide",
+          17
+        ],
+        [
+          "omega",
+          15
         ],
         [
           "simp",
-          6
+          12
         ],
         [
-          "simp [h₁, h₂]",
-          3
+          "norm_cast",
+          12
         ],
         [
-          "simp [h₂]",
-          3
+          "gcongr",
+          8
         ],
         [
-          "rw [add_comm]",
-          2
+          "rw [h₁]",
+          8
+        ],
+        [
+          "simp [h₀]",
+          8
+        ]
+      ],
+      "valid_tactics_per_model_called_state": 12.941176470588236,
+      "zero_parsed_state_rate": 0.0
+    },
+    {
+      "accepted_action_count": 1237,
+      "accepted_action_rate_after_model_call": 1.0,
+      "benchmark": "miniF2F",
+      "early_dead_end_rate": 0.0,
+      "experiment": "E4",
+      "generation_reason_counts": {},
+      "mean_average_branching_factor": 2.2982456140350878,
+      "mean_edge_count": 1.5057471264367817,
+      "mean_generation_time_in_secs": 0.7757635071164086,
+      "mean_node_count": 2.1954022988505746,
+      "mean_proof_time_in_secs": 405.30086051184554,
+      "model_called_output_count": 1237,
+      "model_called_state_count": 105,
+      "no_start_goal_count": 0,
+      "output_count": 1237,
+      "outputs_per_model_called_state": 11.780952380952382,
+      "parse_error_count": 0,
+      "parse_error_rate": 0.0,
+      "parsed_tactic_count": 1237,
+      "parsed_tactic_rate": 1.0,
+      "parsed_tactics_per_model_called_state": 11.780952380952382,
+      "pass_rate": 0.034482758620689655,
+      "prompt_state_count": 105,
+      "proof_tree_file_count": 87,
+      "single_node_tree_rate": 0.3448275862068966,
+      "theorems_attempted": 87,
+      "theorems_proved": 3,
+      "timeout_rate": 0.8390804597701149,
+      "top_tactics": [
+        [
+          "norm_num",
+          56
+        ],
+        [
+          "ring",
+          25
+        ],
+        [
+          "simp",
+          23
+        ],
+        [
+          "decide",
+          19
+        ],
+        [
+          "norm_num1",
+          13
+        ],
+        [
+          "simp [h₀]",
+          9
+        ],
+        [
+          "linarith",
+          9
         ],
         [
           "simp [h₁]",
-          2
+          8
         ],
         [
-          "rw [div_eq_mul_inv, mul_assoc, div_eq_mul_inv, mul_assoc, mul_comm (10 * y), mul_comm (10 * x)]",
-          1
+          "omega",
+          8
         ],
         [
-          "rw [h₂, mul_div_cancel₀, div_eq_mul_inv, ← mul_assoc, mul_div_cancel₀ (two_ne_zero' ℝ)]",
-          1
-        ],
-        [
-          "rw [← mul_div_assoc, ← mul_assoc, ← mul_assoc, ← mul_assoc, mul_comm]",
-          1
+          "rw [h₂]",
+          7
         ]
       ],
-      "valid_tactics_per_model_called_state": 11.454545454545455,
+      "valid_tactics_per_model_called_state": 11.780952380952382,
       "zero_parsed_state_rate": 0.0
     }
   ],
@@ -553,39 +553,39 @@
         "total_proof_time_in_secs": 19203.723199129105
       }
     },
-    "miniF2F easy-10": {
+    "miniF2F": {
       "E1": {
-        "attempted": 10,
-        "mean_proof_time_in_secs": 608.4864518880844,
-        "pass_at_1": 0.1,
-        "pass_at_5_observed": 0.1,
-        "pass_rate": 0.1,
-        "proved": 1,
-        "timeout_rate": 0.9,
-        "timeouts": 9,
-        "total_proof_time_in_secs": 6084.864518880844
+        "attempted": 77,
+        "mean_proof_time_in_secs": 490.1947388370316,
+        "pass_at_1": 0.025974025974025976,
+        "pass_at_5_observed": 0.025974025974025976,
+        "pass_rate": 0.025974025974025976,
+        "proved": 2,
+        "timeout_rate": 0.8701298701298701,
+        "timeouts": 67,
+        "total_proof_time_in_secs": 37744.99489045143
       },
       "E3": {
-        "attempted": 10,
-        "mean_proof_time_in_secs": 517.1686776638031,
-        "pass_at_1": 0.2,
-        "pass_at_5_observed": 0.2,
-        "pass_rate": 0.2,
-        "proved": 2,
-        "timeout_rate": 0.6,
-        "timeouts": 6,
-        "total_proof_time_in_secs": 5171.686776638031
+        "attempted": 77,
+        "mean_proof_time_in_secs": 463.6844786761643,
+        "pass_at_1": 0.05194805194805195,
+        "pass_at_5_observed": 0.05194805194805195,
+        "pass_rate": 0.05194805194805195,
+        "proved": 4,
+        "timeout_rate": 0.8701298701298701,
+        "timeouts": 67,
+        "total_proof_time_in_secs": 35703.70485806465
       },
       "E4": {
-        "attempted": 10,
-        "mean_proof_time_in_secs": 406.7683383464813,
-        "pass_at_1": 0.1,
-        "pass_at_5_observed": 0.1,
-        "pass_rate": 0.1,
-        "proved": 1,
-        "timeout_rate": 0.7,
-        "timeouts": 7,
-        "total_proof_time_in_secs": 4067.6833834648132
+        "attempted": 77,
+        "mean_proof_time_in_secs": 415.6644688488601,
+        "pass_at_1": 0.03896103896103896,
+        "pass_at_5_observed": 0.03896103896103896,
+        "pass_rate": 0.03896103896103896,
+        "proved": 3,
+        "timeout_rate": 0.8441558441558441,
+        "timeouts": 65,
+        "total_proof_time_in_secs": 32006.16410136223
       }
     }
   }

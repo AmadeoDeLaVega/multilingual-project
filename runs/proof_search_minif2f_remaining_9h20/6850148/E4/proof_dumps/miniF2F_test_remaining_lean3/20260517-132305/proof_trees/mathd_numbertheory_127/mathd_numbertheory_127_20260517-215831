@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\n⊢ (∑ (k : ℕ) in finset.range 101, 2 ^ k) % 7 = 3\n$0.00$"]
+	0 -> 1 [label="norm_num\n$0.26$"]
+	0 -> 1 [label="simp\n$0.27$"]
+	1 [label="(1/1)\n⊢ (finset.range 101).sum (pow 2) % 7 = 3\n$0.26$"]
+}

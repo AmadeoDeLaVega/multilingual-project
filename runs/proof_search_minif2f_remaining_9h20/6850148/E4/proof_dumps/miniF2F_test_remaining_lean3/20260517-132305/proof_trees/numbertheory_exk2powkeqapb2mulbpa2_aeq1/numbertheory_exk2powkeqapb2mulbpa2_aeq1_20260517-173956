@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nh₁ : ∃ (k : ℕ) (H : k > 0), 2 ^ k = (a + b...\n$0.00$"]
+	0 -> 1 [label="cases h₀.1\n$0.50$"]
+	0 -> 2 [label="obtain ⟨k, hk⟩ := h₁\n$0.42$"]
+	0 -> 3 [label="obtain ⟨k, hk, hk⟩ := h₁\n$0.46$"]
+	1 [label="(1/2)\ncase nat.less_than_or_equal.refl\nb : ℕ\nh₀ : 0 < 1 ∧ 0 < b\nh₁ : ∃ (k :...\n$0.50$"]
+	2 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nk : ℕ\nhk : ∃ (H : k > 0), 2 ^ k = (a + b ^...\n$0.42$"]
+	3 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nk : ℕ\nhk : k > 0\nhk : 2 ^ k = (a + b ^ 2) ...\n$0.46$"]
+}

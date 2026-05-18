@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\ni m o : ℕ\nh₀ : i ≠ 0 ∧ m ≠ 0 ∧ o ≠ 0\nh₁ : i * m * o = 2001\n⊢ i + m + ...\n$0.00$"]
+	0 -> 1 [label="apply add_le_add\n$0.26$"]
+	0 -> 2 [label="rcases le_or_lt m o with h₁ | h₂\n$0.35$"]
+	1 [label="(1/2)\ni m o : ℕ\nh₀ : i ≠ 0 ∧ m ≠ 0 ∧ o ≠ 0\nh₁ : i * m * o = 2001\n⊢ i + m ≤ ...\n$0.26$"]
+	2 [label="(1/2)\ni m o : ℕ\nh₀ : i ≠ 0 ∧ m ≠ 0 ∧ o ≠ 0\nh₁ : i * m * o = 2001\nh₁ : m ≤ o...\n$0.35$"]
+}

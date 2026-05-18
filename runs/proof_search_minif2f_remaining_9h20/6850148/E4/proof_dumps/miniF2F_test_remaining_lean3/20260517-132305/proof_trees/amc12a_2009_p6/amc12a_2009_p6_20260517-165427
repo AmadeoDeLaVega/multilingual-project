@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\nm n p q : ℝ\nh₀ : p = 2 ^ m\nh₁ : q = 3 ^ n\n⊢ p ^ (2 * n) * q ^ m = 12 ...\n$0.00$"]
+	0 -> 1 [label="simp [h₁, pow_mul]\n$0.42$"]
+	0 -> 2 [label="by_cases h₁ : p = 0\n$0.46$"]
+	1 [label="(1/1)\nm n p q : ℝ\nh₀ : p = 2 ^ m\nh₁ : q = 3 ^ n\n⊢ p ^ (2 * n) * (3 ^ n) ^ m...\n$0.42$"]
+	2 [label="(1/2)\nm n p q : ℝ\nh₀ : p = 2 ^ m\nh₁ : q = 3 ^ n\nh₁ : p = 0\n⊢ p ^ (2 * n) * ...\n$0.46$"]
+}

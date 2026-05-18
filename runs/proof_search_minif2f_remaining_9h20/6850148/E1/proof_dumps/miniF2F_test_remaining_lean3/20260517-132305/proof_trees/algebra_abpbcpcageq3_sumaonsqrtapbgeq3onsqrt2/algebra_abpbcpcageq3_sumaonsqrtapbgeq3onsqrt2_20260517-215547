@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : 3 ≤ a * b + b * c + c * a\n⊢...\n$0.00$"]
+	0 -> 1 [label="have h₁ := add_le_add_right h₁\n$0.25$"]
+	1 [label="(1/1)\na b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : 3 ≤ a * b + b * c + c * a\nh...\n$0.25$"]
+}

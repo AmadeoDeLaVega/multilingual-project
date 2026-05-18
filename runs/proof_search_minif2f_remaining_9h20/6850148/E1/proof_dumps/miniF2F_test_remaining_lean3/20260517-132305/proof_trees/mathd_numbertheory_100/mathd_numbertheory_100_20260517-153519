@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nn : ℕ\nh₀ : 0 < n\nh₁ : n.gcd 40 = 10\nh₂ : n.lcm 40 = 280\n⊢ n = 70\n$0.00$"]
+	0 -> 1 [label="have h₂ := h₁.symm\n$0.77$"]
+	1 [label="(1/1)\nn : ℕ\nh₀ : 0 < n\nh₁ : n.gcd 40 = 10\nh₂ : n.lcm 40 = 280\nh₂ : 10 = n.g...\n$0.77$"]
+}

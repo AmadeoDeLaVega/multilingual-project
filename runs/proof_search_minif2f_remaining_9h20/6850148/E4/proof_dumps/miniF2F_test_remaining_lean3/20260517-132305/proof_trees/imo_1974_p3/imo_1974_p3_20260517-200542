@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nn : ℕ\n⊢ ¬5 ∣ ∑ (k : ℕ) in finset.range n, (2 * n + 1).choose (2 * k +...\n$0.00$"]
+	0 -> 1 [label="intro h\n$0.25$"]
+	1 [label="(1/1)\nn : ℕ\nh : 5 ∣ ∑ (k : ℕ) in finset.range n, (2 * n + 1).choose (2 * k ...\n$0.25$"]
+}

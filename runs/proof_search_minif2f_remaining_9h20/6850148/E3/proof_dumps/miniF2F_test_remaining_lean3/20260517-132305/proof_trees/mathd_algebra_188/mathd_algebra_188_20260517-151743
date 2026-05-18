@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nσ : ℝ ≃ ℝ\nh : σ.to_fun 2 = σ.inv_fun 2\n⊢ σ.to_fun (σ.to_fun 2) = 2\n$0.00$"]
+	0 -> 1 [label="simp\n$0.53$"]
+	1 [label="(1/1)\nσ : ℝ ≃ ℝ\nh : σ.to_fun 2 = σ.inv_fun 2\n⊢ ⇑σ (⇑σ 2) = 2\n$0.53$"]
+}

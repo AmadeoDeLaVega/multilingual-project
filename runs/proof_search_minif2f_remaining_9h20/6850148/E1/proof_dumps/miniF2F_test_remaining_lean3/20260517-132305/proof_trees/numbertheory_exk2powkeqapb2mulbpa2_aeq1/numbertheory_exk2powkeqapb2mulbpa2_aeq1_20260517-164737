@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nh₁ : ∃ (k : ℕ) (H : k > 0), 2 ^ k = (a + b...\n$0.00$"]
+	0 -> 1 [label="obtain ⟨y, hy⟩ := h₁\n$0.31$"]
+	0 -> 2 [label="rcases h₁ with ⟨⟨h₂₁, h₂₃⟩⟩\n$0.45$"]
+	0 -> 3 [label="obtain ⟨k, hk, hk⟩ := h₁\n$0.29$"]
+	0 -> 4 [label="obtain ⟨k, hk⟩ := h₁\n$0.26$"]
+	0 -> 4 [label="rcases h₁ with ⟨k, hk⟩\n$0.26$"]
+	0 -> 5 [label="obtain ⟨k, hk₁⟩ := h₁\n$0.29$"]
+	1 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\ny : ℕ\nhy : ∃ (H : y > 0), 2 ^ y = (a + b ^...\n$0.31$"]
+	2 [label="(1/2)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nh₁_h : ∃ (H : 0 > 0), 2 ^ 0 = (a + b ^ 2) ...\n$0.45$"]
+	3 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nk : ℕ\nhk : k > 0\nhk : 2 ^ k = (a + b ^ 2) ...\n$0.29$"]
+	4 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nk : ℕ\nhk : ∃ (H : k > 0), 2 ^ k = (a + b ^...\n$0.26$"]
+	5 [label="(1/1)\na b : ℕ\nh₀ : 0 < a ∧ 0 < b\nk : ℕ\nhk₁ : ∃ (H : k > 0), 2 ^ k = (a + b ...\n$0.29$"]
+}

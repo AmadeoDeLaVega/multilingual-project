@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na : ℕ\nh₀ : even a\nh₁ : ↑∑ (k : ℕ) in finset.range 8, (2 * k + 1) - ↑∑...\n$0.00$"]
+	0 -> 1 [label="contrapose! h₀\n$0.12$"]
+	1 [label="(1/1)\na : ℕ\nh₁ : ↑∑ (k : ℕ) in finset.range 8, (2 * k + 1) - ↑∑ (k : ℕ) in ...\n$0.12$"]
+}

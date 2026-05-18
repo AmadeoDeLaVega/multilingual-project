@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nm n : ℕ\nh₀ : even m\nh₁ : even n\nh₂ : m - n = 2\nh₃ : m * n = 288\n⊢ m =...\n$0.00$"]
+	0 -> 1 [label="contrapose! h₃\n$0.48$"]
+	1 [label="(1/1)\nm n : ℕ\nh₀ : even m\nh₁ : even n\nh₂ : m - n = 2\nh₃ : ¬m = 18\n⊢ ¬m * n ...\n$0.48$"]
+}

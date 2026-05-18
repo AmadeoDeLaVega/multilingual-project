@@ -24,8 +24,11 @@ FIGURES = OUT / "figures"
 
 EXPERIMENTS = ("E1", "E3", "E4")
 BENCHMARKS = {
-    "CoreEval 250": ROOT / "runs" / "proof_search_core_eval" / "6848604",
-    "miniF2F easy-10": ROOT / "runs" / "proof_search_minif2f_easy10" / "6849079",
+    "CoreEval 250": [ROOT / "runs" / "proof_search_core_eval" / "6848604"],
+    "miniF2F": [
+        ROOT / "runs" / "proof_search_minif2f_easy10" / "6849079",
+        ROOT / "runs" / "proof_search_minif2f_remaining_9h20" / "6850148",
+    ],
 }
 
 NODE_RE = re.compile(r"^\s*(?P<node>\"[^\"]+\"|[A-Za-z0-9_]+)\s+\[")
@@ -150,8 +153,10 @@ def load_generation_records(path: Path | None) -> list[dict[str, Any]]:
     return records
 
 
-def generation_summary(path: Path | None) -> dict[str, Any]:
-    records = load_generation_records(path)
+def generation_summary(paths: list[Path | None]) -> dict[str, Any]:
+    records: list[dict[str, Any]] = []
+    for path in paths:
+        records.extend(load_generation_records(path))
     output_count = 0
     model_called_output_count = 0
     accepted_count = 0
@@ -263,9 +268,10 @@ def parse_tree_file(path: Path) -> dict[str, Any]:
     }
 
 
-def tree_summary(run_root: Path, experiment: str) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def tree_summary(run_roots: list[Path], experiment: str) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     tree_files = [
         path
+        for run_root in run_roots
         for path in (run_root / experiment).glob("proof_dumps/**/proof_trees/**/*")
         if path.is_file() and path.suffix != ".svg"
     ]
@@ -391,6 +397,55 @@ def write_summary_table_md(path: Path, title: str, summary: dict[str, dict[str, 
     path.write_text(text, encoding="utf-8")
 
 
+def diagnostics_table_markdown(title: str, rows: list[dict[str, Any]]) -> str:
+    table_rows = []
+    for row in rows:
+        table_rows.append(
+            [
+                row["experiment"],
+                row["theorems_attempted"],
+                row["theorems_proved"],
+                row["pass_rate"],
+                row["valid_tactics_per_model_called_state"],
+                row["accepted_action_rate_after_model_call"],
+                row["early_dead_end_rate"],
+                row["mean_node_count"],
+                row["mean_average_branching_factor"],
+                row["mean_proof_time_in_secs"],
+            ]
+        )
+    return "\n".join(
+        [
+            f"# {title}",
+            "",
+            markdown_table(
+                [
+                    "experiment",
+                    "attempted",
+                    "proved",
+                    "pass_rate",
+                    "valid_tactics/state",
+                    "accepted_action_rate",
+                    "early_dead_end_rate",
+                    "mean_tree_nodes",
+                    "mean_branching",
+                    "mean_time_s",
+                ],
+                table_rows,
+            ),
+            "",
+        ]
+    )
+
+
+def benchmark_slug(benchmark: str) -> str:
+    if benchmark.startswith("CoreEval"):
+        return "core_eval"
+    if benchmark == "miniF2F":
+        return "minif2f"
+    return re.sub(r"[^a-z0-9]+", "_", benchmark.lower()).strip("_")
+
+
 def svg_bar_chart(
     path: Path,
     title: str,
@@ -456,20 +511,26 @@ def main() -> int:
     benchmark_summaries: dict[str, dict[str, dict[str, Any]]] = {}
     intersection_summaries: dict[str, dict[str, dict[str, Any]]] = {}
 
-    for benchmark, run_root in BENCHMARKS.items():
+    for benchmark, run_roots in BENCHMARKS.items():
         benchmark_rows: list[dict[str, Any]] = []
         attempted_sets: list[set[str]] = []
         for exp in EXPERIMENTS:
-            results = result_path(run_root, exp)
-            if results is None:
+            rows: list[dict[str, Any]] = []
+            generation_paths: list[Path | None] = []
+            for run_root in run_roots:
+                results = result_path(run_root, exp)
+                if results is None:
+                    continue
+                rows.extend(flatten_results(results, benchmark, exp))
+                generation_paths.append(generation_path(run_root, exp))
+            if not rows:
                 continue
-            rows = flatten_results(results, benchmark, exp)
             benchmark_rows.extend(rows)
             all_rows.extend(rows)
             attempted_sets.append({row["theorem_name"] for row in rows})
 
-            gen = generation_summary(generation_path(run_root, exp))
-            tree_summary_row, trees = tree_summary(run_root, exp)
+            gen = generation_summary(generation_paths)
+            tree_summary_row, trees = tree_summary(run_roots, exp)
             for tree in trees:
                 tree_rows.append({"benchmark": benchmark, "experiment": exp, **tree})
             proof_times = [
@@ -495,7 +556,7 @@ def main() -> int:
         intersection = set.intersection(*attempted_sets) if attempted_sets else set()
         intersection_summaries[benchmark] = summarize_outcomes(benchmark_rows, intersection)
 
-        slug = "core_eval" if benchmark.startswith("CoreEval") else "minif2f_easy10"
+        slug = benchmark_slug(benchmark)
         write_csv(TABLES / f"theorem_outcomes_{slug}.csv", benchmark_rows)
         write_summary_table_md(TABLES / f"main_comparison_{slug}.md", f"{benchmark} Main Comparison", benchmark_summaries[benchmark])
         write_summary_table_md(TABLES / f"intersection_comparison_{slug}.md", f"{benchmark} Intersection Comparison", intersection_summaries[benchmark])
@@ -511,7 +572,6 @@ def main() -> int:
         write_csv(TABLES / f"intersection_comparison_{slug}.csv", intersection_csv_rows)
 
     write_csv(TABLES / "theorem_outcomes_all.csv", all_rows)
-    write_csv(TABLES / "search_diagnostics.csv", diagnostics_rows)
     write_csv(TABLES / "proof_tree_stats.csv", tree_rows)
     write_json(OUT / "analysis_payload.json", {
         "benchmark_summaries": benchmark_summaries,
@@ -521,7 +581,8 @@ def main() -> int:
 
     core = benchmark_summaries["CoreEval 250"]
     core_inter = intersection_summaries["CoreEval 250"]
-    mini = benchmark_summaries["miniF2F easy-10"]
+    mini = benchmark_summaries["miniF2F"]
+    mini_inter = intersection_summaries["miniF2F"]
     diag_by_bench_exp = {(row["benchmark"], row["experiment"]): row for row in diagnostics_rows}
 
     svg_bar_chart(
@@ -535,11 +596,14 @@ def main() -> int:
         max_value=1.0,
     )
     svg_bar_chart(
-        FIGURES / "minif2f_easy10_pass_rates.svg",
-        "miniF2F Easy-10 Pass Rates",
-        [("All 10", {exp: mini[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS})],
+        FIGURES / "minif2f_pass_rates.svg",
+        "miniF2F Pass Rates",
+        [
+            ("All Attempted", {exp: mini[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
+            ("Intersection", {exp: mini_inter[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
+        ],
         "pass rate",
-        max_value=1.0,
+        max_value=0.25,
     )
     svg_bar_chart(
         FIGURES / "coreeval_generated_action_quality.svg",
@@ -573,48 +637,14 @@ def main() -> int:
         "count / factor",
     )
 
-    diagnostics_table = []
-    for row in diagnostics_rows:
-        diagnostics_table.append(
-            [
-                row["benchmark"],
-                row["experiment"],
-                row["theorems_attempted"],
-                row["theorems_proved"],
-                row["pass_rate"],
-                row["valid_tactics_per_model_called_state"],
-                row["accepted_action_rate_after_model_call"],
-                row["early_dead_end_rate"],
-                row["mean_node_count"],
-                row["mean_average_branching_factor"],
-                row["mean_proof_time_in_secs"],
-            ]
+    for benchmark in BENCHMARKS:
+        slug = benchmark_slug(benchmark)
+        rows = [row for row in diagnostics_rows if row["benchmark"] == benchmark]
+        write_csv(TABLES / f"search_diagnostics_{slug}.csv", rows)
+        (TABLES / f"search_diagnostics_{slug}.md").write_text(
+            diagnostics_table_markdown(f"{benchmark} Search Diagnostics", rows),
+            encoding="utf-8",
         )
-
-    diag_md = "\n".join(
-        [
-            "# Search Diagnostics Table",
-            "",
-            markdown_table(
-                [
-                    "benchmark",
-                    "experiment",
-                    "attempted",
-                    "proved",
-                    "pass_rate",
-                    "valid_tactics/state",
-                    "accepted_action_rate",
-                    "early_dead_end_rate",
-                    "mean_tree_nodes",
-                    "mean_branching",
-                    "mean_time_s",
-                ],
-                diagnostics_table,
-            ),
-            "",
-        ]
-    )
-    (TABLES / "search_diagnostics.md").write_text(diag_md, encoding="utf-8")
 
     memo = build_memo(benchmark_summaries, intersection_summaries, diagnostics_rows)
     (OUT / "internal_memo.md").write_text(memo, encoding="utf-8")
@@ -629,15 +659,17 @@ def main() -> int:
             "",
             "- `tables/main_comparison_core_eval.md`",
             "- `tables/intersection_comparison_core_eval.md`",
-            "- `tables/main_comparison_minif2f_easy10.md`",
-            "- `tables/search_diagnostics.md`",
+            "- `tables/main_comparison_minif2f.md`",
+            "- `tables/intersection_comparison_minif2f.md`",
+            "- `tables/search_diagnostics_core_eval.md`",
+            "- `tables/search_diagnostics_minif2f.md`",
             "- `tables/theorem_outcomes_all.csv`",
             "- `tables/proof_tree_stats.csv`",
             "",
             "## Figures",
             "",
             "- `figures/coreeval_pass_rates.svg`",
-            "- `figures/minif2f_easy10_pass_rates.svg`",
+            "- `figures/minif2f_pass_rates.svg`",
             "- `figures/coreeval_generated_action_quality.svg`",
             "- `figures/coreeval_search_tree_size.svg`",
             "",
@@ -660,7 +692,8 @@ def build_memo(
 ) -> str:
     core = summaries["CoreEval 250"]
     core_i = intersections["CoreEval 250"]
-    mini = summaries["miniF2F easy-10"]
+    mini = summaries["miniF2F"]
+    mini_i = intersections["miniF2F"]
     diag = {(row["benchmark"], row["experiment"]): row for row in diagnostics}
 
     lines = [
@@ -672,8 +705,9 @@ def build_memo(
         "",
         "- `runs/proof_search_core_eval/6848604`",
         "- `runs/proof_search_minif2f_easy10/6849079`",
+        "- `runs/proof_search_minif2f_remaining_9h20/6850148`",
         "",
-        "CoreEval is the primary benchmark for the pilot. miniF2F easy-10 is secondary because it is Lean 3 and much smaller.",
+        "CoreEval is the controlled in-project Lean 4 benchmark. The two miniF2F runs are combined below and treated as one external Lean 3 generalization check. CoreEval and miniF2F should be interpreted together rather than collapsed into a single winner.",
         "",
         "## Main CoreEval Result",
         "",
@@ -692,18 +726,28 @@ def build_memo(
             ],
         ),
         "",
-        "On CoreEval, E4 is ahead of both E1 and E3. E1 is also ahead of E3 on the theorem-name intersection attempted by all three models.",
+        "On CoreEval, E4 is ahead of both E1 and E3. E1 is also ahead of E3 on the theorem-name intersection attempted by all three models. This is consistent with pseudo-multilingual regularization helping on Lean-like in-distribution theorem statements.",
         "",
-        "## miniF2F Easy-10 Result",
+        "## miniF2F Result",
         "",
         markdown_table(
-            ["experiment", "attempted", "proved", "pass_rate"],
-            [[exp, mini[exp]["attempted"], mini[exp]["proved"], mini[exp]["pass_rate"]] for exp in EXPERIMENTS],
+            ["experiment", "attempted", "proved", "pass_rate", "intersection_proved", "intersection_pass_rate"],
+            [
+                [
+                    exp,
+                    mini[exp]["attempted"],
+                    mini[exp]["proved"],
+                    mini[exp]["pass_rate"],
+                    mini_i[exp]["proved"],
+                    mini_i[exp]["pass_rate"],
+                ]
+                for exp in EXPERIMENTS
+            ],
         ),
         "",
-        "miniF2F easy-10 gives E3 a small edge, but the sample is only 10 theorems and should not override the CoreEval result.",
+        "Combined miniF2F makes E1 and E4 more comparable than CoreEval does, while E3 remains competitive. This supports the concern that CoreEval is favorable to E4 and that real multilingual training may matter more on external theorem styles.",
         "",
-        "## Search Diagnostics",
+        "## CoreEval Search Diagnostics",
         "",
         markdown_table(
             [
@@ -729,6 +773,32 @@ def build_memo(
             ],
         ),
         "",
+        "## miniF2F Search Diagnostics",
+        "",
+        markdown_table(
+            [
+                "experiment",
+                "valid_tactics/state",
+                "accepted_action_rate",
+                "early_dead_end_rate",
+                "mean_tree_nodes",
+                "mean_branching",
+                "mean_time_s",
+            ],
+            [
+                [
+                    exp,
+                    diag[("miniF2F", exp)]["valid_tactics_per_model_called_state"],
+                    diag[("miniF2F", exp)]["accepted_action_rate_after_model_call"],
+                    diag[("miniF2F", exp)]["early_dead_end_rate"],
+                    diag[("miniF2F", exp)]["mean_node_count"],
+                    diag[("miniF2F", exp)]["mean_average_branching_factor"],
+                    diag[("miniF2F", exp)]["mean_proof_time_in_secs"],
+                ]
+                for exp in EXPERIMENTS
+            ],
+        ),
+        "",
         "The generated-action metrics should be read as parser/action acceptance, not as guaranteed Lean compilation. Proof-tree statistics are a stronger proxy for search expansion because they are produced by the proof-search engine after interacting with Lean.",
         "",
         "## Token-Budget Caveat",
@@ -737,9 +807,10 @@ def build_memo(
         "",
         "## Interpretation",
         "",
-        "- H1, structural transfer: not supported by CoreEval, because E3 does not beat E1 or E4 there.",
-        "- H2, regularization: CoreEval favors E4, but E4 data quality remains a caveat, so this is suggestive rather than conclusive.",
-        "- H3, search calibration: still plausible as a mechanism to inspect, but the current primary result is dominated by E4's higher proof-search pass rate rather than an E3 search advantage.",
+        "- H1, structural transfer: not supported by CoreEval alone, but miniF2F provides suggestive evidence that real multilingual training can help external generalization.",
+        "- H2, regularization: CoreEval favors E4, supporting the idea that pseudo-multilingual variation helps on in-distribution Lean-style proof search.",
+        "- H3, search calibration: still plausible as a mechanism to inspect, especially because the miniF2F runs are timeout-heavy and differences may appear in search behavior before large pass-rate gaps emerge.",
+        "- Distribution-dependent finding: the strongest current story is not one global winner. CoreEval shows when regularization matters; miniF2F shows where real multilingual transfer may matter.",
         "",
         "## Deliverable Files",
         "",

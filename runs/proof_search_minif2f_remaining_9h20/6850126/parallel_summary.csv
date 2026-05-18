@@ -1,0 +1,4 @@
+experiment,run_root,metrics_json,theorem_count,proved_count,search_pass_rate,pass_at_1,pass_at_5_observed,timeout_rate,mean_proof_time_in_secs,prompt_state_count,model_called_state_count,accepted_action_rate_after_model_call,parsed_tactic_rate_after_model_call,zero_accepted_after_model_call_rate,mean_node_count,mean_average_branching_factor
+E1,/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1,,,,,,,,,,,,,,,
+E3,/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E3,,,,,,,,,,,,,,,
+E4,/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E4,,,,,,,,,,,,,,,

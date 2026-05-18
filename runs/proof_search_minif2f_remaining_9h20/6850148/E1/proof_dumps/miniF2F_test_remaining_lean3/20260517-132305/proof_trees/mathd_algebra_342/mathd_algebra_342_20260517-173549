@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na d : ℝ\nh₀ : ∑ (k : ℕ) in finset.range 5, (a + ↑k * d) = 70\nh₁ : ∑ (k...\n$0.00$"]
+	0 -> 1 [label="obtain rfl | h := eq_or_ne a 0\n$0.96$"]
+	1 [label="(1/2)\nd : ℝ\nh₀ : ∑ (k : ℕ) in finset.range 5, (0 + ↑k * d) = 70\nh₁ : ∑ (k :...\n$0.96$"]
+}

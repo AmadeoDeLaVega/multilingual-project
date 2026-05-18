@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\nn : ℕ\nh₀ : 2 * n % 47 = 15\n⊢ n % 47 = 31\n$0.00$"]
+	0 -> 1 [label="simp [mul_comm] at h₀\n$0.43$"]
+	0 -> 1 [label="rw [mul_comm] at h₀\n$0.38$"]
+	1 [label="(1/1)\nn : ℕ\nh₀ : n * 2 % 47 = 15\n⊢ n % 47 = 31\n$0.38$"]
+}

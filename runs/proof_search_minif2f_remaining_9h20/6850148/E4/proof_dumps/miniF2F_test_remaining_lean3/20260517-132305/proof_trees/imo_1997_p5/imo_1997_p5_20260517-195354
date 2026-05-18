@@ -1,0 +1,14 @@
+digraph {
+	0 [label="(1/1)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\n⊢ (x, y) = (1, 1) ∨...\n$0.00$"]
+	0 -> 1 [label="have hle := h₁\n$0.99$"]
+	0 -> 2 [label="rcases eq_or_ne x y with (rfl | hx)\n$0.78$"]
+	0 -> 3 [label="simp [h₁]\n$0.63$"]
+	0 -> 3 [label="simp [h₁.symm, h₀.2.ne']\n$0.96$"]
+	0 -> 4 [label="by_cases hx : y = 0\n$0.74$"]
+	0 -> 5 [label="by_cases h₁ : x = 0\n$0.72$"]
+	1 [label="(1/1)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ hle : x ^ y ^ 2 = y ^ x\n⊢ (x, y) = (1, ...\n$0.99$"]
+	2 [label="(1/2)\nx : ℕ\nh₀ : 0 < x ∧ 0 < x\nh₁ : x ^ x ^ 2 = x ^ x\n⊢ (x, x) = (1, 1) ∨ (...\n$0.78$"]
+	3 [label="(1/1)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\n⊢ x = 1 ∧ y = 1 ∨ x...\n$0.63$"]
+	4 [label="(1/2)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\nhx : y = 0\n⊢ (x, y)...\n$0.74$"]
+	5 [label="(1/2)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\nh₁ : x = 0\n⊢ (x, y)...\n$0.72$"]
+}

@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\nm n p q : ℝ\nh₀ : p = 2 ^ m\nh₁ : q = 3 ^ n\n⊢ p ^ (2 * n) * q ^ m = 12 ...\n$0.00$"]
+	0 -> 1 [label="cases p\n$0.30$"]
+	0 -> 2 [label="simp [h₀]\n$0.24$"]
+	0 -> 3 [label="have h₂ : (2 * n : ℝ) ^ m ≠ 1 := by simp [h₁]\n$0.40$"]
+	1 [label="(1/1)\nm n q : ℝ\nh₁ : q = 3 ^ n\np : cau_seq.completion.Cauchy\nh₀ : ⟨p⟩ = 2 ^...\n$0.30$"]
+	2 [label="(1/1)\nm n p q : ℝ\nh₀ : p = 2 ^ m\nh₁ : q = 3 ^ n\n⊢ (2 ^ m) ^ (2 * n) * q ^ m...\n$0.24$"]
+	3 [label="(1/1)\nm n p q : ℝ\nh₀ : p = 2 ^ m\nh₁ : q = 3 ^ n\n⊢ ¬(2 * n) ^ m = 1\nstate:\nm...\n$0.40$"]
+}

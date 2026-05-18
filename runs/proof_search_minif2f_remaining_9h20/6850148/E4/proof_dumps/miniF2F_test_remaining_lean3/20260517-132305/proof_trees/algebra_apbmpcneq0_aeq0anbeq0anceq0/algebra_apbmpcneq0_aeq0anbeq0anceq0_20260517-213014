@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\na b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃...\n$0.00$"]
+	0 -> 1 [label="have h₃ := h₃\n$0.46$"]
+	0 -> 2 [label="constructor\n$0.38$"]
+	0 -> 3 [label="simp [h₂] at h₂\n$0.50$"]
+	0 -> 4 [label="obtain rfl | h₁ := eq_or_ne m 0\n$0.51$"]
+	1 [label="(1/1)\na b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃...\n$0.46$"]
+	2 [label="(1/2)\na b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃...\n$0.38$"]
+	3 [label="(1/1)\na b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₃ : ↑a + ↑b * m ...\n$0.50$"]
+	4 [label="(1/2)\na b c : ℚ\nn : ℝ\nh₂ : n ^ 3 = 4\nh₀ : 0 < 0 ∧ 0 < n\nh₁ : 0 ^ 3 = 2\nh₃ :...\n$0.51$"]
+}

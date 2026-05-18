@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\na b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : c < a + b\nh₂ : b < a + c\nh₃...\n$0.00$"]
+	0 -> 1 [label="ring_nf\n$0.23$"]
+	0 -> 2 [label="rw [add_comm, add_comm, add_comm]\n$0.31$"]
+	0 -> 3 [label="rw [mul_comm, mul_assoc]\n$0.28$"]
+	1 [label="(1/1)\na b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : c < a + b\nh₂ : b < a + c\nh₃...\n$0.23$"]
+	2 [label="(1/1)\na b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : c < a + b\nh₂ : b < a + c\nh₃...\n$0.31$"]
+	3 [label="(1/1)\na b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : c < a + b\nh₂ : b < a + c\nh₃...\n$0.28$"]
+}

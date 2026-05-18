@@ -1,0 +1,11 @@
+digraph {
+	0 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * m * c + a * m + m * c + a * c ≤ 1...\n$0.00$"]
+	0 -> 1 [label="apply le_trans\n$0.63$"]
+	0 -> 2 [label="rw [add_assoc]\n$0.58$"]
+	0 -> 3 [label="rw [add_comm]\n$0.56$"]
+	0 -> 4 [label="simp only [h₀, add_assoc, add_comm, add_left_comm]\n$0.80$"]
+	1 [label="(1/3)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * m * c + a * m + m * c + a * c ≤ ?...\n$0.63$"]
+	2 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * m * c + a * m + (m * c + a * c) ≤...\n$0.58$"]
+	3 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * c + (a * m * c + a * m + m * c) ≤...\n$0.56$"]
+	4 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * m + (a * c + (m * c + a * m * c))...\n$0.80$"]
+}

@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\nx y : ℝ\nh₀ : x ^ 2 + 8 * x + y ^ 2 - 6 * y = 0\n⊢ (x + 4) ^ 2 + (y - 3...\n$0.00$"]
+	0 -> 1 [label="norm_num\n$0.25$"]
+	0 -> 2 [label="have : (x - 4 : ℝ) < 1 := by\n  rcases eq_or_ne x 0 with (rfl | hx)\n$0.64$"]
+	1 [label="(1/1)\nx y : ℝ\nh₀ : x ^ 2 + 8 * x + y ^ 2 - 6 * y = 0\n⊢ (x + 4) ^ 2 + (y - 3...\n$0.25$"]
+	2 [label="(1/2)\ny : ℝ\nh₀ : 0 ^ 2 + 8 * 0 + y ^ 2 - 6 * y = 0\n⊢ 0 - 4 < 1\n(2/2)\nx y : ...\n$0.64$"]
+}

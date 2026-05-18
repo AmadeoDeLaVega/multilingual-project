@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nS : finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * π ∧ real.tan (2 ...\n$0.00$"]
+	0 -> 1 [label="contrapose! h₀\n$0.43$"]
+	1 [label="(1/1)\nS : finset ℝ\nh₀ : S.card ≠ 5\n⊢ ∃ (x : ℝ), ¬(x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * π...\n$0.43$"]
+}

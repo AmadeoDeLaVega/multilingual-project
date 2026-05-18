@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\n⊢ ∑ (k : ℕ) in finset.Icc 2 10000, 1 / real.sqrt ↑k < 198\n$0.00$"]
+	0 -> 1 [label="have : 1 / (1 / 4 + 2) ≤ 4 := by norm_num\n$0.55$"]
+	1 [label="(1/1)\nthis : 1 / (1 / 4 + 2) ≤ 4\n⊢ ∑ (k : ℕ) in finset.Icc 2 10000, 1 / rea...\n$0.55$"]
+}

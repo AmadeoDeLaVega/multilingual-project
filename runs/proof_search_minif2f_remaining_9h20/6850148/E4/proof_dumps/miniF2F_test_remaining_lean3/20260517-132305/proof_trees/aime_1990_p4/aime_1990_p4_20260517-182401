@@ -1,0 +1,13 @@
+digraph {
+	0 [label="(1/1)\nx : ℝ\nh₀ : 0 < x\nh₁ : x ^ 2 - 10 * x - 29 ≠ 0\nh₂ : x ^ 2 - 10 * x - 4...\n$0.00$"]
+	0 -> 1 [label="contrapose! h₄\n$0.27$"]
+	0 -> 2 [label="simp only [sub_eq_add_neg, neg_eq_zero] at h₄\n$0.36$"]
+	0 -> 3 [label="have h₄ : 0 < x := by linarith [h₄]\n$0.34$"]
+	0 -> 4 [label="rw [sub_eq_zero] at h₄\n$0.27$"]
+	0 -> 5 [label="rw [← sub_eq_zero] at h₄\n$0.28$"]
+	1 [label="(1/1)\nx : ℝ\nh₀ : 0 < x\nh₁ : x ^ 2 - 10 * x - 29 ≠ 0\nh₂ : x ^ 2 - 10 * x - 4...\n$0.27$"]
+	2 [label="(1/1)\nx : ℝ\nh₀ : 0 < x\nh₁ : x ^ 2 - 10 * x - 29 ≠ 0\nh₂ : x ^ 2 - 10 * x - 4...\n$0.36$"]
+	3 [label="(1/1)\nx : ℝ\nh₀ : 0 < x\nh₁ : x ^ 2 - 10 * x - 29 ≠ 0\nh₂ : x ^ 2 - 10 * x - 4...\n$0.34$"]
+	4 [label="(1/1)\nx : ℝ\nh₀ : 0 < x\nh₁ : x ^ 2 - 10 * x - 29 ≠ 0\nh₂ : x ^ 2 - 10 * x - 4...\n$0.27$"]
+	5 [label="(1/1)\nx : ℝ\nh₀ : 0 < x\nh₁ : x ^ 2 - 10 * x - 29 ≠ 0\nh₂ : x ^ 2 - 10 * x - 4...\n$0.28$"]
+}

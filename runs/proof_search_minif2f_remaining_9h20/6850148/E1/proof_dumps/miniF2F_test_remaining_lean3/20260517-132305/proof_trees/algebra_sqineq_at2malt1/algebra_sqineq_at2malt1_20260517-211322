@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\na : ℝ\n⊢ a * (2 - a) ≤ 1\n$0.00$"]
+	0 -> 1 [label="rw [← sub_le_sub_iff_left, mul_comm, mul_comm, sub_eq_add_neg, add_comm]\n$0.76$"]
+	0 -> 2 [label="rw [mul_comm]\n$0.40$"]
+	1 [label="(1/2)\na : ℝ\n⊢ -1 + ?m_1 ≤ ?m_1 - a * (2 - a)\n(2/2)\na : ℝ\n⊢ ℝ\n$0.76$"]
+	2 [label="(1/1)\na : ℝ\n⊢ (2 - a) * a ≤ 1\n$0.40$"]
+}

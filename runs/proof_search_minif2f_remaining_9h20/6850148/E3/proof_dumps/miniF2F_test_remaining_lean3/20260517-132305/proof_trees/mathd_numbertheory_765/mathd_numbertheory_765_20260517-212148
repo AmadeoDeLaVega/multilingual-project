@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nx : ℤ\nh₀ : x < 0\nh₁ : 24 * x % 1199 = 15\n⊢ x ≤ -449\n$0.00$"]
+	0 -> 1 [label="cases x\n$0.75$"]
+	1 [label="(1/2)\ncase int.of_nat\nx : ℕ\nh₀ : int.of_nat x < 0\nh₁ : 24 * int.of_nat x % ...\n$0.75$"]
+}

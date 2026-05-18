@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nm n : ℕ\nh₀ : 0 < m ∧ 0 < n\nh₁ : gcd m n = 8\nh₂ : lcm m n = 112\n⊢ 72 ≤...\n$0.00$"]
+	0 -> 1 [label="convert h₁.symm.le\n$0.64$"]
+	1 [label="(1/2)\nm n : ℕ\nh₀ : 0 < m ∧ 0 < n\nh₁ : gcd m n = 8\nh₂ : lcm m n = 112\n⊢ 9 = ...\n$0.64$"]
+}

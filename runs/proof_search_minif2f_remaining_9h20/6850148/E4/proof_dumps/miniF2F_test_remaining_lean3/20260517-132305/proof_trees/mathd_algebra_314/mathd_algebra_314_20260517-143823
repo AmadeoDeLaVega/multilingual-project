@@ -1,0 +1,8 @@
+digraph {
+	0 [label="(1/1)\nn : ℕ\nh₀ : n = 11\n⊢ (1 / 4) ^ (n + 1) * 2 ^ (2 * n) = 1 / 4\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="rw [h₀, pow_succ, pow_succ, pow_succ]\n$0.43$"]
+	0 -> 2 [label="norm_num\nend\n$-100.00$" color=red penwidth=2.0]
+	0 -> 2 [label="norm_num [h₀]\nend\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\nn : ℕ\nh₀ : n = 11\n⊢ 1 / 4 * (1 / 4 * (1 / 4 * (1 / 4) ^ 9)) * 2 ^ (2 ...\n$0.43$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

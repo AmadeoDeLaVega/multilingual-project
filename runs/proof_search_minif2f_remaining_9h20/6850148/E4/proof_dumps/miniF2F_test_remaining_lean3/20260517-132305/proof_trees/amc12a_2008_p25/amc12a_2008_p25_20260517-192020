@@ -1,0 +1,6 @@
+digraph {
+	0 [label="(1/1)\na b : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 1) = real.sqrt 3 * a n - b n\nh₁ : ...\n$0.00$"]
+	0 -> 1 [label="norm_num\n$0.48$"]
+	0 -> 1 [label="norm_num1\n$0.53$"]
+	1 [label="(1/1)\na b : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 1) = real.sqrt 3 * a n - b n\nh₁ : ...\n$0.48$"]
+}

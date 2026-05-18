@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : 5 * x = y\nh₂ : ↑x - 3 + (↑y - 3) = 30...\n$0.00$" fillcolor=lightblue style=filled]
+	0 -> 1 [label="contrapose! h₂\n$0.65$"]
+	0 -> 2 [label="linarith\nend\n$-100.00$" color=red penwidth=2.0]
+	1 [label="(1/1)\nx y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : 5 * x = y\nh₂ : ¬x = 6\n⊢ ¬↑x - 3 + (↑y...\n$0.65$"]
+	2 [label="not in proof mode\n$-100.00$" fillcolor=lightblue style=filled]
+}

@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na : ℕ\nh₀ : even a\nh₁ : ↑∑ (k : ℕ) in finset.range 8, (2 * k + 1) - ↑∑...\n$0.00$"]
+	0 -> 1 [label="obtain rfl | h := eq_or_ne a 0\n$0.23$"]
+	1 [label="(1/2)\nh₀ : even 0\nh₁ : ↑∑ (k : ℕ) in finset.range 8, (2 * k + 1) - ↑∑ (k : ...\n$0.23$"]
+}

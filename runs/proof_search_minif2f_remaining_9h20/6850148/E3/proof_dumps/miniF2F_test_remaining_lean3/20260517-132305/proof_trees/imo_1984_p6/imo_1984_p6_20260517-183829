@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\na b c d k m : ℕ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₁ : odd a ∧ odd b...\n$0.00$"]
+	0 -> 1 [label="have h₃ := h₂.2\n$0.46$"]
+	0 -> 2 [label="contrapose! h₃\n$0.37$"]
+	0 -> 3 [label="contrapose! h₁\n$0.36$"]
+	1 [label="(1/1)\na b c d k m : ℕ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₁ : odd a ∧ odd b...\n$0.46$"]
+	2 [label="(1/1)\na b c d k m : ℕ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₁ : odd a ∧ odd b...\n$0.37$"]
+	3 [label="(1/1)\na b c d k m : ℕ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₂ : a < b ∧ b < c...\n$0.36$"]
+}

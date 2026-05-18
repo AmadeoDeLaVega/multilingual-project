@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\n⊢ (finset.filter (λ (x : ℕ), 20 ∣ x) (finset.Icc 15 85)).card = 4\n$0.00$"]
+	0 -> 1 [label="simp\n$0.36$"]
+	1 [label="(1/1)\n⊢ (finset.filter (has_dvd.dvd 20) (finset.Icc 15 85)).card = 4\n$0.36$"]
+}

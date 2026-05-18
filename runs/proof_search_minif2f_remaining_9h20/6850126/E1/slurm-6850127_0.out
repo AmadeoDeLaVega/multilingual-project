@@ -1,0 +1,81 @@
+Host: tron47.umiacs.umd.edu
+Job: 6850127
+Array job: 6850126
+Array task: 0
+Experiment: E1
+Project root: /fs/classhomes/adelaveg/multilingual-project
+Run root: /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1
+Model path: /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final
+Theorem timeout seconds: 180
+Search wall timeout: 09h05m
+Metrics refresh interval seconds: 120
+Python 3.10.20
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/bin/proof-wala-search
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/bin/proof-wala-init-ray
+Sun May 17 13:07:28 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.48.01              Driver Version: 590.48.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:E1:00.0 Off |                  Off |
+| 30%   25C    P8             20W /  230W |       1MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Validated model.safetensors: /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final/model.safetensors (131 tensors)
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Tokenizer files already present in /fs/classhomes/adelaveg/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final
+info: downloading https://github.com/leanprover-community/lean/releases/download/v3.42.1/lean-3.42.1-linux.tar.gz
+info: installing /tmp/pwmr6850126_0/elan/toolchains/leanprover-community--lean---v3.42.1
+
+leanprover-community/lean:v3.42.1 installed - Lean (version 3.42.1, commit 68455b087d87, Release)
+
+info: override toolchain for '/tmp/pwmr6850126_0/miniF2F' set to 'leanprover-community/lean:v3.42.1'
+Lean (version 3.42.1, commit 68455b087d87, Release)
+configuring minif2f 1.0
+WARNING: leanpkg configurations not specifying `path = "src"` are deprecated.
+mathlib: cloning https://github.com/leanprover-community/mathlib to _target/deps/mathlib
+> git clone https://github.com/leanprover-community/mathlib _target/deps/mathlib
+Cloning into '_target/deps/mathlib'...
+> git checkout --detach cb2b02fff213ed6f65bebd64446baac64137dcda    # in directory _target/deps/mathlib
+HEAD is now at cb2b02fff2 feat(representation_theory/basic): representation theory without scalar actions (#13573)
+Looking for mathlib oleans for cb2b02fff2
+  locally...
+  Found local mathlib oleans
+Located matching cache
+Applying cache
+  files extracted: 0 [00:00, ?/s]  files extracted: 51 [00:00, 504.64/s]  files extracted: 102 [00:00, 481.35/s]  files extracted: 151 [00:00, 485.05/s]  files extracted: 221 [00:00, 554.17/s]  files extracted: 277 [00:00, 476.18/s]  files extracted: 329 [00:00, 486.43/s]  files extracted: 386 [00:00, 511.38/s]  files extracted: 441 [00:00, 516.75/s]  files extracted: 534 [00:00, 635.96/s]  files extracted: 599 [00:01, 638.50/s]  files extracted: 664 [00:01, 607.26/s]  files extracted: 761 [00:01, 696.63/s]  files extracted: 832 [00:01, 594.69/s]  files extracted: 895 [00:01, 542.97/s]  files extracted: 952 [00:01, 513.94/s]  files extracted: 1020 [00:01, 553.38/s]  files extracted: 1078 [00:01, 555.51/s]  files extracted: 1141 [00:02, 575.47/s]  files extracted: 1200 [00:02, 556.62/s]  files extracted: 1260 [00:02, 566.70/s]  files extracted: 1322 [00:02, 576.12/s]  files extracted: 1389 [00:02, 602.43/s]  files extracted: 1469 [00:02, 658.82/s]  files extracted: 1549 [00:02, 688.50/s]  files extracted: 1619 [00:02, 674.50/s]  files extracted: 1698 [00:02, 704.53/s]  files extracted: 1769 [00:02, 691.99/s]  files extracted: 1839 [00:03, 639.07/s]  files extracted: 1904 [00:03, 604.33/s]  files extracted: 1966 [00:03, 604.43/s]  files extracted: 2028 [00:03, 584.86/s]  files extracted: 2109 [00:03, 632.97/s]  files extracted: 2175 [00:03, 639.91/s]  files extracted: 2302 [00:03, 817.17/s]  files extracted: 2384 [00:03, 625.85/s]
+Wrote /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1/config/benchmark/miniF2F_test_remaining_lean3.yaml
+Wrote /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1/config/eval_miniF2F_remaining_lean3.yaml
+Wrote /fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1/theorem_manifest.json
+Initializing Ray
+PID:  3498021
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/ray/_private/worker.py:2051: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+/fs/classhomes/adelaveg/.conda/envs/proofwala-pilot/lib/python3.10/site-packages/ray/_private/worker.py:1350: UserWarning: iter(ctx) is deprecated. Use iter(ctx.address_info) instead.
+  warnings.warn(
+Ray session:  {'node_ip_address': '10.71.20.58', 'redis_address': None, 'object_store_address': '/tmp/pwmr6850126_0/ray/session_2026-05-17_13-08-45_155784_3498021/sockets/plasma_store', 'raylet_socket_name': '/tmp/pwmr6850126_0/ray/session_2026-05-17_13-08-45_155784_3498021/sockets/raylet', 'webui_url': '', 'session_dir': '/tmp/pwmr6850126_0/ray/session_2026-05-17_13-08-45_155784_3498021', 'metrics_export_port': -1, 'gcs_address': '10.71.20.58:43885', 'address': '10.71.20.58:43885', 'dashboard_agent_listen_port': -1, 'node_id': 'e6eb46d9953324a8686271caa7f23d3c74e4fb7b1785e6ddd6841a92', 'main_pid': 3498021}
+Ray was started
+Ray session:  {'node_ip_address': '10.71.20.58', 'redis_address': None, 'object_store_address': '/tmp/pwmr6850126_0/ray/session_2026-05-17_13-08-45_155784_3498021/sockets/plasma_store', 'raylet_socket_name': '/tmp/pwmr6850126_0/ray/session_2026-05-17_13-08-45_155784_3498021/sockets/raylet', 'webui_url': '', 'session_dir': '/tmp/pwmr6850126_0/ray/session_2026-05-17_13-08-45_155784_3498021', 'metrics_export_port': -1, 'gcs_address': '10.71.20.58:43885', 'address': '10.71.20.58:43885', 'dashboard_agent_listen_port': -1, 'node_id': 'e6eb46d9953324a8686271caa7f23d3c74e4fb7b1785e6ddd6841a92', 'main_pid': 3498021}
+timeout: invalid time interval ‘09h05m’
+Try 'timeout --help' for more information.
+find: ‘/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1/proof_dumps’: No such file or directory
+find: ‘/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1/proof_dumps’: No such file or directory
+find: ‘/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850126/E1/proof_dumps’: No such file or directory
+*** SIGTERM received at time=1779037742 on cpu 10 ***
+PC: @     0x7f4f7c51702f  (unknown)  select
+    @     0x7f4f7cf54990  (unknown)  (unknown)
+[2026-05-17 13:09:02,199 E 3498021 3498021] logging.cc:474: *** SIGTERM received at time=1779037742 on cpu 10 ***
+[2026-05-17 13:09:02,199 E 3498021 3498021] logging.cc:474: PC: @     0x7f4f7c51702f  (unknown)  select
+[2026-05-17 13:09:02,199 E 3498021 3498021] logging.cc:474:     @     0x7f4f7cf54990  (unknown)  (unknown)

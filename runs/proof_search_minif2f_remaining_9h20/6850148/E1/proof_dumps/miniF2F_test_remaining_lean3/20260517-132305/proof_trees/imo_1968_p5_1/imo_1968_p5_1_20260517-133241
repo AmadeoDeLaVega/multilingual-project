@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\na : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + real.s...\n$0.00$"]
+	0 -> 1 [label="rcases lt_trichotomy a 0 with (h | h)\n$0.23$"]
+	1 [label="(1/2)\na : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + real.s...\n$0.23$"]
+}

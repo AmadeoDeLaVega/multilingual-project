@@ -7,6 +7,8 @@
 !/runs/proof_search_core_eval/**
 !/runs/proof_search_minif2f_easy10/
 !/runs/proof_search_minif2f_easy10/**
+!/runs/proof_search_minif2f_remaining_9h20/
+!/runs/proof_search_minif2f_remaining_9h20/**
 !/runs/analysis/
 /runs/analysis/*
 !/runs/analysis/day8_10/

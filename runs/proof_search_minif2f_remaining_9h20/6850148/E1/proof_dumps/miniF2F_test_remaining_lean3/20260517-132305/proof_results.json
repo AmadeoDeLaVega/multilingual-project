@@ -1,0 +1,1177 @@
+{
+    "path": "/fs/classhomes/adelaveg/multilingual-project/runs/proof_search_minif2f_remaining_9h20/6850148/E1/proof_dumps/miniF2F_test_remaining_lean3/20260517-132305/proof_results.json",
+    "theorem_map": {
+        "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean": {
+            "imo_1968_p5_1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1968_p5_1",
+                "proof_steps": [],
+                "proof_time_in_secs": 496.0390057563782,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_302": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_302",
+                "proof_steps": [],
+                "proof_time_in_secs": 537.3618104457855,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_559": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_559",
+                "proof_steps": [],
+                "proof_time_in_secs": 43.114561319351196,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_552": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_552",
+                "proof_steps": [],
+                "proof_time_in_secs": 272.62681460380554,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "numbertheory_3pow2pownm1mod2pownp3eq2pownp2": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+                "proof_steps": [],
+                "proof_time_in_secs": 440.6563675403595,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12b_2020_p6": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12b_2020_p6",
+                "proof_steps": [],
+                "proof_time_in_secs": 338.18544006347656,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_388": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_388",
+                "proof_steps": [],
+                "proof_time_in_secs": 200.52997064590454,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_85": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_85",
+                "proof_steps": [],
+                "proof_time_in_secs": 278.850683927536,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "imo_1964_p2": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1964_p2",
+                "proof_steps": [],
+                "proof_time_in_secs": 193.25520300865173,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_212": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_212",
+                "proof_steps": [],
+                "proof_time_in_secs": 260.525723695755,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_711": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_711",
+                "proof_steps": [],
+                "proof_time_in_secs": 274.2427296638489,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_314": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_314",
+                "proof_steps": [],
+                "proof_time_in_secs": 301.9897382259369,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_329": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_329",
+                "proof_steps": [],
+                "proof_time_in_secs": 222.35335850715637,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12b_2020_p22": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12b_2020_p22",
+                "proof_steps": [],
+                "proof_time_in_secs": 397.5520441532135,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_188": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_188",
+                "proof_steps": [],
+                "proof_time_in_secs": 195.0182785987854,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12_2000_p12": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12_2000_p12",
+                "proof_steps": [],
+                "proof_time_in_secs": 1047.1806757450104,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2020_p9": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2020_p9",
+                "proof_steps": [],
+                "proof_time_in_secs": 384.82704281806946,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2020_p25": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2020_p25",
+                "proof_steps": [],
+                "proof_time_in_secs": 531.9942274093628,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_338": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_338",
+                "proof_steps": [],
+                "proof_time_in_secs": 272.21181654930115,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_483": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_483",
+                "proof_steps": [],
+                "proof_time_in_secs": 39.20668077468872,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "algebra_sum1onsqrt2to1onsqrt10000lt198": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+                "proof_steps": [],
+                "proof_time_in_secs": 335.0032377243042,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_100": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_100",
+                "proof_steps": [],
+                "proof_time_in_secs": 598.8669307231903,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778",
+                "proof_steps": [],
+                "proof_time_in_secs": 661.4167082309723,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_359": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_359",
+                "proof_steps": [],
+                "proof_time_in_secs": 208.47261834144592,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2009_p6": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2009_p6",
+                "proof_steps": [],
+                "proof_time_in_secs": 527.8968176841736,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "induction_1pxpownlt1pnx": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "induction_1pxpownlt1pnx",
+                "proof_steps": [],
+                "proof_time_in_secs": 394.17514085769653,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "algebra_absapbon1pabsapbleqsumabsaon1pabsa": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "algebra_absapbon1pabsapbleqsumabsaon1pabsa",
+                "proof_steps": [],
+                "proof_time_in_secs": 353.9311866760254,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "numbertheory_aoddbdiv4asqpbsqmod8eq1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "numbertheory_aoddbdiv4asqpbsqmod8eq1",
+                "proof_steps": [],
+                "proof_time_in_secs": 477.9958860874176,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "numbertheory_exk2powkeqapb2mulbpa2_aeq1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "numbertheory_exk2powkeqapb2mulbpa2_aeq1",
+                "proof_steps": [],
+                "proof_time_in_secs": 1704.2422106266022,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2021_p19": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2021_p19",
+                "proof_steps": [],
+                "proof_time_in_secs": 381.8634843826294,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7",
+                "proof_steps": [],
+                "proof_time_in_secs": 810.3291120529175,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_196": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_196",
+                "proof_steps": [],
+                "proof_time_in_secs": 444.387193441391,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2013_p4": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2013_p4",
+                "proof_steps": [],
+                "proof_time_in_secs": 267.3108284473419,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_113": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_113",
+                "proof_steps": [],
+                "proof_time_in_secs": 728.0249547958374,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_342": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_342",
+                "proof_steps": [],
+                "proof_time_in_secs": 251.38703894615173,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "aime_1990_p4": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "aime_1990_p4",
+                "proof_steps": [],
+                "proof_time_in_secs": 296.22005009651184,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_521": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_521",
+                "proof_steps": [],
+                "proof_time_in_secs": 803.2050178050995,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "imo_1984_p6": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1984_p6",
+                "proof_steps": [],
+                "proof_time_in_secs": 341.5580024719238,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_143": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_143",
+                "proof_steps": [],
+                "proof_time_in_secs": 874.4813153743744,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_341": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_341",
+                "proof_steps": [],
+                "proof_time_in_secs": 395.8859541416168,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_99": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_99",
+                "proof_steps": [],
+                "proof_time_in_secs": 1118.4108865261078,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_156": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_156",
+                "proof_steps": [],
+                "proof_time_in_secs": 87.99357581138611,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_158": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_158",
+                "proof_steps": [],
+                "proof_time_in_secs": 336.31672978401184,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2008_p25": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2008_p25",
+                "proof_steps": [],
+                "proof_time_in_secs": 1459.8780522346497,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12a_2020_p7": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12a_2020_p7",
+                "proof_steps": [],
+                "proof_time_in_secs": 316.0781488418579,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "imo_1977_p6": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1977_p6",
+                "proof_steps": [],
+                "proof_time_in_secs": 611.4929959774017,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12_2000_p20": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12_2000_p20",
+                "proof_steps": [],
+                "proof_time_in_secs": 538.0561208724976,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_440": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_440",
+                "proof_steps": [],
+                "proof_time_in_secs": 26.559507369995117,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_362": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_362",
+                "proof_steps": [],
+                "proof_time_in_secs": 232.10149335861206,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "imo_1997_p5": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1997_p5",
+                "proof_steps": [],
+                "proof_time_in_secs": 288.1697504520416,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12b_2021_p18": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12b_2021_p18",
+                "proof_steps": [],
+                "proof_time_in_secs": 219.71657824516296,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "imo_1974_p3": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1974_p3",
+                "proof_steps": [],
+                "proof_time_in_secs": 1760.6284749507904,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_176": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": true,
+                "lemma_name": "theorem mathd_algebra_176\n(x : \u211d) :\n(x + 1)^2 * x = x^3 + 2 * x^2 + x :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "ring"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "end"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {},
+                        "file_path": null,
+                        "project_id": null,
+                        "theorem_name": null
+                    }
+                ],
+                "proof_time_in_secs": 57.3574104309082,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_484": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_484",
+                "proof_steps": [],
+                "proof_time_in_secs": 962.6008472442627,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_293": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_293",
+                "proof_steps": [],
+                "proof_time_in_secs": 37.99123930931091,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_175": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_175",
+                "proof_steps": [],
+                "proof_time_in_secs": 184.15326356887817,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_582": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_582",
+                "proof_steps": [],
+                "proof_time_in_secs": 1431.0144503116608,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "algebra_sqineq_at2malt1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "algebra_sqineq_at2malt1",
+                "proof_steps": [],
+                "proof_time_in_secs": 261.35800194740295,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "induction_12dvd4expnp1p20": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "induction_12dvd4expnp1p20",
+                "proof_steps": [],
+                "proof_time_in_secs": 36.81570601463318,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_numbertheory_765": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_numbertheory_765",
+                "proof_steps": [],
+                "proof_time_in_secs": 68.48727226257324,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_107": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_107",
+                "proof_steps": [],
+                "proof_time_in_secs": 422.9807538986206,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_276": {
+                "proof_file": "/tmp/pwmr6850148_0/miniF2F/lean/src/test.lean",
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_276",
+                "proof_steps": [],
+                "proof_time_in_secs": 72.86517643928528,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "imo_1962_p2": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "imo_1962_p2",
+                "proof_steps": [],
+                "proof_time_in_secs": 641.1974546909332,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2",
+                "proof_steps": [],
+                "proof_time_in_secs": 1033.081978559494,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12b_2021_p1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12b_2021_p1",
+                "proof_steps": [],
+                "proof_time_in_secs": 473.9946970939636,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "amc12_2000_p1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "amc12_2000_p1",
+                "proof_steps": [],
+                "proof_time_in_secs": 1192.2964179515839,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_304": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_304",
+                "proof_steps": [],
+                "proof_time_in_secs": 204.15752506256104,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": true,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "attempt_idx": 0
+                },
+                "language": "LEAN"
+            }
+        }
+    }
+}

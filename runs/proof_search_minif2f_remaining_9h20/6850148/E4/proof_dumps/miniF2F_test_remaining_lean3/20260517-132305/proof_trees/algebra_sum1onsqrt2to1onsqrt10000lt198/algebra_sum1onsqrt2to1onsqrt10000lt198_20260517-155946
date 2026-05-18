@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\n⊢ ∑ (k : ℕ) in finset.Icc 2 10000, 1 / real.sqrt ↑k < 198\n$0.00$"]
+	0 -> 1 [label="simp\n$0.16$"]
+	1 [label="(1/1)\n⊢ ∑ (x : ℕ) in finset.Icc 2 10000, (real.sqrt ↑x)⁻¹ < 198\n$0.16$"]
+}

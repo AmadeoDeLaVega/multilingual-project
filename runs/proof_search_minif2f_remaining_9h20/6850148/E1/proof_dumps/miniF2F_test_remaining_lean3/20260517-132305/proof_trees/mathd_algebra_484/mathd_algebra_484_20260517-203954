@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\n⊢ real.log 27 / real.log 3 = 3\n$0.00$"]
+	0 -> 1 [label="rw [div_eq_mul_inv, mul_inv_cancel_right₀ (by norm_num), Real.log27_inv]\n$0.62$"]
+	1 [label="(1/1)\n⊢ ¬?m_2 = 0\nstate:\n⊢ real.log 27 * (real.log 3)⁻¹ = 3\n$0.62$"]
+}

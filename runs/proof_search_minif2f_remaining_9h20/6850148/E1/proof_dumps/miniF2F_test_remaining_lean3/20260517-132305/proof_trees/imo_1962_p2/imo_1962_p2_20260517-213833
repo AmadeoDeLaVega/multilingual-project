@@ -1,0 +1,7 @@
+digraph {
+	0 [label="(1/1)\nx : ℝ\nh₀ : 0 ≤ 3 - x\nh₁ : 0 ≤ x + 1\nh₂ : 1 / 2 < real.sqrt (3 - x) - ...\n$0.00$"]
+	0 -> 1 [label="rcases eq_or_ne x 0 with (rfl | hx)\n$0.52$"]
+	0 -> 2 [label="rw [← not_lt, ← not_le, ← not_lt]\n$0.72$"]
+	1 [label="(1/2)\nh₀ : 0 ≤ 3 - 0\nh₁ : 0 ≤ 0 + 1\nh₂ : 1 / 2 < real.sqrt (3 - 0) - real.s...\n$0.52$"]
+	2 [label="(1/1)\nx : ℝ\nh₀ : 0 ≤ 3 - x\nh₁ : 0 ≤ x + 1\nh₂ : 1 / 2 < real.sqrt (3 - x) - ...\n$0.72$"]
+}

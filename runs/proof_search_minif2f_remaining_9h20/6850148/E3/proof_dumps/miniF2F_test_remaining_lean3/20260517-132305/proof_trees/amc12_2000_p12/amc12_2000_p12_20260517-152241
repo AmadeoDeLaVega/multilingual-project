@@ -1,0 +1,9 @@
+digraph {
+	0 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * m * c + a * m + m * c + a * c ≤ 1...\n$0.00$"]
+	0 -> 1 [label="by_cases h : a ≤ a\n$0.39$"]
+	0 -> 2 [label="rw [mul_comm]\n$0.30$"]
+	0 -> 3 [label="rw [add_comm]\n$0.29$"]
+	1 [label="(1/2)\na m c : ℕ\nh₀ : a + m + c = 12\nh : a ≤ a\n⊢ a * m * c + a * m + m * c +...\n$0.39$"]
+	2 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ c * (a * m) + a * m + m * c + a * c ≤...\n$0.30$"]
+	3 [label="(1/1)\na m c : ℕ\nh₀ : a + m + c = 12\n⊢ a * c + (a * m * c + a * m + m * c) ≤...\n$0.29$"]
+}

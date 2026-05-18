@@ -1,0 +1,5 @@
+digraph {
+	0 [label="(1/1)\nn : ℕ\nh₀ : 0 < n\nh₁ : n.gcd 40 = 10\nh₂ : n.lcm 40 = 280\n⊢ n = 70\n$0.00$"]
+	0 -> 1 [label="rw [← h₁] at h₂\n$0.39$"]
+	1 [label="(1/1)\nn : ℕ\nh₀ : 0 < n\nh₁ : n.gcd 40 = 10\nh₂ : n.lcm (bit0 (bit0 (n.gcd 40)...\n$0.39$"]
+}
