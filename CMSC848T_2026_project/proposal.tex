@@ -1,0 +1,162 @@
+
+\documentclass{article} % For LaTeX2e
+\usepackage[accepted]{colm2026_conference}
+
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+
+% NOTE: including geometry package
+% The geometery package modifies some page properties when used. This can dramatically change the page margins, leading to severe template violation, and potential desk rejection. If the package is required, it can be used with the "pass" flag to skip the default page modifications, as in the following line:
+% \usepackage[pass]{geometry}
+
+\usepackage{lineno}
+
+\definecolor{darkblue}{rgb}{0, 0, 0.5}
+\hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue, urlcolor=darkblue}
+
+
+\title{The role of Multilingual training in Theorem Proving}
+
+% Authors must not appear in the submitted version. This should be be taken care of automatically as long as you are using the "submission" option for the colm2026_conference package. But it's on the authors to verify. Non-anonymous submissions will be rejected without review.
+
+\author{Amadeo De La Vega, Huan Zhou \& Mehak Gupta \\ % \thanks{ Use footnote for providing further information
+%about author (webpage, alternative address)---\emph{not} for acknowledging
+%funding agencies.  Funding acknowledgements go at the end of the paper.} \\ 
+Department of Computer Science\\
+University of Maryland\\
+College Park, MD 20742, USA \\
+\texttt{\{adelaveg,hzhou715,mgupta25\}@umd.edu}
+}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\begin{document}
+
+\linenumbers
+
+\maketitle
+
+\section*{Motivation}
+Recent work argues that mixed training across different Interactive Theorem Provers (ITPs) such as Lean and Rocq (i.e., multilingual training) can improve formal proof generation \cite{thakur2025proofwala}. In particular, \textsc{PROOFWALA} is a new framework where a model is trained to predict the next proof step from the current \textit{proof state} and then uses \textit{beam search} to search for complete proofs. This multilingual model outperforms monolingual baselines on several datasets and, interestingly, also generates proof trees with more nodes and edges (something that we call tactic diversity), suggesting broader search exploration rather than only better local prediction \cite{thakur2025proofwala}. This project investigates whether multilingual gains come primarily from an improvement in tactic diversity. I.e., from \emph{greater diversity of useful candidate tactics during search}.
+
+\section*{Research Question}
+Why does multilingual training improve theorem proving?
+
+\section*{Hypothesis}
+We  hypothesize that multilingual training improves full-proof success mainly by increasing the number and diversity of \emph{compilable} candidate tactics available at each proof state. Therefore, multilingual models may show only modest gains in top-1 next-step accuracy, while showing larger gains in search-level metrics such as branching factor, proof-tree size, and pass@k.
+
+\section*{Dataset}
+We  will use a small but representative subset of PROOFWALA-style proof-step data:
+\begin{itemize}
+    \item one Lean subset,
+    \item one Rocq subset,
+    \item optionally a specialized Rocq domain such as CategoryTheory.
+\end{itemize}
+Each example consists of a proof state (goal + hypotheses) and the reference next tactic. Data will be split at the \emph{theorem level} into train/validation/test sets to avoid leakage across proof steps from the same theorem.
+
+\section*{Methods}
+We  will train two matched next-tactic models:
+\begin{itemize}
+    \item \textbf{Monolingual baseline:} trained on one assistant only.
+    \item \textbf{Multilingual model:} trained on mixed Lean + Rocq data.
+\end{itemize}
+Both models will use the same architecture and approximately the same training budget. After training, We  will run beam search with a fixed search budget on a held-out theorem set and log search traces.
+
+\textbf{Key analysis idea:} separate \emph{local prediction quality} from \emph{global search behavior}.  
+Local metrics will include top-1 accuracy, top-5 accuracy, and compilable top-$k$ rate.  
+Search metrics will include pass@k, proof-tree nodes, proof-tree edges, average node degree, number of unique tactics sampled, and time-to-first-proof.
+
+\section*{Baselines}
+The main comparison is multilingual vs.\ monolingual. If time permits, We  will add a small ablation with a diversity-aware reranking rule:
+\[
+\text{score}(a) = \log p(a \mid O) + \lambda \cdot \text{Novelty}(a),
+\]
+to test whether explicit diversity improves proof search further.
+
+\subsection*{Evaluation Pipeline}
+
+Our evaluation pipeline is designed to determine whether \textit{multilingual training improves proof search primarily by increasing tactic diversity rather than improving single-step prediction accuracy}. The pipeline consists of the following components.
+
+\subsubsection*{Problem Dataset}
+
+We construct a benchmark dataset consisting of \textbf{college-level mathematics problems (400--800 level)} drawn from areas such as linear algebra, abstract algebra, number theory, and real analysis. Each problem is implemented in a \textbf{formal theorem proving environment} (e.g., Lean or Coq), allowing generated proofs to be automatically verified for correctness.
+
+\subsubsection*{Model Setup}
+
+We compare two models:
+
+\begin{itemize}
+    \item \textbf{Monolingual Model:} trained only on English mathematical reasoning data.
+    \item \textbf{Multilingual Model:} trained on mathematical reasoning data from multiple languages.
+\end{itemize}
+
+Both models attempt to generate proofs under identical search limits, including maximum depth, time constraints, and the number of explored proof states.
+
+\subsubsection*{Metric-Based Evaluation}
+
+To evaluate the models, we define a standardized rubric consisting of three groups of metrics:
+
+\begin{itemize}
+    \item \textbf{Proof Success Metrics:} proof success rate, average proof length, and search efficiency.
+    
+    \item \textbf{Single-Step Prediction Accuracy Metrics:} top-1 tactic accuracy, top-$k$ tactic accuracy, and the probability assigned to the correct next tactic.
+    
+    \item \textbf{Tactic Diversity Metrics:} number of unique tactics generated, tactic entropy, and diversity of explored proof branches.
+\end{itemize}
+
+These metrics allow us to determine whether improvements in proof search arise from \textbf{better step prediction} or from \textbf{greater exploration of tactics}.
+
+\subsubsection*{Human Evaluation}
+
+To complement automated metrics, we conduct a \textbf{small-scale human study}. A subset of problems is selected, and evaluators with a background in \textbf{mathematics or computer science} are shown the theorem statement along with \textbf{two generated proofs—one from the monolingual model and one from the multilingual model}. The identities of the models are hidden to avoid bias.
+
+Participants evaluate both proofs based on criteria such as \textbf{logical coherence, correctness of tactics, readability, and overall strategy effectiveness}. They are asked to indicate \textbf{which proof they consider better overall}, or whether \textbf{both proofs are equally good}.
+
+\subsubsection*{Analysis}
+
+Finally, we compare the automated evaluation metrics and human judgments to determine whether improvements from multilingual training correlate more strongly with \textbf{increased tactic diversity} or with \textbf{higher single-step prediction accuracy}.
+
+\section*{Expected Outcome}
+We  expect the multilingual model to show:
+\begin{itemize}
+    \item similar or slightly better top-1 next-step accuracy,
+    \item higher compilable top-$k$ rate,
+    \item larger proof trees and higher branching factor,
+    \item stronger pass@k on harder theorems.
+\end{itemize}
+If these patterns hold, they would support the idea that multilinguality helps theorem proving primarily by \emph{shaping the search space more effectively}, which is especially relevant for AWe  agents conducting mathematical reasoning.
+
+\section*{Timeline}
+\begin{itemize}
+    \item \textbf{Week 1:} modify ProofWala code to measure tactic diversity
+    \item \textbf{Week 2:} monolingual training
+    \item \textbf{Week 3:} multilingual training
+    \item \textbf{Week 4:} proof-search evaluation and logging
+    \item \textbf{Week 5:} analysis of accuracy vs.\ diversity/search metrics
+    \item \textbf{Week 6:} writeup, figures, and presentation
+\end{itemize}
+
+\section*{Risks}
+The main risks are compute cost, search implementation complexity, and noisy conclusions from a small dataset. To mitigate these, We  will use a reduced theorem subset, smaller search budgets, and frame results as exploratory if necessary.
+
+\vspace{4pt}
+\begin{thebibliography}{9}
+\bibitem{thakur2025proofwala}
+Amitayush Thakur, George Tsoukalas, Greg Durrett, and Swarat Chaudhuri.
+\newblock \emph{PROOFWALA: A Framework for Multilingual Proof Data Synthesis and Theorem-Proving}.
+\newblock AWe  for Math Workshop at ICML, 2025.
+\end{thebibliography}
+
+
+\end{document}

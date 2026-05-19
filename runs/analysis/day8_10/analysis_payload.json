@@ -1,6 +1,6 @@
 {
   "benchmark_summaries": {
-    "CoreEval 250": {
+    "Easy_Lean": {
       "E1": {
         "attempted": 127,
         "mean_proof_time_in_secs": 231.33838735978435,
@@ -35,7 +35,7 @@
         "total_proof_time_in_secs": 29801.20946741104
       }
     },
-    "miniF2F": {
+    "Hard_Lean": {
       "E1": {
         "attempted": 77,
         "mean_proof_time_in_secs": 490.1947388370316,
@@ -75,7 +75,7 @@
     {
       "accepted_action_count": 1821,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "CoreEval 250",
+      "benchmark": "Easy_Lean",
       "early_dead_end_rate": 0.0,
       "experiment": "E1",
       "generation_reason_counts": {},
@@ -149,7 +149,7 @@
     {
       "accepted_action_count": 2093,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "CoreEval 250",
+      "benchmark": "Easy_Lean",
       "early_dead_end_rate": 0.0,
       "experiment": "E3",
       "generation_reason_counts": {},
@@ -223,7 +223,7 @@
     {
       "accepted_action_count": 3095,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "CoreEval 250",
+      "benchmark": "Easy_Lean",
       "early_dead_end_rate": 0.0,
       "experiment": "E4",
       "generation_reason_counts": {},
@@ -297,7 +297,7 @@
     {
       "accepted_action_count": 1204,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "miniF2F",
+      "benchmark": "Hard_Lean",
       "early_dead_end_rate": 0.0,
       "experiment": "E1",
       "generation_reason_counts": {},
@@ -371,7 +371,7 @@
     {
       "accepted_action_count": 1320,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "miniF2F",
+      "benchmark": "Hard_Lean",
       "early_dead_end_rate": 0.0,
       "experiment": "E3",
       "generation_reason_counts": {},
@@ -445,7 +445,7 @@
     {
       "accepted_action_count": 1237,
       "accepted_action_rate_after_model_call": 1.0,
-      "benchmark": "miniF2F",
+      "benchmark": "Hard_Lean",
       "early_dead_end_rate": 0.0,
       "experiment": "E4",
       "generation_reason_counts": {},
@@ -518,7 +518,7 @@
     }
   ],
   "intersection_summaries": {
-    "CoreEval 250": {
+    "Easy_Lean": {
       "E1": {
         "attempted": 127,
         "mean_proof_time_in_secs": 231.33838735978435,
@@ -553,7 +553,7 @@
         "total_proof_time_in_secs": 19203.723199129105
       }
     },
-    "miniF2F": {
+    "Hard_Lean": {
       "E1": {
         "attempted": 77,
         "mean_proof_time_in_secs": 490.1947388370316,

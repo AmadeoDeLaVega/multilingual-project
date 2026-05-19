@@ -1,0 +1,688 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{colortbl}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+% Colors
+\definecolor{darkbg}{RGB}{8,12,24}
+\definecolor{blueglow}{RGB}{70,140,255}
+\definecolor{purpleglow}{RGB}{150,90,255}
+\definecolor{softwhite}{RGB}{245,247,255}
+
+\begin{document}
+
+% ---------------- TITLE SLIDE ----------------
+{
+\setbeamertemplate{background}{
+\begin{tikzpicture}[remember picture,overlay]
+
+% Background
+\fill[darkbg] (current page.south west) rectangle (current page.north east);
+
+% Neural network nodes
+\foreach \x/\y in {1/1.2, 2.4/2.2, 1.4/3.6, 3.5/1.4, 4.6/3.1, 6/2.1, 7.2/3.4, 8.3/1.5}
+{
+  \fill[blueglow, opacity=0.55] (\x,\y) circle (2pt);
+}
+
+% Neural connections
+\draw[blueglow, opacity=0.25, line width=0.5pt]
+(1,1.2)--(2.4,2.2)--(4.6,3.1)--(7.2,3.4);
+\draw[blueglow, opacity=0.25, line width=0.5pt]
+(1.4,3.6)--(3.5,1.4)--(6,2.1)--(8.3,1.5);
+\draw[purpleglow, opacity=0.25, line width=0.5pt]
+(2.4,2.2)--(6,2.1);
+\draw[purpleglow, opacity=0.25, line width=0.5pt]
+(4.6,3.1)--(8.3,1.5);
+
+% Proof tree on right
+\node[softwhite, opacity=0.85] at (11.5,5.8) {\small Proof Search Tree};
+
+\draw[softwhite, opacity=0.45, line width=0.7pt]
+(11.5,5.3)--(10.5,4.3)
+(11.5,5.3)--(12.5,4.3)
+(10.5,4.3)--(9.8,3.3)
+(10.5,4.3)--(11.2,3.3)
+(12.5,4.3)--(11.9,3.3)
+(12.5,4.3)--(13.1,3.3);
+
+\foreach \x/\y in {11.5/5.3,10.5/4.3,12.5/4.3,9.8/3.3,11.2/3.3,11.9/3.3,13.1/3.3}
+{
+  \fill[purpleglow, opacity=0.8] (\x,\y) circle (3pt);
+}
+
+% Soft glow circles
+\fill[blueglow, opacity=0.08] (2,6) circle (2.5cm);
+\fill[purpleglow, opacity=0.10] (12,2) circle (3cm);
+
+\end{tikzpicture}
+}
+
+\begin{frame}[plain]
+\vspace{1.1cm}
+
+{\color{softwhite}
+\begin{center}
+
+{\Huge \textbf{Why does Multilingual Training}}\\[0.2cm]
+{\Huge \textbf{improve Theorem Proving?}}\\[0.35cm]
+
+{\Large A Small-Scale Controlled Study}\\[0.75cm]
+
+\begin{tikzpicture}
+\node[
+    rounded corners=10pt,
+    fill=white,
+    fill opacity=0.08,
+    text opacity=1,
+    inner sep=14pt,
+    text=softwhite
+]{
+\begin{minipage}{0.7\textwidth}
+\centering
+University of Maryland \\[0.15cm]
+Amadeo De La Vega \quad Mehak Gupta \quad Huan Zhou \\[0.15cm]
+CMSC848T
+\end{minipage}
+};
+\end{tikzpicture}
+
+\vfill
+
+{\small \color{blueglow} Neural Theorem Proving \quad | \quad Proof Search \quad | \quad Multilingual Training}
+
+\end{center}
+}
+
+\end{frame}
+}
+
+\begin{frame}[plain]
+\begin{center}
+\includegraphics[width=\paperwidth,height=0.65\paperheight,keepaspectratio]{tp.png}
+\end{center}
+
+
+\begin{alertblock}{ProofWala result:}
+Multilingual training improves it!
+\end{alertblock}
+
+
+
+\end{frame}
+
+
+% Slide 3
+\begin{frame}{Research Question}
+
+\centering
+
+\vspace{0.15cm}
+
+{\Large \textbf{Why does multilingual training improve theorem proving performance?}}
+
+\vspace{0.45cm}
+
+\begin{columns}[T,onlytextwidth]
+
+\begin{column}{0.43\textwidth}
+\begin{block}{H1: Cross-language Transfer}
+Models learn shared semantic patterns across proof systems.
+\end{block}
+\begin{center}
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{hinton.png}
+
+\vspace{0.15cm}
+
+{\large \textbf{Semantics}}
+\end{center}
+\end{column}
+
+\begin{column}{0.10\textwidth}
+\centering
+\vspace{0.26\textheight}
+{\LARGE \textbf{VS}}
+\end{column}
+
+\begin{column}{0.43\textwidth}
+\begin{block}{H2: Regularization}
+More varied syntactic training data improves robustness.
+\end{block}
+\begin{center}
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{chomsky.png}
+
+\vspace{0.15cm}
+
+{\large \textbf{Syntax}}
+\end{center}
+\end{column}
+
+\end{columns}
+
+\vspace{0.45cm}
+
+
+\end{frame}
+
+
+
+
+% Slide 4
+\begin{frame}{Our Training Experiment}
+
+\centering
+
+\vspace{0.15cm}
+
+{\Large \textbf{Three Controlled Training Setups}}
+
+\vspace{0.4cm}
+
+% ---------------- TABLE ----------------
+
+\renewcommand{\arraystretch}{1.4}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Training Data} & \textbf{Purpose} \\
+\hline
+E1 & Lean only & Baseline \\
+\hline
+E3 & Lean + Rocq & Real multilingual \\
+\hline
+E4 & Lean + pseudo-Lean variant &
+
+
+ 
+ Regularization control \\
+\hline
+\end{tabular}
+
+\vspace{0.55cm}
+
+% ---------------- VISUAL ----------------
+
+\begin{center}
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{t_s.png}
+\end{center}
+
+\vspace{0.45cm}
+
+\begin{alertblock}{Main Message}
+E4 lets us test:
+
+\vspace{0.1cm}
+
+\centering
+\textit{``Does added variation alone explain multilingual gains?''}
+\end{alertblock}
+
+\end{frame}
+
+
+% Slide 5
+\begin{frame}{Methodology}
+
+\scriptsize
+
+\begin{columns}[T]
+
+% Left side
+\begin{column}{0.27\textwidth}
+\begin{block}{Shared Setup}
+\begin{itemize}
+    \item Same architecture: CodeT5-small
+    \item Same tokenizer
+    \item Same number training steps
+    \item Same proof-search algorithm
+    \item Same evaluation benchmarks
+\end{itemize}
+\end{block}
+\end{column}
+
+% Center pipeline
+\begin{column}{0.43\textwidth}
+\centering
+
+\begin{tikzpicture}[
+    box/.style={
+        rectangle,
+        rounded corners,
+        draw=blue!70,
+        fill=blue!8,
+        thick,
+        minimum width=4.1cm,
+        minimum height=0.68cm,
+        align=center,
+        font=\scriptsize\bfseries
+    },
+    smallbox/.style={
+        rectangle,
+        rounded corners,
+        draw=purple!70,
+        fill=purple!10,
+        thick,
+        minimum width=1.05cm,
+        minimum height=0.48cm,
+        align=center,
+        font=\scriptsize\bfseries
+    },
+    arrow/.style={->, thick, blue!70}
+]
+
+\node[box] (data) at (0,0) {ProofWala Dataset};
+
+\node[smallbox] (e1) at (-1.3,-1.05) {E1};
+\node[smallbox] (e3) at (0,-1.05) {E3};
+\node[smallbox] (e4) at (1.3,-1.05) {E4};
+
+\node[box] (train) at (0,-1.75) {Train 3 Models};
+\node[box] (search) at (0,-2.8) {Run Proof Search on Benchmarks};
+\node[box] (eval) at (0,-3.85) {Evaluate pass@k + Search Behavior};
+\node[box] (compare) at (0,-4.9) {Compare Results};
+
+\draw[arrow] (data) -- (train);
+\draw[arrow] (train) -- (search);
+\draw[arrow] (search) -- (eval);
+\draw[arrow] (eval) -- (compare);
+
+\end{tikzpicture}
+
+\end{column}
+
+% Right side
+\begin{column}{0.27\textwidth}
+\begin{block}{Benchmarks:}
+\vspace{0.35cm}    
+\textbf{Easy\_Lean}
+
+Set of easy-to-prove Lean theorems whose proofs share similar semantic patterns
+\vspace{0.35cm}
+
+\textbf{Hard\_Lean}
+
+Set of harder-to-prove Lean theorems with more diverse semantic proof patterns
+\end{block}
+\end{column}
+
+\end{columns}
+
+\vspace{0.25cm}
+
+\begin{alertblock}{Key Experimental Design}
+\centering
+\textbf{We changed only the training data.}
+
+\vspace{0.12cm}
+
+This isolates the effect of multilingual vs. pseudo-multilingual training and strengthens causal interpretation.
+\end{alertblock}
+
+\end{frame}
+
+
+
+% Slide 6 — Clean aligned version
+\begin{frame}{Main Results}
+
+\centering
+
+{\LARGE \textbf{Easy\_Lean Results}}\\[0.15cm]
+
+
+\vspace{0.45cm}
+
+\begin{tikzpicture}[
+    bar/.style={rounded corners=3pt},
+    label/.style={font=\Large\bfseries, anchor=east},
+    value/.style={font=\Large\bfseries, anchor=west}
+]
+
+% Axis label
+\node[font=\small] at (1.75,3.75) {Pass Rate};
+
+% E1
+\node[label] at (0,3) {E1};
+\fill[blue!45, bar] (0.4,2.75) rectangle (4.26,3.25);
+\node[value] at (4.45,3) {38.6\%};
+
+% E3
+\node[label] at (0,2) {E3};
+\fill[purple!45, bar] (0.4,1.75) rectangle (3.45,2.25);
+\node[value] at (3.65,2) {30.5\%};
+
+% E4
+\node[label] at (0,1) {E4};
+\fill[green!60!black, bar] (0.4,0.75) rectangle (6.76,1.25);
+\node[value] at (6.95,1) {63.6\%};
+
+% Highlight
+\node[
+    draw=green!60!black,
+    fill=green!8,
+    rounded corners,
+    thick,
+    align=center,
+    font=\large\bfseries,
+    minimum width=5.6cm,
+    minimum height=0.8cm
+] at (3.6,-0.2) {E4$\gg$E1>E3};
+
+\end{tikzpicture}
+
+\vspace{0.25cm}
+
+\begin{block}{Interpretation}
+\centering
+Only-syntax variation helped more than syntax variation \& combined semantics on problems whose solutions have similar combinations of steps!
+\end{block}
+
+\end{frame}
+
+
+
+\setbeamertemplate{navigation symbols}{}
+
+
+% Slide 7
+\begin{frame}{Main Results}
+
+\centering
+
+{\LARGE \textbf{Hard\_Lean Results}}\\[0.1cm]
+
+\vspace{0.4cm}
+
+\begin{tikzpicture}[scale=0.95]
+
+% Axis label
+\node[font=\small] at (3.4,3.75) {Pass Rate};
+
+% Labels
+\node[anchor=east,font=\large\bfseries] at (0,3) {E1};
+\node[anchor=east,font=\large\bfseries] at (0,2) {E3};
+\node[anchor=east,font=\large\bfseries] at (0,1) {E4};
+
+% Bars
+\fill[blue!50] (0.3,2.75) rectangle (1.8,3.25);
+\fill[purple!60] (0.3,1.75) rectangle (3.2,2.25);
+\fill[green!60!black] (0.3,0.75) rectangle (2.3,1.25);
+
+% Values
+\node[anchor=west,font=\large] at (2.0,3) {2.6\%};
+\node[anchor=west,font=\large\bfseries] at (3.4,2) {4.9\%};
+\node[anchor=west,font=\large] at (2.5,1) {3.4\%};
+
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+\begin{tikzpicture}
+\node[
+    draw=green!60!black,
+    fill=green!8,
+    rounded corners,
+    thick,
+    align=center,
+    font=\large\bfseries,
+    minimum width=5.6cm,
+    minimum height=0.8cm
+] {E3>E4>E1};
+\end{tikzpicture}
+
+\vspace{0.15cm}
+
+\begin{block}{Interpretation}
+\centering
+Syntax variation \& combined semantics may help more than only-syntax variation on problems that require solutions with fundamentally different ideas.
+\end{block}
+
+\end{frame}
+
+
+% Slide 8 — Clean Aligned Version
+\begin{frame}{Main Interpretation}
+
+\centering
+
+\vspace{0.15cm}
+
+{\large Our benchmarks reveal different mechanisms}
+
+\vspace{0.45cm}
+
+\begin{columns}[T,onlytextwidth]
+
+% ---------- LEFT ----------
+\begin{column}{0.48\textwidth}
+
+\begin{block}{Easy\_Lean}
+
+\vspace{0.15cm}
+
+\centering
+
+{\Large \textbf{E4 wins}}
+
+\vspace{0.25cm}
+
+\begin{tikzpicture}
+
+\node[
+    draw=green!60!black,
+    fill=green!10,
+    rounded corners,
+    thick,
+    minimum width=4.6cm,
+    minimum height=0.9cm,
+    align=center,
+    font=\large
+] (a)
+{Pseudo-multilingual};
+
+\node[font=\Large] at (0,-0.95) {$\Downarrow$};
+
+\node[
+    draw=green!60!black,
+    fill=green!5,
+    rounded corners,
+    thick,
+    minimum width=4.2cm,
+    minimum height=0.8cm,
+    align=center,
+    font=\large
+] at (0,-1.9)
+{H2 is supported \textbf{when}\\
+ solutions have similar\\
+  combinations of steps};
+
+\end{tikzpicture}
+
+\end{block}
+
+\end{column}
+
+% ---------- RIGHT ----------
+\begin{column}{0.48\textwidth}
+
+\begin{block}{Hard\_Lean}
+
+\vspace{0.15cm}
+
+\centering
+
+{\Large \textbf{E3 wins}}
+
+\vspace{0.25cm}
+
+\begin{tikzpicture}
+
+\node[
+    draw=purple!70,
+    fill=purple!10,
+    rounded corners,
+    thick,
+    minimum width=4.6cm,
+    minimum height=0.9cm,
+    align=center,
+    font=\large
+] (b)
+{Real multilingual};
+
+\node[font=\Large] at (0,-0.95) {$\Downarrow$};
+
+\node[
+    draw=purple!70,
+    fill=purple!5,
+    rounded corners,
+    thick,
+    minimum width=4.2cm,
+    minimum height=0.8cm,
+    align=center,
+    font=\large
+] at (0,-1.9)
+{H1 is supported \textbf{when}\\
+ solutions require\\
+fundamentally different ideas};
+
+\end{tikzpicture}
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\vspace{0.45cm}
+
+\begin{alertblock}{Main Conclusion}
+\centering
+\large \textbf{H1 and H2 hold under different circumstances.}
+\end{alertblock}
+
+\vspace{0.15cm}
+
+\end{frame}
+
+
+% Slide 9 — What We Learned
+\begin{frame}{What We Learned}
+
+\centering
+
+{\LARGE \textbf{Key Findings}}
+
+\vspace{0.5cm}
+
+\begin{columns}[T,onlytextwidth]
+
+\begin{column}{0.72\textwidth}
+
+\begin{block}{Main Experimental Findings}
+
+\vspace{0.15cm}
+
+\begin{itemize}
+    \item Multilingual gains are not driven by a single mechanism
+    \vspace{0.18cm}
+
+    \item Pseudo-multilingual training  (i.e., only-syntax variation) can improve performance on theorems whose proofs have similar combinations of tactics.
+    \vspace{0.18cm}
+
+    \item Real multilingual training (i.e., syntax variation and combined semantics) may improve performance on theorems whose proofs require newer combinations of tactics.
+\end{itemize}
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+% Slide 10 — Limitations & Future Work
+\begin{frame}{Limitations \& Future Work}
+
+\centering
+
+\vspace{0.45cm}
+
+\begin{columns}[T,onlytextwidth]
+
+% ---------- LEFT ----------
+\begin{column}{0.48\textwidth}
+
+\begin{block}{Limitations}
+
+\vspace{0.15cm}
+
+\begin{itemize}
+    \item Small-scale pilot study
+    \vspace{0.18cm}
+
+    \item Limited compute budget
+    \vspace{0.18cm}
+
+    \item Small Hard\_Lean evaluation
+    \vspace{0.18cm}
+
+    \item Pseudo-Lean transformations are imperfect
+\end{itemize}
+
+\end{block}
+
+\end{column}
+
+% ---------- RIGHT ----------
+\begin{column}{0.48\textwidth}
+
+\begin{block}{Future Work}
+
+\vspace{0.15cm}
+
+\begin{itemize}
+    \item Larger multilingual datasets
+    \vspace{0.18cm}
+
+    \item Deeper proof-search analysis
+    \vspace{0.18cm}
+
+    \item Stronger theorem proving models
+\end{itemize}
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\vspace{0.45cm}
+
+\begin{alertblock}{Main Perspective}
+\centering
+\large This work is an initial step toward understanding \textbf{why multilingual training helps theorem proving}.
+\end{alertblock}
+
+\vfill
+
+
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\centering
+\vfill
+{\Huge \textbf{Thank you!}}
+\vfill
+\end{frame}
+
+
+\end{document}

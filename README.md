@@ -1,87 +1,92 @@
 # Multilingual ProofWala Pilot
 
-This repository supports a pilot experiment on why multilingual training helps
-ProofWala-style theorem proving. The main comparison trains three CodeT5-small
-models under the same prompt format and evaluation subset:
+This repository contains the code, configs, benchmark definitions, and copied
+evaluation summaries for a CMSC848T pilot project on why multilingual training
+helps ProofWala-style theorem proving.
+
+The final comparison trains three `Salesforce/codet5-small` models with the same
+prompt format and proof-search pipeline:
 
 - **E1:** Lean-only baseline.
-- **E3:** real multilingual model.
-- **E4:** pseudo-multilingual Lean control.
+- **E3:** real multilingual Lean+Rocq model.
+- **E4:** pseudo-multilingual Lean control with meaning-preserving syntax
+  variation.
 
-Released assets used by the project:
+The main question is whether multilingual gains come from real cross-language
+transfer, from regularization due to syntax variation, or from proof-search
+behavior.
 
-- Dataset: `amitayusht/ProofWalaDataset`
-- Base model for all primary runs: `Salesforce/codet5-small`
-- Reference models: `amitayusht/ProofWala-Lean`,
-  `amitayusht/ProofWala-Multilingual`
+## Final Benchmarks
 
-## Current Interpretation
+The report uses two benchmark names:
 
-The main pilot result should be read as distribution-dependent rather than as a
-single winner across all theorem sets.
+- **Easy_Lean:** controlled Lean 4 benchmark built for this project.  Its source
+  file is `proof-wala/src/proof_wala/data/proofs/lean/lean4_proj/Lean4Proj/CoreEval.lean`.
+- **Hard_Lean:** combined miniF2F-derived Lean benchmark, using the deterministic
+  easy-10 subset plus the remaining 9h20 run.
 
-- **CoreEval:** E4 is strongest so far. This is evidence that pseudo-multilingual
-  regularization can help on in-distribution Lean-style proof search.
-- **miniF2F:** E1 and E4 are more comparable, while E3 has the clearest early
-  advantage. This suggests real multilingual Lean+Coq training may help more on
-  external theorem styles where proof semantics and abstraction transfer matter.
+The old internal filenames still contain `core_eval` and `minif2f`; the paper and
+presentation call them `Easy_Lean` and `Hard_Lean`.
 
-This reframes the project from "regularization versus transfer" to: **when does
-each mechanism matter?**
+## Final Result
 
-## Workflow
+The result is distribution-dependent.
 
-Edit code locally first:
+| Benchmark | Best model | Interpretation |
+|---|---|---|
+| Easy_Lean | E4 | Syntax variation helps strongly on Lean-like in-project theorem patterns. |
+| Hard_Lean | E3 | Real multilingual training is most useful on harder external theorem styles. |
+
+Main proof-search results:
+
+| Benchmark | Model | Attempted | Proved | Pass rate | Shared-intersection pass rate |
+|---|---|---:|---:|---:|---:|
+| Easy_Lean | E1 | 127 | 49 | 38.6% | 38.6% |
+| Easy_Lean | E3 | 141 | 43 | 30.5% | 30.7% |
+| Easy_Lean | E4 | 198 | 126 | 63.6% | 61.4% |
+| Hard_Lean | E1 | 77 | 2 | 2.6% | 2.6% |
+| Hard_Lean | E3 | 81 | 4 | 4.9% | 5.2% |
+| Hard_Lean | E4 | 87 | 3 | 3.4% | 3.9% |
+
+## Local and Nexus Workflow
+
+Edit locally:
 
 ```bash
-~/multilingual-project
+cd ~/multilingual-project
 ```
 
-Run training and evaluation on Nexus:
+Run training and proof search on Nexus:
 
 ```bash
-/fs/classhomes/<username>/multilingual-project
+cd /fs/classhomes/<username>/multilingual-project
 ```
 
-Replace `<username>` with your Nexus username in the commands below.
+Replace `<username>` with your Nexus username.  Scripts are written to accept:
 
-## Data Setup
+```bash
+sbatch scripts/nexus/<script>.sbatch --user <username>
+```
 
-On Nexus, download the ProofWala dataset:
+## Dataset Setup
+
+Each Nexus user downloads the dataset separately under their own project copy:
 
 ```bash
 cd /fs/classhomes/<username>/multilingual-project
 sbatch scripts/nexus/download_proofwala_dataset.sbatch --user <username>
 ```
 
-Freeze the shared Lean evaluation/test refs if they are not already present:
+The dataset comes from Hugging Face:
 
-```bash
-python3 scripts/data/freeze_pilot_splits.py \
-  --dataset-root data/proofwala_dataset/ProofWalaDataset \
-  --output-dir data/frozen_splits
-```
+- `amitayusht/ProofWalaDataset`
 
-The training scripts materialize these derived directories when needed:
+Large dataset files and Hugging Face caches are intentionally not committed.
 
-- E1: `data/frozen_splits/e1_lean_train_compat`
-- E3: `data/frozen_splits/e3_multilingual_train_compat`
-- E4: `data/pseudo_multilingual/e4_train`
-- shared eval: `data/frozen_splits/lean_eval_1000`
+## Training E1, E3, and E4
 
-## Training
-
-Current long-run scripts use:
-
-- one RTX A5000 GPU
-- `medium` QoS
-- `12:00:00` wall time
-- `MAX_STEPS=240000`
-- `SAVE_STEPS=60000`
-- `save_only_model=True`
-- `save_total_limit=1`
-
-Submit the three main trainings:
+The final models were trained on Nexus with one RTX A5000 GPU per job and an
+approximately 12-hour wall-time budget:
 
 ```bash
 cd /fs/classhomes/<username>/multilingual-project
@@ -91,7 +96,7 @@ sbatch scripts/nexus/train_e3.sbatch --user <username>
 sbatch scripts/nexus/train_e4.sbatch --user <username>
 ```
 
-Expected final model directories:
+Expected final model directories on Nexus:
 
 ```text
 runs/E1/model/pilot-e1-lean-only-34000x1/final
@@ -99,109 +104,89 @@ runs/E3/model/pilot-e3-real-multilingual/final
 runs/E4/model/pilot-e4-pseudo-multilingual/final
 ```
 
-Monitor jobs:
+Monitor jobs with:
 
 ```bash
 squeue -u <username>
 sacct -j <jobid> --format=JobID,JobName%24,State,ExitCode,Elapsed,MaxRSS
-tail -f runs/E1/slurm-<jobid>.out
 ```
 
-## Next-Step Diagnostics
+## Running Proof Search
 
-Run diagnostics on the frozen Lean eval subset:
+### Easy_Lean
+
+Run all three models as a SLURM array:
 
 ```bash
 cd /fs/classhomes/<username>/multilingual-project
-
-sbatch scripts/nexus/eval_model_diagnostics.sbatch \
-  --experiment E1 \
-  --user <username> \
-  --model /fs/classhomes/<username>/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final \
-  --output /fs/classhomes/<username>/multilingual-project/runs/E1/diagnostics/e1_model_diagnostics.json
-
-sbatch scripts/nexus/eval_model_diagnostics.sbatch \
-  --experiment E3 \
-  --user <username> \
-  --model /fs/classhomes/<username>/multilingual-project/runs/E3/model/pilot-e3-real-multilingual/final \
-  --output /fs/classhomes/<username>/multilingual-project/runs/E3/diagnostics/e3_final_diagnostics.json
-
-sbatch scripts/nexus/eval_model_diagnostics.sbatch \
-  --experiment E4 \
-  --user <username> \
-  --model /fs/classhomes/<username>/multilingual-project/runs/E4/model/pilot-e4-pseudo-multilingual/final \
-  --output /fs/classhomes/<username>/multilingual-project/runs/E4/diagnostics/e4_final_diagnostics.json
+sbatch scripts/nexus/proof_search_core_eval.sbatch --user <username>
 ```
 
-These diagnostics report strict exact match, normalized exact match, parseable
-output rate, and mean eval loss.
-
-## Proof-Search Metrics
-
-Run the same proof-search smoke fixture for each model. The default fixture is
-`eval_simple_lean_test_multilingual_easy.yaml`, which targets an unfinished
-`sorry` theorem in `Lean4Proj/Basic.lean`; do not use already-completed Lean
-theorems for this check, because ProofWala will see no active goals and skip the
-model.
-
-```bash
-cd /fs/classhomes/<username>/multilingual-project
-
-sbatch --qos=medium scripts/nexus/proof_search_smoke.sbatch \
-  --experiment E1 \
-  --user <username> \
-  --model /fs/classhomes/<username>/multilingual-project/runs/E1/model/pilot-e1-lean-only-34000x1/final
-
-sbatch --qos=medium scripts/nexus/proof_search_smoke.sbatch \
-  --experiment E3 \
-  --user <username> \
-  --model /fs/classhomes/<username>/multilingual-project/runs/E3/model/pilot-e3-real-multilingual/final
-
-sbatch --qos=medium scripts/nexus/proof_search_smoke.sbatch \
-  --experiment E4 \
-  --user <username> \
-  --model /fs/classhomes/<username>/multilingual-project/runs/E4/model/pilot-e4-pseudo-multilingual/final
-```
-
-Each proof-search run writes:
+The script writes one result directory per model:
 
 ```text
-runs/<EXPERIMENT>/proof_search/<jobid>/proof_search_metrics.json
-runs/<EXPERIMENT>/proof_search/<jobid>/proof_search_metrics.md
-runs/<EXPERIMENT>/proof_search/<jobid>/summary.md
+runs/proof_search_core_eval/<jobid>/E1/
+runs/proof_search_core_eval/<jobid>/E3/
+runs/proof_search_core_eval/<jobid>/E4/
 ```
 
-Metrics include pass rate, theorem timeouts, generated-tactic parseability,
-accepted-action rate, no-start-goal rate, proof-tree size, and branching stats.
+### Hard_Lean
 
-## Combined Summary
-
-After diagnostics and proof-search runs finish, generate comparison tables:
+Run the deterministic miniF2F easy-10 subset:
 
 ```bash
-cd /fs/classhomes/<username>/multilingual-project
-
-/fs/classhomes/<username>/.conda/envs/proofwala-pilot/bin/python \
-  scripts/eval/summarize_model_metrics.py \
-  --project-root /fs/classhomes/<username>/multilingual-project \
-  --output-dir /fs/classhomes/<username>/multilingual-project/runs/metrics
+sbatch scripts/nexus/proof_search_minif2f_easy10.sbatch --user <username>
 ```
 
-Outputs:
+Run the remaining miniF2F-derived set:
+
+```bash
+sbatch scripts/nexus/proof_search_minif2f_remaining_9h20.sbatch --user <username>
+```
+
+These scripts write:
 
 ```text
-runs/metrics/model_metrics_summary.md
-runs/metrics/model_metrics_summary.csv
+runs/proof_search_minif2f_easy10/<jobid>/<EXPERIMENT>/
+runs/proof_search_minif2f_remaining_9h20/<jobid>/<EXPERIMENT>/
 ```
 
-## Notes
+## Rebuilding the Result Tables
 
-Large artifacts should not be committed:
+The copied final result directories used for the report are:
 
-- `data/proofwala_dataset/`
-- `.hf_cache/`
-- `runs/`
-- model checkpoints
+```text
+runs/proof_search_core_eval/6848604
+runs/proof_search_minif2f_easy10/6849079
+runs/proof_search_minif2f_remaining_9h20/6850148
+```
 
-If storage is tight, delete failed-run model directories and stale checkpoints,
-but keep final model directories needed for evaluation.
+Regenerate the final tables, figures, and internal memo locally with:
+
+```bash
+python3 scripts/eval/build_day8_10_deliverables.py
+```
+
+Outputs are written to:
+
+```text
+runs/analysis/day8_10/
+```
+
+Important files:
+
+```text
+runs/analysis/day8_10/internal_memo.md
+runs/analysis/day8_10/analysis_payload.json
+runs/analysis/day8_10/tables/
+runs/analysis/day8_10/figures/
+```
+
+## What Is Committed
+
+Commit source code, configs, benchmark definitions, frozen manifests, and compact
+result summaries.  Do not commit datasets, caches, model checkpoints, or large
+model weights.
+
+The benchmark definitions and copied result summaries are intentionally allowed
+by `.gitignore`; model files such as `*.safetensors` remain ignored.

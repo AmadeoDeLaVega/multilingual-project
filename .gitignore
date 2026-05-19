@@ -3,6 +3,9 @@
 /runs/
 !/runs/
 /runs/*
+
+# Final proof-search benchmark result directories are small enough to publish
+# and are needed to reproduce the report tables.
 !/runs/proof_search_core_eval/
 !/runs/proof_search_core_eval/**
 !/runs/proof_search_minif2f_easy10/
@@ -22,6 +25,8 @@ wandb/
 
 # Datasets, generated artifacts, and checkpoints
 /data/*
+
+# Benchmark manifests and frozen lightweight eval references are tracked.
 !/data/manifests/
 !/data/manifests/**
 !/data/frozen_splits/
@@ -58,3 +63,7 @@ dist/
 # Local editor and OS noise
 .DS_Store
 .idea/
+
+# If an external benchmark repo is vendored into this repo, keep its files
+# trackable by the parent repo but never commit nested Git metadata.
+miniF2F/.git/

@@ -24,8 +24,8 @@ FIGURES = OUT / "figures"
 
 EXPERIMENTS = ("E1", "E3", "E4")
 BENCHMARKS = {
-    "CoreEval 250": [ROOT / "runs" / "proof_search_core_eval" / "6848604"],
-    "miniF2F": [
+    "Easy_Lean": [ROOT / "runs" / "proof_search_core_eval" / "6848604"],
+    "Hard_Lean": [
         ROOT / "runs" / "proof_search_minif2f_easy10" / "6849079",
         ROOT / "runs" / "proof_search_minif2f_remaining_9h20" / "6850148",
     ],
@@ -439,10 +439,10 @@ def diagnostics_table_markdown(title: str, rows: list[dict[str, Any]]) -> str:
 
 
 def benchmark_slug(benchmark: str) -> str:
-    if benchmark.startswith("CoreEval"):
-        return "core_eval"
-    if benchmark == "miniF2F":
-        return "minif2f"
+    if benchmark == "Easy_Lean":
+        return "easy_lean"
+    if benchmark == "Hard_Lean":
+        return "hard_lean"
     return re.sub(r"[^a-z0-9]+", "_", benchmark.lower()).strip("_")
 
 
@@ -579,59 +579,59 @@ def main() -> int:
         "diagnostics": diagnostics_rows,
     })
 
-    core = benchmark_summaries["CoreEval 250"]
-    core_inter = intersection_summaries["CoreEval 250"]
-    mini = benchmark_summaries["miniF2F"]
-    mini_inter = intersection_summaries["miniF2F"]
+    easy = benchmark_summaries["Easy_Lean"]
+    easy_inter = intersection_summaries["Easy_Lean"]
+    hard = benchmark_summaries["Hard_Lean"]
+    hard_inter = intersection_summaries["Hard_Lean"]
     diag_by_bench_exp = {(row["benchmark"], row["experiment"]): row for row in diagnostics_rows}
 
     svg_bar_chart(
-        FIGURES / "coreeval_pass_rates.svg",
-        "CoreEval 250 Pass Rates",
+        FIGURES / "easy_lean_pass_rates.svg",
+        "Easy_Lean Pass Rates",
         [
-            ("All Attempted", {exp: core[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
-            ("Intersection", {exp: core_inter[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
+            ("All Attempted", {exp: easy[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
+            ("Intersection", {exp: easy_inter[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
         ],
         "pass rate",
         max_value=1.0,
     )
     svg_bar_chart(
-        FIGURES / "minif2f_pass_rates.svg",
-        "miniF2F Pass Rates",
+        FIGURES / "hard_lean_pass_rates.svg",
+        "Hard_Lean Pass Rates",
         [
-            ("All Attempted", {exp: mini[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
-            ("Intersection", {exp: mini_inter[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
+            ("All Attempted", {exp: hard[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
+            ("Intersection", {exp: hard_inter[exp]["pass_rate"] or 0.0 for exp in EXPERIMENTS}),
         ],
         "pass rate",
         max_value=0.25,
     )
     svg_bar_chart(
-        FIGURES / "coreeval_generated_action_quality.svg",
-        "CoreEval Generated Action Quality",
+        FIGURES / "easy_lean_generated_action_quality.svg",
+        "Easy_Lean Generated Action Quality",
         [
             (
                 "accepted/action",
-                {exp: diag_by_bench_exp[("CoreEval 250", exp)]["accepted_action_rate_after_model_call"] or 0.0 for exp in EXPERIMENTS},
+                {exp: diag_by_bench_exp[("Easy_Lean", exp)]["accepted_action_rate_after_model_call"] or 0.0 for exp in EXPERIMENTS},
             ),
             (
                 "early dead-end",
-                {exp: diag_by_bench_exp[("CoreEval 250", exp)]["early_dead_end_rate"] or 0.0 for exp in EXPERIMENTS},
+                {exp: diag_by_bench_exp[("Easy_Lean", exp)]["early_dead_end_rate"] or 0.0 for exp in EXPERIMENTS},
             ),
         ],
         "rate",
         max_value=1.0,
     )
     svg_bar_chart(
-        FIGURES / "coreeval_search_tree_size.svg",
-        "CoreEval Search Tree Size",
+        FIGURES / "easy_lean_search_tree_size.svg",
+        "Easy_Lean Search Tree Size",
         [
             (
                 "mean nodes",
-                {exp: diag_by_bench_exp[("CoreEval 250", exp)]["mean_node_count"] or 0.0 for exp in EXPERIMENTS},
+                {exp: diag_by_bench_exp[("Easy_Lean", exp)]["mean_node_count"] or 0.0 for exp in EXPERIMENTS},
             ),
             (
                 "mean branching",
-                {exp: diag_by_bench_exp[("CoreEval 250", exp)]["mean_average_branching_factor"] or 0.0 for exp in EXPERIMENTS},
+                {exp: diag_by_bench_exp[("Easy_Lean", exp)]["mean_average_branching_factor"] or 0.0 for exp in EXPERIMENTS},
             ),
         ],
         "count / factor",
@@ -657,21 +657,21 @@ def main() -> int:
             "",
             "## Tables",
             "",
-            "- `tables/main_comparison_core_eval.md`",
-            "- `tables/intersection_comparison_core_eval.md`",
-            "- `tables/main_comparison_minif2f.md`",
-            "- `tables/intersection_comparison_minif2f.md`",
-            "- `tables/search_diagnostics_core_eval.md`",
-            "- `tables/search_diagnostics_minif2f.md`",
+            "- `tables/main_comparison_easy_lean.md`",
+            "- `tables/intersection_comparison_easy_lean.md`",
+            "- `tables/main_comparison_hard_lean.md`",
+            "- `tables/intersection_comparison_hard_lean.md`",
+            "- `tables/search_diagnostics_easy_lean.md`",
+            "- `tables/search_diagnostics_hard_lean.md`",
             "- `tables/theorem_outcomes_all.csv`",
             "- `tables/proof_tree_stats.csv`",
             "",
             "## Figures",
             "",
-            "- `figures/coreeval_pass_rates.svg`",
-            "- `figures/minif2f_pass_rates.svg`",
-            "- `figures/coreeval_generated_action_quality.svg`",
-            "- `figures/coreeval_search_tree_size.svg`",
+            "- `figures/easy_lean_pass_rates.svg`",
+            "- `figures/hard_lean_pass_rates.svg`",
+            "- `figures/easy_lean_generated_action_quality.svg`",
+            "- `figures/easy_lean_search_tree_size.svg`",
             "",
             "## Memo",
             "",
@@ -690,10 +690,10 @@ def build_memo(
     intersections: dict[str, dict[str, dict[str, Any]]],
     diagnostics: list[dict[str, Any]],
 ) -> str:
-    core = summaries["CoreEval 250"]
-    core_i = intersections["CoreEval 250"]
-    mini = summaries["miniF2F"]
-    mini_i = intersections["miniF2F"]
+    easy = summaries["Easy_Lean"]
+    easy_i = intersections["Easy_Lean"]
+    hard = summaries["Hard_Lean"]
+    hard_i = intersections["Hard_Lean"]
     diag = {(row["benchmark"], row["experiment"]): row for row in diagnostics}
 
     lines = [
@@ -707,47 +707,74 @@ def build_memo(
         "- `runs/proof_search_minif2f_easy10/6849079`",
         "- `runs/proof_search_minif2f_remaining_9h20/6850148`",
         "",
-        "CoreEval is the controlled in-project Lean 4 benchmark. The two miniF2F runs are combined below and treated as one external Lean 3 generalization check. CoreEval and miniF2F should be interpreted together rather than collapsed into a single winner.",
+        "Easy_Lean is the controlled in-project Lean 4 benchmark. Hard_Lean combines the two miniF2F-derived runs and is treated as one external Lean 3 generalization check. Easy_Lean and Hard_Lean should be interpreted together rather than collapsed into a single winner.",
         "",
-        "## Main CoreEval Result",
-        "",
-        markdown_table(
-            ["experiment", "attempted", "proved", "pass_rate", "intersection_proved", "intersection_pass_rate"],
-            [
-                [
-                    exp,
-                    core[exp]["attempted"],
-                    core[exp]["proved"],
-                    core[exp]["pass_rate"],
-                    core_i[exp]["proved"],
-                    core_i[exp]["pass_rate"],
-                ]
-                for exp in EXPERIMENTS
-            ],
-        ),
-        "",
-        "On CoreEval, E4 is ahead of both E1 and E3. E1 is also ahead of E3 on the theorem-name intersection attempted by all three models. This is consistent with pseudo-multilingual regularization helping on Lean-like in-distribution theorem statements.",
-        "",
-        "## miniF2F Result",
+        "## Main Easy_Lean Result",
         "",
         markdown_table(
             ["experiment", "attempted", "proved", "pass_rate", "intersection_proved", "intersection_pass_rate"],
             [
                 [
                     exp,
-                    mini[exp]["attempted"],
-                    mini[exp]["proved"],
-                    mini[exp]["pass_rate"],
-                    mini_i[exp]["proved"],
-                    mini_i[exp]["pass_rate"],
+                    easy[exp]["attempted"],
+                    easy[exp]["proved"],
+                    easy[exp]["pass_rate"],
+                    easy_i[exp]["proved"],
+                    easy_i[exp]["pass_rate"],
                 ]
                 for exp in EXPERIMENTS
             ],
         ),
         "",
-        "Combined miniF2F makes E1 and E4 more comparable than CoreEval does, while E3 remains competitive. This supports the concern that CoreEval is favorable to E4 and that real multilingual training may matter more on external theorem styles.",
+        "On Easy_Lean, E4 is ahead of both E1 and E3. E1 is also ahead of E3 on the theorem-name intersection attempted by all three models. This is consistent with pseudo-multilingual regularization helping on Lean-like in-distribution theorem statements.",
         "",
-        "## CoreEval Search Diagnostics",
+        "## Hard_Lean Result",
+        "",
+        markdown_table(
+            ["experiment", "attempted", "proved", "pass_rate", "intersection_proved", "intersection_pass_rate"],
+            [
+                [
+                    exp,
+                    hard[exp]["attempted"],
+                    hard[exp]["proved"],
+                    hard[exp]["pass_rate"],
+                    hard_i[exp]["proved"],
+                    hard_i[exp]["pass_rate"],
+                ]
+                for exp in EXPERIMENTS
+            ],
+        ),
+        "",
+        "Hard_Lean makes E1 and E4 more comparable than Easy_Lean does, while E3 remains competitive. This supports the concern that Easy_Lean is favorable to E4 and that real multilingual training may matter more on external theorem styles.",
+        "",
+        "### Hard_Lean Proved Theorems",
+        "",
+        "The combined Hard_Lean proved theorems were:",
+        "",
+        markdown_table(
+            ["model", "proved theorem", "time_s", "proof tactic"],
+            [
+                ["E1", "`mathd_numbertheory_342`", 122.1, "`norm_num1`"],
+                ["E1", "`mathd_algebra_176`", 57.4, "`ring`"],
+                ["E3", "`amc12b_2020_p2`", 114.8, "`ring1`"],
+                ["E3", "`mathd_numbertheory_207`", 100.7, "`norm_num`"],
+                ["E3", "`mathd_algebra_329`", 68.6, "`linarith`"],
+                ["E3", "`mathd_algebra_176`", 85.7, "`ring`"],
+                ["E4", "`mathd_numbertheory_207`", 114.6, "`ring`"],
+                ["E4", "`mathd_algebra_176`", 86.2, "`ring1`"],
+                ["E4", "`mathd_numbertheory_175`", 92.1, "`norm_num`"],
+            ],
+        ),
+        "",
+        "Overlap:",
+        "",
+        "- All three models proved `mathd_algebra_176`.",
+        "- E3 and E4 both proved `mathd_numbertheory_207`.",
+        "- E1 uniquely proved `mathd_numbertheory_342`.",
+        "- E3 uniquely proved `amc12b_2020_p2` and `mathd_algebra_329`.",
+        "- E4 uniquely proved `mathd_numbertheory_175`.",
+        "",
+        "## Easy_Lean Search Diagnostics",
         "",
         markdown_table(
             [
@@ -762,18 +789,18 @@ def build_memo(
             [
                 [
                     exp,
-                    diag[("CoreEval 250", exp)]["valid_tactics_per_model_called_state"],
-                    diag[("CoreEval 250", exp)]["accepted_action_rate_after_model_call"],
-                    diag[("CoreEval 250", exp)]["early_dead_end_rate"],
-                    diag[("CoreEval 250", exp)]["mean_node_count"],
-                    diag[("CoreEval 250", exp)]["mean_average_branching_factor"],
-                    diag[("CoreEval 250", exp)]["mean_proof_time_in_secs"],
+                    diag[("Easy_Lean", exp)]["valid_tactics_per_model_called_state"],
+                    diag[("Easy_Lean", exp)]["accepted_action_rate_after_model_call"],
+                    diag[("Easy_Lean", exp)]["early_dead_end_rate"],
+                    diag[("Easy_Lean", exp)]["mean_node_count"],
+                    diag[("Easy_Lean", exp)]["mean_average_branching_factor"],
+                    diag[("Easy_Lean", exp)]["mean_proof_time_in_secs"],
                 ]
                 for exp in EXPERIMENTS
             ],
         ),
         "",
-        "## miniF2F Search Diagnostics",
+        "## Hard_Lean Search Diagnostics",
         "",
         markdown_table(
             [
@@ -788,12 +815,12 @@ def build_memo(
             [
                 [
                     exp,
-                    diag[("miniF2F", exp)]["valid_tactics_per_model_called_state"],
-                    diag[("miniF2F", exp)]["accepted_action_rate_after_model_call"],
-                    diag[("miniF2F", exp)]["early_dead_end_rate"],
-                    diag[("miniF2F", exp)]["mean_node_count"],
-                    diag[("miniF2F", exp)]["mean_average_branching_factor"],
-                    diag[("miniF2F", exp)]["mean_proof_time_in_secs"],
+                    diag[("Hard_Lean", exp)]["valid_tactics_per_model_called_state"],
+                    diag[("Hard_Lean", exp)]["accepted_action_rate_after_model_call"],
+                    diag[("Hard_Lean", exp)]["early_dead_end_rate"],
+                    diag[("Hard_Lean", exp)]["mean_node_count"],
+                    diag[("Hard_Lean", exp)]["mean_average_branching_factor"],
+                    diag[("Hard_Lean", exp)]["mean_proof_time_in_secs"],
                 ]
                 for exp in EXPERIMENTS
             ],
@@ -807,10 +834,10 @@ def build_memo(
         "",
         "## Interpretation",
         "",
-        "- H1, structural transfer: not supported by CoreEval alone, but miniF2F provides suggestive evidence that real multilingual training can help external generalization.",
-        "- H2, regularization: CoreEval favors E4, supporting the idea that pseudo-multilingual variation helps on in-distribution Lean-style proof search.",
-        "- H3, search calibration: still plausible as a mechanism to inspect, especially because the miniF2F runs are timeout-heavy and differences may appear in search behavior before large pass-rate gaps emerge.",
-        "- Distribution-dependent finding: the strongest current story is not one global winner. CoreEval shows when regularization matters; miniF2F shows where real multilingual transfer may matter.",
+        "- H1, structural transfer: not supported by Easy_Lean alone, but Hard_Lean provides suggestive evidence that real multilingual training can help external generalization.",
+        "- H2, regularization: Easy_Lean favors E4, supporting the idea that pseudo-multilingual variation helps on in-distribution Lean-style proof search.",
+        "- H3, search calibration: still plausible as a mechanism to inspect, especially because the Hard_Lean runs are timeout-heavy and differences may appear in search behavior before large pass-rate gaps emerge.",
+        "- Distribution-dependent finding: the strongest current story is not one global winner. Easy_Lean shows when regularization matters; Hard_Lean shows where real multilingual transfer may matter.",
         "",
         "## Deliverable Files",
         "",
