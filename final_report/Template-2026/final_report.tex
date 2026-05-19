@@ -167,11 +167,11 @@ E4.
 \subsection{Model and training setup}
 \label{subsec:training}
 
-All three models start from \texttt{Salesforce/codet5-small}.  The input is the
+All three models start from \texttt{Salesforce/codet5-small}. This is a smaller, but similar model used in the ProofWala experiments (\texttt{Salesforce/codet5-base}). We chose this smaller version to reduce the training time. The input is the
 serialized proof state and the output is one tactic.  We keep the same tokenizer,
-prompt format, sequence lengths, and training recipe where possible.  The final
-pilot models are the longer Nexus-trained checkpoints, each trained with one RTX
-A5000 GPU and a 12-hour wall-time budget.
+prompt format, sequence lengths, and training recipe where possible.  Our final
+pilot models were trained with one RTX
+A5000 GPU and a 12-hour wall-time budget on the UMD Nexus cluster.
 
 
 \subsection{Pseudo-multilingual control construction}
@@ -308,7 +308,7 @@ Table~\ref{tab:main-results} gives the main proof-search results.  We report bot
 \label{tab:main-results}
 \end{table}
 
-The results are distribution-dependent.  On Easy\_Lean, E4 is the clear winner: it proves 126 theorems overall and 78 on the shared intersection, compared with 49 for E1 and 39 for E3.  The Easy\_Lean result was surprising for two reasons.  First, ProofWala suggests that real multilingual training should improve over a Lean-only baseline, but E3 is below E1 here.  Second, E4 improves by a large margin over both E1 and E3.  This supports the regularization hypothesis, but we do not yet understand why the improvement is so strong; explaining its size requires further experiments and a more careful audit of the pseudo-Lean transformation.
+The results are distribution-dependent.  On Easy\_Lean, E4 is the clear winner: it proves 126 theorems overall and 78 on the shared intersection, compared with 49 for E1 and 39 for E3.  The Easy\_Lean result was unexpected and surprising for two reasons.  First, ProofWala suggests that real multilingual training should improve over a Lean-only baseline, but E3 is below E1 here.  Second, E4 improves by a large margin over both E1 and E3.  This supports the regularization hypothesis, but we do not yet understand why the improvement is so strong; explaining its size requires further experiments and a more careful audit of the pseudo-Lean transformation.
 
 Hard\_Lean changes the ordering.  E3 proves 4 theorems, compared with 3 for E4 and 2 for E1.  The pass rates are low because Hard\_Lean is timeout-heavy, but the ordering matters: real multilingual training is strongest on the harder external benchmark, while E1 and E4 become much closer than on Easy\_Lean.
 
@@ -398,7 +398,7 @@ See \texttt{README.md} for step-by-step setup instructions.
 \section{Statement of Contributions}
 \label{sec:contributions}
 
-Amadeo De La Vega led the implementation of the training and proof-search pipeline, ran the main Nexus jobs, managed result collection, and revised the report and presentation.  Mehak Gupta contributed to code review and Nexus testing, helped write the problem statement, related work, and results discussion, and prepared the presentation slides.  Huan Zhou contributed to code review and Nexus testing and helped write the methodology and evaluation-design sections.  All authors discussed the experimental framing and interpretation.
+Amadeo De La Vega led the development of the project, the implementation of the training and proof-search pipeline, ran the main Nexus jobs, managed result collection, and revised the report and presentation.  Mehak Gupta contributed to code review and Nexus testing, helped write the problem statement, related work, and results discussion, and prepared the presentation slides.  Huan Zhou contributed to code review and Nexus testing and helped write the methodology and evaluation-design sections.  All authors discussed the experimental framing and interpretation.
 
 
  
