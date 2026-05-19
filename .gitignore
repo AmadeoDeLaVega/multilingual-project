@@ -67,3 +67,6 @@ dist/
 # If an external benchmark repo is vendored into this repo, keep its files
 # trackable by the parent repo but never commit nested Git metadata.
 miniF2F/.git/
+
+# Codex agent memory inforrmation, which is not needed for reproducing results
+AGENTS.md
