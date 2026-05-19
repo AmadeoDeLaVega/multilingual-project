@@ -63,6 +63,7 @@ dist/
 # Local editor and OS noise
 .DS_Store
 .idea/
+*:Zone.Identifier
 
 # If an external benchmark repo is vendored into this repo, keep its files
 # trackable by the parent repo but never commit nested Git metadata.
