@@ -75,7 +75,7 @@ This project asks:
 \textbf{When does multilingual training improve Lean proof search, and is the gain due to cross-system transfer or regularization?}
 \end{quote}
 
-We compare three models that differ only in training data.  E1 is trained on Lean proof steps only.  E3 is trained on real multilingual Lean+Rocq data.  E4 is trained on Lean plus pseudo-Lean variants created by consistently renaming local variables and hypotheses.  E4 is the key control: it adds syntax variation without adding Rocq syntax, tactics, or libraries.  Thus, E3 versus E4 separates genuine cross-system transfer from syntax-variation regularization.
+We compare three models that differ only in training data.  E1 is trained on Lean proof steps only.  E3 is trained on real multilingual Lean+Rocq data.  E4 is trained on Lean plus a pseudo-Lean variant created by consistently renaming local variables and hypotheses.  E4 is the key control: it adds syntax variation without adding Rocq syntax, tactics, or libraries.  Thus, E3 versus E4 separates genuine cross-system transfer from syntax-variation regularization.
 
 We evaluate on two Lean proof-search benchmarks.  \textbf{Easy\_Lean} is a controlled in-project Lean benchmark with relatively regular theorem patterns.  \textbf{Hard\_Lean} is the combined miniF2F-based external benchmark, which is more diverse and harder.  This naming follows the project presentation and emphasizes the role of benchmark difficulty and distribution.
 
@@ -144,7 +144,7 @@ base model, tokenizer, prompt grammar, and Lean evaluation pipeline.}
 \midrule
 E1 & Lean-only baseline & Trained only on Lean proof steps.  This model shows how well the chosen architecture performs without multilingual data. \\
 E3 & Real multilingual model & Trained on ProofWala multilingual data containing Lean and Rocq proof steps.  This model tests whether real multilingual training improves Lean proof search. \\
-E4 & Pseudo-multilingual control & Trained on Lean proof steps plus synthetic Lean variants.  This model tests whether syntax variation alone can explain any gain. \\
+E4 & Pseudo-multilingual control & Trained on Lean proof steps plus a synthetic Lean variant.  This model tests whether syntax variation alone can explain any gain. \\
 \bottomrule
 \end{tabular}
 \label{tab:experimental_design}
@@ -159,8 +159,8 @@ differences come from more useful candidate tactics during search.
 
 We use the released \texttt{amitayusht/ProofWalaDataset} rather than regenerating
 proof-step data.  E1 uses the Lean training split.  E3 uses a project-compatible
-multilingual split with Lean and Rocq examples.  E4 uses Lean data plus
-synthetic Lean variants and deliberately contains no real Rocq examples.  All
+multilingual split with Lean and Rocq examples.  E4 uses Lean data plus a
+synthetic Lean variant and deliberately contains no real Rocq examples.  All
 evaluation references are frozen before training and reused across E1, E3, and
 E4.
 
