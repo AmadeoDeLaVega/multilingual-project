@@ -72,7 +72,7 @@ Recent neural theorem provers typically train a language model to map a proof st
 This project asks:
 
 \begin{quote}
-\textbf{When does multilingual training improve Lean proof search, and is the gain due to cross-system transfer or regularization?}
+\textbf{When does multilingual training improve proof search, and is the gain due to cross-system transfer or regularization?}
 \end{quote}
 
 We compare three models that differ only in training data.  E1 is trained on Lean proof steps only.  E3 is trained on real multilingual Lean+Rocq data.  E4 is trained on Lean plus a pseudo-Lean variant created by consistently renaming local variables and hypotheses.  E4 is the key control: it adds syntax variation without adding Rocq syntax, tactics, or libraries.  Thus, E3 versus E4 separates genuine cross-system transfer from syntax-variation regularization.
@@ -92,7 +92,7 @@ Our study builds most directly on ProofWala, which provides a multilingual data 
 
 This question is related to the distinction between syntax and semantics in AI.  Chomsky's formal-language tradition emphasized that grammatical form can be studied separately from meaning~\citep{chomsky1957syntactic}, while connectionist work associated with Hinton argues that neural networks can learn useful internal representations from data~\citep{rumelhart1986learning}.  Later debates make the same point in modern terms: statistical models can find patterns in form, but form alone may not guarantee grounded meaning~\citep{norvig2011chomsky,bender2020climbing}.  In theorem proving, ``semantics'' has a concrete meaning: a tactic changes the proof state.  This is an operational view of meaning, following structural operational semantics~\citep{plotkin1981structural}.  H1 predicts transfer at this level: a model trained on one proof language learns state-change patterns that help in another.  H2 predicts a syntactic effect: more syntax variation prevents overfitting to Lean-specific syntax without requiring true cross-system transfer.
 
-This distinction connects to two adjacent lines of work.  First, diversity-driven proof search methods such as 3D-Prover argue that theorem proving benefits from exploring non-redundant candidate tactics rather than repeatedly sampling similar actions~\citep{lamont2024diversity}.  Second, data augmentation work such as Lean4Trace shows that additional tactic and state variation can improve Lean theorem proving~\citep{nesterov2024lean4trace}.  Our E4 condition adapts this intuition into a causal control: it adds syntax variation while holding the proof assistant fixed.
+Also, this distinction connects to two adjacent lines of work.  First, diversity-driven proof search methods such as 3D-Prover argue that theorem proving benefits from exploring non-redundant candidate tactics rather than repeatedly sampling similar actions~\citep{lamont2024diversity}.  Second, data augmentation work such as Lean4Trace shows that additional tactic and state variation can improve Lean theorem proving~\citep{nesterov2024lean4trace}.  Our E4 condition adapts this intuition into a causal control: it adds syntax variation while holding the proof assistant fixed.
 
 Finally, miniF2F provides an external benchmark for formal Olympiad-style mathematics across proof assistants~\citep{zheng2021minif2f}.  We use miniF2F-derived Lean theorems as Hard\_Lean to test whether conclusions from a controlled Lean benchmark generalize to a harder theorem distribution.
 
